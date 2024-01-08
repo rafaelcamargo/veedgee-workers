@@ -10,6 +10,15 @@ _public.get = (url, options) => {
   });
 };
 
+_public.post = (url, data, options) => {
+  return request({
+    method: 'post',
+    url,
+    data,
+    ...options,
+  });
+};
+
 function request(config) {
   return axios(config);
 }

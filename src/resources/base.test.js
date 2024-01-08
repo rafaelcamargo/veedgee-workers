@@ -23,4 +23,19 @@ describe('Base Resource', () => {
     baseResource.get(url, { header });
     expect(axios).toHaveBeenCalledWith({ method: 'get', url, header });
   });
+
+  it('should be able to do a post request', () => {
+    const url = 'http://some.url.com';
+    const data = { email: 'asd@asd.com' };
+    baseResource.post(url, data);
+    expect(axios).toHaveBeenCalledWith({ method: 'post', url, data });
+  });
+
+  it('should be able to do a post request passing options', () => {
+    const url = 'http://some.url.com';
+    const data = { email: 'asd@asd.com' };
+    const options = { headers: { some: 'header' } };
+    baseResource.post(url, data, options);
+    expect(axios).toHaveBeenCalledWith({ method: 'post', url, data, ...options });
+  });
 });
