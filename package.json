@@ -4,13 +4,15 @@
   "description": "Veedgee Workers",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "workers": "node ./scripts/workers"
   },
   "author": "Rafael Camargo <hello@rafaelcamargo.com>",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.2",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "remove-accents": "^0.5.0"
   },
   "devDependencies": {
     "jest": "^29.7.0"
