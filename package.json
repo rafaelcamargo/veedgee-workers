@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
+    "format": "eslint src",
     "workers": "node ./scripts/workers"
   },
   "author": "Rafael Camargo <hello@rafaelcamargo.com>",
@@ -15,6 +16,7 @@
     "remove-accents": "^0.5.0"
   },
   "devDependencies": {
+    "eslint": "^8.56.0",
     "jest": "^29.7.0"
   }
 }
