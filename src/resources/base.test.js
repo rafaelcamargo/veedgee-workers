@@ -1,41 +1,62 @@
-const axios = require('axios');
+const httpService = require('../services/http');
 const baseResource = require('./base');
 
-jest.mock('axios');
-
 describe('Base Resource', () => {
-  it('should make a get request', () => {
-    const url = 'http://some.url.com/users';
-    baseResource.get(url);
-    expect(axios).toHaveBeenCalledWith({ method: 'get', url });
+  function mockRequestResponse(expectedUrl, { headers, status, data }){
+    const parse =() => Promise.resolve(data);
+    httpService.fetch = jest.fn((url) => {
+      return url === expectedUrl && Promise.resolve({
+        status,
+        headers: mapHeaders(headers),
+        text: parse,
+        json: parse
+      });
+    });
+  }
+
+  function mapHeaders(headers = {}){
+    const result = new Map();
+    Object.entries(headers).map(([key, value]) => result.set(key, value));
+    return result;
+  }
+  
+  it('should make a get request handling response as text by default', async () => {
+    const url = 'https://some.url.com/';
+    const data = '<!DOCTYPE html><html><head><title>Document</title></head><body><p>Hello</p></body></html>';
+    mockRequestResponse(url, { headers: {}, status: 200, data});
+    const response = await baseResource.get(url);
+    expect(response.status).toEqual(200);
+    expect(response.data).toEqual(data);
   });
 
-  it('should make a get request containing params', () => {
-    const url = 'http://some.url.com/users';
-    const params = { limit: 10 };
-    baseResource.get(url, { params });
-    expect(axios).toHaveBeenCalledWith({ method: 'get', url, params });
+  it('should make a get request handling JSON as response type', async () => {
+    const url = 'https://some.url.com/';
+    const data = { some: 'json' };
+    mockRequestResponse(url, { headers: { 'content-type': 'application/json'}, status: 200, data});
+    const response = await baseResource.get(url);
+    expect(response.status).toEqual(200);
+    expect(response.data).toEqual(data);
   });
 
-  it('should make a get request containing other options', () => {
-    const url = 'http://some.url.com/users';
-    const header = { 'Content-Type': 'application/json' };
-    baseResource.get(url, { header });
-    expect(axios).toHaveBeenCalledWith({ method: 'get', url, header });
+  it('should optionally make a get request using query params', async () => {
+    const url = 'https://some.url.com/';
+    const params = { slug: 'my-event-123' };
+    mockRequestResponse(`${url}?slug=${params.slug}`, { headers: { 'content-type': 'application/json'}, status: 200, data: {}});
+    await baseResource.get(url, params);
+    expect(httpService.fetch).toHaveBeenCalledWith(`${url}?slug=${params.slug}`, undefined);
   });
 
-  it('should be able to do a post request', () => {
-    const url = 'http://some.url.com';
-    const data = { email: 'asd@asd.com' };
-    baseResource.post(url, data);
-    expect(axios).toHaveBeenCalledWith({ method: 'post', url, data });
-  });
-
-  it('should be able to do a post request passing options', () => {
-    const url = 'http://some.url.com';
-    const data = { email: 'asd@asd.com' };
-    const options = { headers: { some: 'header' } };
-    baseResource.post(url, data, options);
-    expect(axios).toHaveBeenCalledWith({ method: 'post', url, data, ...options });
+  it('should make a post request', async () => {
+    const url = 'https://some.url.com/';
+    const body = { some: 'json' };
+    const data = { id: '123', ...body };
+    mockRequestResponse(url, { headers: { 'Content-Type': 'application/json'}, status: 201, data});
+    const response = await baseResource.post(url, body);
+    expect(httpService.fetch).toHaveBeenCalledWith(
+      url,
+      { body: JSON.stringify(body), headers: { 'Content-Type': 'application/json' }, method: 'POST' }
+    );
+    expect(response.status).toEqual(201);
+    expect(response.data).toEqual(data);
   });
 });

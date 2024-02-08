@@ -3,17 +3,11 @@ const eventsResource = require('../resources/events');
 
 const _public = {};
 
-_public.multiSave = multiSave;
+_public.multiSave = events => Promise.all(events.map(saveIfNotExists));
 
-function multiSave(events){
-  const [event, ...rest] = events;
-  return event && eventsResource.get({ slug: buildSlug(event) }).then(({ data }) => {
-    if(data.length === 0) {
-      return eventsResource.save(event).then(() => {
-        return rest.length && multiSave(rest);
-      });
-    }
-    return multiSave(rest);
+function saveIfNotExists(event){
+  return eventsResource.get({ slug: buildSlug(event) }).then(({ data }) => {
+    return data.length === 0 && eventsResource.save(event);
   });
 }
 
