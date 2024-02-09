@@ -39,4 +39,14 @@ describe('Crawlers Routes', () => {
     });
     expect(response.status).toEqual(200);
   });
+
+  it('should log error on get Eventim error', async () => {
+    const err = 'some err';
+    console.error = jest.fn();
+    eventimResource.get = jest.fn(() => Promise.reject(err));
+    const response = await serve().post('/crawlers');
+    expect(console.error).toHaveBeenCalledWith(err);
+    expect(response.status).toEqual(500);
+    expect(response.body).toEqual({ error: err });
+  });
 });
