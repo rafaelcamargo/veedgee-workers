@@ -43,6 +43,7 @@ jobs:
             - "src/*"
             - "scripts/*"
             - "environments/*"
+            - vercel.json
 
   format:
     <<: *default_env
@@ -66,6 +67,22 @@ jobs:
       - coveralls/upload:
           verbose: true
 
+  deploy:
+    <<: *default_env
+
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run:
+          name: Pull Vercel Environment Information
+          command: npx vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+      - run:
+          name: Build Vercel Artifacts
+          command: npx vercel build --prod --token=$VERCEL_TOKEN
+      - run:
+          name: Deploy
+          command: npx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+
 workflows:
   version: 2
 
@@ -78,3 +95,11 @@ workflows:
       - test:
           requires:
             - install
+      - deploy:
+          requires:
+            - format
+            - test
+          filters:
+            branches:
+              only:
+                - main

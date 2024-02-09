@@ -3,6 +3,8 @@ const eventimService = require('../services/eventim');
 
 const _public = {};
 
-_public.init = () => eventimService.get().then(eventsService.multiSave);
+_public.start = (req, res) => {
+  return eventimService.get().then(eventsService.multiSave).then(() => res.status(200).send());
+};
 
 module.exports = _public;

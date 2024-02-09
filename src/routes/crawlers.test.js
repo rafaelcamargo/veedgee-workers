@@ -1,12 +1,11 @@
-const testingService = require('../services/testing');
+const { serve, getMockedFile } = require('../services/testing');
 const eventsResource = require('../resources/events');
 const eventimResource = require('../resources/eventim');
-const crawlersWorker = require('./crawlers');
 
-describe('Crawlers Worker', () => {
+describe('Crawlers Routes', () => {
   beforeEach(() => {
     eventimResource.get = jest.fn(() => {
-      const curitibaEventsMock = testingService.getMockedFile('eventim-curitiba.html');
+      const curitibaEventsMock = getMockedFile('eventim-curitiba.html');
       return Promise.resolve({ data: curitibaEventsMock });
     });
     eventsResource.get = jest.fn(({ slug }) => {
@@ -18,7 +17,7 @@ describe('Crawlers Worker', () => {
   });
 
   it('should save events for Eventim', async () => {
-    await crawlersWorker.init();
+    const response = await serve().post('/crawlers');
     expect(eventsResource.save).toHaveBeenCalledTimes(2);
     expect(eventsResource.save).toHaveBeenCalledWith({
       title: 'I Wanna Be Tour',
@@ -38,5 +37,6 @@ describe('Crawlers Worker', () => {
       country: 'BR',
       url: 'https://www.eventim.com.br/event/jao-super-pedreira-paulo-leminski-17455662/'
     });
+    expect(response.status).toEqual(200);
   });
 });
