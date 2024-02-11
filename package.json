@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "format": "eslint src",
-    "workers": "node ./scripts/workers"
+    "start": "node ./src/index.js"
   },
   "author": "Rafael Camargo <hello@rafaelcamargo.com>",
   "license": "MIT",
