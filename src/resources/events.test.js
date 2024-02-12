@@ -15,12 +15,12 @@ describe('Eventim Resource', () => {
 
   it('should get events', () => {
     eventsResource.get();
-    expect(baseResource.get).toHaveBeenCalledWith('/events', {});
+    expect(baseResource.get).toHaveBeenCalledWith('/events', undefined);
   });
 
   it('should optionally filter events by passing query params', () => {
     const params = { slug: 'my-event-20240107-2100' };
     eventsResource.get(params);
-    expect(baseResource.get).toHaveBeenCalledWith('/events', { params });
+    expect(baseResource.get).toHaveBeenCalledWith('/events', params);
   });
 });

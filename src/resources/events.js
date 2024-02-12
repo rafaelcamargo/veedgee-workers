@@ -5,13 +5,8 @@ const _public = {};
 
 const BASE_URL = `${ENV.VEEDGEE.API_BASE_URL}/events`;
 
-_public.save = event => {
-  return baseResource.post(BASE_URL, event);
-};
+_public.save = event => baseResource.post(BASE_URL, event);
 
-_public.get = params => {
-  const options = params ? { params } : {};
-  return baseResource.get(BASE_URL, options);
-};
+_public.get = params => baseResource.get(BASE_URL, params);
 
 module.exports = _public;
