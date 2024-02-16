@@ -1,14 +1,16 @@
 const { serve } = require('../services/testing');
+const dateService = require('../services/date');
 const diskIngressosResource = require('../resources/disk-ingressos');
 const eventsResource = require('../resources/events');
 const diskIngressosMock = require('../mocks/disk-ingressos');
+const eventsMock = require('../mocks/events');
 
 describe('Crawlers Routes', () => {
   beforeEach(() => {
+    dateService.getNow = jest.fn(() => new Date(2024, 1, 15));
     diskIngressosResource.get = jest.fn(() => Promise.resolve({ data: diskIngressosMock }));
-    eventsResource.get = jest.fn(({ slug }) => {
-      const eventMock = { id: 'abc' };
-      const data = slug == 'detonautas-acustico-20-anos-curitiba-pr-20240322' ? [eventMock] : [];
+    eventsResource.get = jest.fn(({ minDate }) => {
+      const data = eventsMock.filter(event => event.date >= minDate);
       return Promise.resolve({ data });
     });
     eventsResource.save = jest.fn(event => Promise.resolve(event));
@@ -106,6 +108,7 @@ describe('Crawlers Routes', () => {
       country: 'BR',
       url: 'https://www.diskingressos.com.br/evento/6013/02-05-2024/pr/curitiba/yamandu-costa'
     });
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.save).toHaveBeenCalledTimes(10);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({

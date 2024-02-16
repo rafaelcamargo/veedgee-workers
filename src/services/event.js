@@ -5,14 +5,17 @@ const {
   removeUnnecessarySpaces,
   fixInvalidSpaceChars
 } = require('../services/text');
+const dateService = require('../services/date');
 const urlService = require('../services/url');
 const eventsResource = require('../resources/events');
 
 const _public = {};
 
-_public.multiSave = events => Promise.all(events.map(event => {
-  return saveIfNotExists(formatEvent(event));
-}));
+_public.multiSave = events => {
+  return getEventSlugsFromToday().then(eventSlugs => {
+    return Promise.all(events.map(event => saveIfNotExists(formatEvent(event), eventSlugs)));
+  });
+};
 
 _public.isWantedCity = cityName => {
   const parse = name => removeAccents(name).toLowerCase();
@@ -41,9 +44,13 @@ function formatEvent(event){
   };
 }
 
-function saveIfNotExists(event){
-  return eventsResource.get({ slug: event.slug }).then(({ data }) => {
-    return data.length === 0 && eventsResource.save(event);
+function saveIfNotExists(event, eventSlugs){
+  return !eventSlugs.includes(event.slug) && eventsResource.save(event);
+}
+
+function getEventSlugsFromToday(){
+  return eventsResource.get({ minDate: dateService.buildTodayDateString() }).then(({ data }) => {
+    return data.map(({ slug }) => slug);
   });
 }
 
