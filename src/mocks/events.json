@@ -9,7 +9,33 @@
     "state": "PR",
     "country": "BR",
     "url": "https://www.diskingressos.com.br/evento/6274/22-03-2024/pr/curitiba/detonautos-acustico-20-anos",
-    "created_at": "2024-02-15 13:59:47.831",
-    "updated_at": "2024-02-15 13:59:47.831"
+    "created_at": "2024-02-14T13:59:47.831Z",
+    "updated_at": "2024-02-14T13:59:47.831Z"
+  },
+  {
+    "id": "789ghi",
+    "slug": "rota-da-seda-curitiba-pr-20240706",
+    "title": "Rota Da Seda",
+    "date": "2024-07-06",
+    "time": "21:00",
+    "city": "Curitiba",
+    "state": "PR",
+    "country": "BR",
+    "url": "https://www.diskingressos.com.br/evento/6390/06-07-2024/pr/curitiba/rota-da-seda",
+    "created_at": "2024-02-15T23:00:10.510Z",
+    "updated_at": "2024-02-15T23:00:10.510Z"
+  },
+  {
+    "id": "456def",
+    "slug": "rogerio-morgado-show-solo-curitiba-pr-20240309",
+    "title": "Rogério Morgado - Show Solo",
+    "date": "2024-03-09",
+    "time": null,
+    "city": "Curitiba",
+    "state": "PR",
+    "country": "BR",
+    "url": "https://www.diskingressos.com.br/evento/6478/09-03-2024/pr/curitiba/rogerio-morgado-show-solo",
+    "created_at": "2024-02-15T09:27:21.675Z",
+    "updated_at": "2024-02-15T09:27:21.675Z"
   }
 ]

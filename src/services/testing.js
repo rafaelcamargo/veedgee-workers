@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../web');
+const app = require('../app');
 
 const _public = {};
 
