@@ -7,7 +7,7 @@ _public.isPermitted = (req, res, next) => {
 };
 
 function hasPermissionToken({ headers }){
-  return JSON.parse(ENV.VEEDGEE.WORKER_TOKENS).includes(headers.vwtoken);
+  return ENV.VEEDGEE.WORKER_TOKENS.split(',').includes(headers.vwtoken);
 }
 
 module.exports = _public;
