@@ -1,7 +1,8 @@
 module.exports = {
   VEEDGEE: {
     API_BASE_URL: 'http://localhost:4000',
-    API_TOKEN: 'vct123'
+    API_TOKEN: 'vee123',
+    WORKER_TOKENS: '["vee456"]'
   },
   NOTIFICATION_SENDER: 'sender@domain.com',
   NOTIFICATION_RECIPIENTS: 'some@email.com,other@email.com',

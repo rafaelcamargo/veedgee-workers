@@ -6,6 +6,10 @@ const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
 
 describe('Crawlers Routes', () => {
+  async function start(){
+    return await serve().post('/crawlers').set({ vwtoken: 'vee456' }).send();
+  }
+
   beforeEach(() => {
     dateService.getNow = jest.fn(() => new Date(2024, 1, 15));
     diskIngressosResource.get = jest.fn(() => Promise.resolve({ data: diskIngressosMock }));
@@ -16,8 +20,13 @@ describe('Crawlers Routes', () => {
     eventsResource.save = jest.fn(event => Promise.resolve(event));
   });
 
-  it('should save Disk Ingressos events', async () => {
+  it('should not allow cralwer execution by default', async () => {
     const response = await serve().post('/crawlers');
+    expect(response.status).toEqual(401);
+  });
+
+  it('should save Disk Ingressos events', async () => {
+    const response = await start();
     expect(eventsResource.save).toHaveBeenCalledWith({
       title: 'Dhouse Apresenta - Stand Up Comedy Com Danilo Gentili - Sessão Extra',
       slug: 'dhouse-apresenta-stand-up-comedy-com-danilo-gentili-sessao-extra-curitiba-pr-20240229',
@@ -122,7 +131,7 @@ describe('Crawlers Routes', () => {
     const err = 'some err';
     console.error = jest.fn();
     diskIngressosResource.get = jest.fn(() => Promise.reject(err));
-    const response = await serve().post('/crawlers');
+    const response = await start();
     expect(console.error).toHaveBeenCalledWith(err);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({

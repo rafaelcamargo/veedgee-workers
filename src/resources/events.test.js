@@ -12,7 +12,7 @@ describe('Eventim Resource', () => {
     eventsResource.save(event);
     expect(baseResource.post).toHaveBeenCalledWith('/events', event, {
       headers: {
-        vatoken: 'vct123'
+        vatoken: 'vee123'
       }
     });
   });

@@ -23,6 +23,10 @@ https://www.diskingressos.com.br/evento/6478/09-03-2024/pr/curitiba/rogerio-morg
     return eventsMock.filter(({ created_at }) => created_at >= minCreationDate);
   }
 
+  async function start(payload){
+    return await serve().post('/notifications').set({ vwtoken: 'vee456' }).send(payload);
+  }
+
   beforeEach(() => {
     dateService.buildTodayDateString = jest.fn(() => '2024-02-15');
     eventsResource.get = jest.fn(({ minCreationDate }) => {
@@ -31,8 +35,13 @@ https://www.diskingressos.com.br/evento/6478/09-03-2024/pr/curitiba/rogerio-morg
     emailService.send = jest.fn(() => Promise.resolve({}));
   });
 
-  it('should notify recipients when new events are found', async () => {
+  it('should not allow notifications execution by default', async () => {
     const response = await serve().post('/notifications');
+    expect(response.status).toEqual(401);
+  });
+
+  it('should notify recipients when new events are found', async () => {
+    const response = await start();
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
@@ -53,7 +62,7 @@ https://www.diskingressos.com.br/evento/6478/09-03-2024/pr/curitiba/rogerio-morg
   });
 
   it('should not notify recipients when new events are not found', async () => {
-    const response = await serve().post('/notifications').send({ minCreationDate: '2024-02-16' });
+    const response = await start({ minCreationDate: '2024-02-16' });
     expect(emailService.send).not.toHaveBeenCalled();
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({ duration: expect.any(Number) });
@@ -63,7 +72,7 @@ https://www.diskingressos.com.br/evento/6478/09-03-2024/pr/curitiba/rogerio-morg
     emailService.send = jest.fn(({ to }) => {
       return to == 'some@email.com' ? Promise.reject({ some: 'err' }) : Promise.resolve({});
     });
-    const response = await serve().post('/notifications');
+    const response = await start();
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
