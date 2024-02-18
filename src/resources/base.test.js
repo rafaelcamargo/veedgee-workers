@@ -51,10 +51,14 @@ describe('Base Resource', () => {
     const body = { some: 'json' };
     const data = { id: '123', ...body };
     mockRequestResponse(url, { headers: { 'Content-Type': 'application/json'}, status: 201, data});
-    const response = await baseResource.post(url, body);
+    const response = await baseResource.post(url, body, { headers: { vtoken: 'evc123' } });
     expect(httpService.fetch).toHaveBeenCalledWith(
       url,
-      { body: JSON.stringify(body), headers: { 'Content-Type': 'application/json' }, method: 'POST' }
+      {
+        body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json', vtoken: 'evc123' },
+        method: 'POST'
+      }
     );
     expect(response.status).toEqual(201);
     expect(response.data).toEqual(data);

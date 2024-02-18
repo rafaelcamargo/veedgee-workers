@@ -6,10 +6,14 @@ _public.get = (url, params) => {
   return request(buildFullUrl(url, params));
 };
 
-_public.post = (url, body) => {
+_public.post = (url, body, options) => {
   return request(url, {
+    ...options,
     body: JSON.stringify(body),
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers
+    },
     method: 'POST'
   });
 };

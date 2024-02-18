@@ -10,7 +10,11 @@ describe('Eventim Resource', () => {
   it('should save an event', () => {
     const event = { some: 'event' };
     eventsResource.save(event);
-    expect(baseResource.post).toHaveBeenCalledWith('/events', event);
+    expect(baseResource.post).toHaveBeenCalledWith('/events', event, {
+      headers: {
+        vatoken: 'vct123'
+      }
+    });
   });
 
   it('should get events', () => {
