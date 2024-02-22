@@ -7,6 +7,7 @@ const {
 } = require('../services/text');
 const dateService = require('../services/date');
 const urlService = require('../services/url');
+const eventFetcherService = require('../services/event-fetcher');
 const eventsResource = require('../resources/events');
 
 const _public = {};
@@ -49,7 +50,7 @@ function saveIfNotExists(event, eventSlugs){
 }
 
 function getEventSlugsFromToday(){
-  return eventsResource.get({ minDate: dateService.buildTodayDateString() }).then(({ data }) => {
+  return eventFetcherService.cachedFetch({ minDate: dateService.buildTodayDateString() }).then(({ data }) => {
     return data.map(({ slug }) => slug);
   });
 }

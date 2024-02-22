@@ -1,7 +1,9 @@
-const { serve } = require('../services/testing');
+const { serve, getMockedFile } = require('../services/testing');
 const dateService = require('../services/date');
 const diskIngressosResource = require('../resources/disk-ingressos');
+const eticketCenterResource = require('../resources/eticket-center');
 const eventsResource = require('../resources/events');
+const eventFetcherService = require('../services/event-fetcher');
 const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
 
@@ -12,12 +14,17 @@ describe('Crawlers Routes', () => {
 
   beforeEach(() => {
     dateService.getNow = jest.fn(() => new Date(2024, 1, 15));
-    diskIngressosResource.get = jest.fn(() => Promise.resolve({ data: diskIngressosMock }));
+    eticketCenterResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('eticket-center-empty.html') }));
+    diskIngressosResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     eventsResource.get = jest.fn(({ minDate }) => {
       const data = eventsMock.filter(event => event.date >= minDate);
       return Promise.resolve({ data });
     });
     eventsResource.save = jest.fn(event => Promise.resolve(event));
+  });
+
+  afterEach(() => {
+    eventFetcherService.flushCache();
   });
 
   it('should not allow cralwer execution by default', async () => {
@@ -26,6 +33,7 @@ describe('Crawlers Routes', () => {
   });
 
   it('should save Disk Ingressos events', async () => {
+    diskIngressosResource.get = jest.fn(() => Promise.resolve({ data: diskIngressosMock }));
     const response = await start();
     expect(eventsResource.save).toHaveBeenCalledWith({
       title: 'Dhouse Apresenta - Stand Up Comedy Com Danilo Gentili - Sessão Extra',
@@ -122,7 +130,82 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 1,
+      successes: 2,
+      failures: 0
+    });
+  });
+
+  it('should save ETicket Center events', async () => {
+    eticketCenterResource.get = jest.fn(({ pagina }) => {
+      return Promise.resolve({ data: getMockedFile(`eticket-center-${pagina}.html`) });
+    });
+    const response = await start();
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Elvis Experience Com Dean Z Em Joinville',
+      slug: 'elvis-experience-com-dean-z-em-joinville-joinville-sc-20240229',
+      date: '2024-02-29',
+      time: '21:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-joinville/29-02/21-00/'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Elvis Experience Com Dean Z Em Blumenau',
+      slug: 'elvis-experience-com-dean-z-em-blumenau-blumenau-sc-20240302',
+      date: '2024-03-02',
+      time: '21:00',
+      city: 'Blumenau',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-blumenau/02-03/21-00/'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Gratiluz Com Dra. Rosângela',
+      slug: 'gratiluz-com-dra-rosangela-joinville-sc-20240315',
+      date: '2024-03-15',
+      time: '20:30',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.eticketcenter.com.br/eventos/stand-up/gratiluz-com-dra-rosangela/15-03/20-30/'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Rei Leão | O Musical',
+      slug: 'rei-leao-o-musical-joinville-sc-20240316',
+      date: '2024-03-16',
+      time: '16:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.eticketcenter.com.br/eventos/musical/rei-leao-o-musical/16-03/16-00/'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Ultimate Queen & Orquestra',
+      slug: 'ultimate-queen-orquestra-blumenau-sc-20240615',
+      date: '2024-06-15',
+      time: '21:00',
+      city: 'Blumenau',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.eticketcenter.com.br/eventos/show/ultimate-queen-orquestra/15-06/21-00/'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Bruna Louise - Joi',
+      slug: 'bruna-louise-joi-joinville-sc-20240622',
+      date: '2024-06-22',
+      time: '19:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.eticketcenter.com.br/eventos/stand-up/bruna-louise-joi/22-06/19-00/'
+    });
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(eventsResource.save).toHaveBeenCalledTimes(6);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      duration: expect.any(Number),
+      successes: 2,
       failures: 0
     });
   });
@@ -136,7 +219,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 0,
+      successes: 1,
       failures: 1
     });
   });

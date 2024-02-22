@@ -7,7 +7,7 @@ const _public = {};
 
 _public.crawl = () => {
   return diskIngressosResource.get({ size: 1000, from: 0 }).then(({ data }) => {
-    return buildEvents(data.hits.hits);
+    return data?.hits?.hits ? buildEvents(data.hits.hits) : [];
   });
 };
 
