@@ -1,4 +1,5 @@
-const eventsService = require('../services/event');
+const eventService = require('../services/event');
+const loggerService = require('../services/logger');
 const diskIngressosCrawler = require('../crawlers/disk-ingressos');
 const eticketCenterCrawler = require('../crawlers/eticket-center');
 
@@ -20,10 +21,10 @@ function useCompleter(crawlers, { startTime, resolve }){
   const completed = [];
   const onComplete = response => {
     completed.push(response);
-    if(response.err) console.error(response.err);
+    if(response.err) loggerService.track(response.err);
     completed.length === crawlers.length && resolve(buildStats(completed, startTime));
   };
-  const onCrawlSuccess = events => eventsService.multiSave(events).then(onComplete).catch(onComplete);
+  const onCrawlSuccess = events => eventService.multiSave(events).then(onComplete).catch(onComplete);
   const onCrawlError = err => onComplete({ err, isError: true });
   return { onCrawlSuccess, onCrawlError };
 }

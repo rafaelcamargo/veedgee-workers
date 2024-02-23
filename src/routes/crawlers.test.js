@@ -1,5 +1,6 @@
 const { serve, getMockedFile } = require('../services/testing');
 const dateService = require('../services/date');
+const loggerService = require('../services/logger');
 const diskIngressosResource = require('../resources/disk-ingressos');
 const eticketCenterResource = require('../resources/eticket-center');
 const eventsResource = require('../resources/events');
@@ -21,6 +22,7 @@ describe('Crawlers Routes', () => {
       return Promise.resolve({ data });
     });
     eventsResource.save = jest.fn(event => Promise.resolve(event));
+    loggerService.track = jest.fn();
   });
 
   afterEach(() => {
@@ -210,12 +212,12 @@ describe('Crawlers Routes', () => {
     });
   });
 
-  it('should log error on crawl error', async () => {
+  it('should track error on crawl error', async () => {
     const err = 'some err';
     console.error = jest.fn();
     diskIngressosResource.get = jest.fn(() => Promise.reject(err));
     const response = await start();
-    expect(console.error).toHaveBeenCalledWith(err);
+    expect(loggerService.track).toHaveBeenCalledWith(err);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
