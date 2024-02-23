@@ -1,5 +1,5 @@
 const { Resend } = require('resend');
-const ENV = require('./environment')();
+const ENV = require('./environment').get();
 
 const _public = {};
 

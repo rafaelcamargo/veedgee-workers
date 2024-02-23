@@ -1,4 +1,4 @@
-const ENV = require('../services/environment')();
+const ENV = require('../services/environment').get();
 const baseResource = require('./base');
 
 const _public = {};
