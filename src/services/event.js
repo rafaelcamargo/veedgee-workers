@@ -18,9 +18,11 @@ _public.multiSave = events => {
   });
 };
 
-_public.isWantedCity = cityName => {
+_public.isWantedCity = (cityName, cityState) => {
   const parse = name => removeAccents(name).toLowerCase();
-  return WANTED_CITIES.map(parse).includes(parse(cityName));
+  return !!WANTED_CITIES.find(item => {
+    return parse(item.city) === parse(cityName) && parse(item.state) === parse(cityState);
+  });
 };
 
 function formatEvent(event){

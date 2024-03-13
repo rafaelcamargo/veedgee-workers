@@ -18,8 +18,8 @@ function buildEvents(events){
 }
 
 function shouldCrawl(event){
-  const { _source } = event;
-  return eventService.isWantedCity(_source.city) && _source.groupid === 0;
+  const { city, state, groupid } = event._source;
+  return eventService.isWantedCity(city, state) && groupid === 0;
 }
 
 function FormatEvent(event){

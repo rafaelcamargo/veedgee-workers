@@ -19,7 +19,7 @@ function buildEvents(htmlString){
   const $ = cheerio.load(htmlString);
   return Array.from($('.BoxGerInfo1'))
     .map(eventEl => formatEvent($(eventEl)))
-    .filter(({ city }) => eventService.isWantedCity(city));
+    .filter(({ city, state }) => eventService.isWantedCity(city, state));
 }
 
 function formatEvent($eventEl){
