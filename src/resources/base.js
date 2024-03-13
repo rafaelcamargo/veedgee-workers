@@ -2,8 +2,8 @@ const httpService = require('../services/http');
 
 const _public = {};
 
-_public.get = (url, params) => {
-  return request(buildFullUrl(url, params));
+_public.get = (url, params, options) => {
+  return request(buildFullUrl(url, params), options);
 };
 
 _public.post = (url, body, options) => {

@@ -46,6 +46,14 @@ describe('Base Resource', () => {
     expect(httpService.fetch).toHaveBeenCalledWith(`${url}?slug=${params.slug}`, undefined);
   });
 
+  it('should optionally make a get request passing headers', async () => {
+    const url = 'https://some.url.com/';
+    const headers = { some: 'header' };
+    mockRequestResponse(url, { headers: { 'content-type': 'application/json'}, status: 200, data: {}});
+    await baseResource.get(url, {}, { headers });
+    expect(httpService.fetch).toHaveBeenCalledWith(url, { headers });
+  });
+
   it('should make a post request', async () => {
     const url = 'https://some.url.com/';
     const body = { some: 'json' };
