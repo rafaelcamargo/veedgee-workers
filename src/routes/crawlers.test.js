@@ -1,10 +1,12 @@
 const { serve, getMockedFile } = require('../services/testing');
 const dateService = require('../services/date');
 const loggerService = require('../services/logger');
+const blueticketResource = require('../resources/blueticket');
 const diskIngressosResource = require('../resources/disk-ingressos');
 const eticketCenterResource = require('../resources/eticket-center');
 const eventsResource = require('../resources/events');
 const eventFetcherService = require('../services/event-fetcher');
+const blueticketMock = require('../mocks/blueticket');
 const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
 
@@ -15,6 +17,7 @@ describe('Crawlers Routes', () => {
 
   beforeEach(() => {
     dateService.getNow = jest.fn(() => new Date(2024, 1, 15));
+    blueticketResource.get = jest.fn(() => Promise.resolve({}));
     eticketCenterResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('eticket-center-empty.html') }));
     diskIngressosResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     eventsResource.get = jest.fn(({ minDate }) => {
@@ -132,7 +135,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 2,
+      successes: 3,
       failures: 0
     });
   });
@@ -207,7 +210,33 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 2,
+      successes: 3,
+      failures: 0
+    });
+  });
+
+  it('should save Bluetickets events', async () => {
+    blueticketResource.get = jest.fn(params => {
+      const data = params.categoria === 11 && blueticketMock;
+      return Promise.resolve({ data });
+    });
+    const response = await start();
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Samba Jurerê',
+      slug: 'samba-jurere-florianopolis-sc-20240309',
+      date: '2024-03-09',
+      time: '18:00',
+      city: 'Florianópolis',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.blueticket.com.br/evento/33937/samba-jurere'
+    });
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(eventsResource.save).toHaveBeenCalledTimes(1);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      duration: expect.any(Number),
+      successes: 3,
       failures: 0
     });
   });
@@ -221,7 +250,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 1,
+      successes: 2,
       failures: 1
     });
   });

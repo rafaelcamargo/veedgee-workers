@@ -1,5 +1,6 @@
 const eventService = require('../services/event');
 const loggerService = require('../services/logger');
+const blueticketCrawler = require('../crawlers/blueticket');
 const diskIngressosCrawler = require('../crawlers/disk-ingressos');
 const eticketCenterCrawler = require('../crawlers/eticket-center');
 
@@ -14,7 +15,7 @@ _public.start = (req, res) => {
 };
 
 function getCrawlers(){
-  return [diskIngressosCrawler, eticketCenterCrawler];
+  return [diskIngressosCrawler, eticketCenterCrawler, blueticketCrawler];
 }
 
 function useCompleter(crawlers, { startTime, resolve }){
