@@ -1,0 +1,145 @@
+{
+  "data": [
+      {
+          "end_date": "2024-03-23T05:00:00+00:00",
+          "images": {
+              "original": "https://images.sympla.com.br/65f0d4ee0e16e.png",
+              "xs": "https://images.sympla.com.br/65f0d4ee0e16e-xs.png",
+              "lg": "https://images.sympla.com.br/65f0d4ee0e16e-lg.png"
+          },
+          "global_score": 363330,
+          "duration_type": "single",
+          "type": "NORMAL",
+          "url": "https://www.sympla.com.br/evento/especial-guns-n-roses-com-a-banda-guns-n-roses-cover-curitiba/2379165",
+          "start_date_formats": {
+              "pt": "Sex, 22 Mar - 2024 · 17:00",
+              "en": "Fri, 22 Mar - 2024 · 17:00",
+              "es": "Vie, 22 Mar - 2024 · 17:00"
+          },
+          "organizer": {
+              "image": "",
+              "name": "Balburdia Cervejeira",
+              "id": "2279829",
+              "url": "",
+              "email": "jonathan-mais10@hotmail.com"
+          },
+          "end_date_formats": {
+              "pt": "Sab, 23 Mar - 2024 · 02:00",
+              "en": "Sat, 23 Mar - 2024 · 02:00",
+              "es": "Sab, 23 Mar - 2024 · 02:00"
+          },
+          "name": "ESPECIAL GUNS N ROSES - COM A BANDA GUNS N ROSES COVER CURITIBA",
+          "company": "sympla",
+          "location": {
+              "country": "BRASIL",
+              "address": "Rua Lauro Muller",
+              "address_alt": "Em frente a praça ",
+              "city": "Itajaí",
+              "address_num": "1267",
+              "name": "Balbúrdia Cervejeira ",
+              "lon": -48.6539757,
+              "state": "SC",
+              "neighborhood": "Centro",
+              "zip_code": "88304-100",
+              "lat": -26.9162764
+          },
+          "id": 2379165,
+          "start_date": "2024-03-22T20:00:00+00:00"
+      },
+      {
+          "end_date": "2024-03-17T05:00:00+00:00",
+          "images": {
+              "original": "https://images.sympla.com.br/65e510229379e.jpg",
+              "xs": "https://images.sympla.com.br/65e510229379e-xs.jpg",
+              "lg": "https://images.sympla.com.br/65e510229379e-lg.jpg"
+          },
+          "global_score": 377605,
+          "duration_type": "single",
+          "type": "NORMAL",
+          "url": "https://www.sympla.com.br/evento/a-casa-do-tal-rock-n-roll-com-tributos-a-kiss-iron-maiden-ozzy-e-acdc/2366843",
+          "start_date_formats": {
+              "pt": "Sab, 16 Mar - 2024 · 19:00",
+              "en": "Sat, 16 Mar - 2024 · 19:00",
+              "es": "Sab, 16 Mar - 2024 · 19:00"
+          },
+          "organizer": {
+              "image": "",
+              "name": "Ventuno Pub",
+              "id": "11830453",
+              "url": "",
+              "email": "GUIVFARIAS@HOTMAIL.COM"
+          },
+          "end_date_formats": {
+              "pt": "Dom, 17 Mar - 2024 · 02:00",
+              "en": "Sun, 17 Mar - 2024 · 02:00",
+              "es": "Dom, 17 Mar - 2024 · 02:00"
+          },
+          "name": "A casa do tal rock n roll com tributos a Kiss, Iron Maiden, Ozzy e ACDC",
+          "company": "sympla",
+          "location": {
+              "country": "BRASIL",
+              "address": "Urussanga ",
+              "address_alt": "",
+              "city": "Urussanga",
+              "address_num": "0",
+              "name": "Ventuno Pub ",
+              "lon": -49.3143309,
+              "state": "SC",
+              "neighborhood": "rio maior",
+              "zip_code": "88840-000",
+              "lat": -28.474953
+          },
+          "id": 2366843,
+          "start_date": "2024-03-16T22:00:00+00:00"
+      },
+      {
+          "end_date": "2024-06-15T05:00:00+00:00",
+          "images": {
+              "original": "https://images.sympla.com.br/65ca28a2beb36.png",
+              "xs": "https://images.sympla.com.br/65ca28a2beb36-xs.png",
+              "lg": "https://images.sympla.com.br/65ca28a2beb36-lg.png"
+          },
+          "global_score": 353956,
+          "duration_type": "single",
+          "type": "NORMAL",
+          "url": "https://www.sympla.com.br/evento/black-or-white-a-festa/2339727",
+          "start_date_formats": {
+              "pt": "Sex, 14 Jun - 2024 · 21:00",
+              "en": "Fri, 14 Jun - 2024 · 21:00",
+              "es": "Vie, 14 Jun - 2024 · 21:00"
+          },
+          "organizer": {
+              "image": "",
+              "name": "ROCK IN VILLE",
+              "id": "23630112",
+              "url": "",
+              "email": "renan.zanelato@hotmail.com"
+          },
+          "end_date_formats": {
+              "pt": "Sab, 15 Jun - 2024 · 02:00",
+              "en": "Sat, 15 Jun - 2024 · 02:00",
+              "es": "Sab, 15 Jun - 2024 · 02:00"
+          },
+          "name": "BLACK OR WHITE - A FESTA",
+          "company": "sympla",
+          "location": {
+              "country": "BRASIL",
+              "address": "Rua Marajó",
+              "address_alt": "",
+              "city": "Joinville",
+              "address_num": "12",
+              "name": "Casa Raul",
+              "lon": -48.8600616,
+              "state": "SC",
+              "neighborhood": "Atiradores",
+              "zip_code": "89203-145",
+              "lat": -26.3131905
+          },
+          "id": 2339727,
+          "start_date": "2024-06-15T00:00:00+00:00"
+      }
+  ],
+  "total": 3,
+  "limit": 24,
+  "page": 1
+}

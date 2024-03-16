@@ -5,9 +5,11 @@ const blueticketResource = require('../resources/blueticket');
 const diskIngressosResource = require('../resources/disk-ingressos');
 const eticketCenterResource = require('../resources/eticket-center');
 const eventsResource = require('../resources/events');
+const symplaResource = require('../resources/sympla');
 const eventFetcherService = require('../services/event-fetcher');
 const blueticketMock = require('../mocks/blueticket');
 const diskIngressosMock = require('../mocks/disk-ingressos');
+const symplaMock = require('../mocks/sympla');
 const eventsMock = require('../mocks/events');
 
 describe('Crawlers Routes', () => {
@@ -26,6 +28,7 @@ describe('Crawlers Routes', () => {
     });
     eventsResource.save = jest.fn(event => Promise.resolve(event));
     loggerService.track = jest.fn();
+    symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
   });
 
   afterEach(() => {
@@ -135,7 +138,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 3,
+      successes: 4,
       failures: 0
     });
   });
@@ -210,7 +213,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 3,
+      successes: 4,
       failures: 0
     });
   });
@@ -236,7 +239,40 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 3,
+      successes: 4,
+      failures: 0
+    });
+  });
+
+  it('should save Sympla events', async () => {
+    symplaResource.get = jest.fn(() => Promise.resolve({ data: symplaMock }));
+    const response = await start();
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Especial Guns N Roses - Com A Banda Guns N Roses Cover Curitiba',
+      slug: 'especial-guns-n-roses-com-a-banda-guns-n-roses-cover-curitiba-itajai-sc-20240322',
+      date: '2024-03-22',
+      time: '17:00',
+      city: 'Itajaí',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.sympla.com.br/evento/especial-guns-n-roses-com-a-banda-guns-n-roses-cover-curitiba/2379165'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Black Or White - A Festa',
+      slug: 'black-or-white-a-festa-joinville-sc-20240614',
+      date: '2024-06-14',
+      time: '21:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.sympla.com.br/evento/black-or-white-a-festa/2339727'
+    });
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(eventsResource.save).toHaveBeenCalledTimes(2);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      duration: expect.any(Number),
+      successes: 4,
       failures: 0
     });
   });
@@ -250,7 +286,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 2,
+      successes: 3,
       failures: 1
     });
   });
