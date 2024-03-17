@@ -12,7 +12,7 @@ _public.post = (url, body, options) => {
     body: JSON.stringify(body),
     headers: {
       'Content-Type': 'application/json',
-      ...options.headers
+      ...options?.headers
     },
     method: 'POST'
   });
