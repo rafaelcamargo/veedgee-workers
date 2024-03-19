@@ -5,6 +5,7 @@ const blueticketResource = require('../resources/blueticket');
 const diskIngressosResource = require('../resources/disk-ingressos');
 const eticketCenterResource = require('../resources/eticket-center');
 const eventsResource = require('../resources/events');
+const songkickResource = require('../resources/songkick');
 const symplaResource = require('../resources/sympla');
 const eventFetcherService = require('../services/event-fetcher');
 const blueticketMock = require('../mocks/blueticket');
@@ -28,6 +29,7 @@ describe('Crawlers Routes', () => {
     });
     eventsResource.save = jest.fn(event => Promise.resolve(event));
     loggerService.track = jest.fn();
+    songkickResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('songkick-empty.html') }));
     symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
   });
 
@@ -138,7 +140,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 4,
+      successes: 5,
       failures: 0
     });
   });
@@ -213,7 +215,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 4,
+      successes: 5,
       failures: 0
     });
   });
@@ -239,7 +241,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 4,
+      successes: 5,
       failures: 0
     });
   });
@@ -272,7 +274,189 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 4,
+      successes: 5,
+      failures: 0
+    });
+  });
+
+  it('should save Songkick events', async () => {
+    songkickResource.get = jest.fn(({ city, page }) => {
+      return Promise.resolve({ data: getMockedFile(`songkick-${city}-page-${page}.html`) });
+    });
+    const response = await start();
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Di Ferrero',
+      slug: 'di-ferrero-blumenau-sc-20240407',
+      date: '2024-04-07',
+      time: '20:30',
+      city: 'Blumenau',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41724580-di-ferrero-at-teatro-carlos-gomes'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Dead Fish',
+      slug: 'dead-fish-blumenau-sc-20240419',
+      date: '2024-04-19',
+      time: '19:00',
+      city: 'Blumenau',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41804717-dead-fish-at-ahoy-tavern-club'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Tba Festival 2024',
+      slug: 'tba-festival-2024-blumenau-sc-20240518',
+      date: '2024-05-18',
+      city: 'Blumenau',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/festivals/176531-tba/id/41792900-tba-festival-2024'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Espetáculo Teatral "Bita E Os Animais" Em Curitiba (pr) 2024',
+      slug: 'espetaculo-teatral-bita-e-os-animais-em-curitiba-pr-2024-curitiba-pr-20240302',
+      date: '2024-03-02',
+      city: 'Curitiba',
+      state: 'PR',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/festivals/3647009-espetaculo-teatral-bita-e-os-animais-em-curitiba-pr/id/41761308-espetculo-teatral-bita-e-os-animais-em-curitiba-pr-2024'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Overdriver Duo',
+      slug: 'overdriver-duo-curitiba-pr-20240316',
+      date: '2024-03-16',
+      time: '21:00',
+      city: 'Curitiba',
+      state: 'PR',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41714611-overdriver-duo-at-teatro-fernanda-montenegro'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Terraplana',
+      slug: 'terraplana-curitiba-pr-20240316',
+      date: '2024-03-16',
+      time: '21:00',
+      city: 'Curitiba',
+      state: 'PR',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41728574-terraplana-at-basement-cultural'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Ana Cañas',
+      slug: 'ana-canas-florianopolis-sc-20240316',
+      date: '2024-03-16',
+      time: '20:00',
+      city: 'Florianópolis',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41696929-ana-canas-at-teatro-ademir-rosa'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Mdc',
+      slug: 'mdc-florianopolis-sc-20240316',
+      date: '2024-03-16',
+      time: '22:00',
+      city: 'Florianópolis',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41794649-mdc-at-hangar-t6-listening-bar'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Dj Brinquinho Sc',
+      slug: 'dj-brinquinho-sc-florianopolis-sc-20240322',
+      date: '2024-03-22',
+      time: '20:00',
+      city: 'Florianópolis',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41792887-dj-brinquinho-sc-at-bierteca-bar'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Vintage Culture',
+      slug: 'vintage-culture-itajai-sc-20240329',
+      date: '2024-03-29',
+      time: '22:00',
+      city: 'Itajaí',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41804579-vintage-culture-at-warung-beach-club'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Lagum',
+      slug: 'lagum-itajai-sc-20240530',
+      date: '2024-05-30',
+      time: '21:00',
+      city: 'Itajaí',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41629431-lagum-at-belvedere-beach-club'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Di Ferrero',
+      slug: 'di-ferrero-joinville-sc-20240405',
+      date: '2024-04-05',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41724578-di-ferrero-at-teatro-da-liga'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Mordor Truckers',
+      slug: 'mordor-truckers-joinville-sc-20240406',
+      date: '2024-04-06',
+      time: '19:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41804725-mordor-truckers-at-zeit-cervejaria'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Rogério Skylab',
+      slug: 'rogerio-skylab-porto-alegre-rs-20240316',
+      date: '2024-03-16',
+      time: '21:00',
+      city: 'Porto Alegre',
+      state: 'RS',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41683692-rogerio-skylab-at-bar-opiniao'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Lucas Morato',
+      slug: 'lucas-morato-porto-alegre-rs-20240317',
+      date: '2024-03-17',
+      time: '17:00',
+      city: 'Porto Alegre',
+      state: 'RS',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41817222-lucas-morato-at-samba-da-galera'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Ivete Sangalo',
+      slug: 'ivete-sangalo-porto-alegre-rs-20241116',
+      date: '2024-11-16',
+      city: 'Porto Alegre',
+      state: 'RS',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41806309-ivete-sangalo-at-estadio-beirario'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Jinjer',
+      slug: 'jinjer-porto-alegre-rs-20241130',
+      date: '2024-11-30',
+      time: '19:00',
+      city: 'Porto Alegre',
+      state: 'RS',
+      country: 'BR',
+      url: 'https://www.songkick.com/pt/concerts/41801925-jinjer-at-opiniao'
+    });
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(eventsResource.save).toHaveBeenCalledTimes(17);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      duration: expect.any(Number),
+      successes: 5,
       failures: 0
     });
   });
@@ -286,7 +470,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 3,
+      successes: 4,
       failures: 1
     });
   });
