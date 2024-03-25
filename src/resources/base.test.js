@@ -9,9 +9,15 @@ describe('Base Resource', () => {
         status,
         headers: mapHeaders(headers),
         text: parse,
-        json: parse
+        json: parse,
+        arrayBuffer: () => Promise.resolve(encodeText(data))
       });
     });
+  }
+
+  function encodeText(text){
+    const encoder = new TextEncoder();
+    return encoder.encode(text);
   }
 
   function mapHeaders(headers = {}){
@@ -27,6 +33,17 @@ describe('Base Resource', () => {
     const response = await baseResource.get(url);
     expect(response.status).toEqual(200);
     expect(response.data).toEqual(data);
+  });
+
+  it('should make a get request handling response as iso-8859-1 text', async () => {
+    const url = 'https://some.url.com/';
+    const data = '<!DOCTYPE html><html><head><title>Document</title></head><body><p>Espaço Santo Fole</p></body></html>';
+    mockRequestResponse(url, { headers: { 'content-type': 'text/html; charset=ISO-8859-1'}, status: 200, data});
+    const response = await baseResource.get(url);
+    expect(response.status).toEqual(200);
+    expect(response.data).toEqual(
+      '<!DOCTYPE html><html><head><title>Document</title></head><body><p>EspaÃ§o Santo Fole</p></body></html>'
+    );
   });
 
   it('should make a get request handling JSON as response type', async () => {

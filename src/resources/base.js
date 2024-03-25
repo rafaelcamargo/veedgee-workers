@@ -37,12 +37,20 @@ function buildFullUrl(baseUrl, queryParams){
 
 async function parseResponseData(response){
   if(getContentType(response).includes('application/json')) return await response.json();
+  if(getContentType(response).includes('text/html; charset=ISO-8859-1')) {
+    return await response.arrayBuffer().then(decodeISO88591);
+  }
   return await response.text();
 }
 
 function getContentType({ headers }){
   const attr = 'Content-Type';
   return headers.get(attr) || headers.get(attr.toLowerCase()) || '';
+}
+
+function decodeISO88591(arrayBuffer){
+  const decoder = new TextDecoder('iso-8859-1');
+  return decoder.decode(arrayBuffer);
 }
 
 module.exports = _public;
