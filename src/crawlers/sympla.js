@@ -1,3 +1,5 @@
+const { WANTED_CITIES } = require('../constants/events');
+const { removeAccents } = require('../services/text');
 const dateService = require('../services/date');
 const eventService = require('../services/event');
 const symplaResource = require('../resources/sympla');
@@ -5,10 +7,21 @@ const symplaResource = require('../resources/sympla');
 const _public = {};
 
 _public.crawl = () => {
-  return symplaResource.get().then(({ data }) => {
-    return data?.data ? buildEvents(data.data) : [];
+  return Promise.all(buildLocations().map(fetchContentByLocation)).then(responses => {
+    return responses.map(({ data }) => data?.data ? buildEvents(data.data) : []).flat();
   });
 };
+
+function buildLocations(){
+  return WANTED_CITIES.map(({ city, state }) => ({
+    city: removeAccents(city.toLocaleLowerCase()),
+    state
+  }));
+}
+
+function fetchContentByLocation({ city, state }){
+  return symplaResource.get({ city, state });
+}
 
 function buildEvents(data){
   return data.filter(item => {

@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "start_date_formats": {
+        "pt": "Sab, 06 Abr - 2024 · 15:00",
+        "en": "Sat, 06 Apr - 2024 · 15:00",
+        "es": "Sab, 06 Abr - 2024 · 15:00"
+      },
+      "name": "BEFORE NIGHT",
+      "location": {
+        "country": "BRASIL",
+        "address": "Avenida Interpraias",
+        "address_alt": "",
+        "city": "Balneário Camboriú",
+        "address_num": "0",
+        "name": "Casa de Praia - Cabana Bella Vista BC",
+        "lon": -48.6015288,
+        "state": "SC",
+        "neighborhood": "Barra",
+        "zip_code": "88332-245",
+        "lat": -27.0023854
+      },
+      "id": 2360484,
+      "type": "NORMAL",
+      "url": "https://www.sympla.com.br/evento/before-night/2360484",
+      "event_type": "NORMAL"
+    }
+  ],
+  "total": 1,
+  "limit": 24,
+  "page": 1
+}

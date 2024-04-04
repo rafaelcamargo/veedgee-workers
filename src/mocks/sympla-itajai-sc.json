@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "start_date_formats": {
+        "pt": "Qui, 04 Abr - 2024 · 20:00",
+        "en": "Thu, 04 Apr - 2024 · 20:00",
+        "es": "Jue, 04 Abr - 2024 · 20:00"
+      },
+      "name": "ANTECIPADOS PG ABRIL I",
+      "location": {
+        "country": "BRASIL",
+        "address": "Rua José Pereira Liberato",
+        "address_alt": "",
+        "city": "Itajaí",
+        "address_num": "3395",
+        "name": "PG Surf Skate",
+        "lon": -48.6841148,
+        "state": "SC",
+        "neighborhood": "Dom Bosco",
+        "zip_code": "88303-401",
+        "lat": -26.9215551
+      },
+      "id": 2407133,
+      "type": "NORMAL",
+      "url": "https://www.sympla.com.br/evento/antecipados-pg-abril-i/2407133",
+      "event_type": "NORMAL"
+    }
+  ],
+  "total": 1,
+  "limit": 24,
+  "page": 1
+}

@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "start_date_formats": {
+        "pt": "Sab, 09 Nov - 2024 · 08:00",
+        "en": "Sat, 09 Nov - 2024 · 08:00",
+        "es": "Sab, 09 Nov - 2024 · 08:00"
+      },
+      "name": "Porter Summit 2024",
+      "location": {
+        "country": "BRASIL",
+        "address": "Avenida Governador Gustavo Richard",
+        "address_alt": "Sala Sambaqui",
+        "city": "Florianópolis",
+        "address_num": "850",
+        "name": "Centro Sul",
+        "lon": -48.5520238,
+        "state": "SC",
+        "neighborhood": "Centro",
+        "zip_code": "88020-302",
+        "lat": -27.6021245
+      },
+      "id": 2222757,
+      "type": "NORMAL",
+      "url": "https://www.sympla.com.br/evento/porter-summit-2024/2222757",
+      "event_type": "NORMAL"
+    }
+  ],
+  "total": 1,
+  "limit": 24,
+  "page": 1
+}

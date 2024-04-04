@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "start_date_formats": {
+        "pt": "Sex, 03 Mai - 2024 · 19:30",
+        "en": "Fri, 03 May - 2024 · 19:30",
+        "es": "Vie, 03 May - 2024 · 19:30"
+      },
+      "name": "Acústico NAVARANDA - Curitiba",
+      "location": {
+        "country": "BRASIL",
+        "address": "Rua Coronel Dulcídio",
+        "address_alt": "",
+        "city": "Curitiba",
+        "address_num": "517",
+        "name": "Teatro Fernanda Montenegro",
+        "lon": -49.2838549,
+        "state": "PR",
+        "neighborhood": "Batel",
+        "zip_code": "80420-060",
+        "lat": -25.43824
+      },
+      "id": 2368782,
+      "type": "NORMAL",
+      "url": "https://www.sympla.com.br/evento/acustico-navaranda-curitiba/2368782",
+      "event_type": "NORMAL"
+    }
+  ],
+  "total": 1,
+  "limit": 24,
+  "page": 1
+}

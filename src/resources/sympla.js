@@ -3,11 +3,11 @@ const baseResource = require('./base');
 
 const _public = {};
 
-_public.get = () => baseResource.post(`${BASE_URL}/search`, getSearchParams());
+_public.get = params => baseResource.post(`${BASE_URL}/search`, getSearchParams(params));
 
-function getSearchParams(){
+function getSearchParams(params = {}){
   return {
-    service: '/v4/search/term',
+    service: '/v4/search',
     params: {
       collections: 17,
       range: '',
@@ -15,13 +15,12 @@ function getSearchParams(){
       include_organizers: '1',
       only: 'name,start_date,end_date,images,event_type,duration_type,location,id,global_score,start_date_formats,end_date_formats,url,company,type,organizer',
       limit: '1000',
-      page: '1',
-      q: 'a',
+      page: 1,
       sort: 'global-score-norm',
       start_date: '',
       end_date: '',
-      state: '',
-      city: ''
+      state: params.state || '',
+      city: params.city || ''
     }
   };
 }

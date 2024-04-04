@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "start_date_formats": {
+        "pt": "Sex, 19 Abr - 2024 · 23:00",
+        "en": "Fri, 19 Apr - 2024 · 23:00",
+        "es": "Vie, 19 Abr - 2024 · 23:00"
+      },
+      "name": "FUNDUNCINHO DO TABU",
+      "location": {
+        "country": "BRASIL",
+        "address": "Avenida Benjamin Constant",
+        "address_alt": "Casa noturna ",
+        "city": "Porto Alegre",
+        "address_num": "321",
+        "name": "Tabu386",
+        "lon": -51.1885693,
+        "state": "RS",
+        "neighborhood": "São João",
+        "zip_code": "90550-003",
+        "lat": -30.0070136
+      },
+      "id": 2410478,
+      "type": "NORMAL",
+      "url": "https://www.sympla.com.br/evento/funduncinho-do-tabu/2410478",
+      "event_type": "NORMAL"
+    }
+  ],
+  "total": 1,
+  "limit": 24,
+  "page": 1
+}

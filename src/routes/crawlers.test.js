@@ -10,7 +10,6 @@ const symplaResource = require('../resources/sympla');
 const eventFetcherService = require('../services/event-fetcher');
 const blueticketMock = require('../mocks/blueticket');
 const diskIngressosMock = require('../mocks/disk-ingressos');
-const symplaMock = require('../mocks/sympla');
 const eventsMock = require('../mocks/events');
 
 describe('Crawlers Routes', () => {
@@ -247,30 +246,85 @@ describe('Crawlers Routes', () => {
   });
 
   it('should save Sympla events', async () => {
-    symplaResource.get = jest.fn(() => Promise.resolve({ data: symplaMock }));
+    symplaResource.get = jest.fn(({ city, state }) => {
+      const fileSuffix = `${city.replace(/ /g, '-')}-${state.toLowerCase()}`;
+      return Promise.resolve({
+        data: JSON.parse(getMockedFile(`sympla-${fileSuffix}.json`))
+      });
+    });
     const response = await start();
     expect(eventsResource.save).toHaveBeenCalledWith({
-      title: 'Especial Guns N Roses - Com A Banda Guns N Roses Cover Curitiba',
-      slug: 'especial-guns-n-roses-com-a-banda-guns-n-roses-cover-curitiba-itajai-sc-20240322',
-      date: '2024-03-22',
-      time: '17:00',
-      city: 'Itajaí',
-      state: 'SC',
+      title: 'Acústico Navaranda - Curitiba',
+      slug: 'acustico-navaranda-curitiba-curitiba-pr-20240503',
+      date: '2024-05-03',
+      time: '19:30',
+      city: 'Curitiba',
+      state: 'PR',
       country: 'BR',
-      url: 'https://www.sympla.com.br/evento/especial-guns-n-roses-com-a-banda-guns-n-roses-cover-curitiba/2379165'
+      url: 'https://www.sympla.com.br/evento/acustico-navaranda-curitiba/2368782'
     });
     expect(eventsResource.save).toHaveBeenCalledWith({
-      title: 'Black Or White - A Festa',
-      slug: 'black-or-white-a-festa-joinville-sc-20240614',
-      date: '2024-06-14',
+      title: 'Show Vera Loca',
+      slug: 'show-vera-loca-joinville-sc-20240420',
+      date: '2024-04-20',
       time: '21:00',
       city: 'Joinville',
       state: 'SC',
       country: 'BR',
-      url: 'https://www.sympla.com.br/evento/black-or-white-a-festa/2339727'
+      url: 'https://www.sympla.com.br/evento/show-vera-loca/2384437'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Balbúrdia Groove',
+      slug: 'balburdia-groove-blumenau-sc-20240414',
+      date: '2024-04-14',
+      time: '17:00',
+      city: 'Blumenau',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.sympla.com.br/evento/balburdia-groove/2409984'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Antecipados Pg Abril I',
+      slug: 'antecipados-pg-abril-i-itajai-sc-20240404',
+      date: '2024-04-04',
+      time: '20:00',
+      city: 'Itajaí',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.sympla.com.br/evento/antecipados-pg-abril-i/2407133'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Before Night',
+      slug: 'before-night-balneario-camboriu-sc-20240406',
+      date: '2024-04-06',
+      time: '15:00',
+      city: 'Balneário Camboriú',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.sympla.com.br/evento/before-night/2360484'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Porter Summit 2024',
+      slug: 'porter-summit-2024-florianopolis-sc-20241109',
+      date: '2024-11-09',
+      time: '08:00',
+      city: 'Florianópolis',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.sympla.com.br/evento/porter-summit-2024/2222757'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Funduncinho Do Tabu',
+      slug: 'funduncinho-do-tabu-porto-alegre-rs-20240419',
+      date: '2024-04-19',
+      time: '23:00',
+      city: 'Porto Alegre',
+      state: 'RS',
+      country: 'BR',
+      url: 'https://www.sympla.com.br/evento/funduncinho-do-tabu/2410478'
     });
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
-    expect(eventsResource.save).toHaveBeenCalledTimes(2);
+    expect(eventsResource.save).toHaveBeenCalledTimes(7);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),

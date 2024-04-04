@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "start_date_formats": {
+        "pt": "Sab, 20 Abr - 2024 · 21:00",
+        "en": "Sat, 20 Apr - 2024 · 21:00",
+        "es": "Sab, 20 Abr - 2024 · 21:00"
+      },
+      "name": "SHOW VERA LOCA",
+      "location": {
+        "country": "BRASIL",
+        "address": "Rua Marajó",
+        "address_alt": "",
+        "city": "Joinville",
+        "address_num": "12",
+        "name": "Casa Raul",
+        "lon": -48.8600616,
+        "state": "SC",
+        "neighborhood": "Atiradores",
+        "zip_code": "89203-145",
+        "lat": -26.3131905
+      },
+      "id": 2384437,
+      "type": "NORMAL",
+      "url": "https://www.sympla.com.br/evento/show-vera-loca/2384437",
+      "event_type": "NORMAL"
+    }
+  ],
+  "total": 1,
+  "limit": 24,
+  "page": 1
+}
