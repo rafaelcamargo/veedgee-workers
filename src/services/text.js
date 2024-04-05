@@ -8,7 +8,7 @@ _public.capitalize = text => text.toLowerCase().split(' ').map(word => {
   return `${firstLetter.toUpperCase()}${rest.join('')}`;
 }).join(' ');
 
-_public.removeUnnecessarySpaces = text => text.replace(/\s{2,}/, ' ').trim();
+_public.removeUnnecessarySpaces = text => text.replace(/\s+/g, ' ').trim();
 
 _public.replaceSpacesForDashes = text => text.replace(/ /g, '-');
 
