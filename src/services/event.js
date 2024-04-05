@@ -14,7 +14,9 @@ const _public = {};
 
 _public.multiSave = events => {
   return getEventSlugsFromToday().then(eventSlugs => {
-    return Promise.all(events.map(event => saveIfNotExists(formatEvent(event), eventSlugs)));
+    const newEvents = events.map(formatEvent).filter(({ slug }) => !eventSlugs.includes(slug));
+    const requests = newEvents.map(event => eventsResource.save(event));
+    return Promise.all(requests);
   });
 };
 
@@ -24,6 +26,12 @@ _public.isWantedCity = (cityName, cityState) => {
     return parse(item.city) === parse(cityName) && parse(item.state) === parse(cityState);
   });
 };
+
+function getEventSlugsFromToday(){
+  return eventFetcherService.cachedFetch({ minDate: dateService.buildTodayDateString() }).then(({ data }) => {
+    return data.map(({ slug }) => slug);
+  });
+}
 
 function formatEvent(event){
   const {
@@ -45,16 +53,6 @@ function formatEvent(event){
     url,
     slug: buildEventSlug(event)
   };
-}
-
-function saveIfNotExists(event, eventSlugs){
-  return !eventSlugs.includes(event.slug) && eventsResource.save(event);
-}
-
-function getEventSlugsFromToday(){
-  return eventFetcherService.cachedFetch({ minDate: dateService.buildTodayDateString() }).then(({ data }) => {
-    return data.map(({ slug }) => slug);
-  });
 }
 
 function buildEventSlug(event){
