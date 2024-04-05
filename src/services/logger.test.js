@@ -31,7 +31,7 @@ describe('Logger Service', () => {
     });
     loggerService.track(err);
     expect(console.error).toHaveBeenCalledWith(err);
-    expect(Bugsnag.notify).toHaveBeenCalledWith(err);
+    expect(Bugsnag.notify).toHaveBeenCalledWith(err, undefined);
   });
 
   it('should optionally track info on Bugsnag', async () => {

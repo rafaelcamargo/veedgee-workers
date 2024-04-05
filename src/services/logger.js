@@ -20,19 +20,21 @@ _public.init = () => {
 };
 
 _public.track = (message, { type } = {}) => {
-  if(started) {
-    return type == 'info' ? trackInfo(message) : trackError(message);
-  }
+  return type == 'info' ? trackInfo(message) : trackError(message);
 };
 
 function trackInfo(info){
   console.log(info);
-  Bugsnag.notify(info, buildBugsnagCallback({ severity: 'info' }));
+  notify(info, buildBugsnagCallback({ severity: 'info' }));
 }
 
 function trackError(err){
   console.error(err);
-  Bugsnag.notify(err);
+  notify(err);
+}
+
+function notify(message, callback){
+  started && Bugsnag.notify(message, callback);
 }
 
 function buildBugsnagCallback(options){
