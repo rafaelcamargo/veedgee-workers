@@ -8,6 +8,7 @@ const eventsResource = require('../resources/events');
 const songkickResource = require('../resources/songkick');
 const symplaResource = require('../resources/sympla');
 const eventFetcherService = require('../services/event-fetcher');
+const eventService = require('../services/event');
 const blueticketMock = require('../mocks/blueticket');
 const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
@@ -521,6 +522,26 @@ describe('Crawlers Routes', () => {
     diskIngressosResource.get = jest.fn(() => Promise.reject(err));
     const response = await start();
     expect(loggerService.track).toHaveBeenCalledWith(err);
+    expect(loggerService.track).toHaveBeenCalledTimes(1);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      duration: expect.any(Number),
+      successes: 4,
+      failures: 1
+    });
+  });
+
+  it('should track error on event multi-save error', async () => {
+    let multiSaveCalls = 0;
+    const err = 'some err';
+    console.error = jest.fn();
+    eventService.multiSave = jest.fn(() => {
+      ++multiSaveCalls;
+      return multiSaveCalls === 1 ? Promise.reject(err) : Promise.resolve({});
+    });
+    const response = await start();
+    expect(loggerService.track).toHaveBeenCalledWith(err);
+    expect(loggerService.track).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),

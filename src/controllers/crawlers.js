@@ -28,13 +28,13 @@ function getCrawlers(){
 
 function useCompleter(crawlers, { startTime, resolve }){
   const completed = [];
-  const onComplete = response => {
-    completed.push(response);
-    if(response.err) loggerService.track(response.err);
+  const onComplete = (response, { isError } = {}) => {
+    completed.push({ ...response, isError });
+    if(isError) loggerService.track(response);
     completed.length === crawlers.length && resolve(buildStats(completed, startTime));
   };
-  const onCrawlSuccess = events => eventService.multiSave(events).then(onComplete).catch(onComplete);
-  const onCrawlError = err => onComplete({ err, isError: true });
+  const onCrawlSuccess = events => eventService.multiSave(events).then(onComplete).catch(err => onComplete(err, { isError: true }));
+  const onCrawlError = err => onComplete(err, { isError: true });
   return { onCrawlSuccess, onCrawlError };
 }
 
