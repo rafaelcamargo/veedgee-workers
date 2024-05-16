@@ -5,6 +5,7 @@ const diskIngressosCrawler = require('../crawlers/disk-ingressos');
 const eticketCenterCrawler = require('../crawlers/eticket-center');
 const songkickCrawler = require('../crawlers/songkick');
 const symplaCrawler = require('../crawlers/sympla');
+const tockifyCrawler = require('../crawlers/tockify');
 
 const _public = {};
 
@@ -22,7 +23,8 @@ function getCrawlers(){
     eticketCenterCrawler,
     blueticketCrawler,
     songkickCrawler,
-    symplaCrawler
+    symplaCrawler,
+    tockifyCrawler
   ];
 }
 

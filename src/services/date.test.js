@@ -21,4 +21,12 @@ describe('Date Service', () => {
     expect(dateService.convertMonthPrefixToNumber('Nov')).toEqual('11');
     expect(dateService.convertMonthPrefixToNumber('Dec')).toEqual('12');
   });
+
+  it('should build date time string from timestamp', () => {
+    expect(dateService.buildDateTimeStringFromUTCTimestamp(1715871600000)).toEqual('2024-05-16 15:00');
+  });
+
+  it('should return empty string if no timestamp is given for building date time string', () => {
+    expect(dateService.buildDateTimeStringFromUTCTimestamp()).toEqual('');
+  });
 });

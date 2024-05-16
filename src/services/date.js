@@ -8,6 +8,13 @@ _public.buildTodayDateString = () => {
   return `${now.getFullYear()}-${padStart(now.getMonth()+1)}-${padStart(now.getDate())}`;
 };
 
+_public.buildDateTimeStringFromUTCTimestamp = timestamp => {
+  if(!timestamp) return '';
+  const dateObj = new Date(timestamp);
+  const [date, time] = dateObj.toISOString().split('T');
+  return [date, time.substring(0,5)].join(' ');
+};
+
 _public.convertMonthPrefixToNumber = monthPrefix => {
   return {
     'jan': '01',

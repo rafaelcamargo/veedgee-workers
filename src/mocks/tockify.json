@@ -1,0 +1,113 @@
+{
+  "events": [
+    {
+      "calid": "635fde8ec287a829555e8e3d",
+      "eid": {
+        "uid": "2025",
+        "seq": 0,
+        "tid": 1715871600000,
+        "rid": 0
+      },
+      "when": {
+        "start": {
+          "millis": 1715871600000,
+          "tzid": "UTC",
+          "ltz": "UTC",
+          "offset": 0
+        },
+        "end": {
+          "millis": 1716062400000,
+          "tzid": "UTC",
+          "ltz": "UTC",
+          "offset": 0
+        },
+        "allDay": false
+      },
+      "content": {
+        "summary": {
+          "text": "A Pequena Monstra"
+        },
+        "description": {
+          "text": "Nos dias 16, 17 e 18 de maio, o Galpão de Teatro da Ajote recebe o solo da dançarina Letícia Souza, “A pequena monstra: o retorno”. Com co-direção dela e Neto Machado (BA), a obra traz à cena uma refl"
+        },
+        "tagset": {
+          "tags": {
+            "default": [
+              "Cidade-de-Cultura",
+              "Artes",
+              "Teatro"
+            ]
+          }
+        },
+        "place": "Galpão de teatro da AJOTE",
+        "address": "Rua XV de Novembro, 1383 - América, Joinville - SC, 89201-602, Brasil",
+        "location": {
+          "place_id": "ChIJaV5Upj6w3pQRkmYd0w-_Hu0",
+          "name": "R. XV de Novembro, 1383",
+          "latitude": -26.2990127,
+          "longitude": -48.8556022,
+          "c_street": "1383 Rua XV de Novembro",
+          "c_locality": "América",
+          "c_region": "Santa Catarina",
+          "c_country": "Brasil",
+          "c_postcode": "89201-602"
+        }
+      }
+    },
+    {
+      "calid": "635fde8ec287a829555e8e3d",
+      "eid": {
+        "uid": "2006",
+        "seq": 0,
+        "tid": 1715904000000,
+        "rid": 0
+      },
+      "when": {
+        "start": {
+          "millis": 1715904000000,
+          "tzid": "UTC",
+          "ltz": "UTC",
+          "offset": 0
+        },
+        "end": {
+          "millis": 1716163200000,
+          "tzid": "UTC",
+          "ltz": "UTC",
+          "offset": 0
+        },
+        "allDay": true
+      },
+      "content": {
+        "summary": {
+          "text": "SC Outdoor Expo"
+        },
+        "description": {
+          "text": "A tão esperada Feira SC Outdoor Expo promete ser um sucesso já na primeira edição, marcada para acontecer nos dias 17 a 19 de maio de 2024, no Parque de Exposição Expoville em Joinville/SC. Este event"
+        },
+        "tagset": {
+          "tags": {
+            "default": [
+              "Eventos-Esportivos",
+              "Cidade-de-Experiência",
+              "Eventos-em-Joinville",
+              "Rural-e-Aventura"
+            ]
+          }
+        },
+        "place": "Expoville",
+        "address": "Rua XV de Novembro, 4315 - Glória, Joinville - SC, 89216-203, Brasil",
+        "location": {
+          "place_id": "ChIJ32aTOKq63pQRSPfJTk3fZAM",
+          "name": "R. XV de Novembro, 4315",
+          "latitude": -26.2970174,
+          "longitude": -48.88167350000001,
+          "c_street": "4315 Rua XV de Novembro",
+          "c_locality": "Glória",
+          "c_region": "Santa Catarina",
+          "c_country": "Brasil",
+          "c_postcode": "89216-203"
+        }
+      }
+    }
+  ]
+}

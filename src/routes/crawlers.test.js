@@ -7,11 +7,13 @@ const eticketCenterResource = require('../resources/eticket-center');
 const eventsResource = require('../resources/events');
 const songkickResource = require('../resources/songkick');
 const symplaResource = require('../resources/sympla');
+const tockifyResource = require('../resources/tockify');
 const eventFetcherService = require('../services/event-fetcher');
 const eventService = require('../services/event');
 const blueticketMock = require('../mocks/blueticket');
 const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
+const tockifyMock = require('../mocks/tockify');
 
 describe('Crawlers Routes', () => {
   async function start(){
@@ -31,6 +33,7 @@ describe('Crawlers Routes', () => {
     loggerService.track = jest.fn();
     songkickResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('songkick-empty.html') }));
     symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
+    tockifyResource.get = jest.fn(() => Promise.resolve({ data: {} }));
   });
 
   afterEach(() => {
@@ -140,7 +143,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 5,
+      successes: 6,
       failures: 0
     });
   });
@@ -215,7 +218,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 5,
+      successes: 6,
       failures: 0
     });
   });
@@ -241,7 +244,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 5,
+      successes: 6,
       failures: 0
     });
   });
@@ -329,7 +332,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 5,
+      successes: 6,
       failures: 0
     });
   });
@@ -511,7 +514,46 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 5,
+      successes: 6,
+      failures: 0
+    });
+  });
+
+  it('should save Tockify events', async () => {
+    dateService.getNow = jest.fn(() => new Date(2024, 4, 16));
+    tockifyResource.get = jest.fn(({ max, calname, startms }) => {
+      expect(startms).toEqual(expect.any(Number));
+      const data = {
+        'eventosemjoinville-999': tockifyMock
+      }[`${calname}-${max}`];
+      return Promise.resolve({ data });
+    });
+    const response = await start();
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'A Pequena Monstra',
+      slug: 'a-pequena-monstra-joinville-sc-20240516',
+      date: '2024-05-16',
+      time: '15:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://tockify.com/eventosemjoinville/detail/2025/1715871600000'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Sc Outdoor Expo',
+      slug: 'sc-outdoor-expo-joinville-sc-20240517',
+      date: '2024-05-17',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://tockify.com/eventosemjoinville/detail/2006/1715904000000'
+    });
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(eventsResource.save).toHaveBeenCalledTimes(2);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      duration: expect.any(Number),
+      successes: 6,
       failures: 0
     });
   });
@@ -526,7 +568,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 4,
+      successes: 5,
       failures: 1
     });
   });
@@ -545,7 +587,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 4,
+      successes: 5,
       failures: 1
     });
   });
