@@ -149,8 +149,8 @@ describe('Crawlers Routes', () => {
   });
 
   it('should save ETicket Center events', async () => {
-    eticketCenterResource.get = jest.fn(({ pagina }) => {
-      return Promise.resolve({ data: getMockedFile(`eticket-center-${pagina}.html`) });
+    eticketCenterResource.get = jest.fn(({ Pagina }) => {
+      return Promise.resolve({ data: getMockedFile(`eticket-center-${Pagina}.html`) });
     });
     const response = await start();
     expect(eventsResource.save).toHaveBeenCalledWith({
@@ -213,8 +213,18 @@ describe('Crawlers Routes', () => {
       country: 'BR',
       url: 'https://www.eticketcenter.com.br/eventos/stand-up/bruna-louise-joi/22-06/19-00/'
     });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Se É Que Você Me Entende Com Raphael Ghanem - Joinville',
+      slug: 'se-e-que-voce-me-entende-com-raphael-ghanem-joinville-joinville-sc-20240521',
+      date: '2024-05-21',
+      time: '20:30',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.eticketcenter.com.br/eventos/stand-up/se-e-que-voce-me-entende-com-raphael-ghanem-joinville/'
+    });
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
-    expect(eventsResource.save).toHaveBeenCalledTimes(6);
+    expect(eventsResource.save).toHaveBeenCalledTimes(7);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),

@@ -6,13 +6,13 @@ const eticketCenterResource = require('../resources/eticket-center');
 const _public = {};
 
 _public.crawl = () => {
-  return Promise.all([1, 2].map(fetchContentByPageNumber)).then(responses => {
+  return Promise.all([1, 2, 3].map(fetchContentByPageNumber)).then(responses => {
     return responses.map(({ data }) => buildEvents(data)).flat();
   });
 };
 
 function fetchContentByPageNumber(pageNumber){
-  return eticketCenterResource.get({ pagina: pageNumber });
+  return eticketCenterResource.get({ Pagina: pageNumber });
 }
 
 function buildEvents(htmlString){
@@ -38,8 +38,13 @@ function formatEvent($eventEl){
 }
 
 function formatDateTime($eventEl){
-  const [date, time] = $eventEl.find('.BoxData').text().trim().split(' - ');
+  const [date, time] = getDateTimeElement($eventEl).text().trim().split(' - ');
   return [date.split('/').reverse().join('-'), time];
+}
+
+function getDateTimeElement($eventEl){
+  const multiDateEl = $eventEl.find('.BoxDatas button');
+  return multiDateEl.html() ? multiDateEl : $eventEl.find('.BoxData');
 }
 
 function formatCityState($eventEl){
