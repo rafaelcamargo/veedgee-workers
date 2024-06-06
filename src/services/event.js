@@ -14,7 +14,9 @@ const _public = {};
 
 _public.multiSave = events => {
   return getEventSlugsFromToday().then(eventSlugs => {
-    const newEvents = events.map(formatEvent).filter(({ slug }) => !eventSlugs.includes(slug));
+    const newEvents = events
+      .map(evt => formatEvent(formatEventDate(evt)))
+      .filter(({ slug }) => !eventSlugs.includes(slug));
     const requests = newEvents.map(event => eventsResource.save(event));
     return Promise.all(requests);
   });
@@ -55,6 +57,13 @@ function formatEvent(event){
   };
 }
 
+function formatEventDate(event){
+  return {
+    ...event,
+    date: dateService.isValidISODateString(event.date) ? event.date : ''
+  };
+}
+
 function buildEventSlug(event){
   const { title, date, city, state } = event;
   return [
@@ -64,7 +73,7 @@ function buildEventSlug(event){
     date.replace(/-/g,'')
   ].reduce((result, text) => {
     return [...result, urlService.buildSlug(text)];
-  }, []).join('-');
+  }, []).filter(value => !!value).join('-');
 }
 
 module.exports = _public;
