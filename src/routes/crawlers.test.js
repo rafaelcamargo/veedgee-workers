@@ -49,6 +49,15 @@ describe('Crawlers Routes', () => {
     diskIngressosResource.get = jest.fn(() => Promise.resolve({ data: diskIngressosMock }));
     const response = await start();
     expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Dhouse Apresenta - "Não Me Cobre Coerência!" Com Diogo Portugal',
+      slug: 'dhouse-apresenta-nao-me-cobre-coerencia-com-diogo-portugal-curitiba-pr-20240206',
+      date: '2024-02-06',
+      city: 'Curitiba',
+      state: 'PR',
+      country: 'BR',
+      url: 'https://www.diskingressos.com.br/evento/1446/06-02-2024/pr/curitiba/dhouse-apresenta-nao-me-cobre-coerencia-com-diogo-portugal'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
       title: 'Dhouse Apresenta - Stand Up Comedy Com Danilo Gentili - Sessão Extra',
       slug: 'dhouse-apresenta-stand-up-comedy-com-danilo-gentili-sessao-extra-curitiba-pr-20240229',
       date: '2024-02-29',
@@ -139,7 +148,7 @@ describe('Crawlers Routes', () => {
       url: 'https://www.diskingressos.com.br/evento/6013/02-05-2024/pr/curitiba/yamandu-costa'
     });
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
-    expect(eventsResource.save).toHaveBeenCalledTimes(10);
+    expect(eventsResource.save).toHaveBeenCalledTimes(11);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
