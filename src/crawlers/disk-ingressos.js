@@ -34,9 +34,9 @@ function FormatEvent(event){
   };
 }
 
-function buildEventURL({ date, eventname, city, state, slug }){
+function buildEventURL({ date, eventname, city, state, slug, groupid }){
   const uri = [
-    'evento',
+    buildUrlPrfix(groupid),
     slug,
     formatDate(date),
     state,
@@ -44,6 +44,10 @@ function buildEventURL({ date, eventname, city, state, slug }){
     eventname.replace(/\//g, '-')
   ].map(text => urlService.buildSlug(text)).join('/');
   return `${BASE_URL}/${uri}`;
+}
+
+function buildUrlPrfix(groupid){
+  return groupid === 0 ? 'evento' : 'grupo';
 }
 
 function formatDate(dateString){

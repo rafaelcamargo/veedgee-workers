@@ -55,7 +55,7 @@ describe('Crawlers Routes', () => {
       city: 'Curitiba',
       state: 'PR',
       country: 'BR',
-      url: 'https://www.diskingressos.com.br/evento/1446/06-02-2024/pr/curitiba/dhouse-apresenta-nao-me-cobre-coerencia-com-diogo-portugal'
+      url: 'https://www.diskingressos.com.br/grupo/1446/06-02-2024/pr/curitiba/dhouse-apresenta-nao-me-cobre-coerencia-com-diogo-portugal'
     });
     expect(eventsResource.save).toHaveBeenCalledWith({
       title: 'Dhouse Apresenta - Stand Up Comedy Com Danilo Gentili - Sessão Extra',
