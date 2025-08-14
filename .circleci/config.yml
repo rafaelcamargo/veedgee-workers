@@ -64,8 +64,8 @@ jobs:
       - run:
           name: Test
           command: npm run test -- --maxWorkers=2 --coverage --coverageReporters=lcov
-      - coveralls/upload:
-          verbose: true
+      # - coveralls/upload:
+      #     verbose: true
 
   deploy:
     <<: *default_env
