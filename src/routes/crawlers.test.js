@@ -5,7 +5,9 @@ const blueticketResource = require('../resources/blueticket');
 const diskIngressosResource = require('../resources/disk-ingressos');
 const eticketCenterResource = require('../resources/eticket-center');
 const eventsResource = require('../resources/events');
+const huggingFaceResource = require('../resources/hugging-face');
 const songkickResource = require('../resources/songkick');
+const rapidApiResource = require('../resources/rapid-api');
 const symplaResource = require('../resources/sympla');
 const tockifyResource = require('../resources/tockify');
 const eventFetcherService = require('../services/event-fetcher');
@@ -13,11 +15,13 @@ const eventService = require('../services/event');
 const blueticketMock = require('../mocks/blueticket');
 const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
+const instagramPoraoDaLigaMock = require('../mocks/instagram-porao-da-liga');
+const huggingFacePoraoDaLigaMock = require('../mocks/hugging-face-porao-da-liga');
 const tockifyMock = require('../mocks/tockify');
 
 describe('Crawlers Routes', () => {
-  async function start(){
-    return await serve().post('/crawlers').set({ vwtoken: 'vee456' }).send();
+  async function start(payload){
+    return await serve().post('/crawlers').set({ vwtoken: 'vee456' }).send(payload);
   }
 
   beforeEach(() => {
@@ -573,6 +577,59 @@ describe('Crawlers Routes', () => {
     expect(response.body).toEqual({
       duration: expect.any(Number),
       successes: 6,
+      failures: 0
+    });
+  });
+
+  it('should save porão da liga events', async () => {
+    eventsResource.get = jest.fn(({ minDate }) => {
+      return minDate == '2024-02-15' && Promise.resolve({
+        data: [{
+          title: 'Porão da Liga - ELEA8NOR',
+          date: '2025-10-25',
+          time: null,
+          city: 'Joinville',
+          state: 'SC',
+          country: 'BR',
+          url: 'https://www.instagram.com/poraodaliga/p/DQG-U0DDQLr/'
+        }]
+      });
+    });
+    rapidApiResource.getInstagramPosts = ({ username }) => {
+      return username === 'poraodaliga' && Promise.resolve({ data: instagramPoraoDaLigaMock });
+    };
+    const imageInferenceMocks = [...huggingFacePoraoDaLigaMock];
+    huggingFaceResource.inferImageData = ({ prompt, imageUrl }) => {
+      const data = imageInferenceMocks.shift();
+      return prompt && imageUrl && Promise.resolve({ data });
+    };
+    const response = await start({ mode: 'vlm' });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Porão Da Liga - Em Pé Na Rede',
+      slug: 'porao-da-liga-em-pe-na-rede-joinville-sc-20251106',
+      date: '2025-11-06',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.instagram.com/poraodaliga/p/DQKoU0bjYlV/'
+    });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Porão Da Liga - Billbird',
+      slug: 'porao-da-liga-billbird-joinville-sc-20251024',
+      date: '2025-10-24',
+      time: null,
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.instagram.com/poraodaliga/p/DQG-U0DDQLr/'
+    });
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(eventsResource.save).toHaveBeenCalledTimes(2);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      duration: expect.any(Number),
+      successes: 1,
       failures: 0
     });
   });

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "chatcmpl-9536fea6c53948ed886d7bd4464f68b1",
+    "object": "chat.completion",
+    "created": 1761421137,
+    "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": null,
+          "content": "```json\n[\n    {\n        \"title\": \"Em Pé na Rede\",\n        \"date\": \"2023-11-06\",\n        \"time\": \"20:00\"\n    }\n]\n```",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop",
+        "stop_reason": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 152,
+      "total_tokens": 200,
+      "completion_tokens": 48,
+      "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null,
+    "kv_transfer_params": null
+  },
+  {
+    "id": "chatcmpl-8e99141f8eec4f25b772507256ffa07a",
+    "object": "chat.completion",
+    "created": 1761422255,
+    "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": null,
+          "content": "```json\n[]\n```",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop",
+        "stop_reason": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 152,
+      "total_tokens": 158,
+      "completion_tokens": 6,
+      "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null,
+    "kv_transfer_params": null
+  },
+  {
+    "id": "chatcmpl-4be12da1fd3d4e71a7f6125fa395ab90",
+    "object": "chat.completion",
+    "created": 1761422590,
+    "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": null,
+          "content": "```json\n[\n  {\n    \"title\": \"Porão da Liga - Billbird\",\n    \"date\": \"2025-10-24\",\n    \"time\": null\n  },\n  {\n    \"title\": \"Porão da Liga - ELEA8NOR\",\n    \"date\": \"2025-10-25\",\n    \"time\": null\n  }\n]\n```",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop",
+        "stop_reason": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 152,
+      "total_tokens": 241,
+      "completion_tokens": 89,
+      "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null,
+    "kv_transfer_params": null
+  },
+  {
+    "id": "chatcmpl-541a87705f364d07b4c597c6209c662f",
+    "object": "chat.completion",
+    "created": 1761423506,
+    "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "reasoning_content": null,
+          "content": "[]",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop",
+        "stop_reason": null
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 151,
+      "total_tokens": 153,
+      "completion_tokens": 2,
+      "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null,
+    "kv_transfer_params": null
+  }  
+]
