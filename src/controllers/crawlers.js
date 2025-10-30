@@ -1,5 +1,6 @@
 const eventService = require('../services/event');
 const loggerService = require('../services/logger');
+const vlmService = require('../services/vlm');
 const blueticketCrawler = require('../crawlers/blueticket');
 const diskIngressosCrawler = require('../crawlers/disk-ingressos');
 const eticketCenterCrawler = require('../crawlers/eticket-center');
@@ -12,12 +13,20 @@ const _public = {};
 
 _public.start = (req, res) => {
   const { mode } = req.body;
+  if(mode == 'vlm-warm-up') {
+    return handleVlmWarmUp(res);
+  }
   return new Promise(resolve => {
     const crawlers = getCrawlers(mode);
     const { onCrawlSuccess, onCrawlError } = useCompleter(crawlers, { startTime: Date.now(), resolve });
     crawlers.forEach(({ crawl }) => crawl().then(onCrawlSuccess).catch(onCrawlError));
   }).then(stats => res.status(200).send(stats));
 };
+
+function handleVlmWarmUp(res){
+  vlmService.warmUp();
+  res.status(204).send();
+}
 
 function getCrawlers(mode){
   const regular = [
