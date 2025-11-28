@@ -12,6 +12,7 @@ _public.crawl = () => {
   ]).then(responses => {
     const [{ data: postsData }, { data: eventsData }] = responses;
     const posts = getPostsInfo(postsData);
+    console.log({ posts })
     return extractEventsFromPosts(posts).then(events => {
       const savedEventDates = eventsData.filter(evt => {
         return startWithPrefixTerm(evt.title, 'porão da liga');
@@ -27,9 +28,13 @@ function getPostsInfo(data){
   return data.result.edges.map(({ node }) => {
     return {
       id: node.code,
-      imageUrl: node.image_versions2.candidates[0].url
+      imageUrl: findMediumResImage(node.image_versions2.candidates).url
     };
   }).slice(0, 4);
+}
+
+function findMediumResImage(candidates){
+  return candidates.find(image => image.width <= 1000)
 }
 
 function extractEventsFromPosts(posts){
