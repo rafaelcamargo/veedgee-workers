@@ -1,3 +1,4 @@
+const delayService = require('../services/delay');
 const eventService = require('../services/event');
 const loggerService = require('../services/logger');
 const vlmService = require('../services/vlm');
@@ -11,10 +12,10 @@ const tockifyCrawler = require('../crawlers/tockify');
 
 const _public = {};
 
-_public.start = (req, res) => {
+_public.start = async (req, res) => {
   const { mode } = req.body;
-  if(mode == 'vlm-warm-up') {
-    return handleVlmWarmUp(res);
+  if(mode == await 'vlm-warm-up') {
+    return await handleVlmWarmUp(res);
   }
   return new Promise(resolve => {
     const crawlers = getCrawlers(mode);
@@ -23,8 +24,9 @@ _public.start = (req, res) => {
   }).then(stats => res.status(200).send(stats));
 };
 
-function handleVlmWarmUp(res){
+async function handleVlmWarmUp(res){
   vlmService.warmUp();
+  await delayService.pause(5000);
   res.status(204).send();
 }
 

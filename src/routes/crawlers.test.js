@@ -1,5 +1,6 @@
 const { serve, getMockedFile } = require('../services/testing');
 const dateService = require('../services/date');
+const delayService = require('../services/delay');
 const loggerService = require('../services/logger');
 const blueticketResource = require('../resources/blueticket');
 const diskIngressosResource = require('../resources/disk-ingressos');
@@ -38,6 +39,7 @@ describe('Crawlers Routes', () => {
     songkickResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('songkick-empty.html') }));
     symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     tockifyResource.get = jest.fn(() => Promise.resolve({ data: {} }));
+    delayService.pause = jest.fn();
   });
 
   afterEach(() => {

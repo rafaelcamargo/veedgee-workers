@@ -31,7 +31,7 @@ function buildImageinferenceRequestBody({ prompt, imageUrl }){
         ],
       },
     ],
-    model: 'Qwen/Qwen2.5-VL-7B-Instruct:hyperbolic'
+    model: 'Qwen/Qwen3-VL-8B-Instruct:novita'
   };
 }
 

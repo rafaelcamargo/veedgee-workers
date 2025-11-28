@@ -27,9 +27,13 @@ function getPostsInfo(data){
   return data.result.edges.map(({ node }) => {
     return {
       id: node.code,
-      imageUrl: node.image_versions2.candidates[0].url
+      imageUrl: findMediumResImage(node.image_versions2.candidates).url
     };
   }).slice(0, 4);
+}
+
+function findMediumResImage(candidates){
+  return candidates.find(image => image.width <= 1000);
 }
 
 function extractEventsFromPosts(posts){
