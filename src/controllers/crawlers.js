@@ -26,7 +26,7 @@ _public.start = async (req, res) => {
 
 async function handleVlmWarmUp(res){
   vlmService.warmUp();
-  await delayService.pause(5000);
+  await delayService.pause(1500);
   res.status(204).send();
 }
 
