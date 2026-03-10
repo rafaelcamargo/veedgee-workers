@@ -6,6 +6,7 @@ const blueticketCrawler = require('../crawlers/blueticket');
 const diskIngressosCrawler = require('../crawlers/disk-ingressos');
 const eticketCenterCrawler = require('../crawlers/eticket-center');
 const instagramPoraoDaLigaCrawler = require('../crawlers/instagram-porao-da-liga');
+const pensaNoEventoCrawler = require('../crawlers/pensa-no-evento');
 const songkickCrawler = require('../crawlers/songkick');
 const symplaCrawler = require('../crawlers/sympla');
 const tockifyCrawler = require('../crawlers/tockify');
@@ -32,9 +33,10 @@ async function handleVlmWarmUp(res){
 
 function getCrawlers(mode){
   const regular = [
+    blueticketCrawler,
     diskIngressosCrawler,
     eticketCenterCrawler,
-    blueticketCrawler,
+    pensaNoEventoCrawler,
     songkickCrawler,
     symplaCrawler,
     tockifyCrawler

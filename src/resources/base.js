@@ -31,8 +31,17 @@ function request(url, options) {
 
 function buildFullUrl(baseUrl, queryParams){
   const fullUrl = new URL(baseUrl);
-  if(queryParams) fullUrl.search = new URLSearchParams(queryParams);
+  if(queryParams) fullUrl.search = buildSearchParams(queryParams);
   return fullUrl.toString();
+}
+
+function buildSearchParams(paramsObj){
+  const searchParams = new URLSearchParams();
+  Object.entries(paramsObj).forEach(([key, value]) => {
+    if(Array.isArray(value)) value.forEach(val => searchParams.append(`${key}[]`, val));
+    else searchParams.append(key, value);
+  });
+  return searchParams;
 }
 
 async function parseResponseData(response){

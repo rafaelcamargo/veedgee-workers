@@ -63,6 +63,14 @@ describe('Base Resource', () => {
     expect(httpService.fetch).toHaveBeenCalledWith(`${url}?slug=${params.slug}`, undefined);
   });
 
+  it('should optionally make a get request using array query params', async () => {
+    const url = 'https://some.url.com/';
+    const params = { cities: ['19'] };
+    mockRequestResponse(`${url}?cities%5B%5D=${params.cities}`, { headers: { 'content-type': 'application/json'}, status: 200, data: {}});
+    await baseResource.get(url, params);
+    expect(httpService.fetch).toHaveBeenCalledWith(`${url}?cities%5B%5D=${params.cities}`, undefined);
+  });
+
   it('should optionally make a get request passing headers', async () => {
     const url = 'https://some.url.com/';
     const headers = { some: 'header' };

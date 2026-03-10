@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "url": "https:\/\/www.pensanoevento.com.br\/sitev2\/eventos\/95881\/dazaranha-acustico",
+      "evento": "DAZARANHA - AC\u00daSTICO",
+      "data": "2026-03-12 18:00:00",
+      "dataDescricao": "12\/03\/2026",
+      "capaURL": "https:\/\/files.pensanoevento.com.br\/images\/eventos\/697be1269dc98_capa.webp",
+      "local": "Una Pub Joinville",
+      "cidade": "Joinville",
+      "estado": "SC",
+      "distance_km": null
+    }
+  ],
+  "links": {
+    "first": null,
+    "last": null,
+    "prev": null,
+    "next": "https:\/\/www.pensanoevento.com.br\/sitev2\/api\/eventos\/busca-rapida?cursor=eyJldmVudG9zLmRhdGEiOiIyMDI2LTAzLTE4IDE0OjAwOjAwIiwiZXZlbnRvcy5pZCI6OTc4MDAsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0"
+  },
+  "meta": {
+    "path": "https:\/\/www.pensanoevento.com.br\/sitev2\/api\/eventos\/busca-rapida",
+    "per_page": 12,
+    "next_cursor": "eyJldmVudG9zLmRhdGEiOiIyMDI2LTAzLTE4IDE0OjAwOjAwIiwiZXZlbnRvcy5pZCI6OTc4MDAsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0",
+    "prev_cursor": null
+  }
+}

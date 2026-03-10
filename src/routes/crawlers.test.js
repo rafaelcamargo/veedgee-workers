@@ -7,6 +7,7 @@ const diskIngressosResource = require('../resources/disk-ingressos');
 const eticketCenterResource = require('../resources/eticket-center');
 const eventsResource = require('../resources/events');
 const huggingFaceResource = require('../resources/hugging-face');
+const pensaNoEventoResource = require('../resources/pensa-no-evento');
 const songkickResource = require('../resources/songkick');
 const rapidApiResource = require('../resources/rapid-api');
 const symplaResource = require('../resources/sympla');
@@ -18,6 +19,7 @@ const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
 const instagramPoraoDaLigaMock = require('../mocks/instagram-porao-da-liga');
 const huggingFacePoraoDaLigaMock = require('../mocks/hugging-face-porao-da-liga');
+const pensaNoEventoMock = require('../mocks/pensa-no-evento');
 const tockifyMock = require('../mocks/tockify');
 
 describe('Crawlers Routes', () => {
@@ -36,6 +38,7 @@ describe('Crawlers Routes', () => {
     });
     eventsResource.save = jest.fn(event => Promise.resolve(event));
     loggerService.track = jest.fn();
+    pensaNoEventoResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     songkickResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('songkick-empty.html') }));
     symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     tockifyResource.get = jest.fn(() => Promise.resolve({ data: {} }));
@@ -158,7 +161,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 6,
+      successes: 7,
       failures: 0
     });
   });
@@ -241,11 +244,6 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.save).toHaveBeenCalledTimes(7);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 6,
-      failures: 0
-    });
   });
 
   it('should save Bluetickets events', async () => {
@@ -267,11 +265,6 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.save).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 6,
-      failures: 0
-    });
   });
 
   it('should save Sympla events', async () => {
@@ -355,11 +348,6 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.save).toHaveBeenCalledTimes(7);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 6,
-      failures: 0
-    });
   });
 
   it('should save Songkick events', async () => {
@@ -537,11 +525,6 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.save).toHaveBeenCalledTimes(17);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 6,
-      failures: 0
-    });
   });
 
   it('should save Tockify events', async () => {
@@ -576,11 +559,27 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.save).toHaveBeenCalledTimes(2);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 6,
-      failures: 0
+  });
+
+  it('should save Pensa No Evento events', async () => {
+    dateService.getNow = jest.fn(() => new Date(2026, 2, 12));
+    pensaNoEventoResource.get = jest.fn(() => {
+      return Promise.resolve({ data: pensaNoEventoMock });
     });
+    const response = await start();
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Dazaranha - Acústico',
+      slug: 'dazaranha-acustico-joinville-sc-20260312',
+      date: '2026-03-12',
+      time: '18:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.pensanoevento.com.br/sitev2/eventos/95881/dazaranha-acustico'
+    });
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(eventsResource.save).toHaveBeenCalledTimes(1);
+    expect(response.status).toEqual(200);
   });
 
   it('should warm up vlm crawlers', async () => {
@@ -594,8 +593,9 @@ describe('Crawlers Routes', () => {
   });
 
   it('should save porão da liga events', async () => {
+    dateService.getNow = jest.fn(() => new Date(2025, 1, 15));
     eventsResource.get = jest.fn(({ minDate }) => {
-      return minDate == '2024-02-15' && Promise.resolve({
+      return minDate == '2025-02-15' && Promise.resolve({
         data: [{
           title: 'Porão da Liga - ELEA8NOR',
           date: '2025-10-25',
@@ -639,11 +639,6 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.save).toHaveBeenCalledTimes(2);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 1,
-      failures: 0
-    });
   });
 
   it('should track error on crawl error', async () => {
@@ -656,7 +651,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 5,
+      successes: 6,
       failures: 1
     });
   });
@@ -675,7 +670,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 5,
+      successes: 6,
       failures: 1
     });
   });

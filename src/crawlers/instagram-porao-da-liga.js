@@ -83,7 +83,7 @@ function formatEventTitle(title){
 }
 
 function parseEventDate(dateString){
-  const currentYear = new Date().getFullYear();
+  const currentYear = dateService.getNow().getFullYear();
   const [year, month, day] = dateString.split('-');
   const eventYear = parseInt(year);
   const parsedYear = eventYear < currentYear ? currentYear : eventYear;
