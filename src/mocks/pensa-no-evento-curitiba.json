@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "url": "https:\/\/www.pensanoevento.com.br\/sitev2\/eventos\/96401\/sextou-na-casinha",
+      "evento": "Sextou na Casinha",
+      "data": "2026-03-13 18:00:00",
+      "dataDescricao": "13\/03\/2026",
+      "capaURL": "https:\/\/files.pensanoevento.com.br\/images\/eventos\/69aed1ac1bb6c_capa.webp",
+      "local": "Let\u00b4s Growl",
+      "cidade": "Curitiba",
+      "estado": "PR",
+      "distance_km": null
+    }
+  ],
+  "links": {
+    "first": null,
+    "last": null,
+    "prev": null,
+    "next": "https:\/\/www.pensanoevento.com.br\/sitev2\/api\/eventos\/busca?cursor=eyJldmVudG9zLmRhdGEiOiIyMDI2LTAzLTIwIDE4OjAwOjAwIiwiZXZlbnRvcy5pZCI6OTYzMzUsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0"
+  },
+  "meta": {
+    "path": "https:\/\/www.pensanoevento.com.br\/sitev2\/api\/eventos\/busca",
+    "per_page": 12,
+    "next_cursor": "eyJldmVudG9zLmRhdGEiOiIyMDI2LTAzLTIwIDE4OjAwOjAwIiwiZXZlbnRvcy5pZCI6OTYzMzUsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0",
+    "prev_cursor": null
+  }
+}

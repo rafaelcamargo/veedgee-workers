@@ -7,7 +7,7 @@ describe('Pensa No Evento Resource', () => {
   });
 
   it('should get events', () => {
-    pensaNoEventoResource.get();
+    pensaNoEventoResource.get({ cityCode: '19' });
     expect(baseResource.get).toHaveBeenCalledWith(
       'https://www.pensanoevento.com.br/sitev2/api/eventos/busca',
       { cidades: ['19'] },

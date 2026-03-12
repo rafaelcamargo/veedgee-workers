@@ -3,10 +3,30 @@ const pensaNoEventoResource = require('../resources/pensa-no-evento');
 const _public = {};
 
 _public.crawl = () => {
-  return pensaNoEventoResource.get().then(({ data }) => {
+  const requests = Object.values(getCityCodes()).map(crawlEventsByCityCode);
+  return Promise.all(requests).then(responses => responses.flat());
+};
+
+function getCityCodes(){
+  return {
+    'curitiba': 32,
+    'jonville': 19,
+    'barra_velha': 137,
+    'picarras': 95,
+    'blumenau': 9,
+    'itajai': 43,
+    'bc': 7,
+    'sao_jose': 2,
+    'floripa': 1,
+    'porto_alegre': 33
+  };
+}
+
+function crawlEventsByCityCode(code){
+  return pensaNoEventoResource.get({ cityCode: code }).then(({ data }) => {
     return data?.data ? buildEvents(data.data) : [];
   });
-};
+}
 
 function buildEvents(data){
   return data.map(item => {

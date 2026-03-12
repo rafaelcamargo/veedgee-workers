@@ -3,17 +3,17 @@ const baseResource = require('./base');
 
 const _public = {};
 
-_public.get = () => {
-  return baseResource.get(`${BASE_URL}/sitev2/api/eventos/busca`, buildParams(), {
+_public.get = ({ cityCode }) => {
+  return baseResource.get(`${BASE_URL}/sitev2/api/eventos/busca`, buildParams(cityCode), {
     headers: {
       'x-public-token': 'pne-site-api'
     }
   });
 };
 
-function buildParams(){
+function buildParams(cityCode){
   return {
-    cidades: ['19']
+    cidades: [cityCode]
   };
 }
 

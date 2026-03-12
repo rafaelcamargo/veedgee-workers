@@ -19,7 +19,8 @@ const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
 const instagramPoraoDaLigaMock = require('../mocks/instagram-porao-da-liga');
 const huggingFacePoraoDaLigaMock = require('../mocks/hugging-face-porao-da-liga');
-const pensaNoEventoMock = require('../mocks/pensa-no-evento');
+const pensaNoEventoCuritibaMock = require('../mocks/pensa-no-evento-curitiba');
+const pensaNoEventoJoinvilleMock = require('../mocks/pensa-no-evento-joinville');
 const tockifyMock = require('../mocks/tockify');
 
 describe('Crawlers Routes', () => {
@@ -563,8 +564,9 @@ describe('Crawlers Routes', () => {
 
   it('should save Pensa No Evento events', async () => {
     dateService.getNow = jest.fn(() => new Date(2026, 2, 12));
-    pensaNoEventoResource.get = jest.fn(() => {
-      return Promise.resolve({ data: pensaNoEventoMock });
+    pensaNoEventoResource.get = jest.fn(({ cityCode }) => {
+      const data = { 19: pensaNoEventoJoinvilleMock, 32: pensaNoEventoCuritibaMock }[cityCode];
+      return Promise.resolve({ data });
     });
     const response = await start();
     expect(eventsResource.save).toHaveBeenCalledWith({
@@ -577,8 +579,18 @@ describe('Crawlers Routes', () => {
       country: 'BR',
       url: 'https://www.pensanoevento.com.br/sitev2/eventos/95881/dazaranha-acustico'
     });
+    expect(eventsResource.save).toHaveBeenCalledWith({
+      title: 'Sextou Na Casinha',
+      slug: 'sextou-na-casinha-curitiba-pr-20260313',
+      date: '2026-03-13',
+      time: '18:00',
+      city: 'Curitiba',
+      state: 'PR',
+      country: 'BR',
+      url: 'https://www.pensanoevento.com.br/sitev2/eventos/96401/sextou-na-casinha'
+    });
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
-    expect(eventsResource.save).toHaveBeenCalledTimes(1);
+    expect(eventsResource.save).toHaveBeenCalledTimes(2);
     expect(response.status).toEqual(200);
   });
 
