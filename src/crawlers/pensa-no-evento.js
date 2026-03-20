@@ -41,7 +41,7 @@ function buildEvents(data){
       country: 'BR',
       url
     };
-  });
+  }).filter(isNotInBlackList);
 }
 
 function parseDateTime(dateTimeString){
@@ -51,6 +51,24 @@ function parseDateTime(dateTimeString){
 
 function parseTime(timeString){
   return timeString && timeString.substring(0,5);
+}
+
+function isNotInBlackList({ title }){
+  return ![
+    'rancho açoriano',
+    'ruta 40 gastro pub',
+    'dom piero',
+    'los troncos parrilla uruguaya',
+    'capitão gaivota',
+    'narbona',
+    'l\'ile brasserie',
+    'feeling floripa',
+    'portofino',
+    'espartano skatepark',
+    'pippo ristorante',
+    'trezze rooftop',
+    'don\'t tell mama - praia brava'
+  ].includes(title.toLowerCase());
 }
 
 module.exports = _public;

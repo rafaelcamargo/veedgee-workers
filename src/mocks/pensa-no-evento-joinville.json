@@ -10,6 +10,17 @@
       "cidade": "Joinville",
       "estado": "SC",
       "distance_km": null
+    },
+    {
+      "url": "https:\/\/www.pensanoevento.com.br\/sitev2\/eventos\/95765\/rancho-acoriano-primavera-sexta-feira",
+      "evento": "Rancho Açoriano",
+      "data": "2026-03-12 11:00:00",
+      "dataDescricao": "12\/03\/2026",
+      "capaURL": "https:\/\/files.pensanoevento.com.br\/images\/eventos\/697be1269dc98_capa.webp",
+      "local": "Rancho Açoriano",
+      "cidade": "Joinville",
+      "estado": "SC",
+      "distance_km": null
     }
   ],
   "links": {
