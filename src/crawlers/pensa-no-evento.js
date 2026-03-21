@@ -41,7 +41,7 @@ function buildEvents(data){
       country: 'BR',
       url
     };
-  }).filter(isNotInBlackList);
+  }).filter(builtEvent => !isBlackListed(builtEvent));
 }
 
 function parseDateTime(dateTimeString){
@@ -53,8 +53,12 @@ function parseTime(timeString){
   return timeString && timeString.substring(0,5);
 }
 
-function isNotInBlackList({ title }){
-  return ![
+function isBlackListed({ title }){
+  return getBlackList().some(term => title.toLowerCase().includes(term));
+}
+
+function getBlackList(){
+  return [
     'rancho açoriano',
     'ruta 40 gastro pub',
     'dom piero',
@@ -68,7 +72,7 @@ function isNotInBlackList({ title }){
     'pippo ristorante',
     'trezze rooftop',
     'don\'t tell mama - praia brava'
-  ].includes(title.toLowerCase());
+  ];
 }
 
 module.exports = _public;
