@@ -9,13 +9,17 @@ _public.start = (req, res) => {
   const minCreationDate = req.body.minCreationDate || dateService.buildTodayDateString();
   return eventsResource.get({ minCreationDate }).then(({ data }) => {
     if(data.length) {
-      return eventsMailer.send(data, minCreationDate).then(stats => {
+      return eventsMailer.send(data.sort(sortByCity), minCreationDate).then(stats => {
         res.status(200).send({ ...stats, ...buildDurationStats(startTime) });
       });
     }
     return res.status(200).send(buildDurationStats(startTime));
   });
 };
+
+function sortByCity(a, b){
+  return a.city > b.city ? 1 : -1;
+}
 
 function buildDurationStats(startTime){
   return { duration:  Date.now() - startTime };

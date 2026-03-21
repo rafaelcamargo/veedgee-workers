@@ -6,17 +6,27 @@ const emailService = require('../services/email');
 
 describe('Notifications Routes', () => {
   function buildNotificationEmailMessage(){
-    return `Cool! 2 new events have just been found.
+    return `Cool! 4 new events have just been found.
+
+O Pequeno Príncipe
+2024-05-08 16:00
+Balneário Camboriú, SC
+https://www.eticketcenter.com.br/eventos/teatro/o-pequeno-principe-em-balneario-camboriu-sc/08-05/16-00/
+
+Rogério Morgado - Show Solo
+2024-03-09
+Curitiba, PR
+https://www.diskingressos.com.br/evento/6478/09-03-2024/pr/curitiba/rogerio-morgado-show-solo
 
 Rota Da Seda
 2024-07-06 21:00
 Curitiba, PR
 https://www.diskingressos.com.br/evento/6390/06-07-2024/pr/curitiba/rota-da-seda
 
-Rogério Morgado - Show Solo
+Baile Da Gabi Noite Dos Solteiros
 2024-03-09
-Curitiba, PR
-https://www.diskingressos.com.br/evento/6478/09-03-2024/pr/curitiba/rogerio-morgado-show-solo`;
+Joinville, SC
+https://www.sympla.com.br/evento/baile-da-gabi-noite-dos-solteiros/3355986`;
   }
 
   function filterMockedEventsByMinCreationDate(minCreationDate){

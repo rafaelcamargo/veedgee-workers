@@ -13,6 +13,32 @@
     "updated_at": "2024-02-14T13:59:47.831Z"
   },
   {
+    "id": "012jkl",
+    "slug": "o-pequeno-principe-balneario-camboriu-sc-20240309",
+    "title": "O Pequeno Príncipe",
+    "date": "2024-05-08",
+    "time": "16:00",
+    "city": "Balneário Camboriú",
+    "state": "SC",
+    "country": "BR",
+    "url": "https://www.eticketcenter.com.br/eventos/teatro/o-pequeno-principe-em-balneario-camboriu-sc/08-05/16-00/",
+    "created_at": "2024-02-15T09:27:21.675Z",
+    "updated_at": "2024-02-15T09:27:21.675Z"
+  },
+  {
+    "id": "012jkl",
+    "slug": "baile-da-gabi-noite-dos-solteiros-joinville-sc-20240309",
+    "title": "Baile Da Gabi Noite Dos Solteiros",
+    "date": "2024-03-09",
+    "time": null,
+    "city": "Joinville",
+    "state": "SC",
+    "country": "BR",
+    "url": "https://www.sympla.com.br/evento/baile-da-gabi-noite-dos-solteiros/3355986",
+    "created_at": "2024-02-15T09:27:21.675Z",
+    "updated_at": "2024-02-15T09:27:21.675Z"
+  },
+  {
     "id": "789ghi",
     "slug": "rota-da-seda-curitiba-pr-20240706",
     "title": "Rota Da Seda",
