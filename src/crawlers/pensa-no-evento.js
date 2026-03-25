@@ -71,7 +71,8 @@ function getBlackList(){
     'espartano skatepark',
     'pippo ristorante',
     'trezze rooftop',
-    'don\'t tell mama - praia brava'
+    'don\'t tell mama - praia brava',
+    'bibi pizza floripa'
   ];
 }
 
