@@ -1,8 +1,7 @@
 module.exports = {
   collectCoverageFrom: [
     'src/**/*.js',
-    '!src/index.js',
-    '!src/vercel.js'
+    '!src/index.js'
   ],
   coverageReporters: ['html', 'text-summary'],
   coverageThreshold: {

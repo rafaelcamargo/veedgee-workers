@@ -27,15 +27,19 @@ npm install
 ``` bash
 npm run start
 ```
-Application will be running at `http://localhost:4000`
+Application will be running at `http://localhost:3000`
 
 ## Running Workers
 
 There are two kinds of workers:
-1. Cralwers: Responsible to gather events from several websites.
+1. Crawlers: Responsible to gather events from several websites.
 2. Notifications: Responsible to send to subscribers the events just discovered.
 
-To fire crawlers worker, you must send a POST request to `/cralwers`, and a POST request to `/notifications` to fire notifications worker. For both requests, you must pass the request header `vwtoken` as `vee456`.
+To fire crawlers worker, you must send a POST request to `/crawlers`, and a POST request to `/notifications` to fire notifications worker. For both requests, you must pass the request header `vwtoken` as `vee456`.
+
+## Deployment
+
+The app is deployed to [Fly.io](https://fly.io) on merge to `main` via CircleCI. Production URL: `https://veedgee-workers.fly.dev`
 
 ## Tests
 

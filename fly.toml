@@ -1,0 +1,47 @@
+# fly.toml app configuration file for veedgee-workers
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'veedgee-workers'
+primary_region = 'iad'
+kill_signal = 'SIGINT'
+kill_timeout = '5s'
+
+[build]
+
+[env]
+  PORT = '3000'
+  NODE_ENV = 'production'
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[services]]
+  protocol = 'tcp'
+  internal_port = 3000
+
+  [[services.ports]]
+    port = 80
+    handlers = ['http']
+
+  [[services.ports]]
+    port = 443
+    handlers = ['tls', 'http']
+
+  [[services.tcp_checks]]
+    interval = '10s'
+    timeout = '2s'
+
+[deploy]
+  strategy = "rolling"
+
+[[vm]]
+  count = 1
+  size = 'shared-cpu-1x'
+  memory = '1024mb'
