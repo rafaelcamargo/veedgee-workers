@@ -25,13 +25,21 @@ describe('Logger Service', () => {
     loggerService.init();
     expect(Bugsnag.start).toHaveBeenCalledWith({
       apiKey: expect.any(String),
+      appVersion: projectPkg.version,
+      releaseStage: expect.any(String),
       metadata: {
-        app: `${projectPkg.name}@${projectPkg.version}`
+        app: {
+          name: projectPkg.name,
+          version: projectPkg.version
+        },
+        worker: {
+          type: 'crawler'
+        }
       }
     });
     loggerService.track(err);
     expect(console.error).toHaveBeenCalledWith(err);
-    expect(Bugsnag.notify).toHaveBeenCalledWith(err, undefined);
+    expect(Bugsnag.notify).toHaveBeenCalledWith(err, expect.any(Function));
   });
 
   it('should optionally track info on Bugsnag', async () => {
@@ -43,5 +51,16 @@ describe('Logger Service', () => {
     expect(console.log).toHaveBeenCalledWith(msg);
     expect(Bugsnag.notify).toHaveBeenCalledWith(msg, expect.any(Function));
     expect(event).toEqual({ severity: 'info' });
+  });
+
+  it('should optionally attach metadata on Bugsnag notifications', async () => {
+    const event = {};
+    Bugsnag.notify = jest.fn((err, cb) => cb(event));
+    const err = new Error('some error');
+    const metadata = { crawler: { name: 'songkick' } };
+    loggerService.init();
+    loggerService.track(err, { metadata });
+    expect(Bugsnag.notify).toHaveBeenCalledWith(err, expect.any(Function));
+    expect(event).toEqual({ metadata });
   });
 });

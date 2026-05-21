@@ -658,7 +658,17 @@ describe('Crawlers Routes', () => {
     console.error = jest.fn();
     diskIngressosResource.get = jest.fn(() => Promise.reject(err));
     const response = await start();
-    expect(loggerService.track).toHaveBeenCalledWith(err);
+    expect(loggerService.track).toHaveBeenCalledWith(err, {
+      metadata: {
+        crawler: {
+          name: 'disk-ingressos',
+          mode: 'regular',
+          stage: 'crawl',
+          durationMs: expect.any(Number),
+          eventsCount: undefined
+        }
+      }
+    });
     expect(loggerService.track).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
@@ -677,7 +687,17 @@ describe('Crawlers Routes', () => {
       return multiSaveCalls === 1 ? Promise.reject(err) : Promise.resolve({});
     });
     const response = await start();
-    expect(loggerService.track).toHaveBeenCalledWith(err);
+    expect(loggerService.track).toHaveBeenCalledWith(err, {
+      metadata: {
+        crawler: {
+          name: 'blueticket',
+          mode: 'regular',
+          stage: 'save',
+          durationMs: expect.any(Number),
+          eventsCount: expect.any(Number)
+        }
+      }
+    });
     expect(loggerService.track).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({

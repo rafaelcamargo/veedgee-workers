@@ -15,13 +15,18 @@ const _public = {};
 
 _public.start = async (req, res) => {
   const { mode } = req.body;
-  if(mode == await 'vlm-warm-up') {
+  if(mode == 'vlm-warm-up') {
     return await handleVlmWarmUp(res);
   }
   return new Promise(resolve => {
     const crawlers = getCrawlers(mode);
     const { onCrawlSuccess, onCrawlError } = useCompleter(crawlers, { startTime: Date.now(), resolve });
-    crawlers.forEach(({ crawl }) => crawl().then(onCrawlSuccess).catch(onCrawlError));
+    crawlers.forEach(({ name, crawl }) => {
+      const crawlerStartTime = Date.now();
+      crawl().then(events => onCrawlSuccess(events, { crawlerName: name, mode, crawlerStartTime })).catch(err => {
+        onCrawlError(err, { crawlerName: name, mode, crawlerStartTime });
+      });
+    });
   }).then(stats => res.status(200).send(stats));
 };
 
@@ -33,30 +38,50 @@ async function handleVlmWarmUp(res){
 
 function getCrawlers(mode){
   const regular = [
-    blueticketCrawler,
-    diskIngressosCrawler,
-    eticketCenterCrawler,
-    pensaNoEventoCrawler,
-    songkickCrawler,
-    symplaCrawler,
-    tockifyCrawler
+    { name: 'blueticket', crawl: blueticketCrawler.crawl },
+    { name: 'disk-ingressos', crawl: diskIngressosCrawler.crawl },
+    { name: 'eticket-center', crawl: eticketCenterCrawler.crawl },
+    { name: 'pensa-no-evento', crawl: pensaNoEventoCrawler.crawl },
+    { name: 'songkick', crawl: songkickCrawler.crawl },
+    { name: 'sympla', crawl: symplaCrawler.crawl },
+    { name: 'tockify', crawl: tockifyCrawler.crawl }
   ];
   const vlms = [
-    instagramPoraoDaLigaCrawler
+    { name: 'instagram-porao-da-liga', crawl: instagramPoraoDaLigaCrawler.crawl }
   ];
   return mode == 'vlm' ? vlms : regular;
 }
 
 function useCompleter(crawlers, { startTime, resolve }){
   const completed = [];
-  const onComplete = (response, { isError } = {}) => {
-    completed.push({ ...response, isError });
-    if(isError) loggerService.track(response);
+  const onComplete = ({ response, isError }) => {
+    completed.push({ response, isError });
     completed.length === crawlers.length && resolve(buildStats(completed, startTime));
   };
-  const onCrawlSuccess = events => eventService.multiSave(events).then(onComplete).catch(err => onComplete(err, { isError: true }));
-  const onCrawlError = err => onComplete(err, { isError: true });
+  const onCrawlSuccess = (events, context) => {
+    const metadata = buildTrackingMetadata({ ...context, stage: 'save', eventsCount: events.length });
+    eventService.multiSave(events).then(response => onComplete({ response, isError: false })).catch(err => {
+      loggerService.track(err, { metadata });
+      onComplete({ response: err, isError: true });
+    });
+  };
+  const onCrawlError = (err, context) => {
+    loggerService.track(err, { metadata: buildTrackingMetadata({ ...context, stage: 'crawl' }) });
+    onComplete({ response: err, isError: true });
+  };
   return { onCrawlSuccess, onCrawlError };
+}
+
+function buildTrackingMetadata({ crawlerName, mode, stage, crawlerStartTime, eventsCount }){
+  return {
+    crawler: {
+      name: crawlerName,
+      mode: mode || 'regular',
+      stage,
+      durationMs: Date.now() - crawlerStartTime,
+      eventsCount
+    }
+  };
 }
 
 function buildStats(completed, startTime){

@@ -11,26 +11,34 @@ _public.init = () => {
   if(BUGSNAG_API_TOKEN) {
     Bugsnag.start({
       apiKey: BUGSNAG_API_TOKEN,
+      appVersion: projectPkg.version,
+      releaseStage: process.env.NODE_ENV || 'development',
       metadata: {
-        app: `${projectPkg.name}@${projectPkg.version}`
+        app: {
+          name: projectPkg.name,
+          version: projectPkg.version
+        },
+        worker: {
+          type: 'crawler'
+        }
       }
     });
     started = true;
   }
 };
 
-_public.track = (message, { type } = {}) => {
-  return type == 'info' ? trackInfo(message) : trackError(message);
+_public.track = (message, { type, metadata } = {}) => {
+  return type == 'info' ? trackInfo(message, metadata) : trackError(message, metadata);
 };
 
-function trackInfo(info){
+function trackInfo(info, metadata){
   console.log(info);
-  notify(info, buildBugsnagCallback({ severity: 'info' }));
+  notify(info, buildBugsnagCallback({ severity: 'info', metadata }));
 }
 
-function trackError(err){
+function trackError(err, metadata){
   console.error(err);
-  notify(err);
+  notify(err, buildBugsnagCallback({ metadata }));
 }
 
 function notify(message, callback){
@@ -39,7 +47,7 @@ function notify(message, callback){
 
 function buildBugsnagCallback(options){
   return event => {
-    Object.entries(options).forEach(([key, value]) => {
+    Object.entries(options).filter(([, value]) => value !== undefined).forEach(([key, value]) => {
       event[key] = value;
     });
   };
