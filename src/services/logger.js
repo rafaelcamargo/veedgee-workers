@@ -7,24 +7,22 @@ const _public = {};
 let started;
 
 _public.init = () => {
-  const { BUGSNAG_API_TOKEN } = environmentService.get();
-  if(BUGSNAG_API_TOKEN) {
-    Bugsnag.start({
-      apiKey: BUGSNAG_API_TOKEN,
-      appVersion: projectPkg.version,
-      releaseStage: process.env.NODE_ENV || 'development',
-      metadata: {
-        app: {
-          name: projectPkg.name,
-          version: projectPkg.version
-        },
-        worker: {
-          type: 'crawler'
-        }
+  const { TYPE, BUGSNAG_API_TOKEN } = environmentService.get();
+  Bugsnag.start({
+    apiKey: BUGSNAG_API_TOKEN,
+    appVersion: projectPkg.version,
+    releaseStage: TYPE,
+    metadata: {
+      app: {
+        name: projectPkg.name,
+        version: projectPkg.version
+      },
+      worker: {
+        type: 'crawler'
       }
-    });
-    started = true;
-  }
+    }
+  });
+  started = true;
 };
 
 _public.track = (message, { type, metadata } = {}) => {

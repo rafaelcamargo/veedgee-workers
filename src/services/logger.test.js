@@ -1,6 +1,5 @@
 const Bugsnag = require('@bugsnag/js');
 const projectPkg = require('../../package');
-const environmentService = require('./environment');
 const loggerService = require('./logger');
 
 describe('Logger Service', () => {
@@ -9,15 +8,6 @@ describe('Logger Service', () => {
     console.log = jest.fn();
     Bugsnag.start = jest.fn();
     Bugsnag.notify = jest.fn();
-    environmentService.get = jest.fn(() => ({ BUGSNAG_API_TOKEN: '123' }));
-  });
-
-  it('should not track errors by default', async () => {
-    environmentService.get = jest.fn(() => ({}));
-    loggerService.init();
-    loggerService.track(new Error('some error'));
-    expect(Bugsnag.start).not.toHaveBeenCalled();
-    expect(Bugsnag.notify).not.toHaveBeenCalled();
   });
 
   it('should track error on Bugsnag if Bugsnag token env var has been found', async () => {

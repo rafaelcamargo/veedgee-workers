@@ -1,4 +1,5 @@
 module.exports = {
+  TYPE: 'production',
   VEEDGEE: {
     API_BASE_URL: process.env.VEEDGEE_API_BASE_URL,
     API_TOKEN: process.env.VEEDGEE_API_TOKEN,

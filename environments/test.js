@@ -1,9 +1,10 @@
-const developement = require('./development');
+const development = require('./development');
 
 module.exports = {
-  ...developement,
+  ...development,
+  TYPE: 'test',
   VEEDGEE: {
-    ...developement.VEEDGEE,
+    ...development.VEEDGEE,
     API_BASE_URL: ''
   }
 };
