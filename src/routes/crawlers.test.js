@@ -165,6 +165,19 @@ describe('Crawlers Routes', () => {
       successes: 7,
       failures: 0
     });
+    expect(loggerService.track).toHaveBeenCalledWith('Crawler completed', {
+      type: 'info',
+      metadata: {
+        crawler: {
+          name: 'disk-ingressos',
+          mode: 'regular',
+          stage: 'crawl',
+          durationMs: expect.any(Number),
+          eventsCount: expect.any(Number)
+        }
+      }
+    });
+    expect(loggerService.track).toHaveBeenCalledTimes(7);
   });
 
   it('should save ETicket Center events', async () => {
@@ -669,7 +682,7 @@ describe('Crawlers Routes', () => {
         }
       }
     });
-    expect(loggerService.track).toHaveBeenCalledTimes(1);
+    expect(loggerService.track).toHaveBeenCalledTimes(7);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
@@ -698,7 +711,7 @@ describe('Crawlers Routes', () => {
         }
       }
     });
-    expect(loggerService.track).toHaveBeenCalledTimes(1);
+    expect(loggerService.track).toHaveBeenCalledTimes(8);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),

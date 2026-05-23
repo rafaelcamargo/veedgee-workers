@@ -23,7 +23,13 @@ _public.start = async (req, res) => {
     const { onCrawlSuccess, onCrawlError } = useCompleter(crawlers, { startTime: Date.now(), resolve });
     crawlers.forEach(({ name, crawl }) => {
       const crawlerStartTime = Date.now();
-      crawl().then(events => onCrawlSuccess(events, { crawlerName: name, mode, crawlerStartTime })).catch(err => {
+      crawl().then(events => {
+        loggerService.track('Crawler completed', {
+          type: 'info',
+          metadata: buildTrackingMetadata({ crawlerName: name, mode, stage: 'crawl', crawlerStartTime, eventsCount: events.length })
+        });
+        onCrawlSuccess(events, { crawlerName: name, mode, crawlerStartTime });
+      }).catch(err => {
         onCrawlError(err, { crawlerName: name, mode, crawlerStartTime });
       });
     });
