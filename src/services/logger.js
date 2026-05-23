@@ -25,18 +25,23 @@ _public.init = () => {
   started = true;
 };
 
-_public.track = (message, { type, metadata } = {}) => {
-  return type == 'info' ? trackInfo(message, metadata) : trackError(message, metadata);
+_public.track = (eventName, metadata) => {
+  return metadata.type == 'info' ? trackInfo(eventName, metadata) : trackError(eventName, metadata);
 };
 
-function trackInfo(info, metadata){
-  console.log(info);
-  notify(info, buildBugsnagCallback({ severity: 'info', metadata }));
+function trackInfo(eventName, metadata){
+  console.log(eventName, JSON.stringify(metadata));
+  const bugsnagMetadata = removeObjectAttribute(metadata, 'type');
+  notify(eventName, buildBugsnagCallback({ severity: 'info', metadata: bugsnagMetadata }));
 }
 
-function trackError(err, metadata){
-  console.error(err);
-  notify(err, buildBugsnagCallback({ metadata }));
+function trackError(eventName, metadata){
+  const { error, ...bugsnagMetadata } = removeObjectAttribute(metadata, 'type');
+  console.error(eventName, error);
+  notify(error, buildBugsnagCallback({
+    context: eventName,
+    metadata: { ...bugsnagMetadata, error }
+  }));
 }
 
 function notify(message, callback){
@@ -49,6 +54,12 @@ function buildBugsnagCallback(options){
       event[key] = value;
     });
   };
+}
+
+function removeObjectAttribute(obj, attr){
+  return Object.entries(obj).reduce((result, [key, value]) => {
+    return key !== attr ? { ...result, [key]: value } : result;
+  }, {});
 }
 
 module.exports = _public;
