@@ -1,9 +1,4 @@
-const {
-  CRAWLER_COMPLETED,
-  CRAWL_ERROR,
-  EVENTS_MULTI_SAVE_SUCCESS,
-  EVENTS_MULTI_SAVE_ERROR
-} = require('../constants/eventNames');
+const { CRAWL_ERROR, EVENTS_MULTI_SAVE_ERROR } = require('../constants/eventNames');
 const delayService = require('../services/delay');
 const eventService = require('../services/event');
 const loggerService = require('../services/logger');
@@ -30,10 +25,6 @@ _public.start = async (req, res) => {
     crawlers.forEach(({ name, crawl }) => {
       const crawlerStartTime = Date.now();
       crawl().then(events => {
-        loggerService.track(CRAWLER_COMPLETED, {
-          type: 'info',
-          ...buildTrackingMetadata({ crawlerName: name, mode, stage: 'crawl', crawlerStartTime, eventsCount: events.length })
-        });
         onCrawlSuccess(events, { crawlerName: name, mode, crawlerStartTime });
       }).catch(err => {
         onCrawlError(err, { crawlerName: name, mode, crawlerStartTime });
@@ -71,35 +62,27 @@ function useCompleter(crawlers, { startTime, resolve }){
     completed.length === crawlers.length && resolve(buildStats(completed, startTime));
   };
   const onCrawlSuccess = (events, context) => {
-    const metadata = buildTrackingMetadata({ ...context, stage: 'save', eventsCount: events.length });
     eventService.multiSave(events).then(response => {
-      loggerService.track(EVENTS_MULTI_SAVE_SUCCESS, { type: 'info', ...metadata });
       onComplete({ response, isError: false });
     }).catch(err => {
-      loggerService.track(EVENTS_MULTI_SAVE_ERROR, { type: 'error', error: err, ...metadata });
+      loggerService.track(EVENTS_MULTI_SAVE_ERROR, err, buildTrackingMetadata({ ...context, stage: 'save', totalEvents: events.length }));
       onComplete({ response: err, isError: true });
     });
   };
   const onCrawlError = (err, context) => {
-    loggerService.track(CRAWL_ERROR, {
-      type: 'error',
-      error: err,
-      ...buildTrackingMetadata({ ...context, stage: 'crawl' })
-    });
+    loggerService.track(CRAWL_ERROR, err, buildTrackingMetadata({ ...context, stage: 'crawl' }));
     onComplete({ response: err, isError: true });
   };
   return { onCrawlSuccess, onCrawlError };
 }
 
-function buildTrackingMetadata({ crawlerName, mode, stage, crawlerStartTime, eventsCount }){
+function buildTrackingMetadata({ crawlerName, mode, stage, crawlerStartTime, totalEvents }){
   return {
-    crawler: {
-      name: crawlerName,
-      mode: mode || 'regular',
-      stage,
-      durationMs: Date.now() - crawlerStartTime,
-      eventsCount
-    }
+    crawler_name: crawlerName,
+    crawler_mode: mode || 'regular',
+    crawler_stage: stage,
+    crawler_processing_time: Date.now() - crawlerStartTime,
+    crawler_total_events: totalEvents
   };
 }
 

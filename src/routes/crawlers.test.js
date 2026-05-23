@@ -165,27 +165,7 @@ describe('Crawlers Routes', () => {
       successes: 7,
       failures: 0
     });
-    expect(loggerService.track).toHaveBeenCalledWith('Crawler completed', {
-      type: 'info',
-      crawler: {
-        name: 'disk-ingressos',
-        mode: 'regular',
-        stage: 'crawl',
-        durationMs: expect.any(Number),
-        eventsCount: expect.any(Number)
-      }
-    });
-    expect(loggerService.track).toHaveBeenCalledWith('Events Multi Save Success', {
-      type: 'info',
-      crawler: {
-        name: 'disk-ingressos',
-        mode: 'regular',
-        stage: 'save',
-        durationMs: expect.any(Number),
-        eventsCount: expect.any(Number)
-      }
-    });
-    expect(loggerService.track).toHaveBeenCalledTimes(14);
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should save ETicket Center events', async () => {
@@ -679,18 +659,13 @@ describe('Crawlers Routes', () => {
     console.error = jest.fn();
     diskIngressosResource.get = jest.fn(() => Promise.reject(err));
     const response = await start();
-    expect(loggerService.track).toHaveBeenCalledWith('Crawl Error', {
-      type: 'error',
-      error: err,
-      crawler: {
-        name: 'disk-ingressos',
-        mode: 'regular',
-        stage: 'crawl',
-        durationMs: expect.any(Number),
-        eventsCount: undefined
-      }
+    expect(loggerService.track).toHaveBeenCalledWith('Crawl Error', err, {
+      crawler_name: 'disk-ingressos',
+      crawler_mode: 'regular',
+      crawler_stage: 'crawl',
+      crawler_processing_time: expect.any(Number)
     });
-    expect(loggerService.track).toHaveBeenCalledTimes(13);
+    expect(loggerService.track).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
@@ -708,18 +683,14 @@ describe('Crawlers Routes', () => {
       return multiSaveCalls === 1 ? Promise.reject(err) : Promise.resolve({});
     });
     const response = await start();
-    expect(loggerService.track).toHaveBeenCalledWith('Events Multi Save Error', {
-      type: 'error',
-      error: err,
-      crawler: {
-        name: 'blueticket',
-        mode: 'regular',
-        stage: 'save',
-        durationMs: expect.any(Number),
-        eventsCount: expect.any(Number)
-      }
+    expect(loggerService.track).toHaveBeenCalledWith('Events Multi Save Error', err, {
+      crawler_name: 'blueticket',
+      crawler_mode: 'regular',
+      crawler_stage: 'save',
+      crawler_processing_time: expect.any(Number),
+      crawler_total_events: expect.any(Number)
     });
-    expect(loggerService.track).toHaveBeenCalledTimes(14);
+    expect(loggerService.track).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),

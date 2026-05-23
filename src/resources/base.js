@@ -1,4 +1,6 @@
+const { HTTP_REQUEST_ERROR } = require('../constants/eventNames');
 const httpService = require('../services/http');
+const loggerService = require('../services/logger');
 
 const _public = {};
 
@@ -19,14 +21,42 @@ _public.post = (url, body, options) => {
 };
 
 function request(url, options) {
+  const method = options?.method || 'GET';
+
   return httpService.fetch(url, options).then(async response => {
     const data = await parseResponseData(response);
+    if (!isSuccessStatus(response.status)) {
+      const error = buildHttpError(response, data);
+      trackHttp({ url, method, status: response.status, error });
+      throw error;
+    }
     return {
       headers: response.headers,
       status: response.status,
       data
     };
+  }).catch(error => {
+    if (!error.status) trackHttp({ url, method, error });
+    throw error;
   });
+}
+
+function trackHttp({ url, method, status, error }){
+  const metadata = { http_url: url, http_method: method };
+  if(status) metadata.http_status = status;
+  loggerService.track(HTTP_REQUEST_ERROR, error, metadata);
+}
+
+function isSuccessStatus(status){
+  return status >= 200 && status < 300;
+}
+
+function buildHttpError(response, data){
+  const error = new Error(`HTTP Error ${response.status}`);
+  error.status = response.status;
+  error.headers = response.headers;
+  error.data = data;
+  return error;
 }
 
 function buildFullUrl(baseUrl, queryParams){

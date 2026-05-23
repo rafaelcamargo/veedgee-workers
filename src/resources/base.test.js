@@ -1,12 +1,19 @@
+const { HTTP_REQUEST_ERROR } = require('../constants/eventNames');
 const httpService = require('../services/http');
+const loggerService = require('../services/logger');
 const baseResource = require('./base');
 
 describe('Base Resource', () => {
+  beforeEach(() => {
+    loggerService.track = jest.fn();
+  });
+
   function mockRequestResponse(expectedUrl, { headers, status, data }){
     const parse =() => Promise.resolve(data);
     httpService.fetch = jest.fn((url) => {
       return url === expectedUrl && Promise.resolve({
         status,
+        ok: status >= 200 && status < 300,
         headers: mapHeaders(headers),
         text: parse,
         json: parse,
@@ -95,5 +102,77 @@ describe('Base Resource', () => {
     );
     expect(response.status).toEqual(201);
     expect(response.data).toEqual(data);
+  });
+
+  it('should reject a get request when response status is 404', async () => {
+    const url = 'https://some.url.com/';
+    const data = { error: 'Not found' };
+    mockRequestResponse(url, { headers: { 'content-type': 'application/json' }, status: 404, data });
+    await expect(baseResource.get(url)).rejects.toMatchObject({
+      message: 'HTTP Error 404',
+      status: 404,
+      data
+    });
+
+    const err = new Error('Network error');
+    httpService.fetch = jest.fn(() => Promise.reject(err));
+    await expect(baseResource.get(url)).rejects.toEqual(err);
+    expect(loggerService.track).toHaveBeenCalledWith(HTTP_REQUEST_ERROR, err, {
+      http_url: url,
+      http_method: 'GET'
+    });
+  });
+
+  it('should reject a get request when response status is 401', async () => {
+    const url = 'https://some.url.com/';
+    const data = { error: 'Unauthorized' };
+    mockRequestResponse(url, { headers: { 'content-type': 'application/json' }, status: 401, data });
+    await expect(baseResource.get(url)).rejects.toMatchObject({
+      message: 'HTTP Error 401',
+      status: 401,
+      data
+    });
+  });
+
+  it('should reject a post request when response status is 500', async () => {
+    const url = 'https://some.url.com/';
+    const body = { some: 'json' };
+    const data = { error: 'Internal error' };
+    mockRequestResponse(url, { headers: { 'Content-Type': 'application/json' }, status: 500, data });
+    await expect(baseResource.post(url, body)).rejects.toMatchObject({
+      message: 'HTTP Error 500',
+      status: 500,
+      data
+    });
+    expect(httpService.fetch).toHaveBeenCalledWith(url, {
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST'
+    });
+    expect(loggerService.track).toHaveBeenCalledWith(HTTP_REQUEST_ERROR, expect.objectContaining({ message: 'HTTP Error 500', status: 500, data }), {
+      http_url: url,
+      http_method: 'POST',
+      http_status: 500
+    });
+    expect(loggerService.track).toHaveBeenCalledTimes(1);
+  });
+
+  it('should reject a get request when response status is 503', async () => {
+    const url = 'https://some.url.com/';
+    const data = 'Service Unavailable';
+    mockRequestResponse(url, { headers: {}, status: 503, data });
+    await expect(baseResource.get(url)).rejects.toMatchObject({
+      message: 'HTTP Error 503',
+      status: 503,
+      data
+    });
+  });
+
+  it('should resolve a get request when response status is 204', async () => {
+    const url = 'https://some.url.com/';
+    mockRequestResponse(url, { headers: {}, status: 204, data: '' });
+    const response = await baseResource.get(url);
+    expect(response.status).toEqual(204);
+    expect(response.data).toEqual('');
   });
 });
