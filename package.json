@@ -1,6 +1,6 @@
 {
   "name": "veedgee-workers",
-  "version": "1.10.6",
+  "version": "1.10.7",
   "description": "Veedgee Workers",
   "main": "src/index.js",
   "scripts": {
