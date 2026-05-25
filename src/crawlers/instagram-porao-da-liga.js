@@ -1,5 +1,7 @@
+const { VLM_INFERENCE_PARSE_ERROR } = require('../constants/eventNames');
 const dateService = require('../services/date');
 const eventFetcherService = require('../services/event-fetcher');
+const loggerService = require('../services/logger');
 const huggingFaceResource = require('../resources/hugging-face');
 const rapidApiResource = require('../resources/rapid-api');
 
@@ -46,7 +48,7 @@ function extractEventsFromSinglePost(post){
     prompt: buildInferenceRequestPrompt(),
     imageUrl: post.imageUrl
   }).then(({ data }) => {
-    const events = parseVlmInferenceResponse(data);
+    const events = parseVlmInferenceResponse(data, { instagramPostId: post.id, imageUrl: post.imageUrl });
     return events.map(evt => ({
       ...evt,
       title: formatEventTitle(evt.title),
@@ -61,20 +63,49 @@ function extractEventsFromSinglePost(post){
 
 function buildInferenceRequestPrompt(){
   return `
-Identify the events being promoted on the following image.
-Extract the name of the attractions, and date/time on which they're going to happen.
-If the image does not contain the name "Porão da Liga", respond with an empty Array.
-Structure the events as an Array of objects. Each object should represent data found on a image:
-[{ title: String, date: YYYY-MM-DD, time: HH:MM }]
-Time should be 24h, not 12h (am/pm). If no time is found, time should be null in the JSON.
-The JSON returned should be plain text, Do not insert it in markdown notation.
+Analyze the image and identify all events being promoted.
+Rules:
+1. Only return events if the image explicitly contains the exact text "Porão da Liga".
+2. If "Porão da Liga" does not appear anywhere in the image, return exactly: []
+3. Extract, for each event:
+- title
+- date
+- time
+4. Return a valid JSON array only. Do not include explanations, comments, markdown, or extra text.
+5. Each event object in the Array must follow this exact schema:
+{ "title": "String", "date": "YYYY-MM-DD", "time": "HH:MM" | null }
+6. Convert all times to 24-hour format.
+7. If a date is incomplete, ambiguous, or unreadable, omit that event entirely.
+8. If a time is not present in the image, use null.
+9. Preserve the event title exactly as written in the image, except for trimming unnecessary whitespace.
+10. The output must always be valid JSON parsable by standard JSON parsers.
 `.trim();
 }
 
-function parseVlmInferenceResponse({ choices }){
-  const { content } = choices[0].message;
-  const response = content.replace(/```/g, '').replace(/^json/, '');
-  return JSON.parse(response);
+function parseVlmInferenceResponse(data, context){
+  try {
+    const [choice] = data.choices;
+    const { content } = choice.message;
+    const normalized = content.replace(/```/g, '').replace(/^json/i, '').trim();
+    const parsed = JSON.parse(normalized);
+    if (!Array.isArray(parsed)) {
+      throw new Error('VLM inference response is not an array');
+    }
+    return parsed;
+  } catch (err) {
+    loggerService.track(VLM_INFERENCE_PARSE_ERROR, err, buildVlmParseErrorMetadata(data, context));
+    return [];
+  }
+}
+
+function buildVlmParseErrorMetadata(data, { instagramPostId, imageUrl }){
+  const metadata = {
+    instagram_post_id: instagramPostId,
+    image_url: imageUrl
+  };
+  const content = data?.choices?.[0]?.message?.content;
+  if (content) metadata.vlm_raw_content = String(content).slice(0, 1000);
+  return metadata;
 }
 
 function formatEventTitle(title){
