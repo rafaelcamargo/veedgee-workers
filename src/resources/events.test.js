@@ -17,6 +17,16 @@ describe('Eventim Resource', () => {
     });
   });
 
+  it('should bulk save events', () => {
+    const events = [{ title: 'Event A' }, { title: 'Event B' }];
+    eventsResource.bulkSave(events);
+    expect(baseResource.post).toHaveBeenCalledWith('/bulk/events', events, {
+      headers: {
+        vatoken: 'vee123'
+      }
+    });
+  });
+
   it('should get events', () => {
     eventsResource.get();
     expect(baseResource.get).toHaveBeenCalledWith('/events', undefined);

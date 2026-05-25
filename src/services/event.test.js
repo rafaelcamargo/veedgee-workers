@@ -3,7 +3,7 @@ const eventService = require('./event');
 
 describe('Event Service', () => {
   beforeEach(() => {
-    eventsResource.save = jest.fn();
+    eventsResource.bulkSave = jest.fn(() => Promise.resolve());
     eventsResource.get = jest.fn(() => Promise.resolve({ data: [] }));
   });
 
@@ -18,10 +18,10 @@ describe('Event Service', () => {
       url: 'http://some.url.com'
     };
     await eventService.multiSave([event]);
-    expect(eventsResource.save).toHaveBeenCalledWith({
+    expect(eventsResource.bulkSave).toHaveBeenCalledWith([{
       ...event,
       slug: 'some-title-joinville-sc',
       date: ''
-    });
+    }]);
   });
 });

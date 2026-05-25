@@ -17,8 +17,9 @@ _public.multiSave = events => {
     const newEvents = events
       .map(evt => formatEvent(formatEventDate(evt)))
       .filter(({ slug }) => !eventSlugs.includes(slug));
-    const requests = newEvents.map(event => eventsResource.save(event));
-    return Promise.all(requests);
+    return newEvents.length
+      ? eventsResource.bulkSave(newEvents)
+      : Promise.resolve();
   });
 };
 
