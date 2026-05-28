@@ -46,6 +46,7 @@ jobs:
             - "fly.toml"
             - "Dockerfile"
             - ".dockerignore"
+            - "vercel.json"
 
   format:
     <<: *default_env
@@ -69,7 +70,7 @@ jobs:
       # - coveralls/upload:
       #     verbose: true
 
-  deploy:
+  deploy-fly:
     <<: *default_env
 
     steps:
@@ -94,10 +95,26 @@ jobs:
           name: Verify version
           command: flyctl version
       - run:
-          name: Deploy
+          name: Deploy to Fly.io
           command: |
             flyctl auth token
             flyctl deploy --remote-only
+
+  deploy-vercel:
+    <<: *default_env
+
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run:
+          name: Pull Vercel Environment Information
+          command: npx vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+      - run:
+          name: Build Vercel Artifacts
+          command: npx vercel build --prod --token=$VERCEL_TOKEN
+      - run:
+          name: Deploy to Vercel
+          command: npx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
 
 workflows:
   version: 2
@@ -111,7 +128,15 @@ workflows:
       - test:
           requires:
             - install
-      - deploy:
+      - deploy-fly:
+          requires:
+            - format
+            - test
+          filters:
+            branches:
+              only:
+                - main
+      - deploy-vercel:
           requires:
             - format
             - test

@@ -37,10 +37,6 @@ There are two kinds of workers:
 
 To fire crawlers worker, you must send a POST request to `/crawlers`, and a POST request to `/notifications` to fire notifications worker. For both requests, you must pass the request header `vwtoken` as `vee456`.
 
-## Deployment
-
-The app is deployed to [Fly.io](https://fly.io) on merge to `main` via CircleCI. Production URL: `https://veedgee-workers.fly.dev`
-
 ## Tests
 
 1. In case you have changed any worker behavior, ensure that all changes are covered with automated tests:
