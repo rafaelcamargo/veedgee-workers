@@ -40,19 +40,25 @@ async function handleVlmWarmUp(res){
 }
 
 function getCrawlers(mode){
-  const regular = [
+  return {
+    'vlm': [
+      { name: 'instagram-porao-da-liga', crawl: instagramPoraoDaLigaCrawler.crawl }
+    ],
+    'sympla': [
+      { name: 'sympla', crawl: symplaCrawler.crawl }
+    ]
+  }[mode] || getDefaultCrawlers();
+}
+
+function getDefaultCrawlers(){
+  return [
     { name: 'blueticket', crawl: blueticketCrawler.crawl },
     { name: 'disk-ingressos', crawl: diskIngressosCrawler.crawl },
     { name: 'eticket-center', crawl: eticketCenterCrawler.crawl },
     { name: 'pensa-no-evento', crawl: pensaNoEventoCrawler.crawl },
     { name: 'songkick', crawl: songkickCrawler.crawl },
-    { name: 'sympla', crawl: symplaCrawler.crawl },
     { name: 'tockify', crawl: tockifyCrawler.crawl }
   ];
-  const vlms = [
-    { name: 'instagram-porao-da-liga', crawl: instagramPoraoDaLigaCrawler.crawl }
-  ];
-  return mode == 'vlm' ? vlms : regular;
 }
 
 function useCompleter(crawlers, { startTime, resolve }){

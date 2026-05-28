@@ -175,7 +175,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 7,
+      successes: 6,
       failures: 0
     });
     expect(loggerService.track).not.toHaveBeenCalled();
@@ -291,7 +291,7 @@ describe('Crawlers Routes', () => {
         data: JSON.parse(getMockedFile(`sympla-${fileSuffix}.json`))
       });
     });
-    const response = await start();
+    const response = await start({ mode: 'sympla' });
     expect(eventsResource.bulkSave).toHaveBeenCalledWith([
       {
         title: 'Before Night',
@@ -367,6 +367,24 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      duration: expect.any(Number),
+      successes: 1,
+      failures: 0
+    });
+  });
+
+  it('should notsave sympla events if no sympla events were found', async () => {
+    symplaResource.get = jest.fn(() => Promise.resolve({}));
+    const response = await start({ mode: 'sympla' });
+    expect(eventsResource.bulkSave).not.toHaveBeenCalled();
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual({
+      duration: expect.any(Number),
+      successes: 1,
+      failures: 0
+    });
   });
 
   it('should save Songkick events', async () => {
@@ -694,7 +712,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 6,
+      successes: 5,
       failures: 1
     });
   });
@@ -719,7 +737,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 6,
+      successes: 5,
       failures: 1
     });
   });
