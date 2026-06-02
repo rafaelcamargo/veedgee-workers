@@ -2,7 +2,7 @@ const { VLM_INFERENCE_PARSE_ERROR } = require('../constants/eventNames');
 const dateService = require('../services/date');
 const eventFetcherService = require('../services/event-fetcher');
 const loggerService = require('../services/logger');
-const huggingFaceResource = require('../resources/hugging-face');
+const googleAiResource = require('../resources/google-ai');
 const rapidApiResource = require('../resources/rapid-api');
 
 const _public = {};
@@ -44,7 +44,7 @@ function extractEventsFromPosts(posts){
 }
 
 function extractEventsFromSinglePost(post){
-  return huggingFaceResource.inferImageData({
+  return googleAiResource.inferImageData({
     prompt: buildInferenceRequestPrompt(),
     imageUrl: post.imageUrl
   }).then(({ data }) => {
@@ -84,18 +84,22 @@ Rules:
 
 function parseVlmInferenceResponse(data, context){
   try {
-    const [choice] = data.choices;
-    const { content } = choice.message;
-    const normalized = content.replace(/```/g, '').replace(/^json/i, '').trim();
-    const parsed = JSON.parse(normalized);
-    if (!Array.isArray(parsed)) {
-      throw new Error('VLM inference response is not an array');
-    }
-    return parsed;
+    return parseVlmInferenceEvents(data);
   } catch (err) {
     loggerService.track(VLM_INFERENCE_PARSE_ERROR, err, buildVlmParseErrorMetadata(data, context));
     return [];
   }
+}
+
+function parseVlmInferenceEvents(data){
+  const content = data.text;
+  if (!content) throw new Error('VLM inference response has no text');
+  const normalized = content.replace(/```/g, '').replace(/^json/i, '').trim();
+  const parsed = JSON.parse(normalized);
+  if (!Array.isArray(parsed)) {
+    throw new Error('VLM inference response is not an array');
+  }
+  return parsed;
 }
 
 function buildVlmParseErrorMetadata(data, { instagramPostId, imageUrl }){
@@ -103,7 +107,7 @@ function buildVlmParseErrorMetadata(data, { instagramPostId, imageUrl }){
     instagram_post_id: instagramPostId,
     image_url: imageUrl
   };
-  const content = data?.choices?.[0]?.message?.content;
+  const content = data?.text;
   if (content) metadata.vlm_raw_content = String(content).slice(0, 1000);
   return metadata;
 }

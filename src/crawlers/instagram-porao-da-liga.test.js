@@ -1,9 +1,9 @@
 const { VLM_INFERENCE_PARSE_ERROR } = require('../constants/eventNames');
-const huggingFacePoraoDaLigaMock = require('../mocks/hugging-face-porao-da-liga');
+const googleAiPoraoDaLigaMock = require('../mocks/google-ai-porao-da-liga');
 const eventFetcherService = require('../services/event-fetcher');
 const dateService = require('../services/date');
 const loggerService = require('../services/logger');
-const huggingFaceResource = require('../resources/hugging-face');
+const googleAiResource = require('../resources/google-ai');
 const rapidApiResource = require('../resources/rapid-api');
 const instagramPoraoDaLigaCrawler = require('./instagram-porao-da-liga');
 
@@ -30,19 +30,15 @@ describe('Instagram Porao Da Liga Crawler', () => {
     };
   }
 
-  function buildVlmInferenceData(content){
-    return {
-      choices: [{
-        message: { content }
-      }]
-    };
+  function buildGoogleAiInferenceData(content){
+    return { text: content };
   }
 
   function setupCrawlMocks({ instagramData, vlmResponses }){
     rapidApiResource.getInstagramPosts = jest.fn(() => Promise.resolve({ data: instagramData }));
     eventFetcherService.cachedFetch = jest.fn(() => Promise.resolve({ data: [] }));
     const vlmQueue = [...vlmResponses];
-    huggingFaceResource.inferImageData = jest.fn(() => {
+    googleAiResource.inferImageData = jest.fn(() => {
       const data = vlmQueue.shift();
       return Promise.resolve({ data });
     });
@@ -58,7 +54,7 @@ describe('Instagram Porao Da Liga Crawler', () => {
     const { postId, imageUrl } = buildDefaultPost();
     setupCrawlMocks({
       instagramData: buildInstagramPostsMock([{ id: postId, url: imageUrl }]),
-      vlmResponses: [huggingFacePoraoDaLigaMock[0]]
+      vlmResponses: [googleAiPoraoDaLigaMock[0]]
     });
     const events = await instagramPoraoDaLigaCrawler.crawl();
     expect(events).toEqual([{
@@ -77,7 +73,7 @@ describe('Instagram Porao Da Liga Crawler', () => {
     const { postId, imageUrl } = buildDefaultPost();
     setupCrawlMocks({
       instagramData: buildInstagramPostsMock([{ id: postId, url: imageUrl }]),
-      vlmResponses: [buildVlmInferenceData('[{"title":"Show","date":"2025-10-24","time":null}]')]
+      vlmResponses: [buildGoogleAiInferenceData('[{"title":"Show","date":"2025-10-24","time":null}]')]
     });
     const events = await instagramPoraoDaLigaCrawler.crawl();
     expect(events).toEqual([{
@@ -96,7 +92,7 @@ describe('Instagram Porao Da Liga Crawler', () => {
     const { postId, imageUrl } = buildDefaultPost();
     setupCrawlMocks({
       instagramData: buildInstagramPostsMock([{ id: postId, url: imageUrl }]),
-      vlmResponses: [buildVlmInferenceData('[]')]
+      vlmResponses: [buildGoogleAiInferenceData('[]')]
     });
     const events = await instagramPoraoDaLigaCrawler.crawl();
     expect(events).toEqual([]);
@@ -107,7 +103,7 @@ describe('Instagram Porao Da Liga Crawler', () => {
     const { postId, imageUrl } = buildDefaultPost();
     setupCrawlMocks({
       instagramData: buildInstagramPostsMock([{ id: postId, url: imageUrl }]),
-      vlmResponses: [buildVlmInferenceData('not json')]
+      vlmResponses: [buildGoogleAiInferenceData('not json')]
     });
     const events = await instagramPoraoDaLigaCrawler.crawl();
     expect(events).toEqual([]);
@@ -123,7 +119,7 @@ describe('Instagram Porao Da Liga Crawler', () => {
     expect(loggerService.track).toHaveBeenCalledTimes(1);
   });
 
-  it('should return empty array and track error when VLM response has no choices', async () => {
+  it('should return empty array and track error when VLM response has no text', async () => {
     const { postId, imageUrl } = buildDefaultPost();
     setupCrawlMocks({
       instagramData: buildInstagramPostsMock([{ id: postId, url: imageUrl }]),
@@ -139,27 +135,11 @@ describe('Instagram Porao Da Liga Crawler', () => {
     expect(loggerService.track).toHaveBeenCalledTimes(1);
   });
 
-  it('should return empty array and track error when VLM choices is empty', async () => {
+  it('should return empty array and track error when VLM text is empty', async () => {
     const { postId, imageUrl } = buildDefaultPost();
     setupCrawlMocks({
       instagramData: buildInstagramPostsMock([{ id: postId, url: imageUrl }]),
-      vlmResponses: [{ choices: [] }]
-    });
-    const events = await instagramPoraoDaLigaCrawler.crawl();
-    expect(events).toEqual([]);
-    expect(loggerService.track).toHaveBeenCalledWith(
-      VLM_INFERENCE_PARSE_ERROR,
-      expect.any(Error),
-      expect.objectContaining({ instagram_post_id: postId, image_url: imageUrl })
-    );
-    expect(loggerService.track).toHaveBeenCalledTimes(1);
-  });
-
-  it('should return empty array and track error when VLM message content is missing', async () => {
-    const { postId, imageUrl } = buildDefaultPost();
-    setupCrawlMocks({
-      instagramData: buildInstagramPostsMock([{ id: postId, url: imageUrl }]),
-      vlmResponses: [{ choices: [{ message: {} }] }]
+      vlmResponses: [{ text: '' }]
     });
     const events = await instagramPoraoDaLigaCrawler.crawl();
     expect(events).toEqual([]);
@@ -175,7 +155,7 @@ describe('Instagram Porao Da Liga Crawler', () => {
     const { postId, imageUrl } = buildDefaultPost();
     setupCrawlMocks({
       instagramData: buildInstagramPostsMock([{ id: postId, url: imageUrl }]),
-      vlmResponses: [buildVlmInferenceData('{"title":"x"}')]
+      vlmResponses: [buildGoogleAiInferenceData('{"title":"x"}')]
     });
     const events = await instagramPoraoDaLigaCrawler.crawl();
     expect(events).toEqual([]);
@@ -201,8 +181,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
         { id: secondPostId, url: secondImageUrl }
       ]),
       vlmResponses: [
-        huggingFacePoraoDaLigaMock[0],
-        buildVlmInferenceData('not json')
+        googleAiPoraoDaLigaMock[0],
+        buildGoogleAiInferenceData('not json')
       ]
     });
     const events = await instagramPoraoDaLigaCrawler.crawl();

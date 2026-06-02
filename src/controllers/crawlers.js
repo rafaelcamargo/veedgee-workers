@@ -1,8 +1,6 @@
 const { CRAWL_ERROR, EVENTS_MULTI_SAVE_ERROR } = require('../constants/eventNames');
-const delayService = require('../services/delay');
 const eventService = require('../services/event');
 const loggerService = require('../services/logger');
-const vlmService = require('../services/vlm');
 const blueticketCrawler = require('../crawlers/blueticket');
 const diskIngressosCrawler = require('../crawlers/disk-ingressos');
 const eticketCenterCrawler = require('../crawlers/eticket-center');
@@ -16,9 +14,6 @@ const _public = {};
 
 _public.start = async (req, res) => {
   const { mode } = req.body;
-  if(mode == 'vlm-warm-up') {
-    return await handleVlmWarmUp(res);
-  }
   return new Promise(resolve => {
     const crawlers = getCrawlers(mode);
     const { onCrawlSuccess, onCrawlError } = useCompleter(crawlers, { startTime: Date.now(), resolve });
@@ -32,12 +27,6 @@ _public.start = async (req, res) => {
     });
   }).then(stats => res.status(200).send(stats));
 };
-
-async function handleVlmWarmUp(res){
-  vlmService.warmUp();
-  await delayService.pause(1500);
-  res.status(204).send();
-}
 
 function getCrawlers(mode){
   return {

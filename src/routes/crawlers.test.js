@@ -6,7 +6,7 @@ const blueticketResource = require('../resources/blueticket');
 const diskIngressosResource = require('../resources/disk-ingressos');
 const eticketCenterResource = require('../resources/eticket-center');
 const eventsResource = require('../resources/events');
-const huggingFaceResource = require('../resources/hugging-face');
+const googleAiResource = require('../resources/google-ai');
 const pensaNoEventoResource = require('../resources/pensa-no-evento');
 const songkickResource = require('../resources/songkick');
 const rapidApiResource = require('../resources/rapid-api');
@@ -18,7 +18,7 @@ const blueticketMock = require('../mocks/blueticket');
 const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
 const instagramPoraoDaLigaMock = require('../mocks/instagram-porao-da-liga');
-const huggingFacePoraoDaLigaMock = require('../mocks/hugging-face-porao-da-liga');
+const googleAiPoraoDaLigaMock = require('../mocks/google-ai-porao-da-liga');
 const pensaNoEventoCuritibaMock = require('../mocks/pensa-no-evento-curitiba');
 const pensaNoEventoJoinvilleMock = require('../mocks/pensa-no-evento-joinville');
 const tockifyMock = require('../mocks/tockify');
@@ -636,16 +636,6 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
   });
 
-  it('should warm up vlm crawlers', async () => {
-    rapidApiResource.getInstagramPosts = jest.fn();
-    huggingFaceResource.inferImageData = jest.fn();
-    const response = await start({ mode: 'vlm-warm-up' });
-    expect(rapidApiResource.getInstagramPosts).toHaveBeenCalledWith({ username: 'poraodaliga' });
-    expect(huggingFaceResource.inferImageData).toHaveBeenCalledWith({ prompt: 'Describe this image', imageUrl: 'https://scontent.cdninstagram.com/v/t51.82787-15/572196102_18293225305260658_7969771910618201699_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=Mzc1NDE1MzQ4NzA2MDgwNDU1MA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=JswQcIAa6nsQ7kNvwGHOE_2&_nc_oc=AdmophjscptVqCz_ReL2I_Vz40xo7p0qIzcz9QBcsFIHnM6QPgWDRsxg1rs78N12XHmQcCbmA5gyl6bNu4GAtgbT&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=w16mAFzPjgjUCxchBOMDHg&oh=00_AfdQywDfTg4sOMBB_win_ImyzzrzAur5HDfDbBvs7QVmAQ&oe=6909533B' });
-    expect(response.status).toEqual(204);
-    expect(response.body).toEqual({});
-  });
-
   it('should save porão da liga events', async () => {
     dateService.getNow = jest.fn(() => new Date(2025, 1, 15));
     eventsResource.get = jest.fn(({ minDate }) => {
@@ -664,8 +654,8 @@ describe('Crawlers Routes', () => {
     rapidApiResource.getInstagramPosts = ({ username }) => {
       return username === 'poraodaliga' && Promise.resolve({ data: instagramPoraoDaLigaMock });
     };
-    const imageInferenceMocks = [...huggingFacePoraoDaLigaMock];
-    huggingFaceResource.inferImageData = ({ prompt, imageUrl }) => {
+    const imageInferenceMocks = [...googleAiPoraoDaLigaMock];
+    googleAiResource.inferImageData = ({ prompt, imageUrl }) => {
       const data = imageInferenceMocks.shift();
       return prompt && imageUrl && Promise.resolve({ data });
     };
