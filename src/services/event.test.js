@@ -1,8 +1,12 @@
+const dateService = require('./date');
+const eventFetcherService = require('./event-fetcher');
 const eventsResource = require('../resources/events');
 const eventService = require('./event');
 
 describe('Event Service', () => {
   beforeEach(() => {
+    dateService.buildTodayDateString = jest.fn(() => '2026-06-07');
+    eventFetcherService.flushCache();
     eventsResource.bulkSave = jest.fn(() => Promise.resolve());
     eventsResource.get = jest.fn(() => Promise.resolve({ data: [] }));
   });
@@ -23,5 +27,19 @@ describe('Event Service', () => {
       slug: 'some-title-joinville-sc',
       date: ''
     }]);
+  });
+
+  it('should not save past events', async () => {
+    const event = {
+      title: 'Some Title',
+      date: '2026-06-06',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'http://some.url.com'
+    };
+    await eventService.multiSave([event]);
+    expect(eventsResource.bulkSave).not.toHaveBeenCalled();
   });
 });

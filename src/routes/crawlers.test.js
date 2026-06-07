@@ -60,16 +60,6 @@ describe('Crawlers Routes', () => {
     const response = await start();
     expect(eventsResource.bulkSave).toHaveBeenCalledWith([
       {
-        title: 'Dhouse Apresenta - "Não Me Cobre Coerência!" Com Diogo Portugal',
-        slug: 'dhouse-apresenta-nao-me-cobre-coerencia-com-diogo-portugal-curitiba-pr-20240206',
-        date: '2024-02-06',
-        time: undefined,
-        city: 'Curitiba',
-        state: 'PR',
-        country: 'BR',
-        url: 'https://www.diskingressos.com.br/grupo/1446/06-02-2024/pr/curitiba/dhouse-apresenta-nao-me-cobre-coerencia-com-diogo-portugal'
-      },
-      {
         title: 'Dhouse Apresenta - Stand Up Comedy Com Danilo Gentili - Sessão Extra',
         slug: 'dhouse-apresenta-stand-up-comedy-com-danilo-gentili-sessao-extra-curitiba-pr-20240229',
         date: '2024-02-29',

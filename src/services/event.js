@@ -16,7 +16,7 @@ _public.multiSave = events => {
   return getEventSlugsFromToday().then(eventSlugs => {
     const newEvents = events
       .map(evt => formatEvent(formatEventDate(evt)))
-      .filter(({ slug }) => !eventSlugs.includes(slug));
+      .filter(({ date, slug }) => !isPastEventDate(date) && !eventSlugs.includes(slug));
     return newEvents.length
       ? eventsResource.bulkSave(newEvents)
       : Promise.resolve();
@@ -56,6 +56,11 @@ function formatEvent(event){
     url,
     slug: buildEventSlug(event)
   };
+}
+
+function isPastEventDate(date){
+  return dateService.isValidISODateString(date)
+    && date < dateService.buildTodayDateString();
 }
 
 function formatEventDate(event){
