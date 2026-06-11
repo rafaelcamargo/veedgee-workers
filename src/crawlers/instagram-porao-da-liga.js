@@ -18,8 +18,8 @@ _public.crawl = () => {
       const savedEventDates = eventsData.filter(evt => {
         return startWithPrefixTerm(evt.title, 'porão da liga');
       }).map(evt => evt.date);
-      return events.filter(evt => {
-        return !savedEventDates.includes(evt.date);
+      return events.filter(({ date }) => {
+        return date && !savedEventDates.includes(date);
       });
     });
   });
@@ -118,6 +118,7 @@ function formatEventTitle(title){
 }
 
 function parseEventDate(dateString){
+  if (!dateService.isValidISODateString(dateString)) return null;
   const currentYear = dateService.getNow().getFullYear();
   const [year, month, day] = dateString.split('-');
   const eventYear = parseInt(year);

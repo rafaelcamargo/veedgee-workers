@@ -206,4 +206,28 @@ describe('Instagram Porao Da Liga Crawler', () => {
     );
     expect(loggerService.track).toHaveBeenCalledTimes(1);
   });
+
+  it('should omit events without a valid ISO date when VLM returns mixed valid and invalid events', async () => {
+    const { postId, imageUrl } = buildDefaultPost();
+    setupCrawlMocks({
+      instagramData: buildInstagramPostsMock([{ id: postId, url: imageUrl }]),
+      vlmResponses: [buildGoogleAiInferenceData(JSON.stringify([
+        { title: 'Show válido', date: '2025-10-24', time: null },
+        { title: 'Show sem data', date: null, time: '20:00' },
+        { title: 'Show sem campo', time: '21:00' },
+        { title: 'Show data inválida', date: '24/10/2025', time: '22:00' }
+      ]))]
+    });
+    const events = await instagramPoraoDaLigaCrawler.crawl();
+    expect(events).toEqual([{
+      title: 'Porão da Liga - Show válido',
+      date: '2025-10-24',
+      time: null,
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: `https://www.instagram.com/poraodaliga/p/${postId}/`
+    }]);
+    expect(loggerService.track).not.toHaveBeenCalled();
+  });
 });
