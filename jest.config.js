@@ -1,7 +1,8 @@
 module.exports = {
   collectCoverageFrom: [
     'src/**/*.js',
-    '!src/index.js'
+    '!src/index.js',
+    '!src/instrumentation.js'
   ],
   coverageReporters: ['html', 'text-summary'],
   coverageThreshold: {
