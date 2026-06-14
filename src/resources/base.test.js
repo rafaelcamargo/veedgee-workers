@@ -152,7 +152,8 @@ describe('Base Resource', () => {
     expect(loggerService.track).toHaveBeenCalledWith(HTTP_REQUEST_ERROR, expect.objectContaining({ message: 'HTTP Error 500', status: 500, data }), {
       http_url: url,
       http_method: 'POST',
-      http_status: 500
+      http_status: 500,
+      http_response: JSON.stringify(data)
     });
     expect(loggerService.track).toHaveBeenCalledTimes(1);
   });
@@ -165,6 +166,12 @@ describe('Base Resource', () => {
       message: 'HTTP Error 503',
       status: 503,
       data
+    });
+    expect(loggerService.track).toHaveBeenCalledWith(HTTP_REQUEST_ERROR, expect.objectContaining({ message: 'HTTP Error 503', status: 503, data }), {
+      http_url: url,
+      http_method: 'GET',
+      http_status: 503,
+      http_response: data
     });
   });
 

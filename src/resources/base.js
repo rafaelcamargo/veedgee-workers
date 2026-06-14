@@ -27,7 +27,7 @@ function request(url, options) {
     const data = await parseResponseData(response);
     if (!isSuccessStatus(response.status)) {
       const error = buildHttpError(response, data);
-      trackHttp({ url, method, status: response.status, error });
+      trackHttp({ url, method, status: response.status, error, data });
       throw error;
     }
     return {
@@ -41,10 +41,15 @@ function request(url, options) {
   });
 }
 
-function trackHttp({ url, method, status, error }){
+function trackHttp({ url, method, status, error, data }){
   const metadata = { http_url: url, http_method: method };
   if(status) metadata.http_status = status;
+  if(data) metadata.http_response = serializeHttpResponse(data);
   loggerService.track(HTTP_REQUEST_ERROR, error, metadata);
+}
+
+function serializeHttpResponse(data){
+  return typeof data === 'object' ? JSON.stringify(data) : data;
 }
 
 function isSuccessStatus(status){
