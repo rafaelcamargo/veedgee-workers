@@ -56,7 +56,7 @@ describe('Google AI Resource', () => {
     expect(httpService.fetch).toHaveBeenCalledWith(params.imageUrl);
     expect(GoogleGenAIMock).toHaveBeenCalledWith({ apiKey: ENV.GOOGLE_AI_API_TOKEN });
     expect(googleAiInstanceMock.models.generateContent).toHaveBeenCalledWith({
-      model: 'gemini-2.5-flash-lite',
+      model: 'gemini-3.1-flash-lite',
       contents: [
         {
           inlineData: {
