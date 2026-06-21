@@ -18,12 +18,13 @@ const eventService = require('../services/event');
 const blueticketMock = require('../mocks/blueticket');
 const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
+const ingressoJoinvilleMock = require('../mocks/ingresso-joinville');
+const ingressoSaoJoseMock = require('../mocks/ingresso-sao-jose');
 const instagramPoraoDaLigaMock = require('../mocks/instagram-porao-da-liga');
 const googleAiPoraoDaLigaMock = require('../mocks/google-ai-porao-da-liga');
 const pensaNoEventoCuritibaMock = require('../mocks/pensa-no-evento-curitiba');
 const pensaNoEventoJoinvilleMock = require('../mocks/pensa-no-evento-joinville');
 const tockifyMock = require('../mocks/tockify');
-const ingressoJoinvilleMock = require('../mocks/ingresso-joinville');
 
 describe('Crawlers Routes', () => {
   async function start(payload){
@@ -629,14 +630,20 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
   });
 
-  it('should save now playing movies in joinville', async () => {
+  it('should save now-playing movies from ingresso.com', async () => {
     dateService.getNow = jest.fn(() => new Date(2026, 5, 20));
-    ingressoResource.getNowPlaying = jest.fn(() => Promise.resolve({ data: ingressoJoinvilleMock }));
+    ingressoResource.getNowPlaying = jest.fn(cityId => {
+      const data = {
+        16: ingressoJoinvilleMock,
+        153: ingressoSaoJoseMock
+      }[cityId] || {};
+      return Promise.resolve({ data });
+    });
     const response = await start();
     expect(eventsResource.bulkSave).toHaveBeenCalledWith([
       {
         title: 'Homem-aranha: Um Novo Dia',
-        slug: 'homem-aranha-um-novo-dia-joinville-sc-20260729',
+        slug: 'cinema-homem-aranha-um-novo-dia-joinville-sc-20260729',
         date: '2026-07-29',
         city: 'Joinville',
         state: 'SC',
@@ -646,12 +653,22 @@ describe('Crawlers Routes', () => {
       },
       {
         title: 'Toy Story 5',
-        slug: 'toy-story-5-joinville-sc-20260620',
+        slug: 'cinema-toy-story-5-joinville-sc-20260620',
         date: '2026-06-20',
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
         url: 'https://www.ingresso.com/filme/toy-story-5?city=joinville&partnership=home',
+        category: 'movies'
+      },
+      {
+        title: 'Dia D',
+        slug: 'cinema-dia-d-sao-jose-sc-20260620',
+        date: '2026-06-20',
+        city: 'São José',
+        state: 'SC',
+        country: 'BR',
+        url: 'https://www.ingresso.com/filme/dia-d?city=sao-jose&partnership=home',
         category: 'movies'
       }
     ]);

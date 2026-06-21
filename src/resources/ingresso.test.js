@@ -7,8 +7,9 @@ describe('Ingresso Resource', () => {
   });
 
   it('should get now playing movies', () => {
-    ingressoResource.getNowPlaying();
-    expect(baseResource.get).toHaveBeenCalledWith('https://api-content.ingresso.com/v1/carousels/16', {
+    const cityId = 16;
+    ingressoResource.getNowPlaying(cityId);
+    expect(baseResource.get).toHaveBeenCalledWith(`https://api-content.ingresso.com/v1/carousels/${cityId}`, {
       partnership: 'home',
       carousels: 'em-cartaz',
       limit: 15

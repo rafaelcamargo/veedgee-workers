@@ -1,24 +1,29 @@
+const { CITIES } = require('../constants/ingresso');
 const ingressoResource = require('../resources/ingresso');
 const dateService = require('../services/date');
 
 const _public = {};
 
 _public.crawl = () => {
-  return ingressoResource.getNowPlaying().then(({ data }) => {
-    return data?.items ? buildEvents(data.items) : [];
-  });
+  return Promise.all(CITIES.map(fetchNowPlayingByCity)).then(responses => responses.flat());
 };
 
-function buildEvents(items){
-  return items.flatMap(({ contentItems }) => contentItems.map(formatMovieEvent));
+function fetchNowPlayingByCity({ id, city, state }){
+  return ingressoResource.getNowPlaying(id).then(({ data }) => {
+    return data?.items ? buildEvents(data.items, { city, state }) : [];
+  });
 }
 
-function formatMovieEvent({ title, url, premiereDate, contentType }){
+function buildEvents(items, { city, state }){
+  return items.flatMap(({ contentItems }) => contentItems.map(movie => formatMovieEvent({ ...movie, city, state })));
+}
+
+function formatMovieEvent({ title, url, premiereDate, contentType, city, state }){
   return {
     title,
     date: buildEventDate(premiereDate?.localDate),
-    city: 'Joinville',
-    state: 'SC',
+    city,
+    state,
     country: 'BR',
     url,
     category: contentType

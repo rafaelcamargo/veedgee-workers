@@ -1,0 +1,90 @@
+{
+  "items": [
+    {
+      "name": "Em Cartaz",
+      "slug": "em-cartaz",
+      "priority": 9,
+      "displayType": "poster",
+      "hasLink": true,
+      "displayOnMobileApps": true,
+      "displayOnCatalog": true,
+      "seeMorePageUrl": "",
+      "contentItems": [
+        {
+          "id": "31919",
+          "contentType": "movies",
+          "displayOrder": 3,
+          "title": "Dia D",
+          "name": "Dia D",
+          "images": [
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/dia-d/442cfb96-fb1e-4ff7-aea3-d9ce2ff0e7bb.webp",
+              "type": "PosterLandscape"
+            },
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/dia-d/fc0ff336-6738-402a-81a3-4383b5346580.webp",
+              "type": "Overlay"
+            },
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/dia-d/1d2f9e4c-665c-4e75-89e1-bf3068f51094.webp",
+              "type": "PosterPortrait"
+            }
+          ],
+          "contentRating": "12 anos",
+          "isPreSale": false,
+          "inPreSale": false,
+          "isReRelease": false,
+          "hasSessions": true,
+          "premiereDate": {
+            "localDate": "2026-06-10T00:00:00+00:00",
+            "isToday": false,
+            "dayOfWeek": "quarta-feira",
+            "dayAndMonth": "10/06",
+            "hour": "00:00",
+            "year": "2026"
+          },
+          "slug": "dia-d",
+          "synopsis": "A trama de DIA D explorará a existência de alienígenas, mostrando como essa descoberta irá afetar as pessoas ao redor do mundo em nossa sociedade atual.",
+          "duration": 146,
+          "genres": [
+            "Ficção Científica",
+            "Suspense"
+          ],
+          "trailers": [
+            {
+              "url": "https://www.youtube.com/watch?v=cULQTp0ImEM",
+              "type": "YouTube",
+              "embeddedUrl": "//www.youtube.com/embed/cULQTp0ImEM"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=XU-blk5sP6o",
+              "type": "YouTube",
+              "embeddedUrl": "//www.youtube.com/embed/XU-blk5sP6o"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=OkY8rLabqP0",
+              "type": "YouTube",
+              "embeddedUrl": "//www.youtube.com/embed/OkY8rLabqP0"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=3dFPgpyfpbQ",
+              "type": "YouTube",
+              "embeddedUrl": "//www.youtube.com/embed/3dFPgpyfpbQ"
+            }
+          ],
+          "ratingDetails": {
+            "id": 1,
+            "name": "12 anos",
+            "label": "12",
+            "displayName": "12 anos",
+            "description": "Linguagem Imprópria,Temas Sensíveis, Violência, Violência Doméstica.",
+            "color": "#FBC115"
+          },
+          "completeTags": [],
+          "url": "https://www.ingresso.com/filme/dia-d?city=sao-jose&partnership=home"
+        }
+      ]
+    }
+  ],
+  "count": 1
+}

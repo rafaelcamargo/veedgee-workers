@@ -73,8 +73,9 @@ function formatEventDate(event){
 }
 
 function buildEventSlug(event){
-  const { title, date, city, state } = event;
+  const { title, date, city, state, category } = event;
   return [
+    getSlugPrefix(category),
     title,
     city,
     state,
@@ -82,6 +83,12 @@ function buildEventSlug(event){
   ].reduce((result, text) => {
     return [...result, urlService.buildSlug(text)];
   }, []).filter(value => !!value).join('-');
+}
+
+function getSlugPrefix(category){
+  return {
+    movies: 'cinema'
+  }[category] || '';
 }
 
 module.exports = _public;
