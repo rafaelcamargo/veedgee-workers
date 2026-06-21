@@ -1,0 +1,148 @@
+{
+  "items": [
+    {
+      "name": "Em Cartaz",
+      "slug": "em-cartaz",
+      "priority": 9,
+      "displayType": "poster",
+      "hasLink": true,
+      "displayOnMobileApps": true,
+      "displayOnCatalog": true,
+      "seeMorePageUrl": "",
+      "contentItems": [
+        {
+          "id": "29922",
+          "contentType": "movies",
+          "displayOrder": 1,
+          "title": "Homem-Aranha: Um Novo Dia",
+          "name": "Homem-Aranha: Um Novo Dia",
+          "images": [
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/homem-aranha-um-novo-dia/9d6a5a94-700f-4b42-8c0d-85123b524aca.webp",
+              "type": "PosterPortrait"
+            },
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/homem-aranha-um-novo-dia/7ee85527-3054-489d-8e4a-e9f45e6ca1b0.webp",
+              "type": "PosterLandscape"
+            },
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/homem-aranha-um-novo-dia/524fc5b4-efad-426f-856b-ec89c47b3d9d.webp",
+              "type": "Overlay"
+            }
+          ],
+          "contentRating": "Verifique a Classificação",
+          "isPreSale": true,
+          "inPreSale": true,
+          "isReRelease": false,
+          "hasSessions": true,
+          "premiereDate": {
+            "localDate": "2026-07-29T00:00:00+00:00",
+            "isToday": false,
+            "dayOfWeek": "quarta-feira",
+            "dayAndMonth": "29/07",
+            "hour": "00:00",
+            "year": "2026"
+          },
+          "slug": "homem-aranha-um-novo-dia",
+          "synopsis": "Após o fenômeno global de Homem-Aranha: Sem Volta Para Casa, Homem-Aranha: Um Novo Dia marca um capítulo totalmente novo para Peter Parker e o Homem-Aranha. Quatro anos se passaram desde os eventos de Sem Volta Para Casa, e Peter agora é um adulto vivendo completamente sozinho, tendo se apagado voluntariamente da vida e das memórias de quem ama. Combatendo o crime em uma Nova York que já não sabe mais o seu nome, ele se dedica integralmente a proteger a cidade — um Homem-Aranha em tempo integral —, mas, à medida que as exigências aumentam, a pressão desencadeia uma surpreendente evolução física que ameaça sua própria existência, enquanto um estranho padrão de crimes dá origem a uma das ameaças mais poderosas que ele já enfrentou. ",
+          "duration": 120,
+          "genres": [
+            "Ação",
+            "Fantasia"
+          ],
+          "trailers": [
+            {
+              "url": "https://www.youtube.com/watch?v=mx-shWgxZvw",
+              "type": "YouTube",
+              "embeddedUrl": "//www.youtube.com/embed/mx-shWgxZvw"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=y80_2R-aPT0",
+              "type": "YouTube",
+              "embeddedUrl": "//www.youtube.com/embed/y80_2R-aPT0"
+            }
+          ],
+          "ratingDetails": {
+            "id": 61,
+            "name": "Verifique a Classificação",
+            "label": "?",
+            "displayName": "?",
+            "description": "Consulte a classificação",
+            "color": "#666"
+          },
+          "completeTags": [],
+          "url": "https://www.ingresso.com/filme/homem-aranha-um-novo-dia?city=joinville&partnership=home"
+        },
+        {
+          "id": "28256",
+          "contentType": "movies",
+          "displayOrder": 2,
+          "title": "Toy Story 5",
+          "name": "Toy Story 5",
+          "images": [
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/toy-story-5/2a9f7d1e-400c-4caa-b989-c1fb513dd416.webp",
+              "type": "PosterPortrait"
+            },
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/toy-story-5/a8b14ff0-4aaf-4f64-915e-4273db5f2234.webp",
+              "type": "PosterLandscape"
+            },
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/toy-story-5/efc2d3a0-ad54-4ff2-9d20-101c0ba0fc40.webp",
+              "type": "Overlay"
+            },
+            {
+              "url": "https://ingresso-a.akamaihd.net/prd/img/movie/toy-story-5/724f57bf-48b0-4b6e-a8a0-0913f8b56cf6.webp",
+              "type": "HighlightMobile"
+            }
+          ],
+          "contentRating": "6 anos",
+          "isPreSale": false,
+          "inPreSale": false,
+          "isReRelease": false,
+          "hasSessions": true,
+          "premiereDate": {
+            "localDate": "2026-06-17T00:00:00+00:00",
+            "isToday": false,
+            "dayOfWeek": "quarta-feira",
+            "dayAndMonth": "17/06",
+            "hour": "00:00",
+            "year": "2026"
+          },
+          "slug": "toy-story-5",
+          "synopsis": "Buzz, Woody, Jessie e os demais brinquedos tradicionais são desafiados pela nova obsessão das crianças do século XXI: os dispositivos eletrônicos.",
+          "duration": 100,
+          "genres": [
+            "Animação",
+            "Aventura",
+            "Comédia"
+          ],
+          "trailers": [
+            {
+              "url": "https://www.youtube.com/watch?v=AWRSlHuhNng",
+              "type": "YouTube",
+              "embeddedUrl": "//www.youtube.com/embed/AWRSlHuhNng"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=UdXjHHR_hZM",
+              "type": "YouTube",
+              "embeddedUrl": "//www.youtube.com/embed/UdXjHHR_hZM"
+            }
+          ],
+          "ratingDetails": {
+            "id": 50,
+            "name": "6 anos",
+            "label": "6",
+            "displayName": "6 anos",
+            "description": "Violência Fantasiosa",
+            "color": "#e33493"
+          },
+          "completeTags": [],
+          "url": "https://www.ingresso.com/filme/toy-story-5?city=joinville&partnership=home"
+        }
+      ]
+    }
+  ],
+  "count": 1
+}

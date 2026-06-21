@@ -10,6 +10,7 @@ const pensaNoEventoCrawler = require('../crawlers/pensa-no-evento');
 const songkickCrawler = require('../crawlers/songkick');
 const symplaCrawler = require('../crawlers/sympla');
 const tockifyCrawler = require('../crawlers/tockify');
+const ingressoCrawler = require('../crawlers/ingresso');
 
 const _public = {};
 
@@ -47,7 +48,8 @@ function getDefaultCrawlers(){
     { name: 'eticket-center', crawl: eticketCenterCrawler.crawl },
     { name: 'pensa-no-evento', crawl: pensaNoEventoCrawler.crawl },
     { name: 'songkick', crawl: songkickCrawler.crawl },
-    { name: 'tockify', crawl: tockifyCrawler.crawl }
+    { name: 'tockify', crawl: tockifyCrawler.crawl },
+    { name: 'ingresso', crawl: ingressoCrawler.crawl }
   ];
 }
 

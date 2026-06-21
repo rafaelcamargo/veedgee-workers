@@ -12,6 +12,7 @@ const songkickResource = require('../resources/songkick');
 const rapidApiResource = require('../resources/rapid-api');
 const symplaResource = require('../resources/sympla');
 const tockifyResource = require('../resources/tockify');
+const ingressoResource = require('../resources/ingresso');
 const eventFetcherService = require('../services/event-fetcher');
 const eventService = require('../services/event');
 const blueticketMock = require('../mocks/blueticket');
@@ -22,6 +23,7 @@ const googleAiPoraoDaLigaMock = require('../mocks/google-ai-porao-da-liga');
 const pensaNoEventoCuritibaMock = require('../mocks/pensa-no-evento-curitiba');
 const pensaNoEventoJoinvilleMock = require('../mocks/pensa-no-evento-joinville');
 const tockifyMock = require('../mocks/tockify');
+const ingressoJoinvilleMock = require('../mocks/ingresso-joinville');
 
 describe('Crawlers Routes', () => {
   async function start(payload){
@@ -43,6 +45,7 @@ describe('Crawlers Routes', () => {
     songkickResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('songkick-empty.html') }));
     symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     tockifyResource.get = jest.fn(() => Promise.resolve({ data: {} }));
+    ingressoResource.getNowPlaying = jest.fn(() => Promise.resolve({ data: {} }));
     delayService.pause = jest.fn();
   });
 
@@ -165,7 +168,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 6,
+      successes: 7,
       failures: 0
     });
     expect(loggerService.track).not.toHaveBeenCalled();
@@ -626,6 +629,37 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
   });
 
+  it('should save now playing movies in joinville', async () => {
+    dateService.getNow = jest.fn(() => new Date(2026, 5, 20));
+    ingressoResource.getNowPlaying = jest.fn(() => Promise.resolve({ data: ingressoJoinvilleMock }));
+    const response = await start();
+    expect(eventsResource.bulkSave).toHaveBeenCalledWith([
+      {
+        title: 'Homem-aranha: Um Novo Dia',
+        slug: 'homem-aranha-um-novo-dia-joinville-sc-20260729',
+        date: '2026-07-29',
+        city: 'Joinville',
+        state: 'SC',
+        country: 'BR',
+        url: 'https://www.ingresso.com/filme/homem-aranha-um-novo-dia?city=joinville&partnership=home',
+        category: 'movies'
+      },
+      {
+        title: 'Toy Story 5',
+        slug: 'toy-story-5-joinville-sc-20260620',
+        date: '2026-06-20',
+        city: 'Joinville',
+        state: 'SC',
+        country: 'BR',
+        url: 'https://www.ingresso.com/filme/toy-story-5?city=joinville&partnership=home',
+        category: 'movies'
+      }
+    ]);
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
+    expect(response.status).toEqual(200);
+  });
+
   it('should save porão da liga events', async () => {
     dateService.getNow = jest.fn(() => new Date(2025, 1, 15));
     eventsResource.get = jest.fn(({ minDate }) => {
@@ -692,7 +726,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 5,
+      successes: 6,
       failures: 1
     });
   });
@@ -717,7 +751,7 @@ describe('Crawlers Routes', () => {
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({
       duration: expect.any(Number),
-      successes: 5,
+      successes: 6,
       failures: 1
     });
   });
