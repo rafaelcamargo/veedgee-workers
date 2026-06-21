@@ -6,7 +6,7 @@ const emailService = require('../services/email');
 
 describe('Notifications Routes', () => {
   function buildNotificationEmailMessage(){
-    return `Cool! 4 new events have just been found.
+    return `Cool! 5 new events have just been found.
 
 O Pequeno Príncipe
 2024-05-08 16:00
@@ -22,6 +22,11 @@ Rota Da Seda
 2024-07-06 21:00
 Curitiba, PR
 https://www.diskingressos.com.br/evento/6390/06-07-2024/pr/curitiba/rota-da-seda
+
+[movies] Toy Story 5
+2026-06-17
+Joinville, SC
+https://www.ingresso.com/filme/toy-story-5?city=joinville&partnership=home
 
 Baile Da Gabi Noite Dos Solteiros
 2024-03-09
