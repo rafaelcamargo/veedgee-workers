@@ -76,6 +76,58 @@ https://www.sympla.com.br/evento/baile-da-gabi-noite-dos-solteiros/3355986`;
     expect(emailService.send).toHaveBeenCalledTimes(2);
   });
 
+  it('should not notify movies already created on the previous day for the same city and state', async () => {
+    dateService.buildTodayDateString = jest.fn(() => '2024-02-16');
+    eventsResource.get = jest.fn(({ minCreationDate }) => {
+      expect(minCreationDate).toEqual('2024-02-15');
+      return Promise.resolve({
+        data: [
+          {
+            title: 'Toy Story 5',
+            slug: 'cinema-toy-story-5-joinville-sc-20260617',
+            category: 'movies',
+            city: 'Joinville',
+            state: 'SC',
+            date: '2026-06-17',
+            time: null,
+            url: 'https://www.ingresso.com/filme/toy-story-5?city=joinville&partnership=home',
+            created_at: '2024-02-15T09:27:21.675Z'
+          },
+          {
+            title: 'New Concert',
+            category: null,
+            slug: 'new-concert-curitiba-pr-20240301',
+            city: 'Curitiba',
+            state: 'PR',
+            date: '2024-03-01',
+            time: null,
+            url: 'https://example.com/new-concert',
+            created_at: '2024-02-16T10:00:00.000Z'
+          },
+          {
+            title: 'Toy Story 5',
+            slug: 'cinema-toy-story-5-joinville-sc-20260618',
+            category: 'movies',
+            city: 'Joinville',
+            state: 'SC',
+            date: '2026-06-18',
+            time: null,
+            url: 'https://www.ingresso.com/filme/toy-story-5?city=joinville&partnership=home',
+            created_at: '2024-02-16T10:00:00.000Z'
+          }
+        ]
+      });
+    });
+    const response = await start();
+    expect(response.status).toEqual(200);
+    expect(emailService.send).toHaveBeenCalledWith({
+      to: 'some@email.com',
+      subject: '[2024-02-16] New events found!',
+      message: 'Cool! 1 new events have just been found.\n\nNew Concert\n2024-03-01\nCuritiba, PR\nhttps://example.com/new-concert'
+    });
+    expect(emailService.send).toHaveBeenCalledTimes(2);
+  });
+
   it('should not notify recipients when new events are not found', async () => {
     const response = await start({ minCreationDate: '2024-02-16' });
     expect(emailService.send).not.toHaveBeenCalled();

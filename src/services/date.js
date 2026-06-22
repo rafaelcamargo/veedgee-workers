@@ -4,8 +4,14 @@ _public.getNow = () => new Date();
 
 _public.buildTodayDateString = () => {
   const now = _public.getNow();
-  const padStart = number => number.toString().padStart(2, '0');
-  return `${now.getFullYear()}-${padStart(now.getMonth()+1)}-${padStart(now.getDate())}`;
+  return formatISODateString(now);
+};
+
+_public.buildYesterdayDateString = referenceDateString => {
+  const [year, month, day] = referenceDateString.split('-').map(value => parseInt(value));
+  const date = new Date(year, month - 1, day);
+  date.setDate(date.getDate() - 1);
+  return formatISODateString(date);
 };
 
 _public.buildDateTimeStringFromUTCTimestamp = timestamp => {
@@ -36,5 +42,13 @@ _public.isValidISODateString = isoDateString => {
   const regex = new RegExp(/\d{4}-\d{2}-\d{2}/);
   return regex.test(isoDateString);
 };
+
+function formatISODateString(date){
+  return `${date.getFullYear()}-${padTwoDigit(date.getMonth() + 1)}-${padTwoDigit(date.getDate())}`;
+}
+
+function padTwoDigit(number){
+  return number.toString().padStart(2, '0');
+}
 
 module.exports = _public;
