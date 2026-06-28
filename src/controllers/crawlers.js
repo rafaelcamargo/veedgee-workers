@@ -1,7 +1,6 @@
 const { CRAWL_ERROR, EVENTS_MULTI_SAVE_ERROR } = require('../constants/eventNames');
 const eventService = require('../services/event');
 const loggerService = require('../services/logger');
-const tracerService = require('../services/tracer');
 const blueticketCrawler = require('../crawlers/blueticket');
 const diskIngressosCrawler = require('../crawlers/disk-ingressos');
 const eticketCenterCrawler = require('../crawlers/eticket-center');
@@ -21,7 +20,7 @@ _public.start = async (req, res) => {
     const { onCrawlSuccess, onCrawlError } = useCompleter(crawlers, { startTime: Date.now(), resolve });
     crawlers.forEach(({ name, crawl }) => {
       const crawlerStartTime = Date.now();
-      tracerService.run(`crawler.${name}`, () => crawl()).then(events => {
+      crawl().then(events => {
         onCrawlSuccess(events, { crawlerName: name, mode, crawlerStartTime });
       }).catch(err => {
         onCrawlError(err, { crawlerName: name, mode, crawlerStartTime });
@@ -60,7 +59,7 @@ function useCompleter(crawlers, { startTime, resolve }){
     completed.length === crawlers.length && resolve(buildStats(completed, startTime));
   };
   const onCrawlSuccess = (events, context) => {
-    tracerService.run(`crawler.${context.crawlerName}.save`, () => eventService.multiSave(events)).then(response => {
+    eventService.multiSave(events).then(response => {
       onComplete({ response, isError: false });
     }).catch(err => {
       loggerService.track(EVENTS_MULTI_SAVE_ERROR, err, buildTrackingMetadata({ ...context, stage: 'save', totalEvents: events.length }));
