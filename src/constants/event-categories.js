@@ -80,7 +80,13 @@ _public.CATEGORY_ALIASES = {
     'compositor',
     'orquestra',
     'coral',
-    'festival musical'
+    'festival musical',
+    'mpb',
+    'cover',
+    'pop e rock',
+    'rock internacional',
+    'rock nacional',
+    'classica'
   ],
   theater: [
     'theater',
@@ -163,7 +169,8 @@ _public.CATEGORY_ALIASES = {
     'comic',
     'comédia',
     'improviso',
-    'humorista'
+    'humorista',
+    'stand up'
   ],
   dance: [
     'dance',
@@ -229,8 +236,10 @@ _public.CATEGORY_ALIASES = {
     'aulas',
     'treinamento',
     'palestra',
+    'palestras',
     'seminário',
-    'capacitação'
+    'capacitação',
+    'workshop publicitário'
   ],
   business: [
     'business',

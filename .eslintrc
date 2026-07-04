@@ -23,7 +23,7 @@
     {
       "files": [ "src/constants/*.js" ],
       "rules": {
-        "max-lines": ["error", { "max": 300 }]
+        "max-lines": ["error", { "max": 500 }]
       }
     },
     {

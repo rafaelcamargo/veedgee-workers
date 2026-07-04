@@ -1,4 +1,5 @@
 const { BASE_URL } = require('../constants/disk-ingressos');
+const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
 const urlService = require('../services/url');
 const diskIngressosResource = require('../resources/disk-ingressos');
@@ -23,14 +24,16 @@ function shouldCrawl(event){
 }
 
 function FormatEvent(event){
-  const { eventname, date, city, state } = event._source;
+  const { eventname, date, city, state, classification } = event._source;
+  const category = eventCategoryService.findCategoryByKeywords(classification);
   return {
     title: eventname,
     date,
     city,
     state,
     country: 'BR',
-    url: buildEventURL(event._source)
+    url: buildEventURL(event._source),
+    ...(category && { category })
   };
 }
 

@@ -71,7 +71,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6359/29-02-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-danilo-gentili-sessao-extra'
+        url: 'https://www.diskingressos.com.br/evento/6359/29-02-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-danilo-gentili-sessao-extra',
+        category: 'comedy'
       },
       {
         title: 'Dhouse Apresenta: Stand Up Comedy Com Criss Paiva',
@@ -81,7 +82,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6277/01-03-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-criss-paiva'
+        url: 'https://www.diskingressos.com.br/evento/6277/01-03-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-criss-paiva',
+        category: 'comedy'
       },
       {
         title: 'Tributo Secos E Molhados - Especial 50 Anos',
@@ -91,7 +93,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6371/01-03-2024/pr/curitiba/tributo-secos-e-molhados-especial-50-anos'
+        url: 'https://www.diskingressos.com.br/evento/6371/01-03-2024/pr/curitiba/tributo-secos-e-molhados-especial-50-anos',
+        category: 'music'
       },
       {
         title: 'The Beast Experience',
@@ -101,7 +104,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6155/01-03-2024/sc/joinville/the-beast-experience'
+        url: 'https://www.diskingressos.com.br/evento/6155/01-03-2024/sc/joinville/the-beast-experience',
+        category: 'music'
       },
       {
         title: 'Dhouse Apresenta – \"Orgulho Do Papai\" Com Giovana Fagundes',
@@ -111,7 +115,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6380/06-03-2024/pr/curitiba/dhouse-apresenta-orgulho-do-papai-com-giovana-fagundes'
+        url: 'https://www.diskingressos.com.br/evento/6380/06-03-2024/pr/curitiba/dhouse-apresenta-orgulho-do-papai-com-giovana-fagundes',
+        category: 'comedy'
       },
       {
         title: 'Chico César & Zeca Baleiro',
@@ -121,7 +126,8 @@ describe('Crawlers Routes', () => {
         city: 'Florianópolis',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6212/09-03-2024/sc/florianopolis/chico-cesar-zeca-baleiro'
+        url: 'https://www.diskingressos.com.br/evento/6212/09-03-2024/sc/florianopolis/chico-cesar-zeca-baleiro',
+        category: 'music'
       },
       {
         title: 'Dhouse Apresenta – 40 + Com Eduardo Jericó',
@@ -131,7 +137,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6410/09-03-2024/pr/curitiba/dhouse-apresenta-40-com-eduardo-jerico'
+        url: 'https://www.diskingressos.com.br/evento/6410/09-03-2024/pr/curitiba/dhouse-apresenta-40-com-eduardo-jerico',
+        category: 'comedy'
       },
       {
         title: '1º Encontro Aaonça',
@@ -141,7 +148,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6468/11-03-2024/pr/curitiba/1-encontro-aaonca'
+        url: 'https://www.diskingressos.com.br/evento/6468/11-03-2024/pr/curitiba/1-encontro-aaonca',
+        category: 'festivals'
       },
       {
         title: 'Palestra Com Zico',
@@ -151,7 +159,8 @@ describe('Crawlers Routes', () => {
         city: 'Porto Alegre',
         state: 'RS',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6211/09-04-2024/rs/porto-alegre/palestra-com-zico'
+        url: 'https://www.diskingressos.com.br/evento/6211/09-04-2024/rs/porto-alegre/palestra-com-zico',
+        category: 'education'
       },
       {
         title: 'Yamandu Costa',
@@ -161,7 +170,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.diskingressos.com.br/evento/6013/02-05-2024/pr/curitiba/yamandu-costa'
+        url: 'https://www.diskingressos.com.br/evento/6013/02-05-2024/pr/curitiba/yamandu-costa',
+        category: 'music'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
