@@ -189,7 +189,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-joinville/29-02/21-00/'
+        url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-joinville/29-02/21-00/',
+        category: 'music'
       },
       {
         title: 'Elvis Experience Com Dean Z Em Blumenau',
@@ -199,7 +200,8 @@ describe('Crawlers Routes', () => {
         city: 'Blumenau',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-blumenau/02-03/21-00/'
+        url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-blumenau/02-03/21-00/',
+        category: 'music'
       },
       {
         title: 'Gratiluz Com Dra. Rosângela',
@@ -209,7 +211,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.eticketcenter.com.br/eventos/stand-up/gratiluz-com-dra-rosangela/15-03/20-30/'
+        url: 'https://www.eticketcenter.com.br/eventos/stand-up/gratiluz-com-dra-rosangela/15-03/20-30/',
+        category: 'comedy'
       },
       {
         title: 'Rei Leão | O Musical',
@@ -219,7 +222,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.eticketcenter.com.br/eventos/musical/rei-leao-o-musical/16-03/16-00/'
+        url: 'https://www.eticketcenter.com.br/eventos/musical/rei-leao-o-musical/16-03/16-00/',
+        category: 'musicals'
       },
       {
         title: 'Ultimate Queen & Orquestra',
@@ -229,7 +233,8 @@ describe('Crawlers Routes', () => {
         city: 'Blumenau',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.eticketcenter.com.br/eventos/show/ultimate-queen-orquestra/15-06/21-00/'
+        url: 'https://www.eticketcenter.com.br/eventos/show/ultimate-queen-orquestra/15-06/21-00/',
+        category: 'music'
       },
       {
         title: 'Bruna Louise - Joi',
@@ -239,7 +244,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.eticketcenter.com.br/eventos/stand-up/bruna-louise-joi/22-06/19-00/'
+        url: 'https://www.eticketcenter.com.br/eventos/stand-up/bruna-louise-joi/22-06/19-00/',
+        category: 'comedy'
       },
       {
         title: 'Se É Que Você Me Entende Com Raphael Ghanem - Joinville',
@@ -249,7 +255,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.eticketcenter.com.br/eventos/stand-up/se-e-que-voce-me-entende-com-raphael-ghanem-joinville/'
+        url: 'https://www.eticketcenter.com.br/eventos/stand-up/se-e-que-voce-me-entende-com-raphael-ghanem-joinville/',
+        category: 'comedy'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -271,7 +278,39 @@ describe('Crawlers Routes', () => {
       city: 'Florianópolis',
       state: 'SC',
       country: 'BR',
-      url: 'https://www.blueticket.com.br/evento/33937/samba-jurere'
+      url: 'https://www.blueticket.com.br/evento/33937/samba-jurere',
+      category: 'music'
+    }]);
+    expect(eventsResource.get).toHaveBeenCalledTimes(1);
+    expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
+    expect(response.status).toEqual(200);
+  });
+
+  it('should handle Blueticket events with unknown category term', async () => {
+    blueticketResource.get = jest.fn(params => {
+      const data = params.categoria === 11 && [{
+        codigo: 99999,
+        data_indefinida: 0,
+        data: '2024-03-10 20:00:00',
+        nome: 'Evento Sem Categoria',
+        nome_cidade: 'Joinville',
+        uf_cidade: 'SC',
+        categoria: 'Categoria Desconhecida',
+        categoria_alt: 'Outra Desconhecida',
+        slug: 'evento-sem-categoria'
+      }];
+      return Promise.resolve({ data });
+    });
+    const response = await start();
+    expect(eventsResource.bulkSave).toHaveBeenCalledWith([{
+      title: 'Evento Sem Categoria',
+      slug: 'evento-sem-categoria-joinville-sc-20240310',
+      date: '2024-03-10',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'https://www.blueticket.com.br/evento/99999/evento-sem-categoria'
     }]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);

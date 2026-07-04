@@ -21,6 +21,12 @@
   },
   "overrides": [
     {
+      "files": [ "src/constants/*.js" ],
+      "rules": {
+        "max-lines": ["error", { "max": 300 }]
+      }
+    },
+    {
       "files": [ "src/**/*.test.js" ],
       "rules": {
         "max-lines": ["error", { "max": 1000 }],

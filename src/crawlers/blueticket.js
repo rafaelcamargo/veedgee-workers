@@ -1,3 +1,4 @@
+const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
 const blueticketResource = require('../resources/blueticket');
 
@@ -15,6 +16,7 @@ function buildEvents(data){
     return data_indefinida === 0 && eventService.isWantedCity(nome_cidade, uf_cidade);
   }).map(item => {
     const [date, time] = parseDateTime(item.data);
+    const category = eventCategoryService.findCategoryByKeywords([item.categoria, item.categoria_alt]);
     return {
       title: item.nome,
       date,
@@ -22,7 +24,8 @@ function buildEvents(data){
       city: item.nome_cidade,
       state: item.uf_cidade,
       country: 'BR',
-      url: `https://www.blueticket.com.br/evento/${item.codigo}/${item.slug}`
+      url: `https://www.blueticket.com.br/evento/${item.codigo}/${item.slug}`,
+      ...(category && { category })
     };
   });
 }
