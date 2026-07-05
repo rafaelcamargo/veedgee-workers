@@ -628,7 +628,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://tockify.com/eventosemjoinville/detail/2025/1715871600000'
+        url: 'https://tockify.com/eventosemjoinville/detail/2025/1715871600000',
+        category: 'theater'
       },
       {
         title: 'Sc Outdoor Expo',
@@ -637,7 +638,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://tockify.com/eventosemjoinville/detail/2006/1715904000000'
+        url: 'https://tockify.com/eventosemjoinville/detail/2006/1715904000000',
+        category: 'sports'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);

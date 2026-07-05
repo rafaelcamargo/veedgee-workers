@@ -51,7 +51,8 @@ _public.CATEGORY_ALIASES = {
     'atletismo',
     'luta',
     'skate',
-    'surfe'
+    'surfe',
+    'eventos-esportivos'
   ],
   music: [
     'music',
