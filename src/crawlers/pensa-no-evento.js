@@ -1,3 +1,4 @@
+const eventCategoryService = require('../services/event-category');
 const pensaNoEventoResource = require('../resources/pensa-no-evento');
 
 const _public = {};
@@ -32,6 +33,9 @@ function buildEvents(data){
   return data.map(item => {
     const { evento, data, cidade, estado, url } = item;
     const [date, time] = parseDateTime(data);
+    const category = eventCategoryService.findCategoryByKeywords(
+      eventCategoryService.extractCategoryKeywordsFromText(evento)
+    );
     return {
       title: evento,
       date,
@@ -39,7 +43,8 @@ function buildEvents(data){
       city: cidade,
       state: estado,
       country: 'BR',
-      url
+      url,
+      ...(category && { category })
     };
   }).filter(builtEvent => !isBlackListed(builtEvent));
 }

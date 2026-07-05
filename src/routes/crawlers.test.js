@@ -693,7 +693,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.pensanoevento.com.br/sitev2/eventos/95881/dazaranha-acustico'
+        url: 'https://www.pensanoevento.com.br/sitev2/eventos/95881/dazaranha-acustico',
+        category: 'music'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
