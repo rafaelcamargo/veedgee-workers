@@ -1,7 +1,10 @@
 const { VLM_INFERENCE_PARSE_ERROR } = require('../constants/eventNames');
+const { CATEGORY_ALIASES } = require('../constants/event-categories');
 const dateService = require('../services/date');
+const eventCategoryService = require('../services/event-category');
 const eventFetcherService = require('../services/event-fetcher');
 const loggerService = require('../services/logger');
+const { removeAccents } = require('../services/text');
 const googleAiResource = require('../resources/google-ai');
 const rapidApiResource = require('../resources/rapid-api');
 
@@ -49,19 +52,26 @@ function extractEventsFromSinglePost(post){
     imageUrl: post.imageUrl
   }).then(({ data }) => {
     const events = parseVlmInferenceResponse(data, { instagramPostId: post.id, imageUrl: post.imageUrl });
-    return events.map(evt => ({
-      ...evt,
-      title: formatEventTitle(evt.title),
-      date: parseEventDate(evt.date),
-      city: 'Joinville',
-      state: 'SC',
-      country: 'BR',
-      url: `https://www.instagram.com/poraodaliga/p/${post.id}/`
-    }));
+    return events.map(evt => {
+      const { title, date, time, category: vlmCategory } = evt;
+      const formattedTitle = formatEventTitle(title);
+      const category = resolveCategory(vlmCategory, formattedTitle);
+      return {
+        title: formattedTitle,
+        date: parseEventDate(date),
+        time,
+        city: 'Joinville',
+        state: 'SC',
+        country: 'BR',
+        url: `https://www.instagram.com/poraodaliga/p/${post.id}/`,
+        ...(category && { category })
+      };
+    });
   });
 }
 
 function buildInferenceRequestPrompt(){
+  const categories = Object.keys(CATEGORY_ALIASES).join(', ');
   return `
 Analyze the image and identify all events being promoted.
 Rules:
@@ -71,14 +81,18 @@ Rules:
 - title
 - date
 - time
+- category
 4. Return a valid JSON array only. Do not include explanations, comments, markdown, or extra text.
 5. Each event object in the Array must follow this exact schema:
-{ "title": "String", "date": "YYYY-MM-DD", "time": "HH:MM" | null }
-6. Convert all times to 24-hour format.
-7. If a date is incomplete, ambiguous, or unreadable, omit that event entirely.
-8. If a time is not present in the image, use null.
-9. Preserve the event title exactly as written in the image, except for trimming unnecessary whitespace.
-10. The output must always be valid JSON parsable by standard JSON parsers.
+{ "title": "String", "date": "YYYY-MM-DD", "time": "HH:MM" | null, "category": "String" | null }
+6. Suggest category based on the visual and textual content of the image (event type, genre, poster format).
+7. Accepted category values (use exactly one of these names): ${categories}
+8. Use null for category when it cannot be inferred with confidence from the image.
+9. Convert all times to 24-hour format.
+10. If a date is incomplete, ambiguous, or unreadable, omit that event entirely.
+11. If a time is not present in the image, use null.
+12. Preserve the event title exactly as written in the image, except for trimming unnecessary whitespace.
+13. The output must always be valid JSON parsable by standard JSON parsers.
 `.trim();
 }
 
@@ -113,8 +127,23 @@ function buildVlmParseErrorMetadata(data, { instagramPostId, imageUrl }){
 }
 
 function formatEventTitle(title){
-  const attraction = title.replace(/porão da liga/i, '').trim().replace(/^-/, '').trim();
-  return `Porão da Liga - ${attraction}`;
+  return `Porão da Liga - ${extractAttractionFromTitle(title)}`;
+}
+
+function extractAttractionFromTitle(title){
+  return title.replace(/porão da liga/i, '').trim().replace(/^-/, '').trim();
+}
+
+function resolveInternalCategory(value){
+  if (!value) return null;
+  const normalized = removeAccents(String(value)).toLowerCase().trim();
+  return Object.keys(CATEGORY_ALIASES).find(category => category === normalized) || null;
+}
+
+function resolveCategory(vlmCategory, formattedTitle){
+  return resolveInternalCategory(vlmCategory) || eventCategoryService.findCategoryByKeywords(
+    eventCategoryService.extractCategoryKeywordsFromText(extractAttractionFromTitle(formattedTitle))
+  );
 }
 
 function parseEventDate(dateString){

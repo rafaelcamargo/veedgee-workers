@@ -782,7 +782,18 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.instagram.com/poraodaliga/p/DQKoU0bjYlV/'
+        url: 'https://www.instagram.com/poraodaliga/p/DQKoU0bjYlV/',
+        category: 'comedy'
+      },
+      {
+        title: 'Porão Da Liga - Luna Session',
+        slug: 'porao-da-liga-luna-session-joinville-sc-20251205',
+        date: '2025-12-05',
+        time: '21:30',
+        city: 'Joinville',
+        state: 'SC',
+        country: 'BR',
+        url: 'https://www.instagram.com/poraodaliga/p/DQKM1JVjcRv/'
       },
       {
         title: 'Porão Da Liga - Billbird',
@@ -792,7 +803,18 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.instagram.com/poraodaliga/p/DQG-U0DDQLr/'
+        url: 'https://www.instagram.com/poraodaliga/p/DQG-U0DDQLr/',
+        category: 'music'
+      },
+      {
+        title: 'Porão Da Liga - Vinyl Archive',
+        slug: 'porao-da-liga-vinyl-archive-joinville-sc-20251115',
+        date: '2025-11-15',
+        time: '22:00',
+        city: 'Joinville',
+        state: 'SC',
+        country: 'BR',
+        url: 'https://www.instagram.com/poraodaliga/p/DQCZOAsDkdY/'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);

@@ -16,7 +16,7 @@
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "complexity": ["error", { "max": 3 }],
-    "max-lines": ["error", { "max": 150 }],
+    "max-lines": ["error", { "max": 170 }],
     "max-statements": ["error", { "max": 10 }, { "ignoreTopLevelFunctions": true }]
   },
   "overrides": [

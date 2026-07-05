@@ -64,7 +64,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       city: 'Joinville',
       state: 'SC',
       country: 'BR',
-      url: `https://www.instagram.com/poraodaliga/p/${postId}/`
+      url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
+      category: 'comedy'
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });
@@ -83,7 +84,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       city: 'Joinville',
       state: 'SC',
       country: 'BR',
-      url: `https://www.instagram.com/poraodaliga/p/${postId}/`
+      url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
+      category: 'music'
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });
@@ -193,7 +195,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       city: 'Joinville',
       state: 'SC',
       country: 'BR',
-      url: `https://www.instagram.com/poraodaliga/p/${postId}/`
+      url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
+      category: 'comedy'
     }]);
     expect(loggerService.track).toHaveBeenCalledWith(
       VLM_INFERENCE_PARSE_ERROR,
@@ -226,7 +229,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       city: 'Joinville',
       state: 'SC',
       country: 'BR',
-      url: `https://www.instagram.com/poraodaliga/p/${postId}/`
+      url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
+      category: 'music'
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });
