@@ -11,6 +11,12 @@ _public.findCategoryByKeywords = keywords => {
   }, null);
 };
 
+_public.extractCategoryKeywordsFromText = text => {
+  return text.split(' ').reduce((keywords, term) => {
+    return term.length > 3 ? [...keywords, term] : keywords;
+  }, []);
+};
+
 function buildCategoryAliasesMap(){
   return Object.entries(CATEGORY_ALIASES).reduce((map, [category, aliases]) => {
     aliases.forEach(alias => map.set(buildNormalizedToken(alias), category));

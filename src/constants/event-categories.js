@@ -70,6 +70,7 @@ _public.CATEGORY_ALIASES = {
     'rave',
     'festival',
     'acoustic',
+    'acustico',
     'band',
     'singer',
     'songwriter',

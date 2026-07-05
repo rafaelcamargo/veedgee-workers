@@ -364,7 +364,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/acustico-navaranda-curitiba/2368782'
+        url: 'https://www.sympla.com.br/evento/acustico-navaranda-curitiba/2368782',
+        category: 'music'
       },
       {
         title: 'Porter Summit 2024',
@@ -374,7 +375,8 @@ describe('Crawlers Routes', () => {
         city: 'Florianópolis',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/porter-summit-2024/2222757'
+        url: 'https://www.sympla.com.br/evento/porter-summit-2024/2222757',
+        category: 'business'
       },
       {
         title: 'Antecipados Pg Abril I',
@@ -394,7 +396,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/show-vera-loca/2384437'
+        url: 'https://www.sympla.com.br/evento/show-vera-loca/2384437',
+        category: 'music'
       },
       {
         title: 'Funduncinho Do Tabu',
