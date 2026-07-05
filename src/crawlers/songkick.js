@@ -49,7 +49,8 @@ function formatEvent($eventEl){
     city,
     state,
     country: 'BR',
-    url: data.url.split('?')[0]
+    url: data.url.split('?')[0],
+    category: 'music'
   };
 }
 

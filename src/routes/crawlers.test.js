@@ -444,7 +444,8 @@ describe('Crawlers Routes', () => {
         city: 'Blumenau',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41724580-di-ferrero-at-teatro-carlos-gomes'
+        url: 'https://www.songkick.com/pt/concerts/41724580-di-ferrero-at-teatro-carlos-gomes',
+        category: 'music'
       },
       {
         title: 'Dead Fish',
@@ -454,7 +455,8 @@ describe('Crawlers Routes', () => {
         city: 'Blumenau',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41804717-dead-fish-at-ahoy-tavern-club'
+        url: 'https://www.songkick.com/pt/concerts/41804717-dead-fish-at-ahoy-tavern-club',
+        category: 'music'
       },
       {
         title: 'Tba Festival 2024',
@@ -463,7 +465,8 @@ describe('Crawlers Routes', () => {
         city: 'Blumenau',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/festivals/176531-tba/id/41792900-tba-festival-2024'
+        url: 'https://www.songkick.com/pt/festivals/176531-tba/id/41792900-tba-festival-2024',
+        category: 'music'
       },
       {
         title: 'Espetáculo Teatral "Bita E Os Animais" Em Curitiba (pr) 2024',
@@ -472,7 +475,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/festivals/3647009-espetaculo-teatral-bita-e-os-animais-em-curitiba-pr/id/41761308-espetculo-teatral-bita-e-os-animais-em-curitiba-pr-2024'
+        url: 'https://www.songkick.com/pt/festivals/3647009-espetaculo-teatral-bita-e-os-animais-em-curitiba-pr/id/41761308-espetculo-teatral-bita-e-os-animais-em-curitiba-pr-2024',
+        category: 'music'
       },
       {
         title: 'Overdriver Duo',
@@ -482,7 +486,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41714611-overdriver-duo-at-teatro-fernanda-montenegro'
+        url: 'https://www.songkick.com/pt/concerts/41714611-overdriver-duo-at-teatro-fernanda-montenegro',
+        category: 'music'
       },
       {
         title: 'Terraplana',
@@ -492,7 +497,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41728574-terraplana-at-basement-cultural'
+        url: 'https://www.songkick.com/pt/concerts/41728574-terraplana-at-basement-cultural',
+        category: 'music'
       },
       {
         title: 'Ana Cañas',
@@ -502,7 +508,8 @@ describe('Crawlers Routes', () => {
         city: 'Florianópolis',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41696929-ana-canas-at-teatro-ademir-rosa'
+        url: 'https://www.songkick.com/pt/concerts/41696929-ana-canas-at-teatro-ademir-rosa',
+        category: 'music'
       },
       {
         title: 'Mdc',
@@ -512,7 +519,8 @@ describe('Crawlers Routes', () => {
         city: 'Florianópolis',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41794649-mdc-at-hangar-t6-listening-bar'
+        url: 'https://www.songkick.com/pt/concerts/41794649-mdc-at-hangar-t6-listening-bar',
+        category: 'music'
       },
       {
         title: 'Dj Brinquinho Sc',
@@ -522,7 +530,8 @@ describe('Crawlers Routes', () => {
         city: 'Florianópolis',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41792887-dj-brinquinho-sc-at-bierteca-bar'
+        url: 'https://www.songkick.com/pt/concerts/41792887-dj-brinquinho-sc-at-bierteca-bar',
+        category: 'music'
       },
       {
         title: 'Vintage Culture',
@@ -532,7 +541,8 @@ describe('Crawlers Routes', () => {
         city: 'Itajaí',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41804579-vintage-culture-at-warung-beach-club'
+        url: 'https://www.songkick.com/pt/concerts/41804579-vintage-culture-at-warung-beach-club',
+        category: 'music'
       },
       {
         title: 'Lagum',
@@ -542,7 +552,8 @@ describe('Crawlers Routes', () => {
         city: 'Itajaí',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41629431-lagum-at-belvedere-beach-club'
+        url: 'https://www.songkick.com/pt/concerts/41629431-lagum-at-belvedere-beach-club',
+        category: 'music'
       },
       {
         title: 'Di Ferrero',
@@ -552,7 +563,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41724578-di-ferrero-at-teatro-da-liga'
+        url: 'https://www.songkick.com/pt/concerts/41724578-di-ferrero-at-teatro-da-liga',
+        category: 'music'
       },
       {
         title: 'Mordor Truckers',
@@ -562,7 +574,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41804725-mordor-truckers-at-zeit-cervejaria'
+        url: 'https://www.songkick.com/pt/concerts/41804725-mordor-truckers-at-zeit-cervejaria',
+        category: 'music'
       },
       {
         title: 'Rogério Skylab',
@@ -572,7 +585,8 @@ describe('Crawlers Routes', () => {
         city: 'Porto Alegre',
         state: 'RS',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41683692-rogerio-skylab-at-bar-opiniao'
+        url: 'https://www.songkick.com/pt/concerts/41683692-rogerio-skylab-at-bar-opiniao',
+        category: 'music'
       },
       {
         title: 'Lucas Morato',
@@ -582,7 +596,8 @@ describe('Crawlers Routes', () => {
         city: 'Porto Alegre',
         state: 'RS',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41817222-lucas-morato-at-samba-da-galera'
+        url: 'https://www.songkick.com/pt/concerts/41817222-lucas-morato-at-samba-da-galera',
+        category: 'music'
       },
       {
         title: 'Ivete Sangalo',
@@ -591,7 +606,8 @@ describe('Crawlers Routes', () => {
         city: 'Porto Alegre',
         state: 'RS',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41806309-ivete-sangalo-at-estadio-beirario'
+        url: 'https://www.songkick.com/pt/concerts/41806309-ivete-sangalo-at-estadio-beirario',
+        category: 'music'
       },
       {
         title: 'Jinjer',
@@ -601,7 +617,8 @@ describe('Crawlers Routes', () => {
         city: 'Porto Alegre',
         state: 'RS',
         country: 'BR',
-        url: 'https://www.songkick.com/pt/concerts/41801925-jinjer-at-opiniao'
+        url: 'https://www.songkick.com/pt/concerts/41801925-jinjer-at-opiniao',
+        category: 'music'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
