@@ -26,7 +26,31 @@ const pensaNoEventoCuritibaMock = require('../mocks/pensa-no-evento-curitiba');
 const pensaNoEventoJoinvilleMock = require('../mocks/pensa-no-evento-joinville');
 const tockifyMock = require('../mocks/tockify');
 
+const DEFAULT_CRAWLERS = [
+  'blueticket',
+  'disk-ingressos',
+  'tockify',
+  'eticket-center',
+  'songkick',
+  'pensa-no-evento',
+  'ingresso'
+];
+
 describe('Crawlers Routes', () => {
+  function buildExpectedPerformanceReport(crawlerNames, { errors = [] } = {}){
+    return {
+      reportJson: [
+        ...crawlerNames.map(name => ({
+          task: `Crawling: ${name}`,
+          result: errors.includes(name) ? 'error' : 'success',
+          time: expect.any(Number)
+        })),
+        { task: 'Crawling: Total', result: 'success', time: expect.any(Number) }
+      ],
+      reportTxt: expect.any(String)
+    };
+  }
+
   async function start(payload){
     return await serve().post('/crawlers').set({ vwtoken: 'vee456' }).send(payload);
   }
@@ -177,11 +201,7 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 7,
-      failures: 0
-    });
+    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -272,6 +292,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
+    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should save Bluetickets events', async () => {
@@ -294,6 +316,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
+    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should handle Blueticket events with unknown category term', async () => {
@@ -325,6 +349,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
+    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should save Sympla events', async () => {
@@ -413,11 +439,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 1,
-      failures: 0
-    });
+    expect(response.body).toEqual(buildExpectedPerformanceReport(['sympla']));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should notsave sympla events if no sympla events were found', async () => {
@@ -426,11 +449,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.bulkSave).not.toHaveBeenCalled();
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 1,
-      failures: 0
-    });
+    expect(response.body).toEqual(buildExpectedPerformanceReport(['sympla']));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should save Songkick events', async () => {
@@ -627,6 +647,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
+    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should save Tockify events', async () => {
@@ -665,6 +687,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
+    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should save Pensa No Evento events', async () => {
@@ -700,6 +724,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
+    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should save now-playing movies from ingresso.com', async () => {
@@ -747,6 +773,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
+    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should save porão da liga events', async () => {
@@ -820,6 +848,8 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
+    expect(response.body).toEqual(buildExpectedPerformanceReport(['instagram-porao-da-liga']));
+    expect(loggerService.track).not.toHaveBeenCalled();
   });
 
   it('should track error on crawl error', async () => {
@@ -827,19 +857,20 @@ describe('Crawlers Routes', () => {
     console.error = jest.fn();
     diskIngressosResource.get = jest.fn(() => Promise.reject(err));
     const response = await start();
-    expect(loggerService.track).toHaveBeenCalledWith('Crawl Error', err, {
-      crawler_name: 'disk-ingressos',
-      crawler_mode: 'regular',
-      crawler_stage: 'crawl',
-      crawler_processing_time: expect.any(Number)
+    expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: disk-ingressos', err, {
+      task_duration: expect.any(Number)
     });
     expect(loggerService.track).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 6,
-      failures: 1
-    });
+    expect(response.body).toEqual(buildExpectedPerformanceReport([
+      'disk-ingressos',
+      'blueticket',
+      'tockify',
+      'eticket-center',
+      'songkick',
+      'pensa-no-evento',
+      'ingresso'
+    ], { errors: ['disk-ingressos'] }));
   });
 
   it('should track error on event multi-save error', async () => {
@@ -851,19 +882,11 @@ describe('Crawlers Routes', () => {
       return multiSaveCalls === 1 ? Promise.reject(err) : Promise.resolve({});
     });
     const response = await start();
-    expect(loggerService.track).toHaveBeenCalledWith('Events Multi Save Error', err, {
-      crawler_name: 'blueticket',
-      crawler_mode: 'regular',
-      crawler_stage: 'save',
-      crawler_processing_time: expect.any(Number),
-      crawler_total_events: expect.any(Number)
+    expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: blueticket', err, {
+      task_duration: expect.any(Number)
     });
     expect(loggerService.track).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({
-      duration: expect.any(Number),
-      successes: 6,
-      failures: 1
-    });
+    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS, { errors: ['blueticket'] }));
   });
 });

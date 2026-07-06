@@ -1,6 +1,6 @@
-const { CRAWL_ERROR, EVENTS_MULTI_SAVE_ERROR } = require('../constants/eventNames');
 const eventService = require('../services/event');
-const loggerService = require('../services/logger');
+const idService = require('../services/id');
+const reportService = require('../services/report');
 const blueticketCrawler = require('../crawlers/blueticket');
 const diskIngressosCrawler = require('../crawlers/disk-ingressos');
 const eticketCenterCrawler = require('../crawlers/eticket-center');
@@ -10,23 +10,23 @@ const songkickCrawler = require('../crawlers/songkick');
 const symplaCrawler = require('../crawlers/sympla');
 const tockifyCrawler = require('../crawlers/tockify');
 const ingressoCrawler = require('../crawlers/ingresso');
+const { useCounter } = require('../hooks/useCounter');
+const { useReporter } = require('../hooks/useReporter');
 
 const _public = {};
 
 _public.start = async (req, res) => {
   const { mode } = req.body;
-  return new Promise(resolve => {
-    const crawlers = getCrawlers(mode);
-    const { onCrawlSuccess, onCrawlError } = useCompleter(crawlers, { startTime: Date.now(), resolve });
-    crawlers.forEach(({ name, crawl }) => {
-      const crawlerStartTime = Date.now();
-      crawl().then(events => {
-        onCrawlSuccess(events, { crawlerName: name, mode, crawlerStartTime });
-      }).catch(err => {
-        onCrawlError(err, { crawlerName: name, mode, crawlerStartTime });
-      });
-    });
-  }).then(stats => res.status(200).send(stats));
+  const reportId = idService.generate();
+  const { monitor } = useReporter(reportId);
+  const crawlers = getCrawlers(mode);
+  await monitor('Crawling: Total', () => runCrawlers(crawlers, reportId));
+  const reportItems = [...reportService.get(reportId)];
+  reportService.delete(reportId);
+  res.status(200).send({
+    reportJson: reportItems,
+    reportTxt: reportService.buildTextReport(reportItems)
+  });
 };
 
 function getCrawlers(mode){
@@ -52,47 +52,20 @@ function getDefaultCrawlers(){
   ];
 }
 
-function useCompleter(crawlers, { startTime, resolve }){
-  const completed = [];
-  const onComplete = ({ response, isError }) => {
-    completed.push({ response, isError });
-    completed.length === crawlers.length && resolve(buildStats(completed, startTime));
-  };
-  const onCrawlSuccess = (events, context) => {
-    eventService.multiSave(events).then(response => {
-      onComplete({ response, isError: false });
-    }).catch(err => {
-      loggerService.track(EVENTS_MULTI_SAVE_ERROR, err, buildTrackingMetadata({ ...context, stage: 'save', totalEvents: events.length }));
-      onComplete({ response: err, isError: true });
-    });
-  };
-  const onCrawlError = (err, context) => {
-    loggerService.track(CRAWL_ERROR, err, buildTrackingMetadata({ ...context, stage: 'crawl' }));
-    onComplete({ response: err, isError: true });
-  };
-  return { onCrawlSuccess, onCrawlError };
+async function runCrawlers(crawlers, reportId){
+  await Promise.all(crawlers.map(({ name, crawl }) => runCrawler(name, crawl, reportId)));
 }
 
-function buildTrackingMetadata({ crawlerName, mode, stage, crawlerStartTime, totalEvents }){
-  return {
-    crawler_name: crawlerName,
-    crawler_mode: mode || 'regular',
-    crawler_stage: stage,
-    crawler_processing_time: Date.now() - crawlerStartTime,
-    crawler_total_events: totalEvents
-  };
-}
-
-function buildStats(completed, startTime){
-  return {
-    duration: Date.now() - startTime,
-    successes: getCompletionTypeCount(completed, 'success'),
-    failures: getCompletionTypeCount(completed, 'failure')
-  };
-}
-
-function getCompletionTypeCount(completed, type){
-  return completed.filter(data => type == 'success' ? !data.isError : data.isError).length;
+async function runCrawler(name, crawl, reportId){
+  const { check } = useCounter();
+  const task = `Crawling: ${name}`;
+  try {
+    const events = await crawl();
+    await eventService.multiSave(events);
+    reportService.addItem(reportId, { task, result: 'success', time: check() });
+  } catch (err) {
+    reportService.addItem(reportId, { task, result: 'error', time: check() }, err);
+  }
 }
 
 module.exports = _public;
