@@ -6,7 +6,7 @@ const _public = {};
 const categoryAliasesMap = buildCategoryAliasesMap();
 
 _public.findCategoryByKeywords = keywords => {
-  return keywords.reduce((matchedCategory, keyword) => {
+  return keywords?.reduce((matchedCategory, keyword) => {
     return matchedCategory || categoryAliasesMap.get(buildNormalizedToken(keyword));
   }, null);
 };

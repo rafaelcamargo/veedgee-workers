@@ -14,7 +14,7 @@ _public.crawl = () => {
 
 function buildEvents(events){
   return events.reduce((result, event) => {
-    return shouldCrawl(event) ? [...result, FormatEvent(event)] : result;
+    return shouldCrawl(event) ? [...result, formatEvent(event)] : result;
   }, []);
 }
 
@@ -23,7 +23,7 @@ function shouldCrawl(event){
   return eventService.isWantedCity(city, state);
 }
 
-function FormatEvent(event){
+function formatEvent(event){
   const { eventname, date, city, state, classification } = event._source;
   const category = eventCategoryService.findCategoryByKeywords(classification);
   return {
