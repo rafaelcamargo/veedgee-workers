@@ -154,19 +154,11 @@ _public.CATEGORY_ALIASES = {
   theater: [
     'theater',
     'theatre',
-    'play',
-    'drama',
-    'stage',
-    'stage play',
     'acting',
-    'performance',
-    'espetáculo',
     'teatro',
     'teatros',
-    'peça',
     'dramaturgia',
     'encenação',
-    'palco',
     'apresentação teatral'
   ],
   movies: [
