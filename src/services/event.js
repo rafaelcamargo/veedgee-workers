@@ -45,7 +45,8 @@ function formatEvent(event){
     state,
     country,
     url,
-    category
+    category,
+    image
   } = event;
   return {
     title: capitalize(removeUnnecessarySpaces(fixInvalidSpaceChars(title))),
@@ -56,6 +57,7 @@ function formatEvent(event){
     country,
     url,
     category,
+    image,
     slug: buildEventSlug(event)
   };
 }

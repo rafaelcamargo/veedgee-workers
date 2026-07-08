@@ -29,6 +29,7 @@ function formatEvent($eventEl){
   const [date, time] = formatDateTime($eventEl);
   const [city, state] = formatCityState($eventEl);
   const category = eventCategoryService.findCategoryByKeywords([extractCategorySlug(href)]);
+  const image = extractImageUrl($eventEl);
   return {
     title: eventLink.text(),
     date,
@@ -37,8 +38,19 @@ function formatEvent($eventEl){
     state,
     country: 'BR',
     url: [BASE_URL, href].join(''),
-    ...(category && { category })
+    ...(category && { category }),
+    ...(image && { image })
   };
+}
+
+function extractImageUrl($eventEl){
+  const image = findImageUrl($eventEl);
+  return image && !image.startsWith('data:') && image;
+}
+
+function findImageUrl(html){
+  const find = attrName => html.find('.ImgPrincipal').attr(attrName);
+  return [find('data-src'), find('src')].find(Boolean);
 }
 
 function extractCategorySlug(href){

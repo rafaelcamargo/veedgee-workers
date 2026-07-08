@@ -64,7 +64,8 @@ function extractEventsFromSinglePost(post){
         state: 'SC',
         country: 'BR',
         url: `https://www.instagram.com/poraodaliga/p/${post.id}/`,
-        ...(category && { category })
+        ...(category && { category }),
+        image: post.imageUrl
       };
     });
   });

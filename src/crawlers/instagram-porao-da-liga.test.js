@@ -65,7 +65,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       state: 'SC',
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
-      category: 'comedy'
+      category: 'comedy',
+      image: imageUrl
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });
@@ -85,7 +86,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       state: 'SC',
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
-      category: 'music'
+      category: 'music',
+      image: imageUrl
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });
@@ -196,7 +198,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       state: 'SC',
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
-      category: 'comedy'
+      category: 'comedy',
+      image: imageUrl
     }]);
     expect(loggerService.track).toHaveBeenCalledWith(
       VLM_INFERENCE_PARSE_ERROR,
@@ -230,7 +233,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       state: 'SC',
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
-      category: 'music'
+      category: 'music',
+      image: imageUrl
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });

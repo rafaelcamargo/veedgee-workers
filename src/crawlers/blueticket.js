@@ -25,7 +25,8 @@ function buildEvents(data){
       state: item.uf_cidade,
       country: 'BR',
       url: `https://www.blueticket.com.br/evento/${item.codigo}/${item.slug}`,
-      ...(category && { category })
+      ...(category && { category }),
+      ...(item.url && { image: item.url })
     };
   });
 }

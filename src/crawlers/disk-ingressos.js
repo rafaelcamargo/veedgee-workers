@@ -1,4 +1,4 @@
-const { BASE_URL } = require('../constants/disk-ingressos');
+const { BASE_URL, IMAGE_BASE_URL } = require('../constants/disk-ingressos');
 const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
 const urlService = require('../services/url');
@@ -24,8 +24,9 @@ function shouldCrawl(event){
 }
 
 function formatEvent(event){
-  const { eventname, date, city, state, classification } = event._source;
+  const { eventname, date, city, state, classification, imagewebp: webpImgPath, image: defaultImgPath } = event._source;
   const category = eventCategoryService.findCategoryByKeywords(classification);
+  const image = buildImageURL({ webpImgPath, defaultImgPath });
   return {
     title: eventname,
     date,
@@ -33,8 +34,14 @@ function formatEvent(event){
     state,
     country: 'BR',
     url: buildEventURL(event._source),
-    ...(category && { category })
+    ...(category && { category }),
+    ...(image && { image })
   };
+}
+
+function buildImageURL({ webpImgPath, defaultImgPath }){
+  const imgPath = [webpImgPath, defaultImgPath].find(Boolean);
+  return imgPath && `${IMAGE_BASE_URL}${imgPath}`;
 }
 
 function buildEventURL({ date, eventname, city, state, slug, groupid }){

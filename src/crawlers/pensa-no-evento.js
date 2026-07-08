@@ -31,7 +31,7 @@ function crawlEventsByCityCode(code){
 
 function buildEvents(data){
   return data.map(item => {
-    const { evento, data, cidade, estado, url } = item;
+    const { evento, data, cidade, estado, url, capaURL } = item;
     const [date, time] = parseDateTime(data);
     const category = eventCategoryService.findCategoryByKeywords(
       eventCategoryService.extractCategoryKeywordsFromText(evento)
@@ -44,7 +44,8 @@ function buildEvents(data){
       state: estado,
       country: 'BR',
       url,
-      ...(category && { category })
+      ...(category && { category }),
+      ...(capaURL && { image: capaURL })
     };
   }).filter(builtEvent => !isBlackListed(builtEvent));
 }

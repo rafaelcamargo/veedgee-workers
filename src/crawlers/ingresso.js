@@ -18,7 +18,8 @@ function buildEvents(items, { city, state }){
   return items.flatMap(({ contentItems }) => contentItems.map(movie => formatMovieEvent({ ...movie, city, state })));
 }
 
-function formatMovieEvent({ title, url, premiereDate, contentType, city, state }){
+function formatMovieEvent({ title, url, premiereDate, contentType, city, state, images }){
+  const poster = images?.find(({ type }) => type === 'PosterPortrait');
   return {
     title,
     date: buildEventDate(premiereDate?.localDate),
@@ -26,7 +27,8 @@ function formatMovieEvent({ title, url, premiereDate, contentType, city, state }
     state,
     country: 'BR',
     url,
-    category: contentType
+    category: contentType,
+    ...(poster && { image: poster.url })
   };
 }
 

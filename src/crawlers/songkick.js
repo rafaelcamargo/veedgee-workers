@@ -1,4 +1,5 @@
 const cheerio = require('cheerio');
+const { IMAGE_HOST } = require('../constants/songkick');
 const eventService = require('../services/event');
 const songkickResource = require('../resources/songkick');
 
@@ -42,6 +43,7 @@ function formatEvent($eventEl){
   const [data] = JSON.parse($eventEl.text().trim());
   const [date, time] = formatDateTime(data.startDate);
   const [city, state] = formatCityState(data);
+  const image = buildImageURL(data.image);
   return {
     title: data.name,
     date,
@@ -50,8 +52,13 @@ function formatEvent($eventEl){
     state,
     country: 'BR',
     url: data.url.split('?')[0],
-    category: 'music'
+    category: 'music',
+    ...(image && { image })
   };
+}
+
+function buildImageURL(imagePath){
+  return imagePath && !imagePath.startsWith('http') && `${IMAGE_HOST}/${imagePath}`;
 }
 
 function formatDateTime(dateString){

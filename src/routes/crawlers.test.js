@@ -96,6 +96,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6359/29-02-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-danilo-gentili-sessao-extra',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6359.webp',
         category: 'comedy'
       },
       {
@@ -107,6 +108,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6277/01-03-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-criss-paiva',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6277.webp',
         category: 'comedy'
       },
       {
@@ -118,6 +120,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6371/01-03-2024/pr/curitiba/tributo-secos-e-molhados-especial-50-anos',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6371.webp',
         category: 'music'
       },
       {
@@ -129,6 +132,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6155/01-03-2024/sc/joinville/the-beast-experience',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6155.webp',
         category: 'music'
       },
       {
@@ -140,6 +144,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6380/06-03-2024/pr/curitiba/dhouse-apresenta-orgulho-do-papai-com-giovana-fagundes',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6380.webp',
         category: 'comedy'
       },
       {
@@ -151,6 +156,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6212/09-03-2024/sc/florianopolis/chico-cesar-zeca-baleiro',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6212.webp',
         category: 'music'
       },
       {
@@ -162,6 +168,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6410/09-03-2024/pr/curitiba/dhouse-apresenta-40-com-eduardo-jerico',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6410.webp',
         category: 'comedy'
       },
       {
@@ -173,6 +180,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6468/11-03-2024/pr/curitiba/1-encontro-aaonca',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6468.webp',
         category: 'festivals'
       },
       {
@@ -184,6 +192,7 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6211/09-04-2024/rs/porto-alegre/palestra-com-zico',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6211.webp',
         category: 'education'
       },
       {
@@ -195,6 +204,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6013/02-05-2024/pr/curitiba/yamandu-costa',
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6013.webp',
         category: 'music'
       }
     ]);
@@ -220,6 +230,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-joinville/29-02/21-00/',
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2023/09/06//512b809896-elvis-experience-com-dean-z-em-joinville_2.webp',
         category: 'music'
       },
       {
@@ -231,6 +242,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-blumenau/02-03/21-00/',
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2023/09/13//fa311ad974-elvis-experience-com-dean-z-em-blumenau_2.webp',
         category: 'music'
       },
       {
@@ -242,6 +254,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/stand-up/gratiluz-com-dra-rosangela/15-03/20-30/',
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//3bb07b7d32-gratiluz-com-dra-rosangela_2.webp',
         category: 'comedy'
       },
       {
@@ -253,6 +266,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/musical/rei-leao-o-musical/16-03/16-00/',
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//eb8eaacfc1-rei-leao-o-musical_2.webp',
         category: 'musicals'
       },
       {
@@ -264,6 +278,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/ultimate-queen-orquestra/15-06/21-00/',
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//fd5cc002c9-ultimate-queen-orquestra_2.webp',
         category: 'music'
       },
       {
@@ -275,6 +290,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/stand-up/bruna-louise-joi/22-06/19-00/',
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/02/19//d0693447a5-bruna-louise-joi_2.webp',
         category: 'comedy'
       },
       {
@@ -286,6 +302,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/stand-up/se-e-que-voce-me-entende-com-raphael-ghanem-joinville/',
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/05/09//a6d458423a-se-e-que-voce-me-entende-com-raphael-ghanem-joinvi_2.webp',
         category: 'comedy'
       }
     ]);
@@ -311,6 +328,7 @@ describe('Crawlers Routes', () => {
       state: 'SC',
       country: 'BR',
       url: 'https://www.blueticket.com.br/evento/33937/samba-jurere',
+      image: 'https://d2hnilqqbw3vnf.cloudfront.net/images/imagens/full/vQHiYmhjLdXXQtFWFmTVfJ6dv2JLBMEdMILf64kF.jpeg',
       category: 'music'
     }]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -468,6 +486,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41724580-di-ferrero-at-teatro-carlos-gomes',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/5604398/huge_avatar',
         category: 'music'
       },
       {
@@ -479,6 +498,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804717-dead-fish-at-ahoy-tavern-club',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/483130/huge_avatar',
         category: 'music'
       },
       {
@@ -489,6 +509,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/festivals/176531-tba/id/41792900-tba-festival-2024',
+        image: 'https://images.sk-static.com/images/media/profile_images/events/41792900/huge_avatar?series_id=176531',
         category: 'music'
       },
       {
@@ -499,6 +520,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.songkick.com/pt/festivals/3647009-espetaculo-teatral-bita-e-os-animais-em-curitiba-pr/id/41761308-espetculo-teatral-bita-e-os-animais-em-curitiba-pr-2024',
+        image: 'https://images.sk-static.com/images/media/profile_images/events/41761308/huge_avatar?series_id=3647009',
         category: 'music'
       },
       {
@@ -510,6 +532,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41714611-overdriver-duo-at-teatro-fernanda-montenegro',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/10157597/huge_avatar',
         category: 'music'
       },
       {
@@ -521,6 +544,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41728574-terraplana-at-basement-cultural',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/9318084/huge_avatar',
         category: 'music'
       },
       {
@@ -532,6 +556,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41696929-ana-canas-at-teatro-ademir-rosa',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/835759/huge_avatar',
         category: 'music'
       },
       {
@@ -543,6 +568,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41794649-mdc-at-hangar-t6-listening-bar',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/42472/huge_avatar',
         category: 'music'
       },
       {
@@ -554,6 +580,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41792887-dj-brinquinho-sc-at-bierteca-bar',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/10244481/huge_avatar',
         category: 'music'
       },
       {
@@ -565,6 +592,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804579-vintage-culture-at-warung-beach-club',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/7295284/huge_avatar',
         category: 'music'
       },
       {
@@ -576,6 +604,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41629431-lagum-at-belvedere-beach-club',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/8920664/huge_avatar',
         category: 'music'
       },
       {
@@ -587,6 +616,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41724578-di-ferrero-at-teatro-da-liga',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/5604398/huge_avatar',
         category: 'music'
       },
       {
@@ -598,6 +628,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804725-mordor-truckers-at-zeit-cervejaria',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/10097828/huge_avatar',
         category: 'music'
       },
       {
@@ -609,6 +640,7 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41683692-rogerio-skylab-at-bar-opiniao',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/2056134/huge_avatar',
         category: 'music'
       },
       {
@@ -620,6 +652,7 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41817222-lucas-morato-at-samba-da-galera',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/10293013/huge_avatar',
         category: 'music'
       },
       {
@@ -630,6 +663,7 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41806309-ivete-sangalo-at-estadio-beirario',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/134839/huge_avatar',
         category: 'music'
       },
       {
@@ -641,6 +675,7 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41801925-jinjer-at-opiniao',
+        image: 'https://images.sk-static.com/images/media/profile_images/artists/1038996/huge_avatar',
         category: 'music'
       }
     ]);
@@ -707,7 +742,8 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.pensanoevento.com.br/sitev2/eventos/96401/sextou-na-casinha'
+        url: 'https://www.pensanoevento.com.br/sitev2/eventos/96401/sextou-na-casinha',
+        image: 'https://files.pensanoevento.com.br/images/eventos/69aed1ac1bb6c_capa.webp'
       },
       {
         title: 'Dazaranha - Acústico',
@@ -718,6 +754,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.pensanoevento.com.br/sitev2/eventos/95881/dazaranha-acustico',
+        image: 'https://files.pensanoevento.com.br/images/eventos/697be1269dc98_capa.webp',
         category: 'music'
       }
     ]);
@@ -747,6 +784,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.ingresso.com/filme/homem-aranha-um-novo-dia?city=joinville&partnership=home',
+        image: 'https://ingresso-a.akamaihd.net/prd/img/movie/homem-aranha-um-novo-dia/9d6a5a94-700f-4b42-8c0d-85123b524aca.webp',
         category: 'movies'
       },
       {
@@ -757,6 +795,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.ingresso.com/filme/toy-story-5?city=joinville&partnership=home',
+        image: 'https://ingresso-a.akamaihd.net/prd/img/movie/toy-story-5/2a9f7d1e-400c-4caa-b989-c1fb513dd416.webp',
         category: 'movies'
       },
       {
@@ -767,6 +806,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.ingresso.com/filme/dia-d?city=sao-jose&partnership=home',
+        image: 'https://ingresso-a.akamaihd.net/prd/img/movie/dia-d/1d2f9e4c-665c-4e75-89e1-bf3068f51094.webp',
         category: 'movies'
       }
     ]);
@@ -811,7 +851,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQKoU0bjYlV/',
-        category: 'comedy'
+        category: 'comedy',
+        image: 'https://scontent.cdninstagram.com/v/t51.82787-15/570681184_18383968534181168_4843678019630848986_n.jpg?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=105&ig_cache_key=Mzc0OTk4Njk5MjI4NjE3MzUyNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzNTB4MTY4OC5zZHIuQzMifQ%3D%3D&_nc_ohc=VBhucAO3A3UQ7kNvwFY16dE&_nc_oc=AdkeiZQfUnLsHzPEjkthVkkLncIIt_W4DIZupVnVrSgPYbqDTxauSFbEteLHGqjqDi8&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AffCmTrPlzFzo91nJUz-4vZ24Txal2RTGWb2PFTUxxgdlA&oe=69019D68'
       },
       {
         title: 'Porão Da Liga - Luna Session',
@@ -821,7 +862,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.instagram.com/poraodaliga/p/DQKM1JVjcRv/'
+        url: 'https://www.instagram.com/poraodaliga/p/DQKM1JVjcRv/',
+        image: 'https://scontent.cdninstagram.com/v/t51.71878-15/568628682_1464491714638994_3360513472882390708_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=Mzc0OTg2NjA2ODQ1NTA0ODMwMw%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjY0MHgxMTM2LnNkci5DMyJ9&_nc_ohc=ruXvuDHYR0QQ7kNvwFQosww&_nc_oc=Adk9G77kjSy-iC9Hx0igPO8yUF2N1Sbb-AEW5pTMVPAdue-lzj0rLBjC1v91loB4JnU&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfesvSsvErfaCmbWWADH8HdQJWU0bL_zVZQz7j-KasS81A&oe=69018A8E'
       },
       {
         title: 'Porão Da Liga - Billbird',
@@ -832,7 +874,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQG-U0DDQLr/',
-        category: 'music'
+        category: 'music',
+        image: 'https://scontent.cdninstagram.com/v/t51.82787-15/569919988_18291886258260658_3184029433435846307_n.heic?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=100&ig_cache_key=Mzc0ODk1Nzg0ODk5MTQ5ODk4Nw%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=i0xtAFn0s0QQ7kNvwHlGy3y&_nc_oc=AdlJi_lAMHYESBJj4monv9VUD_Wxf8SnUfA0iNNJp6pVltJNTtX-_q6Qw04oWPBx53Y&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfesowsYX57RfR-pJfGJfNWZDpHLWMP1MIwvD8JNE5ImgA&oe=69018E96'
       },
       {
         title: 'Porão Da Liga - Vinyl Archive',
@@ -842,7 +885,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.instagram.com/poraodaliga/p/DQCZOAsDkdY/'
+        url: 'https://www.instagram.com/poraodaliga/p/DQCZOAsDkdY/',
+        image: 'https://scontent.cdninstagram.com/v/t51.82787-15/565350356_18533401627056688_671384966620171138_n.heic?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=108&ig_cache_key=Mzc0NzY2ODc1MzkwMDI1OTE2MA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=xE_6x97baxYQ7kNvwFuEIRv&_nc_oc=AdkVOc8KX7JxY9BEnY3zomxJ4vqteD_90ugykvS3eoWgZAnBPBaXAMZREm7WYXCWHdk&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfegBSKe5m4NfRKNfPZ801vnXJ3jSzRmi9O-n0YI3EdwFA&oe=69018826'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
