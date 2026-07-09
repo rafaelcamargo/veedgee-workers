@@ -687,7 +687,7 @@ describe('Crawlers Routes', () => {
   });
 
   it('should save Tockify events', async () => {
-    dateService.getNow = jest.fn(() => new Date(2024, 4, 16));
+    dateService.getNow = jest.fn(() => new Date(2026, 6, 9));
     tockifyResource.get = jest.fn(({ max, calname, startms }) => {
       expect(startms).toEqual(expect.any(Number));
       const data = {
@@ -698,25 +698,24 @@ describe('Crawlers Routes', () => {
     const response = await start();
     expect(eventsResource.bulkSave).toHaveBeenCalledWith([
       {
-        title: 'A Pequena Monstra',
-        slug: 'a-pequena-monstra-joinville-sc-20240516',
-        date: '2024-05-16',
-        time: '15:00',
+        title: 'Feira Ecosol Dona Francisca - Artesanatos E Similares',
+        slug: 'feira-ecosol-dona-francisca-artesanatos-e-similares-joinville-sc-20260709',
+        category: 'fair',
+        date: '2026-07-09',
+        time: '09:30',
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://tockify.com/eventosemjoinville/detail/2025/1715871600000',
-        category: 'theater'
+        url: 'https://tockify.com/eventosemjoinville/detail/4169/1783589400000'
       },
       {
-        title: 'Sc Outdoor Expo',
-        slug: 'sc-outdoor-expo-joinville-sc-20240517',
-        date: '2024-05-17',
+        title: 'Artista Denise Schlickmann Faz Oficina Gratuita No Garten Shopping',
+        slug: 'artista-denise-schlickmann-faz-oficina-gratuita-no-garten-shopping-joinville-sc-20260709',
+        date: '2026-07-09',
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://tockify.com/eventosemjoinville/detail/2006/1715904000000',
-        category: 'sports'
+        url: 'https://tockify.com/eventosemjoinville/detail/4224/1783612800000'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);

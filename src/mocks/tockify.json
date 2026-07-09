@@ -3,20 +3,20 @@
     {
       "calid": "635fde8ec287a829555e8e3d",
       "eid": {
-        "uid": "2025",
+        "uid": "4169",
         "seq": 0,
-        "tid": 1715871600000,
+        "tid": 1783589400000,
         "rid": 0
       },
       "when": {
         "start": {
-          "millis": 1715871600000,
+          "millis": 1783589400000,
           "tzid": "UTC",
           "ltz": "UTC",
           "offset": 0
         },
         "end": {
-          "millis": 1716062400000,
+          "millis": 1783616400000,
           "tzid": "UTC",
           "ltz": "UTC",
           "offset": 0
@@ -25,89 +25,157 @@
       },
       "content": {
         "summary": {
-          "text": "A Pequena Monstra"
+          "text": "Feira EcoSol Dona Francisca - Artesanatos e Similares"
         },
         "description": {
-          "text": "Nos dias 16, 17 e 18 de maio, o Galpão de Teatro da Ajote recebe o solo da dançarina Letícia Souza, “A pequena monstra: o retorno”. Com co-direção dela e Neto Machado (BA), a obra traz à cena uma refl"
+          "text": "Venha prestigiar a Feira EcoSol Dona Francisca! Um espaço onde os visitantes encontram itens de variados segmentos, como artesanato, cultura, manualidades, moda"
         },
         "tagset": {
           "tags": {
             "default": [
               "Cidade-de-Cultura",
-              "Artes",
-              "Teatro"
+              "Cidade-de-Inovação",
+              "Eventos-em-Joinville",
+              "Gastronomia",
+              "Feira"
             ]
           }
         },
-        "place": "Galpão de teatro da AJOTE",
-        "address": "Rua XV de Novembro, 1383 - América, Joinville - SC, 89201-602, Brasil",
+        "place": "Rua das Palmeiras",
+        "address": "Alameda Brüstlein - Centro, Joinville - SC, 89201-040, Brasil",
         "location": {
-          "place_id": "ChIJaV5Upj6w3pQRkmYd0w-_Hu0",
-          "name": "R. XV de Novembro, 1383",
-          "latitude": -26.2990127,
-          "longitude": -48.8556022,
-          "c_street": "1383 Rua XV de Novembro",
-          "c_locality": "América",
+          "place_id": "EjNBbGFtZWRhIEJyw7xzdGxlaW4gLSBDZW50cm8sIEpvaW52aWxsZSAtIFNDLCBCcmFzaWwiLiosChQKEglTdARvSbDelBFbPPwcUbP7DBIUChIJ-XUz9Uew3pQRX140zvOeq7A",
+          "name": "Alameda Brüstlein",
+          "latitude": -26.303508,
+          "longitude": -48.8437981,
+          "c_street": "Alameda Brüstlein",
+          "c_locality": "Centro",
           "c_region": "Santa Catarina",
           "c_country": "Brasil",
-          "c_postcode": "89201-602"
-        }
-      }
+          "c_postcode": "89201-040"
+        },
+        "vlocation": {},
+        "attachments": [],
+        "customButtonText": "Site Prefeitura de Joinville",
+        "customButtonLink": "https://www.joinville.sc.gov.br/eventos/feira-de-artesanato-e-similares-da-economia-solidaria/",
+        "noDetail": false,
+        "imageIdNg": "6a455588892b27f8db966a91",
+        "imageSets": [
+          {
+            "ownerId": "635fddd3c287a829555e8da5",
+            "ownerType": "user",
+            "id": "6a455588892b27f8db966a91",
+            "name": "user-image: CONVITE_VISITEJOINVILLE_DF_09.07",
+            "altText": "",
+            "width": 1080,
+            "height": 1080,
+            "size": 895608,
+            "masterFormat": "png",
+            "variantFormat": "jpg",
+            "tags": []
+          }
+        ],
+        "performers": []
+      },
+      "sorter": "999_01C5971A_0901_01C5971A-1-01C598DC_4169-01C5971A-0-0",
+      "ctstamp": 1782928778406,
+      "dtstamp": 1782928778406,
+      "status": {
+        "name": "scheduled"
+      },
+      "kind": "singleton",
+      "isExternal": false
     },
     {
       "calid": "635fde8ec287a829555e8e3d",
       "eid": {
-        "uid": "2006",
+        "uid": "4224",
         "seq": 0,
-        "tid": 1715904000000,
+        "tid": 1783612800000,
         "rid": 0
       },
       "when": {
         "start": {
-          "millis": 1715904000000,
+          "millis": 1783555200000,
           "tzid": "UTC",
           "ltz": "UTC",
           "offset": 0
         },
         "end": {
-          "millis": 1716163200000,
+          "millis": 1783803600000,
           "tzid": "UTC",
           "ltz": "UTC",
           "offset": 0
         },
-        "allDay": true
+        "allDay": false
       },
       "content": {
         "summary": {
-          "text": "SC Outdoor Expo"
+          "text": "Artista Denise Schlickmann faz oficina gratuita no Garten Shopping"
         },
         "description": {
-          "text": "A tão esperada Feira SC Outdoor Expo promete ser um sucesso já na primeira edição, marcada para acontecer nos dias 17 a 19 de maio de 2024, no Parque de Exposição Expoville em Joinville/SC. Este event"
+          "text": "Artista Denise Schlickmann faz oficina gratuita no Garten Shopping Atividade será realizada neste sábado, na Galeria Garten, com vagas limitadas e material incl"
         },
         "tagset": {
           "tags": {
             "default": [
-              "Eventos-Esportivos",
-              "Cidade-de-Experiência",
+              "oficina-artistica",
               "Eventos-em-Joinville",
-              "Rural-e-Aventura"
+              "Joinville-com-Chuva",
+              "Artes"
             ]
           }
         },
-        "place": "Expoville",
-        "address": "Rua XV de Novembro, 4315 - Glória, Joinville - SC, 89216-203, Brasil",
+        "place": "Garten Shoppinh",
+        "address": "Avenida Rolf Wiest - Zona Industrial Norte, Joinville - SC, 89223-005, Brasil",
         "location": {
-          "place_id": "ChIJ32aTOKq63pQRSPfJTk3fZAM",
-          "name": "R. XV de Novembro, 4315",
-          "latitude": -26.2970174,
-          "longitude": -48.88167350000001,
-          "c_street": "4315 Rua XV de Novembro",
-          "c_locality": "Glória",
+          "place_id": "Ej5Bdi4gUm9sZiBXaWVzdCAtIFpvbmEgSW5kdXN0cmlhbCBOb3J0ZSwgSm9pbnZpbGxlIC0gU0MsIEJyYXNpbCIuKiwKFAoSCUfz89e6r96UEaVGL1tdRv-YEhQKEgmh073FeaXelBG_D3QW27yDrA",
+          "name": "Avenida Rolf Wiest",
+          "latitude": -26.2533106,
+          "longitude": -48.8521589,
+          "c_street": "Avenida Rolf Wiest",
+          "c_locality": "Zona Industrial Norte",
           "c_region": "Santa Catarina",
           "c_country": "Brasil",
-          "c_postcode": "89216-203"
-        }
-      }
+          "c_postcode": "89223-005"
+        },
+        "vlocation": {},
+        "attachments": [],
+        "noDetail": false,
+        "imageIdNg": "6a4fc91f892b27f8db313eb8",
+        "imageSets": [
+          {
+            "ownerId": "635fddd3c287a829555e8da5",
+            "ownerType": "user",
+            "id": "6a4fc91f892b27f8db313eb8",
+            "name": "user-image: garten_denise",
+            "altText": "artista denise schlickmann esta sentada proximo de uma tela pintada com a imagem de uma bailarina",
+            "width": 1082,
+            "height": 901,
+            "size": 132070,
+            "masterFormat": "jpg",
+            "variantFormat": "jpg",
+            "tags": []
+          }
+        ],
+        "performers": []
+      },
+      "sorter": "999_01C598A0_0901_01C598A0-1-01C5A50C_4224-01C598A0-0-0",
+      "ctstamp": 1783613728164,
+      "dtstamp": 1783613728164,
+      "status": {
+        "name": "scheduled"
+      },
+      "kind": "singleton",
+      "isExternal": false
     }
-  ]
+  ],
+  "metaData": {
+    "to": 3960,
+    "from": 3958,
+    "end": 3,
+    "hasNext": true,
+    "start": 0,
+    "hasPrev": true
+  }
 }
