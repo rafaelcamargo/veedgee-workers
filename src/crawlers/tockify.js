@@ -24,17 +24,19 @@ function buildEvents(data){
   return data.map(item => {
     const [date, time] = buildDateTime(item.when.start.millis);
     const tags = item.content.tagset.tags.default;
+    const description = item.content.description && item.content.description.text;
     const category = eventCategoryService.findCategoryByKeywords(tags);
-    const result = {
+    return {
       title: item.content.summary.text,
       date,
+      time,
       city: 'Joinville',
       state: 'SC',
       country: 'BR',
       url: `https://tockify.com/eventosemjoinville/detail/${item.eid.uid}/${item.eid.tid}`,
-      ...(category && { category })
+      category,
+      description
     };
-    return time ? { ...result, time } : result;
   });
 }
 

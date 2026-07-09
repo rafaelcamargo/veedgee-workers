@@ -1,14 +1,14 @@
 [
   {
-    "text": "```json\n[\n    {\n        \"title\": \"Em Pé na Rede\",\n        \"date\": \"2023-11-06\",\n        \"time\": \"20:00\",\n        \"category\": \"comedy\"\n    }\n]\n```"
+    "text": "```json\n[\n    {\n        \"title\": \"Em Pé na Rede\",\n        \"date\": \"2023-11-06\",\n        \"time\": \"20:00\",\n        \"category\": \"comedy\",\n        \"description\": \"Show de comédia com Victor, Osmar e Rominho\"\n    }\n]\n```"
   },
   {
-    "text": "```json\n[\n    {\n        \"title\": \"Luna Session\",\n        \"date\": \"2025-12-05\",\n        \"time\": \"21:30\",\n        \"category\": null\n    }\n]\n```"
+    "text": "```json\n[\n    {\n        \"title\": \"Luna Session\",\n        \"date\": \"2025-12-05\",\n        \"time\": \"21:30\",\n        \"category\": null,\n        \"description\": \"Festa de Halloween no Porão da Liga\"\n    }\n]\n```"
   },
   {
-    "text": "```json\n[\n  {\n    \"title\": \"Porão da Liga - Billbird\",\n    \"date\": \"2025-10-24\",\n    \"time\": null,\n    \"category\": \"music\"\n  },\n  {\n    \"title\": \"Porão da Liga - ELEA8NOR\",\n    \"date\": \"2025-10-25\",\n    \"time\": null\n  }\n]\n```"
+    "text": "```json\n[\n  {\n    \"title\": \"Porão da Liga - Billbird\",\n    \"date\": \"2025-10-24\",\n    \"time\": null,\n    \"category\": \"music\",\n    \"description\": \"Show com Billbird no Porão da Liga\"\n  },\n  {\n    \"title\": \"Porão da Liga - ELEA8NOR\",\n    \"date\": \"2025-10-25\",\n    \"time\": null,\n    \"description\": \"Show com ELEA8NOR no Porão da Liga\"\n  }\n]\n```"
   },
   {
-    "text": "```json\n[\n    {\n        \"title\": \"Vinyl Archive\",\n        \"date\": \"2025-11-15\",\n        \"time\": \"22:00\",\n        \"category\": \"podcast\"\n    }\n]\n```"
+    "text": "```json\n[\n    {\n        \"title\": \"Vinyl Archive\",\n        \"date\": \"2025-11-15\",\n        \"time\": \"22:00\",\n        \"category\": \"podcast\",\n        \"description\": \"Podcast ao vivo com convidados especiais\"\n    }\n]\n```"
   }
 ]

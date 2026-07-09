@@ -487,7 +487,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41724580-di-ferrero-at-teatro-carlos-gomes',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/5604398/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Di Ferrero at Teatro Carlos Gomes at 2024-04-07T20:30:00-0300'
       },
       {
         title: 'Dead Fish',
@@ -499,7 +500,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804717-dead-fish-at-ahoy-tavern-club',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/483130/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Dead Fish, Scumbags, e Speech at Ahoy! Tavern Club at 2024-04-19T19:00:00-0300'
       },
       {
         title: 'Tba Festival 2024',
@@ -510,7 +512,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/festivals/176531-tba/id/41792900-tba-festival-2024',
         image: 'https://images.sk-static.com/images/media/profile_images/events/41792900/huge_avatar?series_id=176531',
-        category: 'music'
+        category: 'music',
+        description: 'TBA Festival 2024 at Rivage at 2024-05-18'
       },
       {
         title: 'Espetáculo Teatral "Bita E Os Animais" Em Curitiba (pr) 2024',
@@ -521,7 +524,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/festivals/3647009-espetaculo-teatral-bita-e-os-animais-em-curitiba-pr/id/41761308-espetculo-teatral-bita-e-os-animais-em-curitiba-pr-2024',
         image: 'https://images.sk-static.com/images/media/profile_images/events/41761308/huge_avatar?series_id=3647009',
-        category: 'music'
+        category: 'music',
+        description: 'Espetáculo Teatral "Bita e os Animais" em Curitiba (PR) 2024 at Espaço Teatro Regina Vogue at 2024-03-02'
       },
       {
         title: 'Overdriver Duo',
@@ -533,7 +537,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41714611-overdriver-duo-at-teatro-fernanda-montenegro',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/10157597/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Overdriver Duo at Teatro Fernanda Montenegro at 2024-03-16T21:00:00-0300'
       },
       {
         title: 'Terraplana',
@@ -545,7 +550,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41728574-terraplana-at-basement-cultural',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/9318084/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'terraplana e Sophia Chablau e Uma Enorme Perda de Tempo at Basement Cultural at 2024-03-16T21:00:00-0300'
       },
       {
         title: 'Ana Cañas',
@@ -557,7 +563,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41696929-ana-canas-at-teatro-ademir-rosa',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/835759/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Ana Cañas at Teatro Ademir Rosa at 2024-03-16T20:00:00-0300'
       },
       {
         title: 'Mdc',
@@ -569,7 +576,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41794649-mdc-at-hangar-t6-listening-bar',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/42472/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'MDC at Hangar T6 Listening Bar at 2024-03-16T22:00:00-0300'
       },
       {
         title: 'Dj Brinquinho Sc',
@@ -581,7 +589,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41792887-dj-brinquinho-sc-at-bierteca-bar',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/10244481/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'DJ Brinquinho SC at Bierteca Bar at 2024-03-22T20:00:00-0300'
       },
       {
         title: 'Vintage Culture',
@@ -593,7 +602,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804579-vintage-culture-at-warung-beach-club',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/7295284/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Vintage Culture at Warung Beach Club at 2024-03-29T22:00:00-0300'
       },
       {
         title: 'Lagum',
@@ -605,7 +615,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41629431-lagum-at-belvedere-beach-club',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/8920664/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Lagum at Belvedere Beach Club at 2024-05-30T21:00:00-0300'
       },
       {
         title: 'Di Ferrero',
@@ -617,7 +628,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41724578-di-ferrero-at-teatro-da-liga',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/5604398/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Di Ferrero at Teatro da Liga at 2024-04-05T20:00:00-0300'
       },
       {
         title: 'Mordor Truckers',
@@ -629,7 +641,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804725-mordor-truckers-at-zeit-cervejaria',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/10097828/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Mordor Truckers, Scumbags, Manguezilla, e Gambazera at Zeit Cervejaria at 2024-04-06T19:00:00-0300'
       },
       {
         title: 'Rogério Skylab',
@@ -641,7 +654,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41683692-rogerio-skylab-at-bar-opiniao',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/2056134/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Rogério Skylab at Bar Opiniao at 2024-03-16T21:00:00-0300'
       },
       {
         title: 'Lucas Morato',
@@ -653,7 +667,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41817222-lucas-morato-at-samba-da-galera',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/10293013/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'lucas morato at Samba da Galera at 2024-03-17T17:00:00-0300'
       },
       {
         title: 'Ivete Sangalo',
@@ -664,7 +679,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41806309-ivete-sangalo-at-estadio-beirario',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/134839/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Ivete Sangalo at Estádio Beira-Rio at 2024-11-16'
       },
       {
         title: 'Jinjer',
@@ -676,7 +692,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41801925-jinjer-at-opiniao',
         image: 'https://images.sk-static.com/images/media/profile_images/artists/1038996/huge_avatar',
-        category: 'music'
+        category: 'music',
+        description: 'Jinjer at Opinião at 2024-11-30T19:00:00-0200'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -706,7 +723,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://tockify.com/eventosemjoinville/detail/2025/1715871600000',
-        category: 'theater'
+        category: 'theater',
+        description: 'Nos dias 16, 17 e 18 de maio, o Galpão de Teatro da Ajote recebe o solo da dançarina Letícia Souza, \u201cA pequena monstra: o retorno\u201d. Com co-direção dela e Neto Machado (BA), a obra traz à cena uma refl'
       },
       {
         title: 'Sc Outdoor Expo',
@@ -716,7 +734,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://tockify.com/eventosemjoinville/detail/2006/1715904000000',
-        category: 'sports'
+        category: 'sports',
+        description: 'A tão esperada Feira SC Outdoor Expo promete ser um sucesso já na primeira edição, marcada para acontecer nos dias 17 a 19 de maio de 2024, no Parque de Exposição Expoville em Joinville/SC. Este event'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -852,7 +871,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQKoU0bjYlV/',
         category: 'comedy',
-        image: 'https://scontent.cdninstagram.com/v/t51.82787-15/570681184_18383968534181168_4843678019630848986_n.jpg?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=105&ig_cache_key=Mzc0OTk4Njk5MjI4NjE3MzUyNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzNTB4MTY4OC5zZHIuQzMifQ%3D%3D&_nc_ohc=VBhucAO3A3UQ7kNvwFY16dE&_nc_oc=AdkeiZQfUnLsHzPEjkthVkkLncIIt_W4DIZupVnVrSgPYbqDTxauSFbEteLHGqjqDi8&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AffCmTrPlzFzo91nJUz-4vZ24Txal2RTGWb2PFTUxxgdlA&oe=69019D68'
+        image: 'https://scontent.cdninstagram.com/v/t51.82787-15/570681184_18383968534181168_4843678019630848986_n.jpg?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=105&ig_cache_key=Mzc0OTk4Njk5MjI4NjE3MzUyNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzNTB4MTY4OC5zZHIuQzMifQ%3D%3D&_nc_ohc=VBhucAO3A3UQ7kNvwFY16dE&_nc_oc=AdkeiZQfUnLsHzPEjkthVkkLncIIt_W4DIZupVnVrSgPYbqDTxauSFbEteLHGqjqDi8&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AffCmTrPlzFzo91nJUz-4vZ24Txal2RTGWb2PFTUxxgdlA&oe=69019D68',
+        description: 'Show de comédia com Victor, Osmar e Rominho'
       },
       {
         title: 'Porão Da Liga - Luna Session',
@@ -863,7 +883,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQKM1JVjcRv/',
-        image: 'https://scontent.cdninstagram.com/v/t51.71878-15/568628682_1464491714638994_3360513472882390708_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=Mzc0OTg2NjA2ODQ1NTA0ODMwMw%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjY0MHgxMTM2LnNkci5DMyJ9&_nc_ohc=ruXvuDHYR0QQ7kNvwFQosww&_nc_oc=Adk9G77kjSy-iC9Hx0igPO8yUF2N1Sbb-AEW5pTMVPAdue-lzj0rLBjC1v91loB4JnU&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfesvSsvErfaCmbWWADH8HdQJWU0bL_zVZQz7j-KasS81A&oe=69018A8E'
+        image: 'https://scontent.cdninstagram.com/v/t51.71878-15/568628682_1464491714638994_3360513472882390708_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=Mzc0OTg2NjA2ODQ1NTA0ODMwMw%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjY0MHgxMTM2LnNkci5DMyJ9&_nc_ohc=ruXvuDHYR0QQ7kNvwFQosww&_nc_oc=Adk9G77kjSy-iC9Hx0igPO8yUF2N1Sbb-AEW5pTMVPAdue-lzj0rLBjC1v91loB4JnU&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfesvSsvErfaCmbWWADH8HdQJWU0bL_zVZQz7j-KasS81A&oe=69018A8E',
+        description: 'Festa de Halloween no Porão da Liga'
       },
       {
         title: 'Porão Da Liga - Billbird',
@@ -875,7 +896,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQG-U0DDQLr/',
         category: 'music',
-        image: 'https://scontent.cdninstagram.com/v/t51.82787-15/569919988_18291886258260658_3184029433435846307_n.heic?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=100&ig_cache_key=Mzc0ODk1Nzg0ODk5MTQ5ODk4Nw%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=i0xtAFn0s0QQ7kNvwHlGy3y&_nc_oc=AdlJi_lAMHYESBJj4monv9VUD_Wxf8SnUfA0iNNJp6pVltJNTtX-_q6Qw04oWPBx53Y&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfesowsYX57RfR-pJfGJfNWZDpHLWMP1MIwvD8JNE5ImgA&oe=69018E96'
+        image: 'https://scontent.cdninstagram.com/v/t51.82787-15/569919988_18291886258260658_3184029433435846307_n.heic?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=100&ig_cache_key=Mzc0ODk1Nzg0ODk5MTQ5ODk4Nw%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=i0xtAFn0s0QQ7kNvwHlGy3y&_nc_oc=AdlJi_lAMHYESBJj4monv9VUD_Wxf8SnUfA0iNNJp6pVltJNTtX-_q6Qw04oWPBx53Y&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfesowsYX57RfR-pJfGJfNWZDpHLWMP1MIwvD8JNE5ImgA&oe=69018E96',
+        description: 'Show com Billbird no Porão da Liga'
       },
       {
         title: 'Porão Da Liga - Vinyl Archive',
@@ -886,7 +908,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQCZOAsDkdY/',
-        image: 'https://scontent.cdninstagram.com/v/t51.82787-15/565350356_18533401627056688_671384966620171138_n.heic?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=108&ig_cache_key=Mzc0NzY2ODc1MzkwMDI1OTE2MA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=xE_6x97baxYQ7kNvwFuEIRv&_nc_oc=AdkVOc8KX7JxY9BEnY3zomxJ4vqteD_90ugykvS3eoWgZAnBPBaXAMZREm7WYXCWHdk&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfegBSKe5m4NfRKNfPZ801vnXJ3jSzRmi9O-n0YI3EdwFA&oe=69018826'
+        image: 'https://scontent.cdninstagram.com/v/t51.82787-15/565350356_18533401627056688_671384966620171138_n.heic?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=108&ig_cache_key=Mzc0NzY2ODc1MzkwMDI1OTE2MA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=xE_6x97baxYQ7kNvwFuEIRv&_nc_oc=AdkVOc8KX7JxY9BEnY3zomxJ4vqteD_90ugykvS3eoWgZAnBPBaXAMZREm7WYXCWHdk&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfegBSKe5m4NfRKNfPZ801vnXJ3jSzRmi9O-n0YI3EdwFA&oe=69018826',
+        description: 'Podcast ao vivo com convidados especiais'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);

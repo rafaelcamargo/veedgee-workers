@@ -66,7 +66,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
       category: 'comedy',
-      image: imageUrl
+      image: imageUrl,
+      description: 'Show de comédia com Victor, Osmar e Rominho'
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });
@@ -199,7 +200,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
       category: 'comedy',
-      image: imageUrl
+      image: imageUrl,
+      description: 'Show de comédia com Victor, Osmar e Rominho'
     }]);
     expect(loggerService.track).toHaveBeenCalledWith(
       VLM_INFERENCE_PARSE_ERROR,

@@ -29,6 +29,24 @@ describe('Event Service', () => {
     }]);
   });
 
+  it('should propagate description when present', async () => {
+    const event = {
+      title: 'Some Show',
+      date: '2026-06-20',
+      time: '21:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'http://some.url.com',
+      description: 'A great show with live music'
+    };
+    await eventService.multiSave([event]);
+    expect(eventsResource.bulkSave).toHaveBeenCalledWith([{
+      ...event,
+      slug: 'some-show-joinville-sc-20260620'
+    }]);
+  });
+
   it('should not save past events', async () => {
     const event = {
       title: 'Some Title',

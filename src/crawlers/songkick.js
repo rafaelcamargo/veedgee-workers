@@ -53,6 +53,7 @@ function formatEvent($eventEl){
     country: 'BR',
     url: data.url.split('?')[0],
     category: 'music',
+    ...(data.description && { description: data.description }),
     ...(image && { image })
   };
 }
