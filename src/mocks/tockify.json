@@ -168,12 +168,79 @@
       },
       "kind": "singleton",
       "isExternal": false
+    },
+    {
+      "calid": "635fde8ec287a829555e8e3d",
+      "eid": {
+        "uid": "4301",
+        "seq": 0,
+        "tid": 1783711800000,
+        "rid": 0
+      },
+      "when": {
+        "start": {
+          "millis": 1783711800000,
+          "tzid": "UTC",
+          "ltz": "UTC",
+          "offset": 0
+        },
+        "end": {
+          "millis": 1783719000000,
+          "tzid": "UTC",
+          "ltz": "UTC",
+          "offset": 0
+        },
+        "allDay": false
+      },
+      "content": {
+        "summary": {
+          "text": "Espetáculo Infantil O Pequeno Príncipe"
+        },
+        "description": {
+          "text": "Apresentação teatral infantil gratuita inspirada na obra de Antoine de Saint-Exupéry, com duração de 50 minutos e entrada liberada mediante retirada de senhas."
+        },
+        "tagset": {
+          "tags": {
+            "default": [
+              "Teatro",
+              "Eventos-em-Joinville",
+              "Joinville-com-Crianças"
+            ]
+          }
+        },
+        "place": "Teatro Don Orione",
+        "address": "Rua Dona Francisca, 6055 - Iririú, Joinville - SC, 89227-100, Brasil",
+        "location": {
+          "place_id": "ChIJexample4301joinville",
+          "name": "Rua Dona Francisca, 6055",
+          "latitude": -26.241102,
+          "longitude": -48.912345,
+          "c_street": "6055 Rua Dona Francisca",
+          "c_locality": "Iririú",
+          "c_region": "Santa Catarina",
+          "c_country": "Brasil",
+          "c_postcode": "89227-100"
+        },
+        "vlocation": {},
+        "attachments": [],
+        "noDetail": false,
+        "imageSets": [],
+        "performers": []
+      },
+      "sorter": "999_01C5A680_0901_01C5A680-1-01C5B2A0_4301-01C5A680-0-0",
+      "ctstamp": 1783711800000,
+      "dtstamp": 1783711800000,
+      "status": {
+        "name": "scheduled"
+      },
+      "kind": "singleton",
+      "isExternal": false
     }
   ],
   "metaData": {
     "to": 3960,
     "from": 3958,
-    "end": 3,
+    "end": 4,
     "hasNext": true,
     "start": 0,
     "hasPrev": true

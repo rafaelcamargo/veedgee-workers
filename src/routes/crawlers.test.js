@@ -706,7 +706,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://tockify.com/eventosemjoinville/detail/4169/1783589400000'
+        url: 'https://tockify.com/eventosemjoinville/detail/4169/1783589400000',
+        image: 'https://d3flpus5evl89n.cloudfront.net/635fddd3c287a829555e8da5/6a455588892b27f8db966a91/scaled_1024.jpg'
       },
       {
         title: 'Artista Denise Schlickmann Faz Oficina Gratuita No Garten Shopping',
@@ -715,7 +716,19 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://tockify.com/eventosemjoinville/detail/4224/1783612800000'
+        url: 'https://tockify.com/eventosemjoinville/detail/4224/1783612800000',
+        image: 'https://d3flpus5evl89n.cloudfront.net/635fddd3c287a829555e8da5/6a4fc91f892b27f8db313eb8/scaled_896.jpg'
+      },
+      {
+        title: 'Espetáculo Infantil O Pequeno Príncipe',
+        slug: 'espetaculo-infantil-o-pequeno-principe-joinville-sc-20260710',
+        category: 'theater',
+        date: '2026-07-10',
+        time: '19:30',
+        city: 'Joinville',
+        state: 'SC',
+        country: 'BR',
+        url: 'https://tockify.com/eventosemjoinville/detail/4301/1783711800000'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
