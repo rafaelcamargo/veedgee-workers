@@ -69,6 +69,12 @@ describe('Crawlers Routes', () => {
     pensaNoEventoResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     songkickResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('songkick-empty.html') }));
     symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
+    symplaResource.getEventDetailsPage = jest.fn(url => {
+      const data = {
+        'https://www.sympla.com.br/evento/show-vera-loca/2384437': getMockedFile('sympla-event-page.html')
+      }[url] || '';
+      return Promise.resolve({ data });
+    });
     tockifyResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     ingressoResource.getNowPlaying = jest.fn(() => Promise.resolve({ data: {} }));
     delayService.pause = jest.fn();
@@ -441,7 +447,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.sympla.com.br/evento/show-vera-loca/2384437',
-        category: 'music'
+        category: 'music',
+        image: 'https://images.sympla.com.br/6a2990aca4986-lg.png'
       },
       {
         title: 'Funduncinho Do Tabu',

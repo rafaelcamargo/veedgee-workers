@@ -1,16 +1,19 @@
+const cheerio = require('cheerio');
 const { WANTED_CITIES } = require('../constants/events');
 const { removeAccents } = require('../services/text');
 const dateService = require('../services/date');
 const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
+const objectService = require('../services/object');
+const requestService = require('../services/request');
 const symplaResource = require('../resources/sympla');
 
 const _public = {};
 
 _public.crawl = () => {
-  return Promise.all(buildLocations().map(fetchContentByLocation)).then(responses => {
-    return responses.map(({ data }) => data?.data ? buildEvents(data.data) : []).flat();
-  });
+  return Promise.all(buildLocations().map(fetchContentByLocation))
+    .then(buildEventsList)
+    .then(enrichEventsWithImages);
 };
 
 function buildLocations(){
@@ -22,6 +25,27 @@ function buildLocations(){
 
 function fetchContentByLocation({ city, state }){
   return symplaResource.get({ city, state });
+}
+
+function buildEventsList(responses){
+  return responses.map(({ data }) => data?.data ? buildEvents(data.data) : []).flat();
+}
+
+function enrichEventsWithImages(events){
+  return requestService.bulkRequest({
+    method: enrichEventWithImage,
+    params: events,
+    batchSize: 2
+  });
+}
+
+function enrichEventWithImage(event){
+  return symplaResource.getEventDetailsPage(event.url).then(({ data }) => {
+    return objectService.removeFalsyAttrs({
+      ...event,
+      image: extractImageUrl(data)
+    });
+  });
 }
 
 function buildEvents(data){
@@ -44,6 +68,11 @@ function buildEvents(data){
       ...(category && { category })
     };
   });
+}
+
+function extractImageUrl(html){
+  const $ = cheerio.load(html);
+  return $('meta[property="og:image"]').attr('content');
 }
 
 function parseDateTime(dateTimeString){

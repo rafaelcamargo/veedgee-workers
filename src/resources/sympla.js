@@ -5,6 +5,8 @@ const _public = {};
 
 _public.get = params => baseResource.post(`${BASE_URL}/search`, getSearchParams(params));
 
+_public.getEventDetailsPage = url => baseResource.get(url);
+
 function getSearchParams(params = {}){
   return {
     service: '/v4/search',
