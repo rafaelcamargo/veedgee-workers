@@ -3,6 +3,7 @@ const { CATEGORY_ALIASES } = require('../constants/event-categories');
 const dateService = require('../services/date');
 const eventCategoryService = require('../services/event-category');
 const eventFetcherService = require('../services/event-fetcher');
+const eventService = require('../services/event');
 const loggerService = require('../services/logger');
 const { removeAccents } = require('../services/text');
 const googleAiResource = require('../resources/google-ai');
@@ -32,7 +33,8 @@ function getPostsInfo(data){
   return data.result.edges.map(({ node }) => {
     return {
       id: node.code,
-      imageUrl: findMediumResImage(node.image_versions2.candidates).url
+      imageUrl: findMediumResImage(node.image_versions2.candidates).url,
+      caption: node.caption?.text
     };
   }).slice(0, 4);
 }
@@ -55,7 +57,6 @@ function extractEventsFromSinglePost(post){
     return events.map(evt => {
       const { title, date, time, category: vlmCategory } = evt;
       const formattedTitle = formatEventTitle(title);
-      const category = resolveCategory(vlmCategory, formattedTitle);
       return {
         title: formattedTitle,
         date: parseEventDate(date),
@@ -64,8 +65,9 @@ function extractEventsFromSinglePost(post){
         state: 'SC',
         country: 'BR',
         url: `https://www.instagram.com/poraodaliga/p/${post.id}/`,
-        ...(category && { category }),
-        image: post.imageUrl
+        image: post.imageUrl,
+        category: resolveCategory(vlmCategory, formattedTitle),
+        description: eventService.parseDescription(post.caption)
       };
     });
   });
