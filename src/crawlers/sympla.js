@@ -1,19 +1,16 @@
-const cheerio = require('cheerio');
 const { WANTED_CITIES } = require('../constants/events');
-const { removeAccents } = require('../services/text');
+const symplaResource = require('../resources/sympla');
 const dateService = require('../services/date');
 const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
 const objectService = require('../services/object');
-const requestService = require('../services/request');
-const symplaResource = require('../resources/sympla');
+const { removeAccents } = require('../services/text');
 
 const _public = {};
 
 _public.crawl = () => {
   return Promise.all(buildLocations().map(fetchContentByLocation))
-    .then(buildEventsList)
-    .then(enrichEventsWithImages);
+    .then(buildEventsList);
 };
 
 function buildLocations(){
@@ -31,23 +28,6 @@ function buildEventsList(responses){
   return responses.map(({ data }) => data?.data ? buildEvents(data.data) : []).flat();
 }
 
-function enrichEventsWithImages(events){
-  return requestService.bulkRequest({
-    method: enrichEventWithImage,
-    params: events,
-    batchSize: 2
-  });
-}
-
-function enrichEventWithImage(event){
-  return symplaResource.getEventDetailsPage(event.url).then(({ data }) => {
-    return objectService.removeFalsyAttrs({
-      ...event,
-      image: extractImageUrl(data)
-    });
-  });
-}
-
 function buildEvents(data){
   return data.filter(item => {
     const { location } = item;
@@ -57,7 +37,7 @@ function buildEvents(data){
     const category = eventCategoryService.findCategoryByKeywords(
       eventCategoryService.extractCategoryKeywordsFromText(item.name)
     );
-    return {
+    return objectService.removeFalsyAttrs({
       title: item.name,
       date,
       time,
@@ -65,14 +45,10 @@ function buildEvents(data){
       state: item.location.state,
       country: 'BR',
       url: item.url,
-      ...(category && { category })
-    };
+      category,
+      image: item.images?.original
+    });
   });
-}
-
-function extractImageUrl(html){
-  const $ = cheerio.load(html);
-  return $('meta[property="og:image"]').attr('content');
 }
 
 function parseDateTime(dateTimeString){

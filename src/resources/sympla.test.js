@@ -4,7 +4,6 @@ const symplaResource = require('./sympla');
 describe('Sympla Resource', () => {
   beforeEach(() => {
     baseResource.post = jest.fn();
-    baseResource.get = jest.fn();
   });
 
   it('should get events', () => {
@@ -55,11 +54,5 @@ describe('Sympla Resource', () => {
         }
       }
     );
-  });
-
-  it('should get event details page', () => {
-    const url = 'https://www.sympla.com.br/evento/show-vera-loca/2384437';
-    symplaResource.getEventDetailsPage(url);
-    expect(baseResource.get).toHaveBeenCalledWith(url);
   });
 });
