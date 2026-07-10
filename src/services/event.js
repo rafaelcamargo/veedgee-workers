@@ -6,6 +6,8 @@ const {
   fixInvalidSpaceChars
 } = require('../services/text');
 const dateService = require('../services/date');
+const htmlService = require('../services/html');
+const objectService = require('../services/object');
 const urlService = require('../services/url');
 const eventFetcherService = require('../services/event-fetcher');
 const eventsResource = require('../resources/events');
@@ -30,6 +32,12 @@ _public.isWantedCity = (cityName, cityState) => {
   });
 };
 
+_public.parseDescription = description => {
+  if (!description) return '';
+  const html = htmlService.createHTMLFromString(description);
+  return html.textContent.substring(0, 1000);
+};
+
 function getEventSlugsFromToday(){
   return eventFetcherService.cachedFetch({ minDate: dateService.buildTodayDateString() }).then(({ data }) => {
     return data.map(({ slug }) => slug);
@@ -46,9 +54,10 @@ function formatEvent(event){
     country,
     url,
     category,
-    image
+    image,
+    description
   } = event;
-  return {
+  return objectService.removeFalsyAttrs({
     title: capitalize(removeUnnecessarySpaces(fixInvalidSpaceChars(title))),
     date,
     time,
@@ -58,8 +67,9 @@ function formatEvent(event){
     url,
     category,
     image,
+    description,
     slug: buildEventSlug(event)
-  };
+  });
 }
 
 function isPastEventDate(date){

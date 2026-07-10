@@ -91,7 +91,6 @@ describe('Crawlers Routes', () => {
         title: 'Dhouse Apresenta - Stand Up Comedy Com Danilo Gentili - Sessão Extra',
         slug: 'dhouse-apresenta-stand-up-comedy-com-danilo-gentili-sessao-extra-curitiba-pr-20240229',
         date: '2024-02-29',
-        time: undefined,
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
@@ -103,7 +102,6 @@ describe('Crawlers Routes', () => {
         title: 'Dhouse Apresenta: Stand Up Comedy Com Criss Paiva',
         slug: 'dhouse-apresenta-stand-up-comedy-com-criss-paiva-curitiba-pr-20240301',
         date: '2024-03-01',
-        time: undefined,
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
@@ -115,7 +113,6 @@ describe('Crawlers Routes', () => {
         title: 'Tributo Secos E Molhados - Especial 50 Anos',
         slug: 'tributo-secos-e-molhados-especial-50-anos-curitiba-pr-20240301',
         date: '2024-03-01',
-        time: undefined,
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
@@ -127,19 +124,18 @@ describe('Crawlers Routes', () => {
         title: 'The Beast Experience',
         slug: 'the-beast-experience-joinville-sc-20240301',
         date: '2024-03-01',
-        time: undefined,
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6155/01-03-2024/sc/joinville/the-beast-experience',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6155.webp',
-        category: 'music'
+        category: 'music',
+        description: 'The Beast Experience - Iron Maiden Cover\\r\\nFormada em Maio de 2023 com o propósito de elevar a experiência do público em um show de uma banda cover, a banda formada por Raphael Mendes, Eric Claros, Guilherme Spilack, Pedro Migliacci, Danilo Bellintani e Vinícius Barbosa juntou a experiência de músicos já conhecidos em seus antigos trabalhos tributo ao Iron Maiden para este objetivo.\\r\\nO projeto tem performances teatrais inspiradas na banda original, diferentes cenários e figurinos, e os integrantes apresentam instrumentos iguais aos de seus mestres, executando com ótima musicalidade um repertório bastante abrangente do Iron Maiden com 3 guitarristas!\\r\\nE com essa mistura de experiência, talento e notoriedade no meio digital e musical formou-se o projeto \'The Beast Experience - Ultimate Iron Maiden Tribute\'.'
       },
       {
         title: 'Dhouse Apresenta – \"Orgulho Do Papai\" Com Giovana Fagundes',
         slug: 'dhouse-apresenta-orgulho-do-papai-com-giovana-fagundes-curitiba-pr-20240306',
         date: '2024-03-06',
-        time: undefined,
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
@@ -151,19 +147,18 @@ describe('Crawlers Routes', () => {
         title: 'Chico César & Zeca Baleiro',
         slug: 'chico-cesar-zeca-baleiro-florianopolis-sc-20240309',
         date: '2024-03-09',
-        time: undefined,
         city: 'Florianópolis',
         state: 'SC',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6212/09-03-2024/sc/florianopolis/chico-cesar-zeca-baleiro',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6212.webp',
-        category: 'music'
+        category: 'music',
+        description: '‘Ao Arrepio da Lei’,\nálbum de inéditas de Chico César e Zeca Baleiro\nUma nova safra de mais de 20 canções marcou a retomada da parceria inaugurada há mais de 30 anos por Chico César e Zeca Baleiro. Animados pelo resultado das novas parcerias musicais, anunciaram o lançamento de um álbum, antecipando duas canções, “Respira” e “Lovers”, em maio de 2021. Com tantos trabalhos em paralelo, Chico e Zeca só retomaram as gravações em 2022, quando lançaram novo single duplo com as inéditas “Verão” e “Beije-me Antes”, e finalizaram o álbum no final de 2023.\n“Ao Arrepio da Lei” é o nome do álbum que Chico César e Zeca Baleiro lançam em março de 2024, quando também iniciam uma turnê por algumas das principais cidades e capitais do país. No repertório do show, as novas parcerias, sucessos de ambos e canções que fazem parte da memória afetiva dos dois artistas.\nQuando os shows e gravações pararam por conta da pandemia, Chico César e Zeca Baleiro começaram a compor bastante juntos. Entre maio de 2020'
       },
       {
         title: 'Dhouse Apresenta – 40 + Com Eduardo Jericó',
         slug: 'dhouse-apresenta-40-com-eduardo-jerico-curitiba-pr-20240309',
         date: '2024-03-09',
-        time: undefined,
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
@@ -175,31 +170,30 @@ describe('Crawlers Routes', () => {
         title: '1º Encontro Aaonça',
         slug: '1-encontro-aaonca-curitiba-pr-20240311',
         date: '2024-03-11',
-        time: undefined,
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6468/11-03-2024/pr/curitiba/1-encontro-aaonca',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6468.webp',
-        category: 'festivals'
+        category: 'festivals',
+        description: 'Dia 11 de março, segunda feira a partir das 19h, no Bar do Alemão ocorrerá o evento \'Ação entre amigos da onça\'.O objetivo é arrecadar fundos para a Aaonça, Associação dos amigos da  onça com finalidade de ajudar a \'carne de onça\' se tornar indicação Geográfica de Curitiba.\\r\\nO ingresso da direito a um \' submarino \' sendo que a canequinha do Steinhaeger poderá ser levada para casa.\\r\\nServiço:\\r\\nPrimeiro Encontro Aaonça, ação entre amigos11 de março a partir das 19h.Bar do Alemão Rua Dr Claudino dos Santos, 63, São Francisco.'
       },
       {
         title: 'Palestra Com Zico',
         slug: 'palestra-com-zico-porto-alegre-rs-20240409',
         date: '2024-04-09',
-        time: undefined,
         city: 'Porto Alegre',
         state: 'RS',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6211/09-04-2024/rs/porto-alegre/palestra-com-zico',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6211.webp',
-        category: 'education'
+        category: 'education',
+        description: '\\r\\nPalestra: LIDERANÇA & FORMAÇÃO DE EQUIPE EM 2024.'
       },
       {
         title: 'Yamandu Costa',
         slug: 'yamandu-costa-curitiba-pr-20240502',
         date: '2024-05-02',
-        time: undefined,
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
@@ -708,7 +702,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://tockify.com/eventosemjoinville/detail/4169/1783589400000',
-        image: 'https://d3flpus5evl89n.cloudfront.net/635fddd3c287a829555e8da5/6a455588892b27f8db966a91/scaled_1024.jpg'
+        image: 'https://d3flpus5evl89n.cloudfront.net/635fddd3c287a829555e8da5/6a455588892b27f8db966a91/scaled_1024.jpg',
+        description: 'Venha prestigiar a Feira EcoSol Dona Francisca! Um espaço onde os visitantes encontram itens de variados segmentos, como artesanato, cultura, manualidades, moda'
       },
       {
         title: 'Artista Denise Schlickmann Faz Oficina Gratuita No Garten Shopping',
@@ -718,7 +713,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://tockify.com/eventosemjoinville/detail/4224/1783612800000',
-        image: 'https://d3flpus5evl89n.cloudfront.net/635fddd3c287a829555e8da5/6a4fc91f892b27f8db313eb8/scaled_896.jpg'
+        image: 'https://d3flpus5evl89n.cloudfront.net/635fddd3c287a829555e8da5/6a4fc91f892b27f8db313eb8/scaled_896.jpg',
+        description: 'Artista Denise Schlickmann faz oficina gratuita no Garten Shopping Atividade será realizada neste sábado, na Galeria Garten, com vagas limitadas e material incl'
       },
       {
         title: 'Espetáculo Infantil O Pequeno Príncipe',
@@ -729,7 +725,8 @@ describe('Crawlers Routes', () => {
         city: 'Joinville',
         state: 'SC',
         country: 'BR',
-        url: 'https://tockify.com/eventosemjoinville/detail/4301/1783711800000'
+        url: 'https://tockify.com/eventosemjoinville/detail/4301/1783711800000',
+        description: 'Apresentação teatral infantil gratuita inspirada na obra de Antoine de Saint-Exupéry, com duração de 50 minutos e entrada liberada mediante retirada de senhas.'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -798,7 +795,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.ingresso.com/filme/homem-aranha-um-novo-dia?city=joinville&partnership=home',
         image: 'https://ingresso-a.akamaihd.net/prd/img/movie/homem-aranha-um-novo-dia/9d6a5a94-700f-4b42-8c0d-85123b524aca.webp',
-        category: 'movies'
+        category: 'movies',
+        description: 'Após o fenômeno global de Homem-Aranha: Sem Volta Para Casa, Homem-Aranha: Um Novo Dia marca um capítulo totalmente novo para Peter Parker e o Homem-Aranha. Quatro anos se passaram desde os eventos de Sem Volta Para Casa, e Peter agora é um adulto vivendo completamente sozinho, tendo se apagado voluntariamente da vida e das memórias de quem ama. Combatendo o crime em uma Nova York que já não sabe mais o seu nome, ele se dedica integralmente a proteger a cidade — um Homem-Aranha em tempo integral —, mas, à medida que as exigências aumentam, a pressão desencadeia uma surpreendente evolução física que ameaça sua própria existência, enquanto um estranho padrão de crimes dá origem a uma das ameaças mais poderosas que ele já enfrentou. '
       },
       {
         title: 'Toy Story 5',
@@ -809,7 +807,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.ingresso.com/filme/toy-story-5?city=joinville&partnership=home',
         image: 'https://ingresso-a.akamaihd.net/prd/img/movie/toy-story-5/2a9f7d1e-400c-4caa-b989-c1fb513dd416.webp',
-        category: 'movies'
+        category: 'movies',
+        description: 'Buzz, Woody, Jessie e os demais brinquedos tradicionais são desafiados pela nova obsessão das crianças do século XXI: os dispositivos eletrônicos.'
       },
       {
         title: 'Dia D',
@@ -820,7 +819,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.ingresso.com/filme/dia-d?city=sao-jose&partnership=home',
         image: 'https://ingresso-a.akamaihd.net/prd/img/movie/dia-d/1d2f9e4c-665c-4e75-89e1-bf3068f51094.webp',
-        category: 'movies'
+        category: 'movies',
+        description: 'A trama de DIA D explorará a existência de alienígenas, mostrando como essa descoberta irá afetar as pessoas ao redor do mundo em nossa sociedade atual.'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -882,7 +882,6 @@ describe('Crawlers Routes', () => {
         title: 'Porão Da Liga - Billbird',
         slug: 'porao-da-liga-billbird-joinville-sc-20251024',
         date: '2025-10-24',
-        time: null,
         city: 'Joinville',
         state: 'SC',
         country: 'BR',

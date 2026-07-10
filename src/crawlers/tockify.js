@@ -2,7 +2,7 @@ const { IMAGE_CDN_HOST, IMAGE_SIZES } = require('../constants/tockify');
 const arrayService = require('../services/array');
 const dateService = require('../services/date');
 const eventCategoryService = require('../services/event-category');
-const objectService = require('../services/object');
+const eventService = require('../services/event');
 const tockifyResource = require('../resources/tockify');
 
 const _public = {};
@@ -27,7 +27,7 @@ function buildEvents(data){
   return data.map(item => {
     const [date, time] = buildDateTime(item.when.start.millis);
     const tags = item.content.tagset.tags.default;
-    return objectService.removeFalsyAttrs({
+    return {
       title: item.content.summary.text,
       date,
       time,
@@ -36,8 +36,9 @@ function buildEvents(data){
       country: 'BR',
       category: eventCategoryService.findCategoryByKeywords(tags),
       image: buildImageURL(item.content),
-      url: `https://tockify.com/eventosemjoinville/detail/${item.eid.uid}/${item.eid.tid}`
-    });
+      url: `https://tockify.com/eventosemjoinville/detail/${item.eid.uid}/${item.eid.tid}`,
+      description: eventService.parseDescription(item.content.description.text)
+    };
   });
 }
 

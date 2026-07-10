@@ -23,9 +23,13 @@ describe('Event Service', () => {
     };
     await eventService.multiSave([event]);
     expect(eventsResource.bulkSave).toHaveBeenCalledWith([{
-      ...event,
-      slug: 'some-title-joinville-sc',
-      date: ''
+      title: 'Some Title',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'http://some.url.com',
+      slug: 'some-title-joinville-sc'
     }]);
   });
 
@@ -41,5 +45,19 @@ describe('Event Service', () => {
     };
     await eventService.multiSave([event]);
     expect(eventsResource.bulkSave).not.toHaveBeenCalled();
+  });
+
+  it('should parse HTML description into plain text', () => {
+    const description = eventService.parseDescription('<p>Hello <strong>world</strong></p>');
+    expect(description).toEqual('Hello world');
+  });
+
+  it('should truncate description to 1000 characters', () => {
+    const description = eventService.parseDescription('a'.repeat(1500));
+    expect(description).toEqual('a'.repeat(1000));
+  });
+
+  it('should return an empty string when no description is passed', () => {
+    expect(eventService.parseDescription()).toEqual('');
   });
 });

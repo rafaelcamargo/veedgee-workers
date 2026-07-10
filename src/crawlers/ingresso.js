@@ -1,6 +1,7 @@
 const { CITIES } = require('../constants/ingresso');
 const ingressoResource = require('../resources/ingresso');
 const dateService = require('../services/date');
+const eventService = require('../services/event');
 
 const _public = {};
 
@@ -18,7 +19,7 @@ function buildEvents(items, { city, state }){
   return items.flatMap(({ contentItems }) => contentItems.map(movie => formatMovieEvent({ ...movie, city, state })));
 }
 
-function formatMovieEvent({ title, url, premiereDate, contentType, city, state, images }){
+function formatMovieEvent({ title, url, premiereDate, contentType, city, state, images, synopsis }){
   const poster = images?.find(({ type }) => type === 'PosterPortrait');
   return {
     title,
@@ -28,7 +29,8 @@ function formatMovieEvent({ title, url, premiereDate, contentType, city, state, 
     country: 'BR',
     url,
     category: contentType,
-    ...(poster && { image: poster.url })
+    image: poster?.url,
+    description: eventService.parseDescription(synopsis)
   };
 }
 

@@ -24,9 +24,16 @@ function shouldCrawl(event){
 }
 
 function formatEvent(event){
-  const { eventname, date, city, state, classification, imagewebp: webpImgPath, image: defaultImgPath } = event._source;
-  const category = eventCategoryService.findCategoryByKeywords(classification);
-  const image = buildImageURL({ webpImgPath, defaultImgPath });
+  const {
+    eventname,
+    date,
+    city,
+    state,
+    classification,
+    description,
+    imagewebp: webpImgPath,
+    image: defaultImgPath
+  } = event._source;
   return {
     title: eventname,
     date,
@@ -34,8 +41,9 @@ function formatEvent(event){
     state,
     country: 'BR',
     url: buildEventURL(event._source),
-    ...(category && { category }),
-    ...(image && { image })
+    category: eventCategoryService.findCategoryByKeywords(classification),
+    image: buildImageURL({ webpImgPath, defaultImgPath }),
+    description: description && eventService.parseDescription(description)
   };
 }
 
@@ -46,7 +54,7 @@ function buildImageURL({ webpImgPath, defaultImgPath }){
 
 function buildEventURL({ date, eventname, city, state, slug, groupid }){
   const uri = [
-    buildUrlPrfix(groupid),
+    buildUrlPrefix(groupid),
     slug,
     formatDate(date),
     state,
@@ -56,7 +64,7 @@ function buildEventURL({ date, eventname, city, state, slug, groupid }){
   return `${BASE_URL}/${uri}`;
 }
 
-function buildUrlPrfix(groupid){
+function buildUrlPrefix(groupid){
   return groupid === 0 ? 'evento' : 'grupo';
 }
 

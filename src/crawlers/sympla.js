@@ -3,7 +3,6 @@ const symplaResource = require('../resources/sympla');
 const dateService = require('../services/date');
 const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
-const objectService = require('../services/object');
 const { removeAccents } = require('../services/text');
 
 const _public = {};
@@ -37,7 +36,7 @@ function buildEvents(data){
     const category = eventCategoryService.findCategoryByKeywords(
       eventCategoryService.extractCategoryKeywordsFromText(item.name)
     );
-    return objectService.removeFalsyAttrs({
+    return {
       title: item.name,
       date,
       time,
@@ -47,7 +46,7 @@ function buildEvents(data){
       url: item.url,
       category,
       image: item.images?.original
-    });
+    };
   });
 }
 
