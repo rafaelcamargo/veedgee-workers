@@ -5,4 +5,6 @@ const _public = {};
 
 _public.get = params => baseResource.get(`${BASE_URL}/eventos`, params);
 
+_public.getEventDetailsPage = url => baseResource.get(url);
+
 module.exports = _public;

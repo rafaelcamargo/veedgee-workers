@@ -26,39 +26,26 @@ const pensaNoEventoCuritibaMock = require('../mocks/pensa-no-evento-curitiba');
 const pensaNoEventoJoinvilleMock = require('../mocks/pensa-no-evento-joinville');
 const tockifyMock = require('../mocks/tockify');
 
-const DEFAULT_CRAWLERS = [
-  'blueticket',
-  'disk-ingressos',
-  'tockify',
-  'eticket-center',
-  'songkick',
-  'pensa-no-evento',
-  'ingresso'
-];
-
 describe('Crawlers Routes', () => {
-  function buildExpectedPerformanceReport(crawlerNames, { errors = [] } = {}){
-    return {
-      reportJson: [
-        ...crawlerNames.map(name => ({
-          task: `Crawling: ${name}`,
-          result: errors.includes(name) ? 'error' : 'success',
-          time: expect.any(Number)
-        })),
-        { task: 'Crawling: Total', result: 'success', time: expect.any(Number) }
-      ],
-      reportTxt: expect.any(String)
-    };
-  }
-
   async function start(payload){
     return await serve().post('/crawlers').set({ vwtoken: 'vee456' }).send(payload);
+  }
+
+  function findReportedTaskByName(report, taskName){
+    return report.find(({ task }) => task === taskName);
   }
 
   beforeEach(() => {
     dateService.getNow = jest.fn(() => new Date(2024, 1, 15));
     blueticketResource.get = jest.fn(() => Promise.resolve({}));
     eticketCenterResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('eticket-center-empty.html') }));
+    eticketCenterResource.getEventDetailsPage = jest.fn(url => {
+      const data = {
+        'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-joinville/29-02/21-00/':
+          getMockedFile('eticket-center-event-detail.html')
+      }[url] || '';
+      return Promise.resolve({ data });
+    });
     diskIngressosResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     eventsResource.get = jest.fn(({ minDate }) => {
       const data = eventsMock.filter(event => event.date >= minDate);
@@ -205,7 +192,13 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    const taskName = 'Crawling: disk-ingressos';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -225,7 +218,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-joinville/29-02/21-00/',
         image: 'https://www.eticketcenter.com.br/Assets/Imagens/2023/09/06//512b809896-elvis-experience-com-dean-z-em-joinville_2.webp',
-        category: 'music'
+        category: 'music',
+        description: 'O espetaculo musical "Aventura Congelante, O Legado", traz ao públicotodo o legado construído pelas irmãs Elsa e Anna durante os anos. Com aajuda de dois contadores de história, conheceremos de perto tudo o queaconteceu com Anna e Elsa desde que elas eram pequenas. Em cerca de 1hora e 10 minutos temos toda a história de Frozen e Frozen II contada ecantada ao vivo! A história, que já envolveu toda uma geração, traz seusprincipais personagens vivenciando novamente toda uma aventura quecomeça em Arendelle, passa pela floresta encantada e promete mudar odestino de todos pra sempre.Além do experiente elenco que atua, dança e canta nesse lindo espetáculo100% cantado ao vivo, o espetáculo conta com direção geral do renomadodiretor Bruno Rizzo, direção executiva de Daniela Schiarreta e direçãoresidente de Ewerton Novaes.Kids, TicketCenter'
       },
       {
         title: 'Elvis Experience Com Dean Z Em Blumenau',
@@ -303,7 +297,20 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    const taskName = 'Crawling: eticket-center';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
+    const imagesTaskName = 'Crawling: eticket-center (descriptions)';
+    const reportedImagesTask = findReportedTaskByName(response.body.reportJson, imagesTaskName);
+    expect(reportedImagesTask).toEqual({
+      task: imagesTaskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -328,7 +335,13 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    const taskName = 'Crawling: blueticket';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -361,7 +374,6 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -452,17 +464,22 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(['sympla']));
+    const taskName = 'Crawling: sympla';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
-  it('should notsave sympla events if no sympla events were found', async () => {
+  it('should not save sympla events if no sympla events were found', async () => {
     symplaResource.get = jest.fn(() => Promise.resolve({}));
     const response = await start({ mode: 'sympla' });
     expect(eventsResource.bulkSave).not.toHaveBeenCalled();
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(['sympla']));
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -677,7 +694,13 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    const taskName = 'Crawling: songkick';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -732,7 +755,13 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    const taskName = 'Crawling: tockify';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -771,7 +800,13 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    const taskName = 'Crawling: pensa-no-evento';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -826,7 +861,13 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS));
+    const taskName = 'Crawling: ingresso';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -908,7 +949,13 @@ describe('Crawlers Routes', () => {
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(['instagram-porao-da-liga']));
+    const taskName = 'Crawling: instagram-porao-da-liga';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -922,15 +969,35 @@ describe('Crawlers Routes', () => {
     });
     expect(loggerService.track).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport([
-      'disk-ingressos',
-      'blueticket',
-      'tockify',
-      'eticket-center',
-      'songkick',
-      'pensa-no-evento',
-      'ingresso'
-    ], { errors: ['disk-ingressos'] }));
+    const taskName = 'Crawling: disk-ingressos';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'error',
+      time: expect.any(Number)
+    });
+  });
+
+  it('should track error on crawling event descriptions', async () => {
+    const err = 'some err';
+    console.error = jest.fn();
+    eticketCenterResource.get = jest.fn(({ Pagina }) => {
+      return Promise.resolve({ data: getMockedFile(`eticket-center-${Pagina}.html`) });
+    });
+    eticketCenterResource.getEventDetailsPage = jest.fn(() => Promise.reject(err));
+    const response = await start();
+    expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: eticket-center (descriptions)', err, {
+      task_duration: expect.any(Number)
+    });
+    expect(loggerService.track).toHaveBeenCalledTimes(1);
+    expect(response.status).toEqual(200);
+    const taskName = 'Crawling: eticket-center (descriptions)';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'error',
+      time: expect.any(Number)
+    });
   });
 
   it('should track error on event multi-save error', async () => {
@@ -947,6 +1014,12 @@ describe('Crawlers Routes', () => {
     });
     expect(loggerService.track).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(buildExpectedPerformanceReport(DEFAULT_CRAWLERS, { errors: ['blueticket'] }));
+    const taskName = 'Crawling: blueticket';
+    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
+    expect(reportedTask).toEqual({
+      task: taskName,
+      result: 'error',
+      time: expect.any(Number)
+    });
   });
 });

@@ -1,14 +1,18 @@
 const cheerio = require('cheerio');
 const { BASE_URL } = require('../constants/eticket-center');
+const eticketCenterResource = require('../resources/eticket-center');
 const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
-const eticketCenterResource = require('../resources/eticket-center');
+const reportService = require('../services/report');
+const requestService = require('../services/request');
+const { useCounter } = require('../hooks/useCounter');
 
 const _public = {};
 
-_public.crawl = () => {
+_public.crawl = reportId => {
   return Promise.all([1, 2, 3].map(fetchContentByPageNumber)).then(responses => {
-    return responses.map(({ data }) => buildEvents(data)).flat();
+    const events = responses.map(({ data }) => buildEvents(data)).flat();
+    return enrichEventsWithDescriptions(events, reportId);
   });
 };
 
@@ -28,8 +32,6 @@ function formatEvent($eventEl){
   const href = eventLink.attr('href');
   const [date, time] = formatDateTime($eventEl);
   const [city, state] = formatCityState($eventEl);
-  const category = eventCategoryService.findCategoryByKeywords([extractCategorySlug(href)]);
-  const image = extractImageUrl($eventEl);
   return {
     title: eventLink.text(),
     date,
@@ -38,8 +40,8 @@ function formatEvent($eventEl){
     state,
     country: 'BR',
     url: [BASE_URL, href].join(''),
-    ...(category && { category }),
-    ...(image && { image })
+    category: eventCategoryService.findCategoryByKeywords([extractCategorySlug(href)]),
+    image: extractImageUrl($eventEl)
   };
 }
 
@@ -72,6 +74,37 @@ function formatCityState($eventEl){
   const location = $eventEl.find('.ExtLocol').text().trim().split('(');
   const cityState = location && location[1];
   return cityState && cityState.replace(')', '').split('/');
+}
+
+async function enrichEventsWithDescriptions(events, reportId){
+  const { check } = useCounter();
+  const task = 'Crawling: eticket-center (descriptions)';
+  try {
+    const enrichedEvents = await requestService.bulkRequest({
+      method: enrichEventWithDescription,
+      params: events,
+      batchSize: 2
+    });
+    reportService.addItem(reportId, { task, result: 'success', time: check() });
+    return enrichedEvents;
+  } catch (err) {
+    reportService.addItem(reportId, { task, result: 'error', time: check() }, err);
+    return events;
+  }
+}
+
+function enrichEventWithDescription(event){
+  return eticketCenterResource.getEventDetailsPage(event.url).then(({ data }) => {
+    return {
+      ...event,
+      description: eventService.parseDescription(extractDescription(data))
+    };
+  });
+}
+
+function extractDescription(htmlString){
+  const match = htmlString.match(/<meta name="Description" content="(.*)" \/>/i);
+  return match?.[1];
 }
 
 module.exports = _public;

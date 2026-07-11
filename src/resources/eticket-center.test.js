@@ -20,4 +20,10 @@ describe('ETicket Center Resource', () => {
     eticketCenterResource.get(params);
     expect(baseResource.get).toHaveBeenCalledWith(getETicketCenterBaseUrl(), params);
   });
+
+  it('should get event details page by url', () => {
+    const url = 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-joinville/29-02/21-00/';
+    eticketCenterResource.getEventDetailsPage(url);
+    expect(baseResource.get).toHaveBeenCalledWith(url);
+  });
 });

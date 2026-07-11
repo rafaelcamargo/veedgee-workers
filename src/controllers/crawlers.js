@@ -60,7 +60,7 @@ async function runCrawler(name, crawl, reportId){
   const { check } = useCounter();
   const task = `Crawling: ${name}`;
   try {
-    const events = await crawl();
+    const events = await crawl(reportId);
     await eventService.multiSave(events);
     reportService.addItem(reportId, { task, result: 'success', time: check() });
   } catch (err) {
