@@ -11,7 +11,38 @@ describe('Event Service', () => {
     eventsResource.get = jest.fn(() => Promise.resolve({ data: [] }));
   });
 
-  it('should ignore invalid dates', async () => {
+  it('should not save events without date', async () => {
+    const eventWithDate = {
+      title: 'Some Title',
+      date: '2026-06-08',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'http://some.url.com'
+    };
+    const eventWithoutDate = {
+      title: 'Other Title',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'http://other.url.com'
+    };
+    await eventService.multiSave([eventWithDate, eventWithoutDate]);
+    expect(eventsResource.bulkSave).toHaveBeenCalledWith([{
+      title: 'Some Title',
+      date: '2026-06-08',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'http://some.url.com',
+      slug: 'some-title-joinville-sc-20260608'
+    }]);
+  });
+
+  it('should not save events with invalid dates', async () => {
     const event = {
       title: 'Some Title',
       date: 'Any other thing',
@@ -22,15 +53,7 @@ describe('Event Service', () => {
       url: 'http://some.url.com'
     };
     await eventService.multiSave([event]);
-    expect(eventsResource.bulkSave).toHaveBeenCalledWith([{
-      title: 'Some Title',
-      time: '20:00',
-      city: 'Joinville',
-      state: 'SC',
-      country: 'BR',
-      url: 'http://some.url.com',
-      slug: 'some-title-joinville-sc'
-    }]);
+    expect(eventsResource.bulkSave).not.toHaveBeenCalled();
   });
 
   it('should not save past events', async () => {

@@ -15,10 +15,10 @@ const eventsResource = require('../resources/events');
 const _public = {};
 
 _public.multiSave = events => {
-  return getEventSlugsFromToday().then(eventSlugs => {
+  return getEventSlugsFromToday().then(existingEventSlugs => {
     const newEvents = events
       .map(evt => formatEvent(formatEventDate(evt)))
-      .filter(({ date, slug }) => !isPastEventDate(date) && !eventSlugs.includes(slug));
+      .filter(event => isEventValid(event, existingEventSlugs));
     return newEvents.length
       ? eventsResource.bulkSave(newEvents)
       : Promise.resolve();
@@ -70,6 +70,10 @@ function formatEvent(event){
     description,
     slug: buildEventSlug(event)
   });
+}
+
+function isEventValid({ date, slug }, existingEventSlugs){
+  return !!date && !isPastEventDate(date) && !existingEventSlugs.includes(slug);
 }
 
 function isPastEventDate(date){
