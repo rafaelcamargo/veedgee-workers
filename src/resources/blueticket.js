@@ -9,4 +9,8 @@ _public.get = params => baseResource.get(`${BASE_URL}/events/list`, params, {
   }
 });
 
+_public.getEventDetails = eventCode => baseResource.get(
+  `https://api-cdn.blueticket.com.br/api/v2/event/detail/${eventCode}`
+);
+
 module.exports = _public;

@@ -38,6 +38,12 @@ describe('Crawlers Routes', () => {
   beforeEach(() => {
     dateService.getNow = jest.fn(() => new Date(2024, 1, 15));
     blueticketResource.get = jest.fn(() => Promise.resolve({}));
+    blueticketResource.getEventDetails = jest.fn(eventCode => {
+      const data = {
+        33937: require('../mocks/blueticket-event-details.json')
+      }[eventCode] || {};
+      return Promise.resolve({ data });
+    });
     eticketCenterResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('eticket-center-empty.html') }));
     eticketCenterResource.getEventDetailsPage = jest.fn(url => {
       const data = {
@@ -54,6 +60,13 @@ describe('Crawlers Routes', () => {
     eventsResource.bulkSave = jest.fn(events => Promise.resolve({ data: { count: events.length } }));
     loggerService.track = jest.fn();
     pensaNoEventoResource.get = jest.fn(() => Promise.resolve({ data: {} }));
+    pensaNoEventoResource.getEventDetailsPage = jest.fn(url => {
+      const data = {
+        'https://www.pensanoevento.com.br/sitev2/eventos/96401/sextou-na-casinha':
+          getMockedFile('pensa-no-evento-details.html')
+      }[url] || '';
+      return Promise.resolve({ data });
+    });
     songkickResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('songkick-empty.html') }));
     symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     tockifyResource.get = jest.fn(() => Promise.resolve({ data: {} }));
@@ -330,7 +343,8 @@ describe('Crawlers Routes', () => {
       country: 'BR',
       url: 'https://www.blueticket.com.br/evento/33937/samba-jurere',
       image: 'https://d2hnilqqbw3vnf.cloudfront.net/images/imagens/full/vQHiYmhjLdXXQtFWFmTVfJ6dv2JLBMEdMILf64kF.jpeg',
-      category: 'music'
+      category: 'music',
+      description: 'ESPETÁCULO ELVIS & ABBAPrepare-se para um Espetáculo Histórico!Será uma fantástica viagem aos anos 50, 60 e 70. Um encontro épico, de dois grandes tributos da Argentina, considerados os melhores do gênero, que irão interpretar os sucessos do #Abba e #ElvisPresley. Quem abre a noite é o tributo ABBA da Argentina, que irá interpretar os clássicos marcantes da Agnetha Fältskog, Anni-Frid Lyngstad, Björn Ulvaeus e Benny Andersson. A performance inclui figurinos e coreografias, em perfeita harmonia vocal e instrumental, recriada do original ABBA. Em seguida, quem sobe ao palco é o sensacional cover/tributo ao ELVIS PRESLEY da Argentina, com figurinos marcantes e fiéis, backing vocalsAo vivo e harmonia instrumental, representando em grande estilo os maiores clássicos do ícone Elvis Presley. Um espetáculo de arrepiar e uma emocionante viagem no tempo, através da obra e da genialidade do grupo ABBA e do ícone ELVIS PRESLEY. Você vai cantar e se emocionar com 2 shows épicos, com a banda Los Kal'
     }]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
@@ -339,6 +353,13 @@ describe('Crawlers Routes', () => {
     const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
     expect(reportedTask).toEqual({
       task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
+    const descriptionsTaskName = 'Crawling: blueticket (descriptions)';
+    const reportedDescriptionsTask = findReportedTaskByName(response.body.reportJson, descriptionsTaskName);
+    expect(reportedDescriptionsTask).toEqual({
+      task: descriptionsTaskName,
       result: 'success',
       time: expect.any(Number)
     });
@@ -782,7 +803,8 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.pensanoevento.com.br/sitev2/eventos/96401/sextou-na-casinha',
-        image: 'https://files.pensanoevento.com.br/images/eventos/69aed1ac1bb6c_capa.webp'
+        image: 'https://files.pensanoevento.com.br/images/eventos/69aed1ac1bb6c_capa.webp',
+        description: 'TOCA DA RAPOSA! No dia 12 de Julho (Domingo) As raposas se encontram aqui no Barzin Rj A partir das 14h, muito pagode, funk, gastronomia e drinks pra...'
       },
       {
         title: 'Dazaranha - Acústico',
@@ -804,6 +826,13 @@ describe('Crawlers Routes', () => {
     const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
     expect(reportedTask).toEqual({
       task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
+    const descriptionsTaskName = 'Crawling: pensa-no-evento (descriptions)';
+    const reportedDescriptionsTask = findReportedTaskByName(response.body.reportJson, descriptionsTaskName);
+    expect(reportedDescriptionsTask).toEqual({
+      task: descriptionsTaskName,
       result: 'success',
       time: expect.any(Number)
     });
@@ -981,32 +1010,67 @@ describe('Crawlers Routes', () => {
   it('should track error on crawling event descriptions', async () => {
     const err = 'some err';
     console.error = jest.fn();
+    blueticketResource.get = jest.fn(params => {
+      const data = params.categoria === 11 && blueticketMock;
+      return Promise.resolve({ data });
+    });
+    blueticketResource.getEventDetails = jest.fn(() => Promise.reject(err));
     eticketCenterResource.get = jest.fn(({ Pagina }) => {
       return Promise.resolve({ data: getMockedFile(`eticket-center-${Pagina}.html`) });
     });
     eticketCenterResource.getEventDetailsPage = jest.fn(() => Promise.reject(err));
+    pensaNoEventoResource.get = jest.fn(({ cityCode }) => {
+      const data = { 19: pensaNoEventoJoinvilleMock, 32: pensaNoEventoCuritibaMock }[cityCode];
+      return Promise.resolve({ data });
+    });
+    pensaNoEventoResource.getEventDetailsPage = jest.fn(() => Promise.reject(err));
     const response = await start();
     expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: eticket-center (descriptions)', err, {
       task_duration: expect.any(Number)
     });
-    expect(loggerService.track).toHaveBeenCalledTimes(1);
+    expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: blueticket (descriptions)', err, {
+      task_duration: expect.any(Number)
+    });
+    expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: pensa-no-evento (descriptions)', err, {
+      task_duration: expect.any(Number)
+    });
+    expect(loggerService.track).toHaveBeenCalledTimes(3);
     expect(response.status).toEqual(200);
-    const taskName = 'Crawling: eticket-center (descriptions)';
-    const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
-    expect(reportedTask).toEqual({
-      task: taskName,
+    const eticketTaskName = 'Crawling: eticket-center (descriptions)';
+    const eticketReportedTask = findReportedTaskByName(response.body.reportJson, eticketTaskName);
+    expect(eticketReportedTask).toEqual({
+      task: eticketTaskName,
+      result: 'error',
+      time: expect.any(Number)
+    });
+    const blueticketTaskName = 'Crawling: blueticket (descriptions)';
+    const blueticketReportedTask = findReportedTaskByName(response.body.reportJson, blueticketTaskName);
+    expect(blueticketReportedTask).toEqual({
+      task: blueticketTaskName,
+      result: 'error',
+      time: expect.any(Number)
+    });
+    const pensaTaskName = 'Crawling: pensa-no-evento (descriptions)';
+    const pensaReportedTask = findReportedTaskByName(response.body.reportJson, pensaTaskName);
+    expect(pensaReportedTask).toEqual({
+      task: pensaTaskName,
       result: 'error',
       time: expect.any(Number)
     });
   });
 
   it('should track error on event multi-save error', async () => {
-    let multiSaveCalls = 0;
     const err = 'some err';
     console.error = jest.fn();
-    eventService.multiSave = jest.fn(() => {
-      ++multiSaveCalls;
-      return multiSaveCalls === 1 ? Promise.reject(err) : Promise.resolve({});
+    blueticketResource.get = jest.fn(params => {
+      const data = params.categoria === 11 && blueticketMock;
+      return Promise.resolve({ data });
+    });
+    eventService.multiSave = jest.fn(events => {
+      if (events.some(({ url }) => url.includes('blueticket.com.br'))) {
+        return Promise.reject(err);
+      }
+      return Promise.resolve({});
     });
     const response = await start();
     expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: blueticket', err, {

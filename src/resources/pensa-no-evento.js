@@ -11,6 +11,8 @@ _public.get = ({ cityCode }) => {
   });
 };
 
+_public.getEventDetailsPage = url => baseResource.get(url);
+
 function buildParams(cityCode){
   return {
     cidades: [cityCode]

@@ -14,4 +14,10 @@ describe('Pensa No Evento Resource', () => {
       { headers: { 'x-public-token': 'pne-site-api' } }
     );
   });
+
+  it('should get event details page by url', () => {
+    const url = 'https://www.pensanoevento.com.br/sitev2/eventos/96401/sextou-na-casinha';
+    pensaNoEventoResource.getEventDetailsPage(url);
+    expect(baseResource.get).toHaveBeenCalledWith(url);
+  });
 });

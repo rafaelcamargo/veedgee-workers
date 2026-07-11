@@ -30,4 +30,12 @@ describe('Disk Ingressos Resource', () => {
       headers: buildBlueticketHeaders()
     });
   });
+
+  it('should get event details by event code', () => {
+    const eventCode = 33937;
+    blueticketResource.getEventDetails(eventCode);
+    expect(baseResource.get).toHaveBeenCalledWith(
+      `https://api-cdn.blueticket.com.br/api/v2/event/detail/${eventCode}`
+    );
+  });
 });

@@ -1,11 +1,18 @@
-const eventCategoryService = require('../services/event-category');
+const cheerio = require('cheerio');
 const pensaNoEventoResource = require('../resources/pensa-no-evento');
+const eventCategoryService = require('../services/event-category');
+const eventService = require('../services/event');
+const reportService = require('../services/report');
+const requestService = require('../services/request');
+const { useCounter } = require('../hooks/useCounter');
 
 const _public = {};
 
-_public.crawl = () => {
+_public.crawl = reportId => {
   const requests = Object.values(getCityCodes()).map(crawlEventsByCityCode);
-  return Promise.all(requests).then(responses => responses.flat());
+  return Promise.all(requests).then(responses => {
+    return enrichEventsWithDescriptions(responses.flat(), reportId);
+  });
 };
 
 function getCityCodes(){
@@ -80,6 +87,37 @@ function getBlackList(){
     'don\'t tell mama - praia brava',
     'bibi pizza floripa'
   ];
+}
+
+async function enrichEventsWithDescriptions(events, reportId){
+  const { check } = useCounter();
+  const task = 'Crawling: pensa-no-evento (descriptions)';
+  try {
+    const enrichedEvents = await requestService.bulkRequest({
+      method: enrichEventWithDescription,
+      params: events,
+      batchSize: 2
+    });
+    reportService.addItem(reportId, { task, result: 'success', time: check() });
+    return enrichedEvents;
+  } catch (err) {
+    reportService.addItem(reportId, { task, result: 'error', time: check() }, err);
+    return events;
+  }
+}
+
+function enrichEventWithDescription(event){
+  return pensaNoEventoResource.getEventDetailsPage(event.url).then(({ data }) => {
+    return {
+      ...event,
+      description: eventService.parseDescription(extractDescription(data))
+    };
+  });
+}
+
+function extractDescription(htmlString){
+  const $ = cheerio.load(htmlString);
+  return $('meta[name="description"]').attr('content');
 }
 
 module.exports = _public;
