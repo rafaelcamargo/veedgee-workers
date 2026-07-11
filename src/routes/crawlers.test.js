@@ -68,6 +68,13 @@ describe('Crawlers Routes', () => {
       return Promise.resolve({ data });
     });
     songkickResource.get = jest.fn(() => Promise.resolve({ data: getMockedFile('songkick-empty.html') }));
+    songkickResource.getEventDetailsPage = jest.fn(url => {
+      const data = {
+        'https://www.songkick.com/pt/concerts/41724580-di-ferrero-at-teatro-carlos-gomes':
+          getMockedFile('songkick-event-details.html')
+      }[url] || '';
+      return Promise.resolve({ data });
+    });
     symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     tockifyResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     ingressoResource.getNowPlaying = jest.fn(() => Promise.resolve({ data: {} }));
@@ -519,7 +526,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41724580-di-ferrero-at-teatro-carlos-gomes',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/5604398/huge_avatar',
+        image: 'http://images.sk-static.com/images/media/img/col6/20190924-232916-534771.jpg',
+        description: 'Compre ingressos para ver kamaitachi ao vivo em Florianópolis. Acompanhe seus artistas favoritos no Songkick e nunca perca outro show.',
         category: 'music'
       },
       {
@@ -531,7 +539,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804717-dead-fish-at-ahoy-tavern-club',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/483130/huge_avatar',
         category: 'music'
       },
       {
@@ -542,7 +549,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/festivals/176531-tba/id/41792900-tba-festival-2024',
-        image: 'https://images.sk-static.com/images/media/profile_images/events/41792900/huge_avatar?series_id=176531',
         category: 'music'
       },
       {
@@ -553,7 +559,6 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.songkick.com/pt/festivals/3647009-espetaculo-teatral-bita-e-os-animais-em-curitiba-pr/id/41761308-espetculo-teatral-bita-e-os-animais-em-curitiba-pr-2024',
-        image: 'https://images.sk-static.com/images/media/profile_images/events/41761308/huge_avatar?series_id=3647009',
         category: 'music'
       },
       {
@@ -565,7 +570,6 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41714611-overdriver-duo-at-teatro-fernanda-montenegro',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/10157597/huge_avatar',
         category: 'music'
       },
       {
@@ -577,7 +581,6 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41728574-terraplana-at-basement-cultural',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/9318084/huge_avatar',
         category: 'music'
       },
       {
@@ -589,7 +592,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41696929-ana-canas-at-teatro-ademir-rosa',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/835759/huge_avatar',
         category: 'music'
       },
       {
@@ -601,7 +603,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41794649-mdc-at-hangar-t6-listening-bar',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/42472/huge_avatar',
         category: 'music'
       },
       {
@@ -613,7 +614,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41792887-dj-brinquinho-sc-at-bierteca-bar',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/10244481/huge_avatar',
         category: 'music'
       },
       {
@@ -625,7 +625,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804579-vintage-culture-at-warung-beach-club',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/7295284/huge_avatar',
         category: 'music'
       },
       {
@@ -637,7 +636,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41629431-lagum-at-belvedere-beach-club',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/8920664/huge_avatar',
         category: 'music'
       },
       {
@@ -649,7 +647,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41724578-di-ferrero-at-teatro-da-liga',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/5604398/huge_avatar',
         category: 'music'
       },
       {
@@ -661,7 +658,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804725-mordor-truckers-at-zeit-cervejaria',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/10097828/huge_avatar',
         category: 'music'
       },
       {
@@ -673,7 +669,6 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41683692-rogerio-skylab-at-bar-opiniao',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/2056134/huge_avatar',
         category: 'music'
       },
       {
@@ -685,7 +680,6 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41817222-lucas-morato-at-samba-da-galera',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/10293013/huge_avatar',
         category: 'music'
       },
       {
@@ -696,7 +690,6 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41806309-ivete-sangalo-at-estadio-beirario',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/134839/huge_avatar',
         category: 'music'
       },
       {
@@ -708,7 +701,6 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41801925-jinjer-at-opiniao',
-        image: 'https://images.sk-static.com/images/media/profile_images/artists/1038996/huge_avatar',
         category: 'music'
       }
     ]);
@@ -719,6 +711,13 @@ describe('Crawlers Routes', () => {
     const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
     expect(reportedTask).toEqual({
       task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
+    const descriptionsTaskName = 'Crawling: songkick (descriptions)';
+    const reportedDescriptionsTask = findReportedTaskByName(response.body.reportJson, descriptionsTaskName);
+    expect(reportedDescriptionsTask).toEqual({
+      task: descriptionsTaskName,
       result: 'success',
       time: expect.any(Number)
     });
@@ -1024,6 +1023,10 @@ describe('Crawlers Routes', () => {
       return Promise.resolve({ data });
     });
     pensaNoEventoResource.getEventDetailsPage = jest.fn(() => Promise.reject(err));
+    songkickResource.get = jest.fn(({ city, page }) => {
+      return Promise.resolve({ data: getMockedFile(`songkick-${city}-page-${page}.html`) });
+    });
+    songkickResource.getEventDetailsPage = jest.fn(() => Promise.reject(err));
     const response = await start();
     expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: eticket-center (descriptions)', err, {
       task_duration: expect.any(Number)
@@ -1034,7 +1037,10 @@ describe('Crawlers Routes', () => {
     expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: pensa-no-evento (descriptions)', err, {
       task_duration: expect.any(Number)
     });
-    expect(loggerService.track).toHaveBeenCalledTimes(3);
+    expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: songkick (descriptions)', err, {
+      task_duration: expect.any(Number)
+    });
+    expect(loggerService.track).toHaveBeenCalledTimes(4);
     expect(response.status).toEqual(200);
     const eticketTaskName = 'Crawling: eticket-center (descriptions)';
     const eticketReportedTask = findReportedTaskByName(response.body.reportJson, eticketTaskName);
@@ -1054,6 +1060,13 @@ describe('Crawlers Routes', () => {
     const pensaReportedTask = findReportedTaskByName(response.body.reportJson, pensaTaskName);
     expect(pensaReportedTask).toEqual({
       task: pensaTaskName,
+      result: 'error',
+      time: expect.any(Number)
+    });
+    const songkickTaskName = 'Crawling: songkick (descriptions)';
+    const songkickReportedTask = findReportedTaskByName(response.body.reportJson, songkickTaskName);
+    expect(songkickReportedTask).toEqual({
+      task: songkickTaskName,
       result: 'error',
       time: expect.any(Number)
     });

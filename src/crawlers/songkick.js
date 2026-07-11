@@ -1,13 +1,16 @@
 const cheerio = require('cheerio');
-const { IMAGE_HOST } = require('../constants/songkick');
-const eventService = require('../services/event');
 const songkickResource = require('../resources/songkick');
+const eventService = require('../services/event');
+const reportService = require('../services/report');
+const requestService = require('../services/request');
+const { useCounter } = require('../hooks/useCounter');
 
 const _public = {};
 
-_public.crawl = () => {
+_public.crawl = reportId => {
   return Promise.all(buildRequests()).then(responses => {
-    return responses.map(({ data }) => buildEvents(data)).flat();
+    const events = responses.map(({ data }) => buildEvents(data)).flat();
+    return enrichEventsWithDescriptions(events, reportId);
   });
 };
 
@@ -43,7 +46,6 @@ function formatEvent($eventEl){
   const [data] = JSON.parse($eventEl.text().trim());
   const [date, time] = formatDateTime(data.startDate);
   const [city, state] = formatCityState(data);
-  const image = buildImageURL(data.image);
   return {
     title: data.name,
     date,
@@ -52,13 +54,8 @@ function formatEvent($eventEl){
     state,
     country: 'BR',
     url: data.url.split('?')[0],
-    category: 'music',
-    ...(image && { image })
+    category: 'music'
   };
-}
-
-function buildImageURL(imagePath){
-  return imagePath && !imagePath.startsWith('http') && `${IMAGE_HOST}/${imagePath}`;
 }
 
 function formatDateTime(dateString){
@@ -84,6 +81,37 @@ function getStateByCity(city){
     'Joinville': 'SC',
     'Porto Alegre': 'RS'
   }[city];
+}
+
+async function enrichEventsWithDescriptions(events, reportId){
+  const { check } = useCounter();
+  const task = 'Crawling: songkick (descriptions)';
+  try {
+    const enrichedEvents = await requestService.bulkRequest({
+      method: enrichEventWithDescription,
+      params: events,
+      batchSize: 2
+    });
+    reportService.addItem(reportId, { task, result: 'success', time: check() });
+    return enrichedEvents;
+  } catch (err) {
+    reportService.addItem(reportId, { task, result: 'error', time: check() }, err);
+    return events;
+  }
+}
+
+function enrichEventWithDescription(event){
+  return songkickResource.getEventDetailsPage(event.url).then(({ data }) => {
+    const [description, image] = extractEnrichmentData(data);
+    return { ...event, description, image };
+  });
+}
+
+function extractEnrichmentData(htmlString){
+  const $ = cheerio.load(htmlString);
+  const description = $('meta[property="og:description"]').attr('content');
+  const image = $('meta[property="og:image"]').attr('content');
+  return [description, image];
 }
 
 module.exports = _public;

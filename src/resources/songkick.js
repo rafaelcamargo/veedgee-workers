@@ -7,6 +7,8 @@ _public.get = ({ city, page }) => {
   return baseResource.get(buildUrl(city, page));
 };
 
+_public.getEventDetailsPage = url => baseResource.get(url);
+
 function buildUrl(city, page){
   return [appendCitySlug, appendPageQueryParam].reduce((url, execute) => {
     return execute(url, { city, page });

@@ -53,4 +53,10 @@ describe('Songkick Resource', () => {
     expect(baseResource.get).toHaveBeenCalledWith('https://www.songkick.com/pt/metro-areas/27218-brazil-porto-alegre?page=2');
     expect(baseResource.get).toHaveBeenCalledTimes(2);
   });
+
+  it('should get event details page by url', () => {
+    const url = 'https://www.songkick.com/pt/concerts/41724580-di-ferrero-at-teatro-carlos-gomes';
+    songkickResource.getEventDetailsPage(url);
+    expect(baseResource.get).toHaveBeenCalledWith(url);
+  });
 });

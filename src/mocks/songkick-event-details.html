@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head prefix="og: http://ogp.me/ns# fb: http://www.facebook.com/2008/fbml songkick-concerts: http://ogp.me/ns/fb/songkick-concerts#">
+    <meta name="robots" content="all">
+    <script type="text/javascript">
+      // Deletes legacy consent/analytics cookies left behind by the removed
+      // OneTrust + Adobe Launch setup. Runs at most once per browser: once the
+      // GUARD cookie has been set the block exits immediately, so cookies set
+      // by GA/Freestar/etc. after this script runs are never touched.
+      //
+      // To force everyone through the purge again (e.g. after another cleanup),
+      // bump the GUARD name to `sk_cookie_purge_v2`, `_v3`, etc.
+      (function () {
+        var GUARD = 'sk_cookie_purge_v1';
+        // Guard clause: if this browser has already been purged for this version,
+        // do nothing. Bumping GUARD is what re-triggers the purge for everyone.
+        if (document.cookie.indexOf(GUARD + '=') !== -1) return;
+      
+        // Allowlist of first-party cookies to KEEP. Anything not listed here (or
+        // matched by KEEP_PREFIX) gets expired. HttpOnly cookies (_skweb_session,
+        // auth_http_s) are already invisible to document.cookie and cannot be
+        // touched by JS - they're listed defensively.
+        var KEEP = {
+          '_skweb_session': 1,
+          'auth_http': 1,
+          'auth_http_s': 1,
+          'session_uuid': 1,
+          'variant_cohort': 1,
+          'override_split_test': 1,
+          'filter_metro_area': 1,
+          'dismissed_discovery_tooltip': 1,
+          'view_desktop_app_cta': 1,
+          'view_attendance_popup': 1,
+          'num_calendar_events_post_signup': 1,
+          'post_authentication': 1,
+          'postsignup_imported_artist_count': 1,
+          'postsignup_taste_import_source': 1,
+          'ticket_vendor_link': 1,
+          'show_ticket_link_popup': 1,
+          'analytics_trigger': 1,
+          'sk_disable_admin': 1
+        };
+        var KEEP_PREFIX = ['taste_imports_success_'];
+      
+        // document.cookie doesn't expose a cookie's original domain/path, so to
+        // delete reliably we re-issue the expiry against every plausible
+        // domain/path combo. Includes the bare host, dotted parent domains, and
+        // the shared .songkick.com / .songkick.net roots.
+        var host = window.location.hostname;
+        var domains = ['', host, '.' + host, '.songkick.com', '.songkick.net'];
+        var parts = host.split('.');
+        for (var i = 0; i < parts.length - 1; i++) {
+          domains.push('.' + parts.slice(i).join('.'));
+        }
+        var paths = ['/', window.location.pathname];
+      
+        function keep(name) {
+          if (name === GUARD || KEEP[name]) return true;
+          for (var p = 0; p < KEEP_PREFIX.length; p++) {
+            if (name.indexOf(KEEP_PREFIX[p]) === 0) return true;
+          }
+          return false;
+        }
+      
+        var rawCookies = document.cookie ? document.cookie.split(';') : [];
+        for (var c = 0; c < rawCookies.length; c++) {
+          var raw = rawCookies[c];
+          var eq = raw.indexOf('=');
+          var name = (eq > -1 ? raw.slice(0, eq) : raw).replace(/^\s+/, '');
+          if (!name || keep(name)) continue;
+          var base = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+          for (var d = 0; d < domains.length; d++) {
+            for (var pth = 0; pth < paths.length; pth++) {
+              document.cookie = base + '; path=' + paths[pth] + (domains[d] ? '; domain=' + domains[d] : '');
+            }
+          }
+        }
+      
+        // Set the guard last so a mid-run failure doesn't leave a browser marked
+        // as purged. 5-year max-age matches the practical retention we want.
+        document.cookie = GUARD + '=1; path=/; max-age=' + (60 * 60 * 24 * 365 * 5);
+      })();
+    </script>
+    <link rel="preconnect" href="https://assets.sk-static.com">
+    <link rel="dns-prefetch" href="https://assets.sk-static.com">
+    <link rel="preconnect" href="https://images.sk-static.com">
+    <link rel="dns-prefetch" href="https://images.sk-static.com">
+    <div class="onetrust-container-placeholder">
+    </div
+    <div class="adobe-launch-container-placeholder"></div>
+    <link rel="stylesheet" type="text/css" href="//assets.sk-static.com/assets/stylesheets/scss/global-64F6HFIR.css">
+    <link rel="stylesheet" type="text/css" href="//assets.sk-static.com/assets/stylesheets/scss/pages/concert/concert-critical-GI52A2VN.css">
+    <link rel="preload" href="//assets.sk-static.com/assets/stylesheets/scss/pages/concert/concert-deferred-TJARTDNL.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="//assets.sk-static.com/assets/stylesheets/scss/pages/concert/concert-deferred-TJARTDNL.css">
+    </noscript>
+    <script type="text/javascript">
+      SK = typeof(SK) == 'undefined' ? {} : SK;
+      SK_ASSET_HOST = "//assets.sk-static.com";
+      SK_DYNAMIC_ASSET_HOST = "https://images.sk-static.com";
+      ADDITIONAL_JQUERY_UI_PLUGINS =                                     false
+      
+      ADDITIONAL_DATEPICKER_PLUGIN =                                     false
+    </script>
+    <script type="text/javascript" src="//assets.sk-static.com/assets/javascript/entryPoints/JQuery-a63ded2022.js"></script>
+    <script type="text/javascript" src="//assets.sk-static.com/assets/javascript/entryPoints/Songkick-F6PKCDLZ.js"></script>
+    <title>kamaitachi Florianópolis Ingressos, John Bull, 09 Oct 2026 – Songkick</title>
+    <link href="https://fonts.googleapis.com/css?family=Biryani:400,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="//images.sk-static.com/images/media/profile_images/artists/10081602/col3" rel="image_src">
+    <link rel="shortcut icon" type="image/x-icon" href="//assets.sk-static.com/images/favicon.ico" />
+    <link href="//assets.sk-static.com/images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="//assets.sk-static.com/images/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+    <link href="https://www.songkick.com/pt/concerts/43317344-kamaitachi-at-john-bull" rel="canonical">
+    <link rel="alternate" hreflang="en" href="https://www.songkick.com/concerts/43317344-kamaitachi-at-john-bull" />
+    <link rel="alternate" hreflang="fr" href="https://www.songkick.com/fr/concerts/43317344-kamaitachi-at-john-bull" />
+    <link rel="alternate" hreflang="es" href="https://www.songkick.com/es/concerts/43317344-kamaitachi-at-john-bull" />
+    <link rel="alternate" hreflang="de" href="https://www.songkick.com/de/concerts/43317344-kamaitachi-at-john-bull" />
+    <link rel="alternate" hreflang="pt" href="https://www.songkick.com/pt/concerts/43317344-kamaitachi-at-john-bull" />
+    <link rel="alternate" hreflang="x-default" href="https://www.songkick.com/concerts/43317344-kamaitachi-at-john-bull" />
+    <link rel="alternate" href="android-app://com.songkick/http/www.songkick.com/concerts/43317344-kamaitachi-at-john-bull">
+    <meta name="description" content="Compre ingressos, encontre informações sobre evento, local, show de abertura e avaliações para o próximo show de kamaitachi em John Bull -Florianópolis em 09 Oct 2026.">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta property="og:site_name" content="Songkick">
+    <meta property="og:type" content="songkick-concerts:concert">
+    <meta property="og:title" content="kamaitachi em John Bull (09 Oct 2026)">
+    <meta property="og:description" content="Compre ingressos para ver kamaitachi ao vivo em Florianópolis. Acompanhe seus artistas favoritos no Songkick e nunca perca outro show.">
+    <meta property="og:url" content="https://www.songkick.com/concerts/43317344-kamaitachi-at-john-bull">
+    <meta property="og:image" content="http://images.sk-static.com/images/media/img/col6/20190924-232916-534771.jpg">
+    <meta property="og:image:width" content="225">
+    <meta property="og:image:height" content="300">
+    <meta property="og:locality" content="Florianópolis">
+    <meta property="og:country-name" content="Brazil">
+    <meta property="og:street-address" content="Avenida das Rendeiras, 1046 - Lagoa da Conceição">
+    <meta property="og:postal-code" content="88062-400">
+    <meta property="og:latitude" content="-27.60844">
+    <meta property="og:longitude" content="-48.45394">
+    <meta name="twitter:card" content="Songkick">
+    <meta name="twitter:site" content="@songkick">
+    <meta name="twitter:title" content="kamaitachi em John Bull (09 Oct 2026)">
+    <meta name="twitter:description" content="Compre ingressos para ver kamaitachi ao vivo em Florianópolis. Acompanhe seus artistas favoritos no Songkick e nunca perca outro show.">
+    <meta name="twitter:image" content="http://images.sk-static.com/images/media/img/col6/20190924-232916-534771.jpg">
+    <script data-cfasync="false" type="text/javascript">
+      var freestar = freestar || {};
+      freestar.hitTime = Date.now();
+      freestar.queue = freestar.queue || [];
+      freestar.config = freestar.config || {};
+      freestar.debug = window.location.search.indexOf('fsdebug') === -1 ? false : true;
+      freestar.config.channel = 'event';
+      freestar.config.enabled_slots = [];
+      
+      !function (a, b) {
+      var c = b.getElementsByTagName("script")[0], d = b.createElement("script"),
+        e = "https://a.pub.network/songkick-com";
+      e += freestar.debug ? "/qa/pubfig.min.js" : "/pubfig.min.js", d.async = !0, d.src = e, c.parentNode.insertBefore(d, c)
+      }(window, document);
+      
+      freestar.initCallback = function () {
+        freestar.newAdSlots(freestar.config.enabled_slots);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <!-- Code from Primis: songkick_slider -->
+    <!-- Insert into the BODY section of the page -->
+    <div id="primisSlider" class="primis-slider--desktop">
+      <script type="text/javascript" language="javascript" src="https://live.primis.tech/live/liveView.php?s=118045&schain=1.0,1!freestar.com,604,1"></script>
+    </div>
+    <!-- End of code from Primis -->
+    <div class="navigation navigation-wrapper">
+      <div class="navigation-large-screen">
+        <ul class="nav-bar">
+          <li class="sub-nav">
+            <ul>
+              <li class="logo">
+                <a class="logo-link" href="/pt" data-analytics-category="navigation" data-analytics-label="logo"></a>
+              </li>
+              <li class="nav-item metro-area menu hover-for-touch">
+                <a href="/pt/metro-areas/27059-brazil-florianopolis" data-analytics-category="navigation" data-analytics-label="metro_area" title="Florianópolis shows">Florianópolis shows</a>
+                <div class="menu-content empty-menu">
+                  <a href="/pt/metro-areas/27059-brazil-florianopolis" data-analytics-category="navigation" data-analytics-label="popular_tickets"><span>Florianópolis shows</span></a>
+                  <a class="repeat" href="/pt/metro-areas/27059-brazil-florianopolis" data-analytics-category="navigation" data-analytics-label="metro_area" title="Florianópolis shows">Florianópolis shows</a>
+                  <a href="/pt/metro-areas/27059-brazil-florianopolis" data-analytics-category="navigation" data-analytics-label="metro_area_see_all"></a>Ver todos os shows em Florianópolis <span class="change-location">(<a class="change-location" data-analytics-category="navigation-megadropdown" data-analytics-label="change_location" href="/session/filter_metro_area">Alterar&nbsp;localização</a>)</span><br><br>
+                  <a class="metro-area-today" data-analytics-category="navigation" data-analytics-label="metro_area_today" href="/en/metro-areas/27059-brazil-florianopolis?filters%5BmaxDate%5D=07%2F11%2F2026&amp;filters%5BminDate%5D=07%2F11%2F2026#date-filter-form">Hoje ·</a>
+                  <a class="metro-area-7days" data-analytics-category="navigation" data-analytics-label="metro_area_7days" href="/en/metro-areas/27059-brazil-florianopolis?filters%5BmaxDate%5D=07%2F18%2F2026&amp;filters%5BminDate%5D=07%2F11%2F2026#date-filter-form">Próximos 7 dias ·</a>
+                  <a class="metro-area-month" data-analytics-category="navigation" data-analytics-label="metro_area_month" href="/en/metro-areas/27059-brazil-florianopolis?filters%5BmaxDate%5D=08%2F11%2F2026&amp;filters%5BminDate%5D=07%2F11%2F2026#date-filter-form">Próximos 30 dias</a>
+                </div>
+              </li>
+              <li class="nav-item artists menu hover-for-touch">
+                <a href="/artists" data-analytics-category="navigation" data-analytics-label="artists">Artistas</a>
+                <div class="menu-content">
+                  <ul class="artists-navigation">
+                    <li class="col"><a href="/leaderboards/popular_artists" data-analytics-category="navigation" data-analytics-label="popular_artists">Most popular artists worldwide</a></li>
+                    <li class="col"><a href="/leaderboards/trending_artists" data-analytics-category="navigation" data-analytics-label="trending_artists">Trending artists worldwide</a></li>
+                  </ul>
+                  <div class="listing">
+                    <ul class="col popular-artists">
+                      <li>
+                        <a href="/pt/artists/197928-coldplay" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/197928/avatar" width="35" height="35" class="artist-profile-image artist" alt="Coldplay Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Coldplay</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/139648-rihanna" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/139648/avatar" width="35" height="35" class="artist-profile-image artist" alt="Rihanna Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Rihanna</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/4363463-weeknd" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/4363463/avatar" width="35" height="35" class="artist-profile-image artist" alt="The Weeknd Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">The Weeknd</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/182968-eminem" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/182968/avatar" width="35" height="35" class="artist-profile-image artist" alt="Eminem Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Eminem</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/556955-drake" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/556955/avatar" width="35" height="35" class="artist-profile-image artist" alt="Drake Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Drake</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/217815-taylor-swift" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/217815/avatar" width="35" height="35" class="artist-profile-image artist" alt="Taylor Swift Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Taylor Swift</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/941964-bruno-mars" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/941964/avatar" width="35" height="35" class="artist-profile-image artist" alt="Bruno Mars Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Bruno Mars</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/552177-kanye-west" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/552177/avatar" width="35" height="35" class="artist-profile-image artist" alt="Kanye West Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Kanye West</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/181875-maroon-5" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/181875/avatar" width="35" height="35" class="artist-profile-image artist" alt="Maroon 5 Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Maroon 5</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/974908-lady-gaga" data-analytics-category="navigation" data-analytics-label="artists_popular_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/974908/avatar" width="35" height="35" class="artist-profile-image artist" alt="Lady Gaga Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Lady Gaga</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <ul class="col popular-artists">
+                      <li>
+                        <a href="/pt/artists/10188892-mary-in-the-junkyard" data-analytics-category="navigation" data-analytics-label="artists_trending_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/10188892/avatar" width="35" height="35" class="artist-profile-image artist" alt="Mary In The Junkyard Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Mary In The Junkyard</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/25867-stardust" data-analytics-category="navigation" data-analytics-label="artists_trending_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/25867/avatar" width="35" height="35" class="artist-profile-image artist" alt="Stardust Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Stardust</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/10366104-angine-de-poitrine" data-analytics-category="navigation" data-analytics-label="artists_trending_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/10366104/avatar" width="35" height="35" class="artist-profile-image artist" alt="Angine de Poitrine Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Angine de Poitrine</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/10355080-westside-cowboy" data-analytics-category="navigation" data-analytics-label="artists_trending_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/10355080/avatar" width="35" height="35" class="artist-profile-image artist" alt="Westside Cowboy Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">Westside Cowboy</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/pt/artists/10390101-my-new-band-believe" data-analytics-category="navigation" data-analytics-label="artists_trending_artist">
+                        <img src="//assets.sk-static.com/images/default_images/thumb/default-artist.png" data-src="//images.sk-static.com/images/media/profile_images/artists/10390101/avatar" width="35" height="35" class="artist-profile-image artist" alt="My New Band Believe Concert Tickets - 2026 Tour Dates.">
+                        <span class="name">My New Band Believe</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="tourbox-cta">
+                    Tenha suas datas de turnê vistas por um bilhão de fãs: <a href="//tourbox.songkick.com/?utm_medium=referral&amp;utm_source=songkick.com&amp;utm_campaign=visitor" class="sign-up-as-an-artist" data-analytics-category="navigation" data-analytics-label="sign_up_tourbox">Inscrever-se como artista</a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item menu about-us">
+                <a class="festivals" data-analytics-category="navigation" data-analytics-label="festivals" href="/pt/festivals">Festivais</a>
+              </li>
+              <li class="nav-item live-stream-concerts menu">
+                <a href="//tourbox.songkick.com/?utm_medium=referral&amp;utm_source=songkick.com&amp;utm_campaign=nav-tourbox-upsell-visitor" target="_blank" data-analytics-category="navigation" data-analytics-label="tourbox_upsell" title="Tourbox for artists">Tourbox for artists</a>
+              </li>
+            </ul>
+          <li class="sub-nav">
+            <ul class="right-side-navbar">
+              <li class="search nav-search-wrap">
+                <div class="search-modal-button" id="searchButton">
+                  <img class="search-icon" src="/images/react/search-icon-nav.svg" alt="search icon"/>
+                  <p class="search-button-text" id="searchButtonText">Pesquisar</p>
+                </div>
+              </li>
+              <li class="login-signup">
+                <a href="https://accounts.songkick.com/signup/new?source_product=skweb&amp;login_success_url=https%3A%2F%2Fwww.songkick.com%2Fpt%2Fconcerts%2F43317344-kamaitachi-at-john-bull&amp;locale=pt" rel="nofollow" class="signup-link" data-signup-source="Everything else" data-analytics-category="signup_cta" data-analytics-action="pt:navigation_sign_up" data-analytics-label="sign_up">Inscrever-se</a> <a href="https://accounts.songkick.com/session/new?source_product=skweb&amp;login_success_url=https%3A%2F%2Fwww.songkick.com%2Fpt%2Fconcerts%2F43317344-kamaitachi-at-john-bull&amp;locale=pt" rel="nofollow" class="login-link"  data-analytics-category-additional="login_cta" data-analytics-category="navigation" data-analytics-label="log_in" data-analytics-action="pt:navigation_login">Entrar</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <input type="hidden" name="authenticity_token" id="authenticity_token" value="IKkXzwpYn+QWSTs68x7g8DWG1STCW0XtZfbkdYXBu7LtSKicJ3wlIZYVswo1SQzXSVtGXzG4e9pDnHaNxglsrg==" autocomplete="off" />
+        <noscript>Sorry, you have to enable javascript to view this page!</noscript>
+        <div id="searchmodal" data-props="{&quot;env&quot;:&quot;production&quot;,&quot;visible&quot;:false}" ></div>
+      </div>
+      <div class="local-navigation">
+        <a href="/pt" id="logo" data-analytics-category="navigation_small_screen" data-analytics-label="logo"><img src="//assets.sk-static.com/images/nw/components/navigation/header-logo.svg" alt="Songkick" width="124" height="32"></a>
+        <ul>
+          <li class="nav-icon main-menu"><a href="#home"><img src="//assets.sk-static.com/images/nw/components/navigation/local-navigation/navigation-icon.png" width="22" height="15" alt="Show navigation"></a></li>
+          <li class="get-mobile-app-button">
+            <a
+              href="#"
+              data-app-store-campaign="mobile_app_banner_logged_out_conc"
+              data-analytics-category="mobile_app_banner_logged_out"
+              data-analytics-action="click"
+              data-analytics-label="get_free_app"
+              data-analytics-page-type="concert"
+              class="button app-store-redirect">
+            <span class="button-copy">Baixe o app</span>
+            </a>
+          </li>
+          <li class="home nav nav-top" id="home">
+            <a class="home" data-analytics-category="navigation" data-analytics-label="home" href="/pt">Início</a>
+          </li>
+          <li class="nav">
+            <a data-analytics-category="navigation" data-analytics-label="metro_area" href="/pt/metro-areas/27059-brazil-florianopolis">Florianópolis shows</a>
+          </li>
+          <li class="nav">
+            <a class="change-location" data-analytics-category="navigation" data-analytics-label="change_location" href="/session/filter_metro_area">Alterar&nbsp;localização</a>
+          </li>
+          <li>
+            <a class="popular-artists" data-analytics-category="navigation" data-analytics-label="popular_artists" href="/artists">Artistas Populares</a>
+          </li>
+          <li class="nav">
+            <a class="festivals" data-analytics-category="navigation" data-analytics-label="festivals" href="/pt/festivals">Festivais</a>
+          </li>
+          <li class="nav tourbox_cta_logged_out">
+            <a href="//tourbox.songkick.com/?utm_medium=referral&amp;utm_source=songkick.com&amp;utm_campaign=nav-tourbox-upsell-visitor" target="_blank" data-analytics-category="navigation" data-analytics-label="tourbox_upsell" title="Tourbox for artists">Tourbox for artists</a>
+          </li>
+          <li class="nav">
+            <a data-analytics-category="navigation" data-analytics-label="live_stream_concerts" href="/live-stream-concerts">Transmissões ao vivo</a>
+          </li>
+          <li class="nav language-switcher language-nav">
+            <p class="language-subtitle">Idioma</p>
+            <div class="language-options">
+              <div class="english-language">
+                <a class="switch-language-english" data-analytics-category="navigation" data-analytics-label="switch_language_english" href="https://www.songkick.com/concerts/43317344-kamaitachi-at-john-bull">Inglês</a>
+              </div>
+              <div class="french-language">
+                <a class="switch-language-french" data-analytics-category="navigation" data-analytics-label="switch_language_french" href="https://www.songkick.com/fr/concerts/43317344-kamaitachi-at-john-bull">Francês</a>
+              </div>
+              <div class="spanish-language">
+                <a class="switch-language-spanish" data-analytics-category="navigation" data-analytics-label="switch_language_spanish" href="https://www.songkick.com/es/concerts/43317344-kamaitachi-at-john-bull">Espanhol</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav language-switcher language-bottom">
+            <div class="language-options">
+              <div class="german-language">
+                <a class="switch-language-german" data-analytics-category="navigation" data-analytics-label="switch_language_german" href="https://www.songkick.com/de/concerts/43317344-kamaitachi-at-john-bull">Deutsch</a>
+              </div>
+              <div class="portuguese-language">
+                <a class="switch-language-portuguese" data-analytics-category="navigation" data-analytics-label="switch_language_portuguese" href="https://www.songkick.com/pt/concerts/43317344-kamaitachi-at-john-bull">Português</a>
+              </div>
+            </div>
+          </li>
+          <li class="login">
+            <a href="https://accounts.songkick.com/session/new?source_product=skweb&amp;login_success_url=https%3A%2F%2Fwww.songkick.com%2Fpt%2Fconcerts%2F43317344-kamaitachi-at-john-bull&amp;locale=pt" data-analytics_category="navigation" data-analytics_label="log_in">
+            <img src="//assets.sk-static.com/images/nw/components/navigation/user.svg" height="14" alt="Log in"> Entrar na sua conta
+            </a>
+          </li>
+          <li class="signup nav-bottom">
+            <a class="sign-up" data-analytics-category="navigation" data-analytics-label="sign_up" href="https://accounts.songkick.com/signup/new?source_product=skweb&amp;login_success_url=https%3A%2F%2Fwww.songkick.com%2Fpt%2Fconcerts%2F43317344-kamaitachi-at-john-bull&amp;locale=pt">Inscrever-se</a>
+          </li>
+        </ul>
+      </div>
+      <script type="text/javascript">
+        new Songkick.Component.NavigationSmallScreen();
+      </script>
+    </div>
+    <div class="navigation-carousel-wrapper sticky">
+      <ul>
+        <li class="carousel-item">
+          <button class="search-button" id="searchButtonMobile">
+          <img src="//assets.sk-static.com/images/nw/components/navigation/carousel/search_icon_24.svg" height="16" width="16" alt="search">
+          Encontre shows
+          </button>
+          <div>
+            <input type="hidden" name="authenticity_token" id="authenticity_token" value="q/BZpwFm7fMo0bKx8oQQTZ2dtnxF8qNYlXQh3qfpr8lmEeb0LEJXNqiNOoE00/xq4UAlB7YRnW+zHrMm5CF41Q==" autocomplete="off" />
+            <noscript>Sorry, you have to enable javascript to view this page!</noscript>
+            <div id="searchmodal" data-props="{&quot;env&quot;:&quot;production&quot;,&quot;visible&quot;:false}" ></div>
+          </div>
+        </li>
+        <li class="carousel-item carousel-button">
+          <a data-analytics-category="navigation" data-analytics-label="metro_area_mobile_nav" data-analytics-action="click" href="/pt/metro-areas/nearby">Shows perto de você</a>
+        </li>
+        <li class="carousel-item carousel-button">
+          <a data-analytics-category="signup_cta" data-analytics-label="mobile_nav:your_artists" data-analytics-action="click" class="your-artists" href="/pt/metro-areas/nearby?sign_up=true">
+          <img src="//assets.sk-static.com/images/nw/elements/social-buttons/spotify_logo_30px_height.svg" height="18" width="18" alt="spotify icon" class="spotify-icon">
+          <span>Seus artistas</span>
+          </a>
+        </li>
+        <li class="carousel-item carousel-button">
+          <a data-analytics-category="navigation" data-analytics-label="popular_artists_mobile_nav" data-analytics-action="click" href="/artists">Artistas populares</a>
+        </li>
+        <li class="carousel-item carousel-button">
+          <a href="//tourbox.songkick.com/?utm_medium=referral&amp;utm_source=songkick.com&amp;utm_campaign=nav-tourbox-upsell-visitor" data-analytics-category="navigation" data-analytics-label="sign_up_tourbox">Tourbox for artists</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sticky-container">
+      <div class="event-header _concert">
+        <div class="container">
+          <div class="ad-container-leaderboard-event ad-primary-desktop">
+            <div id='songkick_728x90_970x90_970x250_ATF_Desktop'></div>
+          </div>
+          <div class="d-none d-md-block moderation-actions-top-block">
+            <div class="event-moderation-actions ">
+              <div class="flag-event">
+                <a href="https://support.songkick.com/hc/en-us/requests/new"
+                  target="_blank"
+                  data-analytics-category="event_brief"
+                  data-analytics-label="flag_event">
+                Sinalizar um problema
+                </a>
+              </div>
+            </div>
+          </div>
+          <div data-theme="dark" class="component-brief event-brief ">
+            <picture class="brief-picture no-image-fallback">
+              <source
+                media="(max-width: 767px)"
+                srcset="//images.sk-static.com/images/media/profile_images/artists/10081602/large_avatar"
+                width="140"
+                height="140"
+                >
+              <source
+                media="(min-width: 768px)"
+                srcset="//images.sk-static.com/images/media/profile_images/artists/10081602/huge_avatar"
+                width="300"
+                height="300"
+                >
+              <img class="event-hero-image" crossorigin="anonymous" src="//images.sk-static.com/images/media/profile_images/artists/10081602/medium_avatar" alt="kamaitachi Concert Tickets - 2026 Tour Dates" title="kamaitachi Concert Tickets - 2026 Tour Dates" loading="eager" fetchpriority="high" decoding="async" width="300" height="300" data-accent-color-source="brief-image">
+            </picture>
+            <div class="brief-actions">
+              <div class="attendance event-attendance">
+                <form class="attendance app-store-redirect event-attendance-form _interested" data-stop-tracking-text="Interessado" data-tracking-text="Interessado" data-subject-upcoming="true" data-analytics-category="signup_cta" data-analytics-label="43317344" data-analytics-action="upcoming_concert:on_sale:interested" action="/pt/trackings" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" autocomplete="off" /><input type="hidden" name="authenticity_token" value="lCTTO5JDiWQaCe+dbT9GZZEpT3ElKrCZyA5Y6msA7CpZxWxov2czoZpVZ62raKpC7fTcCtbJjq7uZMoSKMg7Ng==" autocomplete="off" />
+                  <input type="hidden" name="relationship_type" value="tracking">
+                  <input type="hidden" name="attendance_buttons_type" value="interested">
+                  <input type="hidden" name="event_name" value="kamaitachi">
+                  <input type="hidden" name="subject_id" value="43317344">
+                  <input type="hidden" name="subject_type" value="Event">
+                  <input type="hidden" name="success_url" value="/pt/concerts/43317344-kamaitachi-at-john-bull">
+                  <button type="submit" class="btn btn-secondary tracking event-attendance-action" value="Interessado">
+                  <span class="btn_icon"></span>
+                  <span class="btn_label">Interessado</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="brief-heading">
+              <div class="event-status">
+              </div>
+              <h1 class="line-clamp">
+                <span><a data-analytics-category="event_brief" data-analytics-label="headliners" href="/pt/artists/10081602-kamaitachi">kamaitachi</a></span>
+              </h1>
+            </div>
+            <div class="event-rsvp-block">
+            </div>
+            <div class="brief-info">
+              <div class="event-date">
+                <span class="_icon"></span>
+                <span class="_label">
+                  Sexta-feira 09 outubro 2026
+              </div>
+              <div class="event-location">
+              <span class="_icon"></span>
+              <span class="_label">
+              <span class="venue-name">
+              <a href="/pt/venues/1084396-john-bull" data-analytics-category="event_brief" data-analytics-label="venue_name">John Bull</a>,
+              </span>
+              <span class="metro-name">
+              <a href="/pt/metro-areas/27059-brazil-florianopolis" data-analytics-category="event_brief" data-analytics-label="metro_name">Florianópolis, Brazil</a>
+              </span>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container event-page _concert">
+      <div class="split-layout">
+      <div class="section-primary">
+      <div class="event-navigation">
+      <div class="event-navigation-carousel">
+      <div class="event-navigation-carousel-item lineup-link" data-analytics-value="lineup">
+      <span>Line-up</span>
+      <div class="event-navigation-carousel-content">
+      <img
+        src="//assets.sk-static.com/images/default_images/large_avatar/default-artist.png"
+        data-src="//images.sk-static.com/images/media/profile_images/artists/10081602/large_avatar"
+        class="detail-image lazyload"
+        alt="kamaitachi" />
+      </div>
+      </div>
+      <div class="event-navigation-carousel-item venue-link" data-analytics-value="venue">
+      <span>Local</span>
+      <div class="event-navigation-carousel-content">
+      <img
+        src="//assets.sk-static.com/images/default_images/large_avatar/default-artist.png"
+        data-src="//images.sk-static.com/images/media/profile_images/venues/1084396/col2"
+        class="detail-image detail-image--venue lazyload"
+        alt="Local" />
+      <span class="icon icon--location">
+      </span>
+      </span>
+      </div>
+      </div>
+      <div class="event-navigation-carousel-item event-details-link" data-analytics-value="details">
+      <span>Detalhes</span>
+      <div class="event-navigation-carousel-content">
+      <span class="icon icon--clock-detail"></span>
+      <span class="icon icon--music-note"></span>
+      </div>
+      </div>
+      <div class="event-navigation-carousel-item more-events-link" data-analytics-value="more_events">
+      <span>Mais eventos</span>
+      <div class="event-navigation-carousel-content">
+      <img
+        id="more-events-image"
+        src="//assets.sk-static.com/images/default_images/large_avatar/default-artist.png"
+        class="detail-image lazyload"
+        alt="Avaliações" />
+      <span class="icon icon--events"></span>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="component event-timeline">
+      <div class="timeline-container">
+      <div class="timeline-fillable">
+      <div class="on-sale-time" style="width: 15%">
+      <div class="arrow-head"></div>
+      <span class="on-sale-time-copy">Venda iniciada há 1 dia</span>
+      </div>
+      <div class="until-event-time">
+      <span class="until-event-time-copy">O evento acontecerá em 2 meses</span><br>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div id="lineup" class="component expanded-lineup-details">
+      <h2 class="component-title h3">Programação</h2>
+      <ul class="list">
+      <li class="list__item headliner">
+      <a class="artist-link analytics-artist-link" href="/pt/artists/10081602-kamaitachi" data-analytics-value="10081602">
+      <div class="artist-image no-image-fallback">
+      <img data-src="//images.sk-static.com/images/media/profile_images/artists/10081602/large_avatar" class="artist lazyload" alt="kamaitachi Concert Tickets - 2026 Tour Dates." />
+      </div>
+      <div class="artist-info">
+      <div class="headliner-label">Artista Principal</div>
+      <span class="artist-name">kamaitachi</span>
+      <span class="last-performance"><strong>Última vez em Florianópolis:</strong> Primeira vez!</span>
+      </div>
+      <div class="chevron-wrap">
+      <img data-src="//assets.sk-static.com/images/new_icons/right-arrow.svg" alt="Chevron right icon" class="chevron-icon-variant lazyload" />
+      </div>
+      </a>
+      </li>
+      </ul>
+      </div>
+      <div class="ad-container ad-container-grey ad-secondary-mobile">
+      <div id='songkick_300x250_300x600_RightRail_Desktop'></div>
+      </div>
+      <div class="venue-container venue-info">
+      <h2 class="component-title h3">Local</h2>
+      <div class="venue-wrapper">
+      <a class="list-item list-item--clickable analytics-venue-link" data-analytics-value="1084396" data-analytics-location="venue_name" href="/venues/1084396-john-bull">
+      <span class="venue-icon venue-icon--name"></span>
+      <span class="venue-text venue-text--name">John Bull</span>
+      <span class="venue-icon venue-icon--arrow"></span>
+      </a>
+      <div class="list-item">
+      <span class="venue-icon venue-icon--location"></span>
+      <span class="venue-text">
+      <span>Avenida das Rendeiras, 1046 - Lagoa da Conceição, </span>
+      <span>88062-400, </span>
+      <span>Florianópolis, Brazil</span>
+      </span>
+      </div>
+      <div class="list-item">
+      <span class="venue-icon venue-icon--link"></span>
+      <a href="http://www.johnbullfloripa.com.br/" rel="nofollow" target="_blank" class="venue-text venue-text--link" target="_blank" rel="noopener">www.johnbullfloripa.com.br/</a>
+      </div>
+      <div class="list-item list-item--upcoming">
+      <a class="venue-text venue-text--view-upcoming analytics-venue-link"
+        data-analytics-value="1084396"
+        data-analytics-location="upcoming_events" 
+        href="/venues/1084396-john-bull"
+        >
+      Ver próximos shows
+      </a>
+      </div>
+      </div>
+      </div>
+      <div class="venue-container additional-container additional-details">
+      <h2 class="component-title h3">Informações adicionais</h2>
+      <div class="venue-wrapper">
+      <div class="list-item">
+      <span class="venue-icon venue-icon--clock"></span>
+      <span class="venue-text">Abertura dos portões: 19:00</span>
+      </div>
+      <div class="list-item">
+      <span class="venue-icon venue-icon--money"></span>
+      <span class="venue-text">Preço: R$80,00</span>
+      </div>
+      </div>
+      </div>
+      <div class="component related-upcoming-events">
+      <div class="related-events-content">
+      <h2 class="component-title h3">Eventos futuros relacionados</h2>
+      <ol>
+      <li>
+      <a data-analytics-category="related_events" data-analytics-label="parent_event_id_43317344" class="event-card-link" href="/pt/concerts/43072918-o-grilo-at-john-bull">
+      <div class="related-event-image-wrapper no-image-fallback">
+      <img
+        src="//images.sk-static.com/images/media/profile_images/artists/9528454/medium_avatar"
+        data-src="//images.sk-static.com/images/media/profile_images/artists/9528454/large_avatar"
+        alt="O Grilo Concert Tickets - 2026 Tour Dates"
+        class="related-event-image lazyload"
+        loading="lazy">
+      </div>
+      <div class="event-info">
+      <span class="title">O Grilo</span>
+      <span class="date">Domingo julho 19, 2026</span>
+      <span class="subtitle">John Bull, Florianópolis</span>
+      </div>
+      <span class="chevron-right-icon"></span>
+      </a>        </li>
+      <li>
+      <a data-analytics-category="related_events" data-analytics-label="parent_event_id_43317344" class="event-card-link" href="/pt/concerts/43095525-no-fun-at-all-at-john-bull">
+      <div class="related-event-image-wrapper no-image-fallback">
+      <img
+        src="//images.sk-static.com/images/media/profile_images/artists/286201/medium_avatar"
+        data-src="//images.sk-static.com/images/media/profile_images/artists/286201/large_avatar"
+        alt="No Fun At All Concert Tickets - 2026 Tour Dates"
+        class="related-event-image lazyload"
+        loading="lazy">
+      </div>
+      <div class="event-info">
+      <span class="title">No Fun At All</span>
+      <span class="date">Quinta-feira outubro 01, 2026</span>
+      <span class="subtitle">John Bull, Florianópolis</span>
+      </div>
+      <span class="chevron-right-icon"></span>
+      </a>        </li>
+      </ol>
+      </div>
+      </div>
+      <div class="component media-summary">
+      <div class="media-group" id="images">
+      <h2>Fotos (5)</h2>
+      <ul class="media-set images inview" data-url="/concerts/43317344-kamaitachi-at-john-bull/images" data-per-page="4" data-total="5">
+      <li>
+      <div class="media-element media-element-square">
+      <a class="media-link" rel="nofollow" data-analytics-category="media_summary" data-analytics-label="photo" href="/images/39173665">
+      <span class="icon-expand">
+      <img class="lazyload" data-src="//assets.sk-static.com/images/nw/components/media-summary/icon-expand.svg" alt="expand" height="12" width="12">
+      </span>
+      <img data-src="//images.sk-static.com/images/media/img/col3/20221224-052033-708810.png"
+        class="media-img lazyload"
+        alt="kamaitachi Concert Tickets - 2026 Tour Dates"
+        title="kamaitachi Concert Tickets - 2026 Tour Dates"
+        width="220"
+        height="220"
+        style="margin-top: -110px; margin-left: -110px; min-height: 140px;" />
+      </a></div>
+      <div class="media-element media-element-square">
+      <a class="media-link" rel="nofollow" data-analytics-category="media_summary" data-analytics-label="photo" href="/images/39173664">
+      <span class="icon-expand">
+      <img class="lazyload" data-src="//assets.sk-static.com/images/nw/components/media-summary/icon-expand.svg" alt="expand" height="12" width="12">
+      </span>
+      <img data-src="//images.sk-static.com/images/media/img/col3/20221224-051842-323245.png"
+        class="media-img lazyload"
+        alt="kamaitachi Concert Tickets - 2026 Tour Dates"
+        title="kamaitachi Concert Tickets - 2026 Tour Dates"
+        width="220"
+        height="220"
+        style="margin-top: -110px; margin-left: -110px; min-height: 140px;" />
+      </a></div>
+      <div class="media-element media-element-square">
+      <a class="media-link" rel="nofollow" data-analytics-category="media_summary" data-analytics-label="photo" href="/images/39173663">
+      <span class="icon-expand">
+      <img class="lazyload" data-src="//assets.sk-static.com/images/nw/components/media-summary/icon-expand.svg" alt="expand" height="12" width="12">
+      </span>
+      <img data-src="//images.sk-static.com/images/media/img/col3/20221224-051728-696688.png"
+        class="media-img lazyload"
+        alt="kamaitachi Concert Tickets - 2026 Tour Dates"
+        title="kamaitachi Concert Tickets - 2026 Tour Dates"
+        width="220"
+        height="220"
+        style="margin-top: -110px; margin-left: -110px; min-height: 140px;" />
+      </a></div>
+      <div class="media-element media-element-square">
+      <a class="media-link" rel="nofollow" data-analytics-category="media_summary" data-analytics-label="photo" href="/images/37177276">
+      <span class="icon-expand">
+      <img class="lazyload" data-src="//assets.sk-static.com/images/nw/components/media-summary/icon-expand.svg" alt="expand" height="12" width="12">
+      </span>
+      <img data-src="//images.sk-static.com/images/media/img/col3/20190924-232916-534771.jpg"
+        class="media-img lazyload"
+        alt="kamaitachi Concert Tickets - 2026 Tour Dates"
+        title="kamaitachi Concert Tickets - 2026 Tour Dates"
+        width="220"
+        height="220"
+        style="margin-top: -110px; margin-left: -110px; min-height: 140px;" />
+      </a></div>
+      </li>
+      </ul>
+      <nav class="media-nav">
+      <p class="browse"><a class="link-primary" href="#images" data-analytics-category="media_summary" data-analytics-label="see_all_photos">
+      Ver todas as fotos (5)
+      </a></p>
+      <button class="paginate paginate-prev" data-analytics-category="media_summary" data-analytics-label="paginate_photos_prev">
+      </button>
+      <button class="paginate paginate-next" data-analytics-category="media_summary" data-analytics-label="paginate_photos_next">
+      </button>
+      </nav>
+      </div>
+      </div>
+      </div>
+      <div class="section-secondary">
+      <div class="component-buy-tickets">
+      <div class="buy-tickets-info-container">
+      <div class="collapsible-container buy-tickets-tiny-info-container">
+      <div class="collapsible-content">
+      <div class="buy-tickets-tiny-info">
+      <div class="buy-tickets-tiny-info-text">
+      <strong class="truncate">Ingressos à venda agora</strong>
+      <span class="truncate">A partir de R$80,00</span>
+      </div>
+      <div class="buy-tickets-tiny-info-button">
+      <button class="btn btn-secondary expand-button"
+        data-analytics-category="event_tickets"
+        data-analytics-action="view_tickets_button_click"
+        data-analytics-label="43317344">
+      Comprar ingressos
+      </button>
+      </div>
+      </div>
+      </div>
+      <button data-theme="dark" class="btn btn-close">&times;</button>
+      <div class="close-backdrop"></div>
+      </div>
+      <div class="collapsible-container buy-tickets-full-info-container">
+      <div class="collapsible-content">
+      <div class="buy-tickets-container">
+      <h3 class="buy-tickets-title">
+      Comprar ingressos
+      </h3>
+      <!-- Event Info Block -->
+      <div class="d-none d-md-block overflow-hidden">
+      <div class="component-tickets-event-info">
+      <div class="event-image no-image-fallback">
+      <img
+        class="lazyload"
+        src="//images.sk-static.com/images/media/profile_images/artists/10081602/medium_avatar"
+        data-src="//images.sk-static.com/images/media/profile_images/artists/10081602/large_avatar"
+        alt="kamaitachi"
+        loading="lazy"
+        width="36"
+        height="36"
+        >
+      </div>
+      <div class="event-details">
+      <div class="event-title truncate">
+      kamaitachi
+      </div>
+      <div class="event-info truncate">
+      <span class="event-date">
+      09 outubro 2026
+      </span>
+      <span class="event-location">
+      John Bull
+      </span>
+      </div>
+      </div>
+      </div>
+      </div>
+      <!-- Ticket Status Message -->
+      <!-- Regular Tickets -->
+      <div class="component-tickets-table">
+      <ul class="tickets-list">
+      <li class="ticket-item">
+      <a href="/tickets/34179817?"
+        rel="nofollow"
+        title="Ticket vendor website"
+        data-analytics-category="ticket_vendor"
+        data-analytics-action="click_primary"
+        data-analytics-label="Ticket vendor website"
+        data-analytics-value="0"
+        data-event-id="43317344"
+        target="_blank"
+        class="buy-ticket-link acquisition-target">
+      <div class="ticket-info">
+      <div class="vendor-name truncate">Ticket vendor website</div>
+      <div class="sale-status">
+      <span class="status-text on-sale-now">À venda agora</span>
+      </div>
+      </div>
+      <div class="price-info">
+      <span class="price-label">A partir de</span>
+      <span class="price-amount">R$80,00</span>
+      </div>
+      </a>
+      </li>
+      </ul>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="d-block d-md-none moderation-actions-bottom-block">
+      <div class="event-moderation-actions ">
+      <div class="flag-event">
+      <a href="https://support.songkick.com/hc/en-us/requests/new"
+        target="_blank"
+        data-analytics-category="event_brief"
+        data-analytics-label="flag_event">
+      Sinalizar um problema
+      </a>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="microformat">
+        <script type="application/ld+json">[{"@context":"http://schema.org","@type":"MusicEvent","name":"kamaitachi @ John Bull","url":"https://www.songkick.com/pt/concerts/43317344-kamaitachi-at-john-bull?utm_medium=organic\u0026utm_source=microformat","image":"https://images.sk-static.com/images/media/profile_images/artists/10081602/huge_avatar","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"Florianópolis","addressCountry":"Brazil","streetAddress":"Avenida das Rendeiras, 1046 - Lagoa da Conceição","postalCode":"88062-400"},"name":"John Bull","sameAs":"http://www.johnbullfloripa.com.br/","geo":{"@type":"GeoCoordinates","latitude":-27.60844,"longitude":-48.45394}},"eventStatus":"https://schema.org/EventScheduled","startDate":"2026-10-09T19:00:00","endDate":"2026-10-09","performer":[{"@type":"MusicGroup","name":"kamaitachi","genre":[],"sameAs":"https://www.songkick.com/artists/10081602-kamaitachi?utm_medium=organic\u0026utm_source=microformat"}],"description":"kamaitachi at John Bull at 2026-10-09T19:00:00-0300","organizer":{"@type":"Organization","name":"kamaitachi","url":"https://www.songkick.com/concerts/43317344-kamaitachi-at-john-bull?utm_medium=organic\u0026utm_source=microformat"},"offers":[{"@type":"AggregateOffer","url":"https://www.songkick.com/concerts/43317344-kamaitachi-at-john-bull?utm_medium=organic\u0026utm_source=microformat","availability":"LimitedAvailability","validFrom":null,"highPrice":80.0,"lowPrice":80.0,"priceCurrency":"BRL","offerCount":1}]}]</script>
+      </div>
+      <!-- page-view.png is served by apache-frontend -->
+      <img src="/page-view.png?page=event&amp;id=43317344" alt="event-page-view"  width='1' height='1'/>
+    </div>
+    <div class="footer-container">
+      <div id="footer" class="container homepage footer">
+        <div class="row">
+          <div class="col-4">
+            <ul>
+              <li><a href="/">Início</a></li>
+              <li><a href="/info/about" rel="nofollow">Sobre nós</a></li>
+              <li><a href="/app" rel="nofollow">Baixe o app</a></li>
+              <li><a href="/blog" rel="nofollow">Blog</a></li>
+              <li><a href="/jobs" rel="nofollow">Carreira</a></li>
+              <li><a href="http://support.songkick.com/">Suporte</a></li>
+              <li><a href="/leaderboards/popular_artists">Charts mais populares</a></li>
+              <li><a href="/pt/festivals">Festivais</a></li>
+              <li><a href="/news">News</a></li>
+            </ul>
+          </div>
+          <div class="col-5">
+            <ul>
+              <li><a href="//tourbox.songkick.com/?utm_medium=referral&amp;utm_source=songkick.com&amp;utm_campaign=tourboxforartists">Tourbox para artistas</a></li>
+              <li><a href="https://campaigns.songkick.com/?utm_medium=referral&utm_source=songkick.com&utm_campaign=nav_campaign_footer" target="_blank">Campaigns para promotores</a></li>
+              <li><a href="/developer">Informações de API</a></li>
+              <li><a href="/design" rel="nofollow">Diretrizes de marca</a></li>
+              <li><a href="/info/guidelines" rel="nofollow">Diretrizes da comunidade</a></li>
+              <li><a href="/info/terms" rel="nofollow">Termos de uso</a></li>
+              <li><a href="/info/privacy" rel="nofollow">Política de privacidade</a></li>
+              <li><a href="/info/cookies" rel="nofollow">Política de Cookies</a></li>
+              <li><a href="/info/security" rel="nofollow">Segurança</a></li>
+              <li><a href="/live-stream-concerts" rel="nofollow">Transmissões ao vivo</a></li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <p class="language-subtitle language-nav">Idioma</p>
+            <div class="language-options">
+              <div class="english-language">
+                <a href="https://www.songkick.com/concerts/43317344-kamaitachi-at-john-bull">Inglês</a>
+              </div>
+              <div class="french-language">
+                <a href="https://www.songkick.com/fr/concerts/43317344-kamaitachi-at-john-bull">Francês</a>
+              </div>
+              <div class="spanish-language">
+                <a href="https://www.songkick.com/es/concerts/43317344-kamaitachi-at-john-bull">Espanhol</a>
+              </div>
+              <div class="german-language">
+                <a href="https://www.songkick.com/de/concerts/43317344-kamaitachi-at-john-bull">Deutsch</a>
+              </div>
+              <div class="portuguese-language">
+                <a href="https://www.songkick.com/pt/concerts/43317344-kamaitachi-at-john-bull">Português</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="tourbox-cta">
+              <p>Tenha suas datas de turnê vistas em todos os lugares.</p>
+              <a href="//tourbox.songkick.com/?utm_medium=referral&amp;utm_source=songkick.com&amp;utm_campaign=visitor" class="sign-up-as-an-artist" data-analytics-category="navigation" data-analytics-label="sign_up_tourbox">Cadastre-se como artista</a>
+            </div>
+            <div class="social-container">
+              <ul class="social-icons">
+                <li>
+                  <a class="twitter-logo" href="https://twitter.com/songkick">
+                  <img src="//assets.sk-static.com/images/nw/furniture/icons/twitter-icon-new.svg" width="22" height="18" alt="Twitter">
+                  &nbsp;<span>Seguir.</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://www.facebook.com/songkick">
+                  <img src="//assets.sk-static.com/images/nw/furniture/icons/facebook.png" width="18" height="18" alt="Facebook">
+                  &nbsp;<span>Curtir.</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      Songkick.EventBus.bind('app:initialize', function() {
+        if (typeof ga !== 'undefined') {
+          ga('set', 'dimension8', 'upcoming_concert:on_sale');
+          ga('set', 'dimension10', '');
+          ga('set', 'dimension11', '1');
+        }
+      });
+      
+      $(document).on('click', 'a.buy-ticket-link', function(e) {
+          window.dataLayer.push({
+            'event' : 'ticket_link_click',
+            'vendor' : this.getAttribute('data-analytics-label'),
+            'event_id' : '43317344'
+          });
+      });
+    </script>
+    <script type="text/javascript" src="//assets.sk-static.com/assets/javascript/entryPoints/helpers_and_shared_components-AWKLDPDR.js"></script>
+    <script type="text/javascript" src="//assets.sk-static.com/assets/javascript/entryPoints/slick_carousel-KQW3HHVN.js"></script>
+    <script type="text/javascript">
+      const flashCloseButton = document.querySelector('.show-request-flash-container .close-button')
+      if(flashCloseButton){
+        flashCloseButton.addEventListener('click', () => {
+          flashCloseButton.closest('.flash-request_show_success').classList.add('hidden');
+        });
+      }
+    </script>
+    <script>
+      $(document).ready(function() {
+          updateButtonText();
+      
+          $(window).resize(function() {
+              updateButtonText();
+          });
+      });
+      
+      function updateButtonText() {
+          var windowWidth = $(window).width();
+          var buttonText = windowWidth < 1100 ? "Pesquisar" : "Pesquisar";
+          $("#searchButtonText").text(buttonText);
+      }
+    </script>
+    <script type="text/javascript" src="//assets.sk-static.com/assets/javascript/entryPoints/searchmodal-ZQ6KDB6N.js"></script>
+    <script>
+      $(document).on('click', 'li.search', function(e) {
+         window.dataLayer.push({
+           'event' : 'search_click',
+           'page_type' : 'concert',
+           'device_type' : 'desktop',
+           'login_status': 'logged_out'
+           });
+         });
+      
+       $(document).on('click', 'li.live-stream-concerts', function(e) {
+           window.dataLayer.push({
+           'event': 'navigation_click',
+           'filter_click_type': 'tourbox-upsell-visitor'
+           });
+         });
+    </script>
+    <script type="text/javascript">
+      Songkick.EventBus.bind('analytics:google:loaded', function(config) {
+        Songkick.EventBus.trigger('ui:view', {
+          category: "mobile_app_banner_logged_out",
+          label:    "get_free_app"
+        });
+      });
+    </script>
+    <script>
+      $(document).on('click', 'li.tourbox_cta_logged_out', function(e) {
+            window.dataLayer.push({
+            'event': 'navigation_click',
+            'filter_click_type': 'tourbox-upsell_mobile_nav-visitor'
+            });
+          });
+    </script>
+    <script type="text/javascript" src="//assets.sk-static.com/assets/javascript/entryPoints/searchmodal-ZQ6KDB6N.js"></script>
+    <script type="text/javascript">
+      Songkick.EventBus.bind('app:initialize', function() {
+        $('.search-text-input').on('focusin', function(){
+          $(this).addClass('active');
+          $(this).attr('placeholder', "Encontre shows por artista ou cidade");
+        }).on('focusout', function(){
+          $(this).removeClass('active');
+          $(this).attr('placeholder', "Encontre shows");
+        });
+      });
+      
+        $(document).on('click', 'button.search-button', function(e) {
+        window.dataLayer.push({
+            'event': 'search_click',
+            'page_type': 'concert',
+            'device_type': 'mobile_logged_out'
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      Songkick.EventBus.bind('app:initialize', function() {
+        new Songkick.Component.NavigationCarousel();
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        const feedCardAvatar = document.querySelector('.feed-card-avatar');
+        const relatedArtist = document.querySelector('.related-event-image');
+        const navigationCards = document.querySelectorAll('.event-navigation-carousel-item');
+      
+        if (feedCardAvatar) {
+          const avatarSrc = feedCardAvatar.getAttribute('src');
+          const reviewImage = document.getElementById('review-image');
+          if (reviewImage) {
+            reviewImage.setAttribute('src', avatarSrc);
+          } else {
+          }
+        }
+      
+        if (relatedArtist) {
+          const relatedAvatarSrc = relatedArtist.getAttribute('src');
+          const reviewImage = document.getElementById('more-events-image');
+          if (reviewImage) {
+            reviewImage.setAttribute('src', relatedAvatarSrc);
+          }
+        }
+      
+        navigationCards.forEach((card) => {
+          const value = card.dataset.analyticsValue;
+      
+          card.addEventListener('click', function(event) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event' : 'event_page_nav_click',
+              'nav_item': value
+            });
+          })
+        })
+      });
+    </script>
+    <script type="text/javascript">
+      Songkick.EventBus.bind('app:initialize', function(config) {
+        setTimeout(function()
+        {
+          $(".on-sale-time").css('width', '15.934065934065934%')
+        }, 500);
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        const artistLinks = document.querySelectorAll('.analytics-artist-link');
+        artistLinks.forEach((card) => {
+          const value = card.dataset.analyticsValue;
+      
+          card.addEventListener('click', function(event) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event' : 'event_page_line_up_click',
+              'artist_id': value
+            });        
+          })
+        })
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        const venueLinks = document.querySelectorAll('.analytics-venue-link');
+        venueLinks.forEach((card) => {
+          const value = card.dataset.analyticsValue; 
+          const location = card.dataset.analyticsLocation; 
+      
+          card.addEventListener('click', function(event) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event' : 'event_page_venue_click',
+              'venue_id': value,
+              'location': location
+            });        
+          })
+        })
+      });
+    </script>
+    <script type="text/javascript" src="//assets.sk-static.com/assets/javascript/entryPoints/Media-JBSP4BNF.js"></script>
+    <script type="text/javascript" src="//assets.sk-static.com/assets/javascript/entryPoints/event_page-DLJGZ2KE.js"></script>
+    <script type="text/javascript">
+      $(document).on('click', '.js-toggle-review', function(e) {
+        window.dataLayer.push({
+          'event' : 'event_review_read_more'
+        });
+      });
+      
+      $(document).on('click', '.report-review', function(e) {
+        window.dataLayer.push({
+          'event' : 'event_review_report'
+        });
+      });
+      
+        Songkick.EventBus.bind('analytics:google:loaded', function() {
+          Songkick.EventBus.trigger('ui:event_page_upcoming:view', {tickets_label: "primary_tickets_only"});
+        });
+      
+      Songkick.EventBus.bind('app:initialize', function() {
+        $(document).on('click', 'a.buy-ticket-link', function(e) {
+          if (typeof sendDmpAnalytics !== 'undefined' && sendDmpAnalytics === true) {
+              // Warner DMP tracking
+              var tracker = s_gi('wmg');
+              tracker.linkTrackVars='prop1,eVar4,eVar90,eVar91';
+              tracker.events='event67';
+              // tracker.prop1=digitalData.content.artist;
+              // tracker.eVar4 = digitalData.content.artist;
+              // tracker.eVar90=digitalData.page.pageInfo.eventDate;
+              // tracker.eVar91=digitalData.page.pageInfo.eventLoc;
+              tracker.tl(this,'o','kamaitachi:2026-10-09:Florianópolis, Brazil:Buy Tickets Click');
+          }
+        });
+      });
+      
+      var analyticsLoaded = false;
+      
+      Songkick.EventBus.bind('analytics:google:loaded', function() {
+        analyticsLoaded = true;
+      
+        Songkick.EventBus.trigger('ui:view', {
+          category: 'event_page',
+          action: 'view_upcoming',
+          label: "on_sale_now"
+        });
+      
+      });
+      
+    </script>
+    <div class="dmp-analytics-container-placeholder"></div>
+    <script type="text/javascript">
+      googleOptimiseEnabled = false;
+    </script>
+    <script type="text/javascript" src="//assets.sk-static.com/assets/javascript/entryPoints/ads-VWNVTMXS.js"></script>
+    <script type="text/javascript">
+      Songkick.EventBus.bind('app:initialize', function(config) {
+        googletag = window.googletag || {};
+        googletag.cmd = window.googletag.cmd || [];
+        var targetingTags = {"artists":["kamaitachi"],"genres":[],"location":["Florianópolis","Brazil"],"event_type":"concert"};
+        var shouldHideStickyFooter = true
+        try {
+            new Songkick.Component.Ads(freestar, googletag, targetingTags, config.events, shouldHideStickyFooter);
+        }
+        catch(err) {
+          console.log('Ads Error:');
+          console.log(err);
+        }
+      });
+    </script>
+    <script type="text/javascript">
+      SK.logged_in_user = {
+        id:null,
+        analyticsUserType: 'visitor'
+      };
+      
+      SK.pageGeneratedTimeMillis = 1783776404000;
+      
+      
+      var features = {};
+      Songkick.EventBus.trigger('app:initialize', {
+        events: Songkick.EventBus,
+        features: features,
+        mobileAnalyticsEnabled: false,
+      });
+    </script>
+  </body>
+</html>
