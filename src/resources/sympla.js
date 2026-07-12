@@ -1,9 +1,9 @@
 const { BASE_URL } = require('../constants/sympla');
-const baseResource = require('./base');
+const leecherResource = require('./leecher');
 
 const _public = {};
 
-_public.get = params => baseResource.post(`${BASE_URL}/search`, buildRequestBody(params));
+_public.get = params => leecherResource.crawlViaPost(`${BASE_URL}/search`, buildRequestBody(params));
 
 function buildRequestBody(params = {}){
   return {

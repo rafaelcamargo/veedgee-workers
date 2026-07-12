@@ -1,14 +1,14 @@
-const baseResource = require('./base');
+const leecherResource = require('./leecher');
 const symplaResource = require('./sympla');
 
 describe('Sympla Resource', () => {
   beforeEach(() => {
-    baseResource.post = jest.fn();
+    leecherResource.crawlViaPost = jest.fn();
   });
 
   it('should get events', () => {
     symplaResource.get();
-    expect(baseResource.post).toHaveBeenCalledWith(
+    expect(leecherResource.crawlViaPost).toHaveBeenCalledWith(
       'https://www.sympla.com.br/api/v1/search',
       {
         service: '/v4/search',
@@ -34,7 +34,7 @@ describe('Sympla Resource', () => {
     const city = 'joinville';
     const state = 'SC';
     symplaResource.get({ city, state });
-    expect(baseResource.post).toHaveBeenCalledWith(
+    expect(leecherResource.crawlViaPost).toHaveBeenCalledWith(
       'https://www.sympla.com.br/api/v1/search',
       {
         service: '/v4/search',

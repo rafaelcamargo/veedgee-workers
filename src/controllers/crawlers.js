@@ -33,9 +33,6 @@ function getCrawlers(mode){
   return {
     'vlm': [
       { name: 'instagram-porao-da-liga', crawl: instagramPoraoDaLigaCrawler.crawl }
-    ],
-    'sympla': [
-      { name: 'sympla', crawl: symplaCrawler.crawl }
     ]
   }[mode] || getDefaultCrawlers();
 }
@@ -47,6 +44,7 @@ function getDefaultCrawlers(){
     { name: 'eticket-center', crawl: eticketCenterCrawler.crawl },
     { name: 'pensa-no-evento', crawl: pensaNoEventoCrawler.crawl },
     { name: 'songkick', crawl: songkickCrawler.crawl },
+    { name: 'sympla', crawl: symplaCrawler.crawl },
     { name: 'tockify', crawl: tockifyCrawler.crawl },
     { name: 'ingresso', crawl: ingressoCrawler.crawl }
   ];

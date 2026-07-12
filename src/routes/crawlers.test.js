@@ -412,7 +412,7 @@ describe('Crawlers Routes', () => {
         data: JSON.parse(getMockedFile(`sympla-${fileSuffix}.json`))
       });
     });
-    const response = await start({ mode: 'sympla' });
+    const response = await start();
     expect(eventsResource.bulkSave).toHaveBeenCalledWith([
       {
         title: 'Before Night',
@@ -504,7 +504,7 @@ describe('Crawlers Routes', () => {
 
   it('should not save sympla events if no sympla events were found', async () => {
     symplaResource.get = jest.fn(() => Promise.resolve({}));
-    const response = await start({ mode: 'sympla' });
+    const response = await start();
     expect(eventsResource.bulkSave).not.toHaveBeenCalled();
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(response.status).toEqual(200);
