@@ -5,6 +5,7 @@ module.exports = {
     API_TOKEN: 'vee123',
     WORKER_TOKENS: 'vee456,vee789'
   },
+  LEECHER_BASE_URL: 'http://localhost:9009',
   NOTIFICATION_SENDER: 'sender@domain.com',
   NOTIFICATION_RECIPIENTS: 'some@email.com,other@email.com',
   BUGSNAG_API_TOKEN: 'j7k8l9',

@@ -3,9 +3,9 @@ const baseResource = require('./base');
 
 const _public = {};
 
-_public.get = params => baseResource.post(`${BASE_URL}/search`, getSearchParams(params));
+_public.get = params => baseResource.post(`${BASE_URL}/search`, buildRequestBody(params));
 
-function getSearchParams(params = {}){
+function buildRequestBody(params = {}){
   return {
     service: '/v4/search',
     params: {
