@@ -102,8 +102,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6359/29-02-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-danilo-gentili-sessao-extra',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6359.webp',
-        category: 'comedy'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6359.webp'
       },
       {
         title: 'Dhouse Apresenta: Stand Up Comedy Com Criss Paiva',
@@ -113,8 +112,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6277/01-03-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-criss-paiva',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6277.webp',
-        category: 'comedy'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6277.webp'
       },
       {
         title: 'Tributo Secos E Molhados - Especial 50 Anos',
@@ -124,8 +122,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6371/01-03-2024/pr/curitiba/tributo-secos-e-molhados-especial-50-anos',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6371.webp',
-        category: 'music'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6371.webp'
       },
       {
         title: 'The Beast Experience',
@@ -136,7 +133,6 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6155/01-03-2024/sc/joinville/the-beast-experience',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6155.webp',
-        category: 'music',
         description: 'The Beast Experience - Iron Maiden Cover\\r\\nFormada em Maio de 2023 com o propósito de elevar a experiência do público em um show de uma banda cover, a banda formada por Raphael Mendes, Eric Claros, Guilherme Spilack, Pedro Migliacci, Danilo Bellintani e Vinícius Barbosa juntou a experiência de músicos já conhecidos em seus antigos trabalhos tributo ao Iron Maiden para este objetivo.\\r\\nO projeto tem performances teatrais inspiradas na banda original, diferentes cenários e figurinos, e os integrantes apresentam instrumentos iguais aos de seus mestres, executando com ótima musicalidade um repertório bastante abrangente do Iron Maiden com 3 guitarristas!\\r\\nE com essa mistura de experiência, talento e notoriedade no meio digital e musical formou-se o projeto \'The Beast Experience - Ultimate Iron Maiden Tribute\'.'
       },
       {
@@ -147,8 +143,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6380/06-03-2024/pr/curitiba/dhouse-apresenta-orgulho-do-papai-com-giovana-fagundes',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6380.webp',
-        category: 'comedy'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6380.webp'
       },
       {
         title: 'Chico César & Zeca Baleiro',
@@ -159,7 +154,6 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6212/09-03-2024/sc/florianopolis/chico-cesar-zeca-baleiro',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6212.webp',
-        category: 'music',
         description: '‘Ao Arrepio da Lei’,\nálbum de inéditas de Chico César e Zeca Baleiro\nUma nova safra de mais de 20 canções marcou a retomada da parceria inaugurada há mais de 30 anos por Chico César e Zeca Baleiro. Animados pelo resultado das novas parcerias musicais, anunciaram o lançamento de um álbum, antecipando duas canções, “Respira” e “Lovers”, em maio de 2021. Com tantos trabalhos em paralelo, Chico e Zeca só retomaram as gravações em 2022, quando lançaram novo single duplo com as inéditas “Verão” e “Beije-me Antes”, e finalizaram o álbum no final de 2023.\n“Ao Arrepio da Lei” é o nome do álbum que Chico César e Zeca Baleiro lançam em março de 2024, quando também iniciam uma turnê por algumas das principais cidades e capitais do país. No repertório do show, as novas parcerias, sucessos de ambos e canções que fazem parte da memória afetiva dos dois artistas.\nQuando os shows e gravações pararam por conta da pandemia, Chico César e Zeca Baleiro começaram a compor bastante juntos. Entre maio de 2020'
       },
       {
@@ -170,8 +164,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6410/09-03-2024/pr/curitiba/dhouse-apresenta-40-com-eduardo-jerico',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6410.webp',
-        category: 'comedy'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6410.webp'
       },
       {
         title: '1º Encontro Aaonça',
@@ -182,7 +175,6 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6468/11-03-2024/pr/curitiba/1-encontro-aaonca',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6468.webp',
-        category: 'festivals',
         description: 'Dia 11 de março, segunda feira a partir das 19h, no Bar do Alemão ocorrerá o evento \'Ação entre amigos da onça\'.O objetivo é arrecadar fundos para a Aaonça, Associação dos amigos da  onça com finalidade de ajudar a \'carne de onça\' se tornar indicação Geográfica de Curitiba.\\r\\nO ingresso da direito a um \' submarino \' sendo que a canequinha do Steinhaeger poderá ser levada para casa.\\r\\nServiço:\\r\\nPrimeiro Encontro Aaonça, ação entre amigos11 de março a partir das 19h.Bar do Alemão Rua Dr Claudino dos Santos, 63, São Francisco.'
       },
       {
@@ -194,7 +186,6 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6211/09-04-2024/rs/porto-alegre/palestra-com-zico',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6211.webp',
-        category: 'education',
         description: '\\r\\nPalestra: LIDERANÇA & FORMAÇÃO DE EQUIPE EM 2024.'
       },
       {
@@ -205,8 +196,7 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6013/02-05-2024/pr/curitiba/yamandu-costa',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6013.webp',
-        category: 'music'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6013.webp'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -238,7 +228,6 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-joinville/29-02/21-00/',
         image: 'https://www.eticketcenter.com.br/Assets/Imagens/2023/09/06//512b809896-elvis-experience-com-dean-z-em-joinville_2.webp',
-        category: 'music',
         description: 'O espetaculo musical "Aventura Congelante, O Legado", traz ao públicotodo o legado construído pelas irmãs Elsa e Anna durante os anos. Com aajuda de dois contadores de história, conheceremos de perto tudo o queaconteceu com Anna e Elsa desde que elas eram pequenas. Em cerca de 1hora e 10 minutos temos toda a história de Frozen e Frozen II contada ecantada ao vivo! A história, que já envolveu toda uma geração, traz seusprincipais personagens vivenciando novamente toda uma aventura quecomeça em Arendelle, passa pela floresta encantada e promete mudar odestino de todos pra sempre.Além do experiente elenco que atua, dança e canta nesse lindo espetáculo100% cantado ao vivo, o espetáculo conta com direção geral do renomadodiretor Bruno Rizzo, direção executiva de Daniela Schiarreta e direçãoresidente de Ewerton Novaes.Kids, TicketCenter'
       },
       {
@@ -250,8 +239,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-blumenau/02-03/21-00/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2023/09/13//fa311ad974-elvis-experience-com-dean-z-em-blumenau_2.webp',
-        category: 'music'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2023/09/13//fa311ad974-elvis-experience-com-dean-z-em-blumenau_2.webp'
       },
       {
         title: 'Gratiluz Com Dra. Rosângela',
@@ -262,8 +250,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/stand-up/gratiluz-com-dra-rosangela/15-03/20-30/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//3bb07b7d32-gratiluz-com-dra-rosangela_2.webp',
-        category: 'comedy'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//3bb07b7d32-gratiluz-com-dra-rosangela_2.webp'
       },
       {
         title: 'Rei Leão | O Musical',
@@ -274,8 +261,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/musical/rei-leao-o-musical/16-03/16-00/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//eb8eaacfc1-rei-leao-o-musical_2.webp',
-        category: 'musicals'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//eb8eaacfc1-rei-leao-o-musical_2.webp'
       },
       {
         title: 'Ultimate Queen & Orquestra',
@@ -286,8 +272,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/ultimate-queen-orquestra/15-06/21-00/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//fd5cc002c9-ultimate-queen-orquestra_2.webp',
-        category: 'music'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//fd5cc002c9-ultimate-queen-orquestra_2.webp'
       },
       {
         title: 'Bruna Louise - Joi',
@@ -298,8 +283,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/stand-up/bruna-louise-joi/22-06/19-00/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/02/19//d0693447a5-bruna-louise-joi_2.webp',
-        category: 'comedy'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/02/19//d0693447a5-bruna-louise-joi_2.webp'
       },
       {
         title: 'Se É Que Você Me Entende Com Raphael Ghanem - Joinville',
@@ -310,8 +294,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/stand-up/se-e-que-voce-me-entende-com-raphael-ghanem-joinville/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/05/09//a6d458423a-se-e-que-voce-me-entende-com-raphael-ghanem-joinvi_2.webp',
-        category: 'comedy'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/05/09//a6d458423a-se-e-que-voce-me-entende-com-raphael-ghanem-joinvi_2.webp'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -350,7 +333,6 @@ describe('Crawlers Routes', () => {
       country: 'BR',
       url: 'https://www.blueticket.com.br/evento/33937/samba-jurere',
       image: 'https://d2hnilqqbw3vnf.cloudfront.net/images/imagens/full/vQHiYmhjLdXXQtFWFmTVfJ6dv2JLBMEdMILf64kF.jpeg',
-      category: 'music',
       description: 'ESPETÁCULO ELVIS & ABBAPrepare-se para um Espetáculo Histórico!Será uma fantástica viagem aos anos 50, 60 e 70. Um encontro épico, de dois grandes tributos da Argentina, considerados os melhores do gênero, que irão interpretar os sucessos do #Abba e #ElvisPresley. Quem abre a noite é o tributo ABBA da Argentina, que irá interpretar os clássicos marcantes da Agnetha Fältskog, Anni-Frid Lyngstad, Björn Ulvaeus e Benny Andersson. A performance inclui figurinos e coreografias, em perfeita harmonia vocal e instrumental, recriada do original ABBA. Em seguida, quem sobe ao palco é o sensacional cover/tributo ao ELVIS PRESLEY da Argentina, com figurinos marcantes e fiéis, backing vocalsAo vivo e harmonia instrumental, representando em grande estilo os maiores clássicos do ícone Elvis Presley. Um espetáculo de arrepiar e uma emocionante viagem no tempo, através da obra e da genialidade do grupo ABBA e do ícone ELVIS PRESLEY. Você vai cantar e se emocionar com 2 shows épicos, com a banda Los Kal'
     }]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -370,38 +352,6 @@ describe('Crawlers Routes', () => {
       result: 'success',
       time: expect.any(Number)
     });
-    expect(loggerService.track).not.toHaveBeenCalled();
-  });
-
-  it('should handle Blueticket events with unknown category term', async () => {
-    blueticketResource.get = jest.fn(params => {
-      const data = params.categoria === 11 && [{
-        codigo: 99999,
-        data_indefinida: 0,
-        data: '2024-03-10 20:00:00',
-        nome: 'Evento Sem Categoria',
-        nome_cidade: 'Joinville',
-        uf_cidade: 'SC',
-        categoria: 'Categoria Desconhecida',
-        categoria_alt: 'Outra Desconhecida',
-        slug: 'evento-sem-categoria'
-      }];
-      return Promise.resolve({ data });
-    });
-    const response = await start();
-    expect(eventsResource.bulkSave).toHaveBeenCalledWith([{
-      title: 'Evento Sem Categoria',
-      slug: 'evento-sem-categoria-joinville-sc-20240310',
-      date: '2024-03-10',
-      time: '20:00',
-      city: 'Joinville',
-      state: 'SC',
-      country: 'BR',
-      url: 'https://www.blueticket.com.br/evento/99999/evento-sem-categoria'
-    }]);
-    expect(eventsResource.get).toHaveBeenCalledTimes(1);
-    expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
-    expect(response.status).toEqual(200);
     expect(loggerService.track).not.toHaveBeenCalled();
   });
 
@@ -442,8 +392,7 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/acustico-navaranda-curitiba/2368782',
-        category: 'music'
+        url: 'https://www.sympla.com.br/evento/acustico-navaranda-curitiba/2368782'
       },
       {
         title: 'Porter Summit 2024',
@@ -453,8 +402,7 @@ describe('Crawlers Routes', () => {
         city: 'Florianópolis',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/porter-summit-2024/2222757',
-        category: 'business'
+        url: 'https://www.sympla.com.br/evento/porter-summit-2024/2222757'
       },
       {
         title: 'Antecipados Pg Abril I',
@@ -475,7 +423,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.sympla.com.br/evento/show-vera-loca/2384437',
-        category: 'music',
         image: 'https://images.sympla.com.br/6a399b55b2597.jpg'
       },
       {
@@ -738,7 +685,6 @@ describe('Crawlers Routes', () => {
       {
         title: 'Feira Ecosol Dona Francisca - Artesanatos E Similares',
         slug: 'feira-ecosol-dona-francisca-artesanatos-e-similares-joinville-sc-20260709',
-        category: 'fair',
         date: '2026-07-09',
         time: '09:30',
         city: 'Joinville',
@@ -762,7 +708,6 @@ describe('Crawlers Routes', () => {
       {
         title: 'Espetáculo Infantil O Pequeno Príncipe',
         slug: 'espetaculo-infantil-o-pequeno-principe-joinville-sc-20260710',
-        category: 'theater',
         date: '2026-07-10',
         time: '19:30',
         city: 'Joinville',
@@ -814,8 +759,7 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.pensanoevento.com.br/sitev2/eventos/95881/dazaranha-acustico',
-        image: 'https://files.pensanoevento.com.br/images/eventos/697be1269dc98_capa.webp',
-        category: 'music'
+        image: 'https://files.pensanoevento.com.br/images/eventos/697be1269dc98_capa.webp'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -933,7 +877,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQKoU0bjYlV/',
-        category: 'comedy',
         image: 'https://scontent.cdninstagram.com/v/t51.82787-15/570681184_18383968534181168_4843678019630848986_n.jpg?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=105&ig_cache_key=Mzc0OTk4Njk5MjI4NjE3MzUyNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzNTB4MTY4OC5zZHIuQzMifQ%3D%3D&_nc_ohc=VBhucAO3A3UQ7kNvwFY16dE&_nc_oc=AdkeiZQfUnLsHzPEjkthVkkLncIIt_W4DIZupVnVrSgPYbqDTxauSFbEteLHGqjqDi8&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AffCmTrPlzFzo91nJUz-4vZ24Txal2RTGWb2PFTUxxgdlA&oe=69019D68',
         description: '🚨 VENDAS LIBERADAS, JOINVILLE 🚨\n\nO Em Pé na Rede chega pra transformar a cidade em uma noite de risadas sem limites! 🔥\n\nCom quadros como “Fazendo Amizade” e “Comentando Histórias”, interação com a plateia e muito improviso, Victor, Osmar e Rominho prometem gargalhadas do começo ao fim! 😂🎤\n\n🎟️ O riso tá garantido… e o ingresso? Corre pra garantir o seu!\n\nSeguidor da Canesso Produções tem ingresso especial com 50% de desconto! ❤️\n\n🔗 Ingressos e maiores informações diretamente no site da Canesso Produções (link na bio)'
       },
@@ -957,7 +900,6 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQG-U0DDQLr/',
-        category: 'music',
         image: 'https://scontent.cdninstagram.com/v/t51.82787-15/569919988_18291886258260658_3184029433435846307_n.heic?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=100&ig_cache_key=Mzc0ODk1Nzg0ODk5MTQ5ODk4Nw%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=i0xtAFn0s0QQ7kNvwHlGy3y&_nc_oc=AdlJi_lAMHYESBJj4monv9VUD_Wxf8SnUfA0iNNJp6pVltJNTtX-_q6Qw04oWPBx53Y&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfesowsYX57RfR-pJfGJfNWZDpHLWMP1MIwvD8JNE5ImgA&oe=69018E96',
         description: 'Fim de semana com 2 super bandas no Porão da Liga.'
       },

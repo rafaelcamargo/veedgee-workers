@@ -1,7 +1,6 @@
 const cheerio = require('cheerio');
 const { BASE_URL } = require('../constants/eticket-center');
 const eticketCenterResource = require('../resources/eticket-center');
-const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
 const reportService = require('../services/report');
 const requestService = require('../services/request');
@@ -40,7 +39,6 @@ function formatEvent($eventEl){
     state,
     country: 'BR',
     url: [BASE_URL, href].join(''),
-    category: eventCategoryService.findCategoryByKeywords([extractCategorySlug(href)]),
     image: extractImageUrl($eventEl)
   };
 }
@@ -53,11 +51,6 @@ function extractImageUrl($eventEl){
 function findImageUrl(html){
   const find = attrName => html.find('.ImgPrincipal').attr(attrName);
   return [find('data-src'), find('src')].find(Boolean);
-}
-
-function extractCategorySlug(href){
-  const result = href.match(/\/eventos\/([^/]+)\//);
-  return result?.[1];
 }
 
 function formatDateTime($eventEl){

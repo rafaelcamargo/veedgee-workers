@@ -65,7 +65,6 @@ describe('Instagram Porao Da Liga Crawler', () => {
       state: 'SC',
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
-      category: 'comedy',
       image: imageUrl,
       description: ''
     }]);
@@ -87,7 +86,6 @@ describe('Instagram Porao Da Liga Crawler', () => {
       state: 'SC',
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
-      category: 'music',
       image: imageUrl,
       description: ''
     }]);
@@ -200,7 +198,6 @@ describe('Instagram Porao Da Liga Crawler', () => {
       state: 'SC',
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
-      category: 'comedy',
       image: imageUrl,
       description: ''
     }]);
@@ -236,7 +233,6 @@ describe('Instagram Porao Da Liga Crawler', () => {
       state: 'SC',
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
-      category: 'music',
       image: imageUrl,
       description: ''
     }]);

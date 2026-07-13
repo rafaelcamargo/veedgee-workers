@@ -1,7 +1,6 @@
 const { WANTED_CITIES } = require('../constants/events');
 const symplaResource = require('../resources/sympla');
 const dateService = require('../services/date');
-const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
 const { removeAccents } = require('../services/text');
 
@@ -33,9 +32,6 @@ function buildEvents(data){
     return eventService.isWantedCity(location.city, location.state);
   }).map(item => {
     const [date, time] = parseDateTime(item.start_date_formats.en);
-    const category = eventCategoryService.findCategoryByKeywords(
-      eventCategoryService.extractCategoryKeywordsFromText(item.name)
-    );
     return {
       title: item.name,
       date,
@@ -44,7 +40,6 @@ function buildEvents(data){
       state: item.location.state,
       country: 'BR',
       url: item.url,
-      category,
       image: item.images?.original
     };
   });

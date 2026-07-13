@@ -1,6 +1,5 @@
 const cheerio = require('cheerio');
 const pensaNoEventoResource = require('../resources/pensa-no-evento');
-const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
 const reportService = require('../services/report');
 const requestService = require('../services/request');
@@ -40,9 +39,6 @@ function buildEvents(data){
   return data.map(item => {
     const { evento, data, cidade, estado, url, capaURL } = item;
     const [date, time] = parseDateTime(data);
-    const category = eventCategoryService.findCategoryByKeywords(
-      eventCategoryService.extractCategoryKeywordsFromText(evento)
-    );
     return {
       title: evento,
       date,
@@ -51,7 +47,6 @@ function buildEvents(data){
       state: estado,
       country: 'BR',
       url,
-      ...(category && { category }),
       ...(capaURL && { image: capaURL })
     };
   }).filter(builtEvent => !isBlackListed(builtEvent));

@@ -1,5 +1,4 @@
 const { BASE_URL, IMAGE_BASE_URL } = require('../constants/disk-ingressos');
-const eventCategoryService = require('../services/event-category');
 const eventService = require('../services/event');
 const urlService = require('../services/url');
 const diskIngressosResource = require('../resources/disk-ingressos');
@@ -29,7 +28,6 @@ function formatEvent(event){
     date,
     city,
     state,
-    classification,
     description,
     imagewebp: webpImgPath,
     image: defaultImgPath
@@ -41,7 +39,6 @@ function formatEvent(event){
     state,
     country: 'BR',
     url: buildEventURL(event._source),
-    category: eventCategoryService.findCategoryByKeywords(classification),
     image: buildImageURL({ webpImgPath, defaultImgPath }),
     description: description && eventService.parseDescription(description)
   };
