@@ -5,6 +5,10 @@ const _public = {};
 
 _public.get = params => leecherResource.crawlViaPost(`${BASE_URL}/search`, buildRequestBody(params));
 
+_public.getEventDetails = eventId => leecherResource.crawlViaGet(
+  `https://event-page.svc.sympla.com.br/api/event-bff/purchase/event/${eventId}`
+);
+
 function buildRequestBody(params = {}){
   return {
     service: '/v4/search',

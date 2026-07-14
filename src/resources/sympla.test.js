@@ -4,6 +4,7 @@ const symplaResource = require('./sympla');
 describe('Sympla Resource', () => {
   beforeEach(() => {
     leecherResource.crawlViaPost = jest.fn();
+    leecherResource.crawlViaGet = jest.fn();
   });
 
   it('should get events', () => {
@@ -53,6 +54,14 @@ describe('Sympla Resource', () => {
           city
         }
       }
+    );
+  });
+
+  it('should get event details', () => {
+    const eventId = 2384437;
+    symplaResource.getEventDetails(eventId);
+    expect(leecherResource.crawlViaGet).toHaveBeenCalledWith(
+      'https://event-page.svc.sympla.com.br/api/event-bff/purchase/event/2384437'
     );
   });
 });

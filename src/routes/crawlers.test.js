@@ -76,6 +76,12 @@ describe('Crawlers Routes', () => {
       return Promise.resolve({ data });
     });
     symplaResource.get = jest.fn(() => Promise.resolve({ data: {} }));
+    symplaResource.getEventDetails = jest.fn(eventId => {
+      const data = {
+        2384437: require('../mocks/sympla-event-details.json')
+      }[eventId] || {};
+      return Promise.resolve({ data });
+    });
     tockifyResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     ingressoResource.getNowPlaying = jest.fn(() => Promise.resolve({ data: {} }));
     delayService.pause = jest.fn();
@@ -423,7 +429,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.sympla.com.br/evento/show-vera-loca/2384437',
-        image: 'https://images.sympla.com.br/6a399b55b2597.jpg'
+        image: 'https://images.sympla.com.br/6a399b55b2597.jpg',
+        description: 'Chegamos à terceira edição do evento “Lê Vallim Canta Elis + Mulheres”.Esta edição pretende emocionar e divertir a plateia pois está recheada de canções marcantes, participações especiais, novas músicas no set "mulheres" e muito carinho envolvido.\u00a0Contaremos com a musicalidade dos instrumentistas Gabriel Take, Lucas Fevereiro, Mateus Ramos e Kahlil Bello, além da interpretação vocal de Lê Vallim.\u00a0Não fique fora dessa e garanta seus ingressos pois são limitados!!Um beijo com muita música!'
       },
       {
         title: 'Funduncinho Do Tabu',
@@ -443,6 +450,13 @@ describe('Crawlers Routes', () => {
     const reportedTask = findReportedTaskByName(response.body.reportJson, taskName);
     expect(reportedTask).toEqual({
       task: taskName,
+      result: 'success',
+      time: expect.any(Number)
+    });
+    const descriptionsTaskName = 'Crawling: sympla (descriptions)';
+    const reportedDescriptionsTask = findReportedTaskByName(response.body.reportJson, descriptionsTaskName);
+    expect(reportedDescriptionsTask).toEqual({
+      task: descriptionsTaskName,
       result: 'success',
       time: expect.any(Number)
     });
@@ -969,6 +983,13 @@ describe('Crawlers Routes', () => {
       return Promise.resolve({ data: getMockedFile(`songkick-${city}-page-${page}.html`) });
     });
     songkickResource.getEventDetailsPage = jest.fn(() => Promise.reject(err));
+    symplaResource.get = jest.fn(({ city, state }) => {
+      const fileSuffix = `${city.replace(/ /g, '-')}-${state.toLowerCase()}`;
+      return Promise.resolve({
+        data: JSON.parse(getMockedFile(`sympla-${fileSuffix}.json`))
+      });
+    });
+    symplaResource.getEventDetails = jest.fn(() => Promise.reject(err));
     const response = await start();
     expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: eticket-center (descriptions)', err, {
       task_duration: expect.any(Number)
@@ -982,7 +1003,10 @@ describe('Crawlers Routes', () => {
     expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: songkick (descriptions)', err, {
       task_duration: expect.any(Number)
     });
-    expect(loggerService.track).toHaveBeenCalledTimes(4);
+    expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: sympla (descriptions)', err, {
+      task_duration: expect.any(Number)
+    });
+    expect(loggerService.track).toHaveBeenCalledTimes(5);
     expect(response.status).toEqual(200);
     const eticketTaskName = 'Crawling: eticket-center (descriptions)';
     const eticketReportedTask = findReportedTaskByName(response.body.reportJson, eticketTaskName);
@@ -1009,6 +1033,13 @@ describe('Crawlers Routes', () => {
     const songkickReportedTask = findReportedTaskByName(response.body.reportJson, songkickTaskName);
     expect(songkickReportedTask).toEqual({
       task: songkickTaskName,
+      result: 'error',
+      time: expect.any(Number)
+    });
+    const symplaTaskName = 'Crawling: sympla (descriptions)';
+    const symplaReportedTask = findReportedTaskByName(response.body.reportJson, symplaTaskName);
+    expect(symplaReportedTask).toEqual({
+      task: symplaTaskName,
       result: 'error',
       time: expect.any(Number)
     });
