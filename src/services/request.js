@@ -1,3 +1,6 @@
+const { BULK_REQUEST_ERROR } = require('../constants/eventNames');
+const loggerService = require('./logger');
+
 const _public = {};
 
 _public.bulkRequest = ({ method, params, batchSize }) => {
@@ -10,7 +13,23 @@ _public.bulkRequest = ({ method, params, batchSize }) => {
 };
 
 function executeBatch(method, batch) {
-  return Promise.all(batch.map(method));
+  return Promise.all(batch.map(param => executeRequest(method, param)));
+}
+
+function executeRequest(method, param) {
+  return method(param).catch(err => {
+    trackRequestError(err, param);
+    return param;
+  });
+}
+
+function trackRequestError(err, param) {
+  loggerService.track(BULK_REQUEST_ERROR, err, {
+    request_param: param,
+    error_message: err.message,
+    error_status: err.status,
+    error_data: err.data
+  });
 }
 
 function chunk(items, size) {

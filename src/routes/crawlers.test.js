@@ -15,6 +15,7 @@ const tockifyResource = require('../resources/tockify');
 const ingressoResource = require('../resources/ingresso');
 const eventFetcherService = require('../services/event-fetcher');
 const eventService = require('../services/event');
+const requestService = require('../services/request');
 const blueticketMock = require('../mocks/blueticket');
 const diskIngressosMock = require('../mocks/disk-ingressos');
 const eventsMock = require('../mocks/events');
@@ -965,31 +966,28 @@ describe('Crawlers Routes', () => {
   it('should track error on crawling event descriptions', async () => {
     const err = 'some err';
     console.error = jest.fn();
+    const originalBulkRequest = requestService.bulkRequest;
+    requestService.bulkRequest = jest.fn(() => Promise.reject(err));
     blueticketResource.get = jest.fn(params => {
       const data = params.categoria === 11 && blueticketMock;
       return Promise.resolve({ data });
     });
-    blueticketResource.getEventDetails = jest.fn(() => Promise.reject(err));
     eticketCenterResource.get = jest.fn(({ Pagina }) => {
       return Promise.resolve({ data: getMockedFile(`eticket-center-${Pagina}.html`) });
     });
-    eticketCenterResource.getEventDetailsPage = jest.fn(() => Promise.reject(err));
     pensaNoEventoResource.get = jest.fn(({ cityCode }) => {
       const data = { 19: pensaNoEventoJoinvilleMock, 32: pensaNoEventoCuritibaMock }[cityCode];
       return Promise.resolve({ data });
     });
-    pensaNoEventoResource.getEventDetailsPage = jest.fn(() => Promise.reject(err));
     songkickResource.get = jest.fn(({ city, page }) => {
       return Promise.resolve({ data: getMockedFile(`songkick-${city}-page-${page}.html`) });
     });
-    songkickResource.getEventDetailsPage = jest.fn(() => Promise.reject(err));
     symplaResource.get = jest.fn(({ city, state }) => {
       const fileSuffix = `${city.replace(/ /g, '-')}-${state.toLowerCase()}`;
       return Promise.resolve({
         data: JSON.parse(getMockedFile(`sympla-${fileSuffix}.json`))
       });
     });
-    symplaResource.getEventDetails = jest.fn(() => Promise.reject(err));
     const response = await start();
     expect(loggerService.track).toHaveBeenCalledWith('Task Failed - Crawling: eticket-center (descriptions)', err, {
       task_duration: expect.any(Number)
@@ -1043,6 +1041,7 @@ describe('Crawlers Routes', () => {
       result: 'error',
       time: expect.any(Number)
     });
+    requestService.bulkRequest = originalBulkRequest;
   });
 
   it('should track error on event multi-save error', async () => {
