@@ -29,4 +29,11 @@ describe('Date Service', () => {
   it('should return empty string if no timestamp is given for building date time string', () => {
     expect(dateService.buildDateTimeStringFromUTCTimestamp()).toEqual('');
   });
+
+  it('should build date and time from utc iso date string in sao paulo timezone', () => {
+    expect(dateService.buildDateAndTimeFromUTCIsoDateString('2026-08-06T22:00:00+00:00')).toEqual([
+      '2026-08-06',
+      '19:00'
+    ]);
+  });
 });

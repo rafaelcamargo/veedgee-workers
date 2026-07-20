@@ -36,7 +36,7 @@ function buildEvents(data){
     const { location } = item;
     return eventService.isWantedCity(location.city, location.state);
   }).map(item => {
-    const [date, time] = parseDateTime(item.start_date_formats.en);
+    const [date, time] = parseEventDateTime(item);
     return {
       title: item.name,
       date,
@@ -49,6 +49,12 @@ function buildEvents(data){
       id: item.id
     };
   });
+}
+
+function parseEventDateTime(item){
+  return item.start_date
+    ? dateService.buildDateAndTimeFromUTCIsoDateString(item.start_date)
+    : parseDateTime(item.start_date_formats.en);
 }
 
 function parseDateTime(dateTimeString){
@@ -80,13 +86,34 @@ async function enrichEventsWithDescriptions(events, reportId){
 }
 
 function enrichEventWithDescription(event){
-  const { id, ...eventData } = event;
-  return symplaResource.getEventDetails(id).then(({ data }) => {
+  const eventData = objectService.removeAttrs(event, ['id']);
+  const getEventDetails = getEventDetailsResourceMethod(eventData.url);
+  const eventId = getEventId(event);
+  return getEventDetails(eventId).then(({ data }) => {
     return {
       ...eventData,
-      description: eventService.parseDescription(data.detail)
+      description: eventService.parseDescription(getEventDescription(data, eventData.url))
     };
   });
+}
+
+function getEventDetailsResourceMethod(eventUrl){
+  return eventUrl.includes('bileto')
+    ? symplaResource.getBiletoEventDetails
+    : symplaResource.getEventDetails;
+}
+
+function getEventId(event){
+  return event.url.includes('bileto') ? parseBiletoEventId(event.url) : event.id;
+}
+
+function parseBiletoEventId(eventUrl){
+  const [id] = eventUrl.split('/').reverse();
+  return id;
+}
+
+function getEventDescription(data, eventUrl){
+  return eventUrl.includes('bileto') ? data.description.raw : data.detail;
 }
 
 module.exports = _public;

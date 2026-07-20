@@ -14,7 +14,16 @@ describe('Leecher Resource', () => {
   it('should crawl a document via get', () => {
     const url = 'https://example.com/event';
     leecherResource.crawlViaGet(url);
-    expect(baseResource.get).toHaveBeenCalledWith(getLeecherDocumentsUrl(), { url });
+    expect(baseResource.get).toHaveBeenCalledWith(getLeecherDocumentsUrl(), { url }, { headers: {} });
+  });
+
+  it('should crawl a document via get forwarding custom headers', () => {
+    const url = 'https://example.com/event';
+    const headers = { 'x-api-key': '123abc' };
+    leecherResource.crawlViaGet(url, { headers });
+    expect(baseResource.get).toHaveBeenCalledWith(getLeecherDocumentsUrl(), { url }, {
+      headers: { 'X-custom-x-api-key': '123abc' }
+    });
   });
 
   it('should crawl a document via post', () => {

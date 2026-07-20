@@ -12,5 +12,6 @@ module.exports = {
   HUGGING_FACE_API_TOKEN: 'h3f2k1',
   GOOGLE_AI_API_TOKEN: 'g00gl3',
   RAPID_API_TOKEN: 'r4a5t6',
-  RESEND_API_TOKEN: 'f1a2k3'
+  RESEND_API_TOKEN: 'f1a2k3',
+  BILETO_API_KEY: '123abc'
 };

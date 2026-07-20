@@ -1,0 +1,591 @@
+{
+  "data": {
+      "id": 123432,
+      "tributes_percentage": "18.38",
+      "name": "OCEAN ALLEY - 07/11/26",
+      "event_category_id": 2,
+      "event_genre_id": 196,
+      "notification_image": "https://assets.bileto.sympla.com.br/eventmanager/production/445u0d591ots3n3s0fsgbiqpk3lh8gr4vpo8k8kcpsb6hj3ad6asj19kkh3dfclt9aueveq0hvah00qtup77db51o5p4uh2bri60f1.jpeg",
+      "presentations": {
+          "items": [
+              {
+                  "id": 398438,
+                  "name": "OCEAN ALLEY - 07/11/26",
+                  "sectors": [
+                      {
+                          "id": 2621721,
+                          "skus": [
+                              {
+                                  "id": 23487015,
+                                  "rules": [
+                                      {
+                                          "id": -1,
+                                          "external_parameters": [
+                                              {
+                                                  "scope": "SKU",
+                                                  "displayable_name": "Valor reduzido, mediante doação de 1kg de alimento não perecível, disponível para qualquer pessoa. Os alimentos deverão ser entregues no Opinião, no momento da entrada ao evento.",
+                                                  "field_name": "be05f77f-360f-4662-a5cf-fea0efb03c88",
+                                                  "required": true,
+                                                  "optional": false,
+                                                  "rule_order_index": 7,
+                                                  "parameter_order_index": 0,
+                                                  "field_type": 3,
+                                                  "parameters": {}
+                                              }
+                                          ],
+                                          "type_id": 8,
+                                          "order_index": -32768,
+                                          "internal_type": "NOMINAL_LIMIT_RULE",
+                                          "type": "USER_INPUT",
+                                          "parameters": {
+                                              "customized_parameters": "[{\"fieldName\":\"be05f77f-360f-4662-a5cf-fea0efb03c88\",\"displayableName\":\"Valor reduzido, mediante doação de 1kg de alimento não perecível, disponível para qualquer pessoa. Os alimentos deverão ser entregues no Opinião, no momento da entrada ao evento.\",\"type\":3,\"required\":true,\"orderIndex\":0,\"parameters\":{\"options\":[]}}]"
+                                          }
+                                      },
+                                      {
+                                          "id": 1164142,
+                                          "type_id": 1,
+                                          "order_index": 8,
+                                          "internal_type": "BASIC_LIMIT",
+                                          "type": "NO_INPUT",
+                                          "parameters": {
+                                              "max_unit_allowed": "300"
+                                          }
+                                      }
+                                  ],
+                                  "name": "Inteira Solidária | Lote 03",
+                                  "price": {
+                                      "currency": "BRL",
+                                      "value": "17500"
+                                  },
+                                  "prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "17500"
+                                      }
+                                  },
+                                  "full_price": {
+                                      "currency": "BRL",
+                                      "value": "17500"
+                                  },
+                                  "full_prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "17500"
+                                      }
+                                  },
+                                  "convenience_fee": {
+                                      "currency": "BRL",
+                                      "value": "3500"
+                                  },
+                                  "convenience_fees": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "3500"
+                                      }
+                                  },
+                                  "priority": 10,
+                                  "discount": {
+                                      "currency": "BRL",
+                                      "value": "0"
+                                  },
+                                  "discounts": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "0"
+                                      }
+                                  },
+                                  "remaining": 298
+                              },
+                              {
+                                  "id": 23487008,
+                                  "rules": [
+                                      {
+                                          "id": -1,
+                                          "external_parameters": [
+                                              {
+                                                  "scope": "SKU",
+                                                  "displayable_name": "Para utilizar o benefício da meia-entrada, é obrigatória a apresentação de documento comprobatório válido no momento do acesso ao evento. A ausência da documentação poderá resultar na perda do direito ao benefício, sendo necessário o pagamento da diferença para o valor do ingresso inteiro, conforme as regras aplicáveis.",
+                                                  "field_name": "a3b9f287-aa32-47c6-92d8-d6250a551c72",
+                                                  "required": true,
+                                                  "optional": false,
+                                                  "rule_order_index": 6,
+                                                  "parameter_order_index": 0,
+                                                  "field_type": 3,
+                                                  "parameters": {}
+                                              }
+                                          ],
+                                          "type_id": 8,
+                                          "order_index": -32768,
+                                          "internal_type": "NOMINAL_LIMIT_RULE",
+                                          "type": "USER_INPUT",
+                                          "parameters": {
+                                              "customized_parameters": "[{\"fieldName\":\"a3b9f287-aa32-47c6-92d8-d6250a551c72\",\"displayableName\":\"Para utilizar o benefício da meia-entrada, é obrigatória a apresentação de documento comprobatório válido no momento do acesso ao evento. A ausência da documentação poderá resultar na perda do direito ao benefício, sendo necessário o pagamento da diferença para o valor do ingresso inteiro, conforme as regras aplicáveis.\",\"type\":3,\"required\":true,\"orderIndex\":0,\"parameters\":{\"options\":[]}}]"
+                                          }
+                                      },
+                                      {
+                                          "id": 1164142,
+                                          "type_id": 1,
+                                          "order_index": 8,
+                                          "internal_type": "BASIC_LIMIT",
+                                          "type": "NO_INPUT",
+                                          "parameters": {
+                                              "max_unit_allowed": "300"
+                                          }
+                                      }
+                                  ],
+                                  "name": "Meia Entrada | Lote 03",
+                                  "price": {
+                                      "currency": "BRL",
+                                      "value": "17000"
+                                  },
+                                  "prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "17000"
+                                      }
+                                  },
+                                  "full_price": {
+                                      "currency": "BRL",
+                                      "value": "17000"
+                                  },
+                                  "full_prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "17000"
+                                      }
+                                  },
+                                  "convenience_fee": {
+                                      "currency": "BRL",
+                                      "value": "3400"
+                                  },
+                                  "convenience_fees": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "3400"
+                                      }
+                                  },
+                                  "priority": 11,
+                                  "discount": {
+                                      "currency": "BRL",
+                                      "value": "0"
+                                  },
+                                  "discounts": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "0"
+                                      }
+                                  },
+                                  "remaining": 298
+                              },
+                              {
+                                  "id": 23487018,
+                                  "rules": [
+                                      {
+                                          "id": 1166154,
+                                          "external_parameters": [
+                                              {
+                                                  "scope": "SKU",
+                                                  "displayable_name": "Cupom",
+                                                  "field_name": "coupon",
+                                                  "required": true,
+                                                  "optional": false,
+                                                  "rule_order_index": 0,
+                                                  "parameter_order_index": 0,
+                                                  "field_type": 1,
+                                                  "parameters": {}
+                                              }
+                                          ],
+                                          "type_id": 7,
+                                          "order_index": 0,
+                                          "internal_type": "SIMPLE_COUPON",
+                                          "type": "USER_INPUT",
+                                          "parameters": {
+                                              "max_unit_allowed": "1",
+                                              "partner_code_list_id": "6f28bd24-54f2-4bf8-aaca-35e9ed561016"
+                                          }
+                                      },
+                                      {
+                                          "id": 1164142,
+                                          "type_id": 1,
+                                          "order_index": 8,
+                                          "internal_type": "BASIC_LIMIT",
+                                          "type": "NO_INPUT",
+                                          "parameters": {
+                                              "max_unit_allowed": "300"
+                                          }
+                                      }
+                                  ],
+                                  "name": "Clube ZH | Lote 03",
+                                  "price": {
+                                      "currency": "BRL",
+                                      "value": "17000"
+                                  },
+                                  "prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "17000"
+                                      }
+                                  },
+                                  "full_price": {
+                                      "currency": "BRL",
+                                      "value": "17000"
+                                  },
+                                  "full_prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "17000"
+                                      }
+                                  },
+                                  "convenience_fee": {
+                                      "currency": "BRL",
+                                      "value": "3400"
+                                  },
+                                  "convenience_fees": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "3400"
+                                      }
+                                  },
+                                  "priority": 12,
+                                  "discount": {
+                                      "currency": "BRL",
+                                      "value": "0"
+                                  },
+                                  "discounts": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "0"
+                                      }
+                                  },
+                                  "remaining": 298
+                              },
+                              {
+                                  "id": 23487005,
+                                  "rules": [
+                                      {
+                                          "id": 1164143,
+                                          "type_id": 9,
+                                          "order_index": 4,
+                                          "internal_type": "PAYMENT_CARD_BIN",
+                                          "type": "NO_INPUT",
+                                          "parameters": {
+                                              "partner_code_list_id": "34968fec-60bc-4f4a-b816-746834acb8f5"
+                                          }
+                                      },
+                                      {
+                                          "id": 1164145,
+                                          "type_id": 4,
+                                          "order_index": 5,
+                                          "internal_type": "LIMIT_BY_USER_AND_PRESENTATION",
+                                          "type": "NO_INPUT",
+                                          "parameters": {
+                                              "max_unit_allowed": "4"
+                                          }
+                                      },
+                                      {
+                                          "id": 1164142,
+                                          "type_id": 1,
+                                          "order_index": 8,
+                                          "internal_type": "BASIC_LIMIT",
+                                          "type": "NO_INPUT",
+                                          "parameters": {
+                                              "max_unit_allowed": "300"
+                                          }
+                                      }
+                                  ],
+                                  "name": "Clientes Banrisul | Lote 03",
+                                  "price": {
+                                      "currency": "BRL",
+                                      "value": "17000"
+                                  },
+                                  "prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "17000"
+                                      }
+                                  },
+                                  "full_price": {
+                                      "currency": "BRL",
+                                      "value": "17000"
+                                  },
+                                  "full_prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "17000"
+                                      }
+                                  },
+                                  "convenience_fee": {
+                                      "currency": "BRL",
+                                      "value": "3400"
+                                  },
+                                  "convenience_fees": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "3400"
+                                      }
+                                  },
+                                  "priority": 13,
+                                  "discount": {
+                                      "currency": "BRL",
+                                      "value": "0"
+                                  },
+                                  "discounts": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "0"
+                                      }
+                                  },
+                                  "remaining": 298
+                              },
+                              {
+                                  "id": 23487002,
+                                  "rules": [
+                                      {
+                                          "id": 1164142,
+                                          "type_id": 1,
+                                          "order_index": 8,
+                                          "internal_type": "BASIC_LIMIT",
+                                          "type": "NO_INPUT",
+                                          "parameters": {
+                                              "max_unit_allowed": "300"
+                                          }
+                                      }
+                                  ],
+                                  "name": "Inteira | Lote 03",
+                                  "price": {
+                                      "currency": "BRL",
+                                      "value": "34000"
+                                  },
+                                  "prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "34000"
+                                      }
+                                  },
+                                  "full_price": {
+                                      "currency": "BRL",
+                                      "value": "34000"
+                                  },
+                                  "full_prices": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "34000"
+                                      }
+                                  },
+                                  "convenience_fee": {
+                                      "currency": "BRL",
+                                      "value": "6800"
+                                  },
+                                  "convenience_fees": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "6800"
+                                      }
+                                  },
+                                  "priority": 14,
+                                  "discount": {
+                                      "currency": "BRL",
+                                      "value": "0"
+                                  },
+                                  "discounts": {
+                                      "BRL": {
+                                          "currency": "BRL",
+                                          "value": "0"
+                                      }
+                                  },
+                                  "remaining": 298
+                              }
+                          ],
+                          "name": "PISTA",
+                          "access_gate": "Abertura 21h",
+                          "lowest_price": {
+                              "currency": "BRL",
+                              "value": "17000"
+                          },
+                          "highest_price": {
+                              "currency": "BRL",
+                              "value": "34000"
+                          },
+                          "total_booked": 715,
+                          "total_capacity": 1550,
+                          "total_blocked": 50,
+                          "total_available": 785,
+                          "highest_prices": {
+                              "BRL": {
+                                  "currency": "BRL",
+                                  "value": "34000"
+                              }
+                          },
+                          "lowest_prices": {
+                              "BRL": {
+                                  "currency": "BRL",
+                                  "value": "17000"
+                              }
+                          },
+                          "order_index": 0,
+                          "has_seats_available": true,
+                          "partial_table": false,
+                          "bookables": [
+                              "SEATS"
+                          ]
+                      }
+                  ],
+                  "presentation_date_time": 1794103200,
+                  "presentation_local_date_time": "2026-11-07T23:00:00-03:00",
+                  "enabled": true,
+                  "sales_start_date_time": 1783113394,
+                  "closing_sales_date_time": 1794102300,
+                  "timezone": "America/Sao_Paulo",
+                  "enabled_for_channel": true,
+                  "highest_price": {
+                      "currency": "BRL",
+                      "value": "34000"
+                  },
+                  "highest_prices": {
+                      "BRL": {
+                          "currency": "BRL",
+                          "value": "34000"
+                      }
+                  },
+                  "lowest_prices": {
+                      "BRL": {
+                          "currency": "BRL",
+                          "value": "17000"
+                      }
+                  },
+                  "lowest_price": {
+                      "currency": "BRL",
+                      "value": "17000"
+                  },
+                  "total_booked": 715,
+                  "total_blocked": 50,
+                  "total_available": 785,
+                  "total_capacity": 1550
+              }
+          ],
+          "next_date_time": 1794103200,
+          "next_local_date_time": "2026-11-07T23:00:00-03:00",
+          "highest_price": {
+              "currency": "BRL",
+              "value": "34000"
+          },
+          "highest_prices": {
+              "BRL": {
+                  "currency": "BRL",
+                  "value": "34000"
+              }
+          },
+          "lowest_price": {
+              "currency": "BRL",
+              "value": "17000"
+          },
+          "lowest_prices": {
+              "BRL": {
+                  "currency": "BRL",
+                  "value": "17000"
+              }
+          },
+          "total_booked": 715,
+          "total_blocked": 50,
+          "total_available": 785,
+          "total_capacity": 1550
+      },
+      "venue": {
+          "id": 2012,
+          "name": "Opinião",
+          "locale": {
+              "address": "Rua José do Patrocínio, 834",
+              "city": {
+                  "id": 2312,
+                  "name": "Porto Alegre",
+                  "state_id": 8
+              },
+              "state": {
+                  "id": 8,
+                  "name": "Rio Grande do Sul",
+                  "country_id": 1
+              },
+              "country": {
+                  "id": 1,
+                  "name": "Brasil"
+              },
+              "postal_code": "90050-002",
+              "lat": -30.0417526,
+              "lon": -51.2230977
+          },
+          "external_id": 1671,
+          "created_at": 1550057257,
+          "updated_at": 1550057257
+      },
+      "next_local_date_time": "2026-11-07T23:00:00-03:00",
+      "last_local_date_time": "2026-11-07T23:00:00-03:00",
+      "publish_date_time": "2026-07-03T18:16:35-03:00",
+      "planner_information": {
+          "age_rating": {
+              "age_rating_value": 5,
+              "age_rating_name": "16 anos"
+          }
+      },
+      "organizer_id": 2009,
+      "seller_data": {
+          "document_number": "05.944.183/0001-17",
+          "address": "Rua Joaquim Nabuco",
+          "city": "PORTO ALEGRE",
+          "merchant_category_code": "7922",
+          "merchant_name": "6 Pro Eventos Empresarias LTDA",
+          "phone_number": "5132115668",
+          "neighborhood": "Cidade Baixa",
+          "state": "RS",
+          "zip_code": "90050340",
+          "address_number": "193"
+      },
+      "medias": [
+          {
+              "rel": "profile",
+              "url": "https://assets.bileto.sympla.com.br/eventmanager/production/445u0d591ots3n3s0fsgbiqpk3lh8gr4vpo8k8kcpsb6hj3ad6asj19kkh3dfclt9aueveq0hvah00qtup77db51o5p4uh2bri60f1.jpeg",
+              "type": "image/jpeg",
+              "aspect_ratio": "16:9"
+          },
+          {
+              "rel": "profile",
+              "url": "https://assets.bileto.sympla.com.br/eventmanager/production/qka6hs4q10umd6v7epmbrg3423k020s534o872iln3ao8lp369igd43pb1v5frhmfea0dm85mu5q1191aganls7agr332m5oscsnom.webp",
+              "type": "image/webp",
+              "aspect_ratio": "16:9"
+          }
+      ],
+      "features": {
+          "queue": {
+              "enable": false
+          },
+          "half_price": {
+              "id": 1,
+              "type": "link"
+          }
+      },
+      "transfer": {
+          "due_at": "",
+          "enabled": false
+      },
+      "sales_flow_type": 1,
+      "homologated": {
+          "enabled": false,
+          "username": "teka"
+      },
+      "description": {
+          "raw": "<p><strong><span style=\"font-size: 10pt;\">MAIA ENTRETENIMENTO APRESENTA</span></strong><br /><strong><span style=\"font-size: 10pt;\">OCEAN ALLEY</span></strong></p>\n<p>A banda australiana&nbsp;Ocean Alley&nbsp;retorna ao Brasil e faz uma apresenta&ccedil;&atilde;o em Porto Alegre no dia&nbsp;7 de novembro de 2026, s&aacute;bado, no&nbsp;Opini&atilde;o.</p>\n<p>O show integra a turn&ecirc; de Love Balloon, nome de seu &aacute;lbum de est&uacute;dio mais recente, lan&ccedil;ado em setembro de 2025, e marca a estreia da banda nos palcos ga&uacute;chos. A pr&eacute;-venda de ingressos, exclusiva para super f&atilde;s, come&ccedil;a dia 6 de julho, &agrave;s 10h, e a venda geral abre em 7 de julho, tamb&eacute;m &agrave;s 10h, pela Sympla.</p>\n<p>Formado por Baden Donegal (vocais e guitarra), Angus Goodwin (guitarra), Lach Galbraith (teclados e vocais), Mitch Galbraith (guitarra), Nic Blom (baixo) e Tom O&rsquo;Brien (bateria), o Ocean Alley soma mais de 1,5 bilh&atilde;o de reprodu&ccedil;&otilde;es nas plataformas de streaming e se consolidou como um dos principais nomes da cena australiana contempor&acirc;nea.</p>\n<p>O repert&oacute;rio do show re&uacute;ne faixas de toda a carreira, incluindo sucessos como \"Confidence\", al&eacute;m das m&uacute;sicas de \"Love Balloon\", &aacute;lbum que estreou em primeiro lugar na parada australiana (ARIA), ultrapassou 75 milh&otilde;es de streams e deu origem &agrave; maior turn&ecirc; da hist&oacute;ria da banda, com mais de 80 mil ingressos vendidos na Austr&aacute;lia e na Nova Zel&acirc;ndia.</p>\n<p>Al&eacute;m de Porto Alegre, a nova passagem pelo pa&iacute;s inclui apresenta&ccedil;&otilde;es no Rio de Janeiro (05/11) e S&atilde;o Paulo (08/11), ampliando a turn&ecirc; brasileira iniciada em 2025, quando o Ocean Alley realizou um show com ingressos esgotados na capital paulista. Em abril deste ano, o sexteto lan&ccedil;ou o EP ao<br />vivo \"Yellow Mellow - 10 Year Anniversary\".</p>\n<p><strong>Realiza&ccedil;&atilde;o:</strong>&nbsp;Maia Entretenimento<br /><strong>Parceiro oficial:</strong>&nbsp;Fellas<br /><strong>Promo&ccedil;&atilde;o:</strong>&nbsp;Rede Atl&acirc;ntida</p>\n<p><strong>SERVI&Ccedil;O:</strong></p>\n<p><strong>Onde:</strong> Opini&atilde;o - Jos&eacute; do Patroc&iacute;nio, 834, Cidade Baixa - Porto Alegre/RS<br /> <strong>Quando:</strong> 07 de novembro, s&aacute;bado, &agrave;s 23h<br /> <strong>Abertura da casa:</strong>&nbsp;21h<br /> <strong>Classifica&ccedil;&atilde;o: </strong>16 anos. Menores de 16 anos acompanhados por respons&aacute;vel legal.</p>\n<p><strong>INGRESSOS:</strong></p>\n<p><strong>***O Opini&atilde;o n&atilde;o se responsabiliza por ingressos comprados na plataforma Viagogo e em outros canais n&atilde;o oficiais.</strong></p>\n<div>\n<p><strong><em>Lote 01 (Pr&eacute; venda):</em></strong><br /> Inteira Solid&aacute;ria* (todas as pessoas podem comprar mediante doa&ccedil;&atilde;o de 1kg de alimento n&atilde;o perec&iacute;vel): R$ 125<br /> Meia entrada** (50% de desconto): R$ 120<br /> Inteira: R$ 240</p>\n<p><strong><em>Lote 02:</em></strong><em><br /> </em>Inteira Solid&aacute;ria* (todas as pessoas podem comprar mediante doa&ccedil;&atilde;o de 1kg de alimento n&atilde;o perec&iacute;vel): R$ 155<br /> Meia entrada** (50% de desconto): R$ 150<br /> Inteira: R$ 300</p>\n<p><strong><em>Lote 03:</em></strong><br /> Inteira Solid&aacute;ria* (todas as pessoas podem comprar mediante doa&ccedil;&atilde;o de 1kg de alimento n&atilde;o perec&iacute;vel): R$ 175<br /> Meia entrada** (50% de desconto): R$ 170<br /> Inteira: R$ 340</p>\n<p><strong><em>Lote 04:</em></strong><br /> Inteira Solid&aacute;ria* (todas as pessoas podem comprar mediante doa&ccedil;&atilde;o de 1kg de alimento n&atilde;o perec&iacute;vel): R$ 195<br /> Meia entrada** (50% de desconto): R$ 190<br /> Inteira: R$ 380</p>\n<p><strong><em>Lote 05:</em></strong><br /> Inteira Solid&aacute;ria* (todas as pessoas podem comprar mediante doa&ccedil;&atilde;o de 1kg de alimento n&atilde;o perec&iacute;vel): R$ 215<br /> Meia entrada** (50% de desconto): R$ 210<br /> Inteira: R$ 420</p>\n<p><strong>*</strong>Os alimentos dever&atilde;o ser entregues no Opini&atilde;o, no momento da entrada ao evento.</p>\n<p>**Para utilizar o benef&iacute;cio da meia-entrada, &eacute; obrigat&oacute;ria a apresenta&ccedil;&atilde;o de documento comprobat&oacute;rio v&aacute;lido no momento do acesso ao evento. A aus&ecirc;ncia da documenta&ccedil;&atilde;o poder&aacute; resultar na perda do direito ao benef&iacute;cio, sendo necess&aacute;rio o pagamento da diferen&ccedil;a para o valor do ingresso inteiro, conforme as regras aplic&aacute;veis.</p>\n<p><strong>Demais descontos:</strong><br /> * 50% para idosos: Lei Federal 10.741/03 &ndash; obrigat&oacute;ria apresenta&ccedil;&atilde;o de identidade ou documento oficial com foto.<br /> * 50% para jovens pertencentes a fam&iacute;lias de baixa renda: Lei Federal 12.933/13 &ndash; obrigat&oacute;ria apresenta&ccedil;&atilde;o da Carteira de Identidade Jovem e de documento oficial com foto.<br /> * 50% para pessoas com defici&ecirc;ncia (e acompanhante quando necess&aacute;rio): Lei Federal 12.933/13 &ndash; obrigat&oacute;ria apresenta&ccedil;&atilde;o do Cart&atilde;o de Benef&iacute;cio de Presta&ccedil;&atilde;o Continuada da Assist&ecirc;ncia Social da Pessoa com Defici&ecirc;ncia ou de documento emitido pelo Instituto Nacional do Seguro Social (INSS).<br /> * 50% para doadores regulares de sangue: Lei Estadual n&deg; 13.891/12 &ndash; obrigat&oacute;ria apresenta&ccedil;&atilde;o de documento oficial v&aacute;lido e expedido pelos hemocentros/bancos de sangue.<br /> * 50% para s&oacute;cio do Clube do Assinante ZH.</p>\n<p><strong>Desconto Banrisul:</strong></p>\n<p>* 50% para clientes Banrisul (com cart&atilde;o de cr&eacute;dito Visa ou Mastercard) na compra de at&eacute; QUATRO ingressos (exclusivamente nas bilheterias das casas de shows e na modalidade online).<br /> * 50% para clientes Banrisul, exclusivamente com pagamento no cart&atilde;o Banricompras, limitado &agrave; compra de at&eacute; QUATRO ingressos por cliente (exclusivamente nas bilheterias das casas de shows).</p>\n<p><strong>Aten&ccedil;&atilde;o: os descontos para clientes Banrisul n&atilde;o est&atilde;o dispon&iacute;veis na loja Planet Surf Bourbon Wallig, que aceita compras somente em dinheiro.</strong></p>\n<p><strong>Pontos de venda:</strong></p>\n<p><strong>Bilheteria oficial</strong>&nbsp;(sem taxa de conveni&ecirc;ncia &ndash; somente em dinheiro):<br /> Loja Planeta Surf Bourbon Wallig (Av. Assis Brasil, 2611 &ndash; Loja 249 &ndash; Jardim Lind&oacute;ia &ndash; Porto Alegre)<br /> Hor&aacute;rio funcionamento: de segunda a s&aacute;bado, das 15h &agrave;s 21h</p>\n<p><strong>Online:</strong>&nbsp;<a href=\"https://www.sympla.com.br/opiniao\" target=\"_blank\">https://www.sympla.com.br/opiniao</a></p>\n<p><strong>Informa&ccedil;&otilde;es:</strong><br /> <a href=\"https://www.instagram.com.br/maiaentretenimento\" target=\"_blank\">https://www.instagram.com.br/maiaentretenimento</a><br /> <a href=\"https://www.instagram.com.br/opiniao\" target=\"_blank\">https://www.instagram.com.br/opiniao</a><br /> <a href=\"https://www.instagram.com.br/fellasmusic__\" target=\"_blank\">https://www.instagram.com.br/fellasmusic</a><br /> <a href=\"https://www.facebook.com.br/opiniao.produtora\" target=\"_blank\">https://www.facebook.com.br/opiniao.produtora</a><br /> <a href=\"https://www.opiniao.com.br/\" target=\"_blank\">https://www.opiniao.com.br/</a><br /> (51) 3211-2838</p>\n<p>&nbsp;</p>\n</div>",
+          "title": "OCEAN ALLEY - 07/11/26"
+      },
+      "white_label_sympla_bileto": true,
+      "postponed_delivery": false,
+      "user_auth_required": true,
+      "date_summary": {
+          "week": "Sábado às 23h00",
+          "period": "7 de Novembro"
+      },
+      "hide_event_date_time": false,
+      "tags": {
+          "CONCERT": "Show"
+      },
+      "status": "STARTED"
+  }
+}

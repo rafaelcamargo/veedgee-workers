@@ -83,6 +83,12 @@ describe('Crawlers Routes', () => {
       }[eventId] || {};
       return Promise.resolve({ data });
     });
+    symplaResource.getBiletoEventDetails = jest.fn(eventId => {
+      const data = {
+        121706: require('../mocks/sympla-bileto-event-details.json').data
+      }[eventId] || { description: { raw: '' } };
+      return Promise.resolve({ data });
+    });
     tockifyResource.get = jest.fn(() => Promise.resolve({ data: {} }));
     ingressoResource.getNowPlaying = jest.fn(() => Promise.resolve({ data: {} }));
     delayService.pause = jest.fn();
@@ -442,6 +448,29 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.sympla.com.br/evento/funduncinho-do-tabu/2410478'
+      },
+      {
+        title: 'Bourbon Sweethearts (data Extra)',
+        slug: 'bourbon-sweethearts-data-extra-porto-alegre-rs-20260806',
+        date: '2026-08-06',
+        time: '19:00',
+        city: 'Porto Alegre',
+        state: 'RS',
+        country: 'BR',
+        url: 'https://www.sympla.com.br/evento/bourbon-sweethearts-data-extra/3504092',
+        image: 'https://images.sympla.com.br/6a57c6d09ec6a.png'
+      },
+      {
+        title: 'Edu Falaschi “mi’raj & The Legacy Tour” Em Porto Alegre - 08/11/26',
+        slug: 'edu-falaschi-miraj-the-legacy-tour-em-porto-alegre-081126-porto-alegre-rs-20261108',
+        date: '2026-11-08',
+        time: '19:30',
+        city: 'Porto Alegre',
+        state: 'RS',
+        country: 'BR',
+        url: 'https://bileto.sympla.com.br/event/121706',
+        image: 'https://assets.bileto.sympla.com.br/eventmanager/production/p1gi1vh1p6ia6oe662fj0q4c8c45od4potqshquc2gu9oa2q0124m4ogvh4fntroa54us4pb6htrbnjtguaf7ve610sr0qbpnkbp8o.webp',
+        description: 'MAIA ENTRETENIMENTO APRESENTAOCEAN ALLEY\nA banda australiana Ocean Alley retorna ao Brasil e faz uma apresentação em Porto Alegre no dia 7 de novembro de 2026, sábado, no Opinião.\nO show integra a turnê de Love Balloon, nome de seu álbum de estúdio mais recente, lançado em setembro de 2025, e marca a estreia da banda nos palcos gaúchos. A pré-venda de ingressos, exclusiva para super fãs, começa dia 6 de julho, às 10h, e a venda geral abre em 7 de julho, também às 10h, pela Sympla.\nFormado por Baden Donegal (vocais e guitarra), Angus Goodwin (guitarra), Lach Galbraith (teclados e vocais), Mitch Galbraith (guitarra), Nic Blom (baixo) e Tom O’Brien (bateria), o Ocean Alley soma mais de 1,5 bilhão de reproduções nas plataformas de streaming e se consolidou como um dos principais nomes da cena australiana contemporânea.\nO repertório do show reúne faixas de toda a carreira, incluindo sucessos como "Confidence", além das músicas de "Love Balloon", álbum que estreou em primeiro lugar na parada'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);

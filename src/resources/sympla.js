@@ -1,4 +1,5 @@
-const { BASE_URL } = require('../constants/sympla');
+const ENV = require('../services/environment').get();
+const { BASE_URL, BILETO_EVENTS_BASE_URL } = require('../constants/sympla');
 const leecherResource = require('./leecher');
 
 const _public = {};
@@ -8,6 +9,11 @@ _public.get = params => leecherResource.crawlViaPost(`${BASE_URL}/search`, build
 _public.getEventDetails = eventId => leecherResource.crawlViaGet(
   `https://event-page.svc.sympla.com.br/api/event-bff/purchase/event/${eventId}`
 );
+
+_public.getBiletoEventDetails = eventId => leecherResource.crawlViaGet(
+  `${BILETO_EVENTS_BASE_URL}/${eventId}`,
+  { headers: { 'x-api-key': ENV.BILETO_API_KEY } }
+).then(({ data }) => ({ data: data.data }));
 
 function buildRequestBody(params = {}){
   return {

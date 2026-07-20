@@ -21,6 +21,21 @@ _public.buildDateTimeStringFromUTCTimestamp = timestamp => {
   return [date, time.substring(0,5)].join(' ');
 };
 
+_public.buildDateAndTimeFromUTCIsoDateString = utcIsoDateString => {
+  const dateObj = new Date(utcIsoDateString);
+  const parts = new Intl.DateTimeFormat('pt-BR', {
+    timeZone: 'America/Sao_Paulo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  }).formatToParts(dateObj);
+  const get = type => parts.find(part => part.type === type).value;
+  return [`${get('year')}-${get('month')}-${get('day')}`, `${get('hour')}:${get('minute')}`];
+};
+
 _public.convertMonthPrefixToNumber = monthPrefix => {
   return {
     'jan': '01',

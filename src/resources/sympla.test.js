@@ -64,4 +64,19 @@ describe('Sympla Resource', () => {
       'https://event-page.svc.sympla.com.br/api/event-bff/purchase/event/2384437'
     );
   });
+
+  it('should get bileto event details', async () => {
+    const eventId = '121706';
+    leecherResource.crawlViaGet = jest.fn(() => Promise.resolve({
+      data: { data: { id: eventId, description: { raw: '<p>desc</p>' } } }
+    }));
+    const response = await symplaResource.getBiletoEventDetails(eventId);
+    expect(leecherResource.crawlViaGet).toHaveBeenCalledWith(
+      'https://bff-sales-api-cdn.bileto.sympla.com.br/api/v1/events/121706',
+      { headers: { 'x-api-key': '123abc' } }
+    );
+    expect(response).toEqual({
+      data: { id: eventId, description: { raw: '<p>desc</p>' } }
+    });
+  });
 });

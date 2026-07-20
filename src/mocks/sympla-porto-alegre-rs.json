@@ -24,6 +24,60 @@
       "type": "NORMAL",
       "url": "https://www.sympla.com.br/evento/funduncinho-do-tabu/2410478",
       "event_type": "NORMAL"
+    },
+    {
+      "end_date": "2026-08-07T02:00:00+00:00",
+      "images": {
+          "original": "https://images.sympla.com.br/6a57c6d09ec6a.png",
+          "xs": "https://images.sympla.com.br/6a57c6d09ec6a-xs.png",
+          "lg": "https://images.sympla.com.br/6a57c6d09ec6a-lg.png"
+      },
+      "name": "Bourbon Sweethearts (DATA EXTRA)",
+      "location": {
+          "country": "BRASIL",
+          "address": "Rua Almirante Barroso",
+          "address_alt": "",
+          "city": "Porto Alegre",
+          "address_num": "328",
+          "name": "GREZZ",
+          "lon": -51.208904,
+          "state": "RS",
+          "neighborhood": "Floresta",
+          "zip_code": "90220-020",
+          "lat": -30.0157944
+      },
+      "id": 3504092,
+      "type": "NORMAL",
+      "url": "https://www.sympla.com.br/evento/bourbon-sweethearts-data-extra/3504092",
+      "start_date": "2026-08-06T22:00:00+00:00",
+      "event_type": "NORMAL"
+    },
+    {
+      "end_date": "2026-11-08T22:30:00+00:00",
+      "images": {
+          "original": "https://assets.bileto.sympla.com.br/eventmanager/production/p1gi1vh1p6ia6oe662fj0q4c8c45od4potqshquc2gu9oa2q0124m4ogvh4fntroa54us4pb6htrbnjtguaf7ve610sr0qbpnkbp8o.webp",
+          "lg": "https://assets.bileto.sympla.com.br/eventmanager/production/p1gi1vh1p6ia6oe662fj0q4c8c45od4potqshquc2gu9oa2q0124m4ogvh4fntroa54us4pb6htrbnjtguaf7ve610sr0qbpnkbp8o.webp",
+          "xs": "https://assets.bileto.sympla.com.br/eventmanager/production/p1gi1vh1p6ia6oe662fj0q4c8c45od4potqshquc2gu9oa2q0124m4ogvh4fntroa54us4pb6htrbnjtguaf7ve610sr0qbpnkbp8o.webp"
+      },
+      "name": "EDU FALASCHI “Mi’raj & The Legacy Tour” em Porto Alegre - 08/11/26",
+      "location": {
+          "country": "",
+          "address": "Rua José do Patrocínio, 834",
+          "address_alt": "",
+          "city": "Porto Alegre",
+          "address_num": "0",
+          "name": "Opinião",
+          "lon": -51.2230977,
+          "state": "RS",
+          "neighborhood": "",
+          "zip_code": "",
+          "lat": -30.0417526
+      },
+      "id": 50121706,
+      "type": "NORMAL",
+      "url": "https://bileto.sympla.com.br/event/121706",
+      "start_date": "2026-11-08T22:30:00+00:00",
+      "event_type": "NORMAL"
     }
   ],
   "total": 1,
