@@ -1,6 +1,5 @@
 const { GoogleGenAI } = require('@google/genai');
 const { GoogleGenAIMock, googleAiInstanceMock } = require('../mocks/google-genai');
-const ENV = require('../services/environment').get();
 const httpService = require('../services/http');
 const googleAiResource = require('./google-ai');
 
@@ -54,7 +53,7 @@ describe('Google AI Resource', () => {
     googleAiInstanceMock.models.generateContent = jest.fn(() => Promise.resolve(geminiResponse));
     const result = await googleAiResource.inferImageData(params);
     expect(httpService.fetch).toHaveBeenCalledWith(params.imageUrl);
-    expect(GoogleGenAIMock).toHaveBeenCalledWith({ apiKey: ENV.GOOGLE_AI_API_TOKEN });
+    expect(GoogleGenAIMock).toHaveBeenCalledWith({ apiKey: 'g00gl3' });
     expect(googleAiInstanceMock.models.generateContent).toHaveBeenCalledWith({
       model: 'gemini-3.1-flash-lite',
       contents: [
@@ -75,7 +74,7 @@ describe('Google AI Resource', () => {
     const geminiResponse = { text: '[]' };
     googleAiInstanceMock.models.generateContent = jest.fn(() => Promise.resolve(geminiResponse));
     const result = await googleAiResource.infer(params);
-    expect(GoogleGenAIMock).toHaveBeenCalledWith({ apiKey: ENV.GOOGLE_AI_API_TOKEN });
+    expect(GoogleGenAIMock).toHaveBeenCalledWith({ apiKey: 'g00gl3' });
     expect(googleAiInstanceMock.models.generateContent).toHaveBeenCalledWith({
       model: 'gemini-3.1-flash-lite',
       contents: [params.prompt]

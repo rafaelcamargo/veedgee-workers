@@ -1,4 +1,3 @@
-const ENV = require('../services/environment').get();
 const baseResource = require('./base');
 const rapidApiResource = require('./rapid-api');
 
@@ -16,7 +15,7 @@ describe('Rapid API Resource', () => {
       {
         headers: {
           'x-rapidapi-host': 'instagram120.p.rapidapi.com',
-          'x-rapidapi-key': ENV.RAPID_API_TOKEN
+          'x-rapidapi-key': 'r4a5t6'
         }
       }
     );
