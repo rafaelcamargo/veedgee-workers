@@ -104,6 +104,24 @@ describe('Base Resource', () => {
     expect(response.data).toEqual(data);
   });
 
+  it('should make a patch request', async () => {
+    const url = 'https://some.url.com/';
+    const body = { some: 'json' };
+    const data = { id: '123', ...body };
+    mockRequestResponse(url, { headers: { 'Content-Type': 'application/json'}, status: 200, data});
+    const response = await baseResource.patch(url, body, { headers: { vtoken: 'evc123' } });
+    expect(httpService.fetch).toHaveBeenCalledWith(
+      url,
+      {
+        body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json', vtoken: 'evc123' },
+        method: 'PATCH'
+      }
+    );
+    expect(response.status).toEqual(200);
+    expect(response.data).toEqual(data);
+  });
+
   it('should reject a get request when response status is 404', async () => {
     const url = 'https://some.url.com/';
     const data = { error: 'Not found' };

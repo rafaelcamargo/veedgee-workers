@@ -70,6 +70,19 @@ describe('Google AI Resource', () => {
     expect(result).toEqual({ data: geminiResponse });
   });
 
+  it('should infer text data via Gemini', async () => {
+    const params = { prompt: 'some prompt' };
+    const geminiResponse = { text: '[]' };
+    googleAiInstanceMock.models.generateContent = jest.fn(() => Promise.resolve(geminiResponse));
+    const result = await googleAiResource.infer(params);
+    expect(GoogleGenAIMock).toHaveBeenCalledWith({ apiKey: ENV.GOOGLE_AI_API_TOKEN });
+    expect(googleAiInstanceMock.models.generateContent).toHaveBeenCalledWith({
+      model: 'gemini-3.1-flash-lite',
+      contents: [params.prompt]
+    });
+    expect(result).toEqual({ data: geminiResponse });
+  });
+
   it('should throw HTTP error when image download fails', async () => {
     const { imageBody } = buildImageFixtures();
     const params = {

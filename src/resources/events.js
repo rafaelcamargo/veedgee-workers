@@ -10,6 +10,8 @@ _public.save = event => baseResource.post(BASE_URL, event, buildOptions());
 
 _public.bulkSave = events => baseResource.post(BULK_URL, events, buildOptions());
 
+_public.bulkPatch = events => baseResource.patch(BULK_URL, events, buildOptions());
+
 _public.get = params => baseResource.get(BASE_URL, params);
 
 function buildOptions(){

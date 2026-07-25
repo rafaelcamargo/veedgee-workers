@@ -20,6 +20,18 @@ _public.post = (url, body, options) => {
   });
 };
 
+_public.patch = (url, body, options) => {
+  return request(url, {
+    ...options,
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+      ...options?.headers
+    },
+    method: 'PATCH'
+  });
+};
+
 function request(url, options) {
   const method = options?.method || 'GET';
 

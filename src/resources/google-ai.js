@@ -8,13 +8,19 @@ const _public = {};
 
 _public.inferImageData = ({ prompt, imageUrl }) => {
   return buildImagePart(imageUrl).then(imagePart => {
-    const ai = new GoogleGenAI({ apiKey: ENV.GOOGLE_AI_API_TOKEN });
-    return ai.models.generateContent({
-      model: GEMINI_MODEL,
-      contents: [imagePart, prompt]
-    }).then(response => ({ data: response }));
+    return generateContent([imagePart, prompt]);
   });
 };
+
+_public.infer = ({ prompt }) => generateContent([prompt]);
+
+function generateContent(contents){
+  const ai = new GoogleGenAI({ apiKey: ENV.GOOGLE_AI_API_TOKEN });
+  return ai.models.generateContent({
+    model: GEMINI_MODEL,
+    contents
+  }).then(response => ({ data: response }));
+}
 
 function buildImagePart(imageUrl){
   return httpService.fetch(imageUrl).then(async response => {

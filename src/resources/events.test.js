@@ -4,6 +4,7 @@ const eventsResource = require('./events');
 describe('Eventim Resource', () => {
   beforeEach(() => {
     baseResource.post = jest.fn();
+    baseResource.patch = jest.fn();
     baseResource.get = jest.fn();
   });
 
@@ -21,6 +22,16 @@ describe('Eventim Resource', () => {
     const events = [{ title: 'Event A' }, { title: 'Event B' }];
     eventsResource.bulkSave(events);
     expect(baseResource.post).toHaveBeenCalledWith('/bulk/events', events, {
+      headers: {
+        vatoken: 'vee123'
+      }
+    });
+  });
+
+  it('should bulk patch events', () => {
+    const events = [{ id: 'some-id', category: 'music' }];
+    eventsResource.bulkPatch(events);
+    expect(baseResource.patch).toHaveBeenCalledWith('/bulk/events', events, {
       headers: {
         vatoken: 'vee123'
       }
