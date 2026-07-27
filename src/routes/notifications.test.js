@@ -6,7 +6,7 @@ const emailService = require('../services/email');
 
 describe('Notifications Routes', () => {
   function buildNotificationEmailMessage(){
-    return `Cool! 5 new events have just been found.
+    return `Cool! 6 new events have just been found.
 
 O Pequeno Príncipe
 2024-05-08 16:00
@@ -22,6 +22,11 @@ Rota Da Seda
 2024-07-06 21:00
 Curitiba, PR
 https://www.diskingressos.com.br/evento/6390/06-07-2024/pr/curitiba/rota-da-seda
+
+[nightlife] Sapanejo no Pátio da Brava
+2026-08-08 19:00
+Itajaí, SC
+https://www.sympla.com.br/evento/sapanejo-patio-da-brava-08-08-2026/3512050
 
 [movies] Toy Story 5
 2026-06-17

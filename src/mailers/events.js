@@ -31,8 +31,13 @@ function formatMessageEvents(events){
   ].join('\n')).join('\n\n');
 }
 
-function formatEventTitle({ title, category }){
-  return category ? `[${category}] ${title}` : title;
+function formatEventTitle({ title, category, enhanced_title }){
+  const displayTitle = enhanced_title ? extractPtBrContent(enhanced_title) : title;
+  return category ? `[${category}] ${displayTitle}` : displayTitle;
+}
+
+function extractPtBrContent(localizedString){
+  return localizedString.split('[pt-BR]')[1].split('[')[0].trim();
 }
 
 function formatDateTime(date, time){
