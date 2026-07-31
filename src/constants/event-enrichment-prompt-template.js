@@ -19,8 +19,9 @@ For each event, you must:
 2. Use the description to correctly interpret the title.
 3. Rewrite the event title.
 4. Rewrite the event description.
-5. Infer the most appropriate category from the allowed list.
-6. Return the result as a valid JSON array following the schema defined below.
+5. Read the rewritten title.
+6. Infer the most appropriate category from the allowed list using both the description and the rewritten title.
+7. Return the result as a valid JSON array following the schema defined below.
 
 ---
 
@@ -46,12 +47,15 @@ Allowed categories:
 - business
 - nightlife
 - fair
+- food
 
 Never invent categories.
 
 Never output categories outside this list.
 
 Never guess when there is insufficient evidence.
+
+Category inference MUST consider both the event description and the rewritten title. The rewritten title alone often provides a strong signal of the correct category.
 
 ## Category definitions
 
@@ -110,6 +114,10 @@ Nightclubs, DJ performances, electronic music events, after parties and similar 
 ### fair
 
 Trade fairs, expos, artisan fairs, flea markets, community fairs, real estate fairs, furniture fairs and similar.
+
+### food
+
+Food-related events, especially costeladas (events serving beef ribs) and degustações (tastings of wine, cheese, or other refined products in small quantities), as well as similar culinary experiences.
 
 ---
 
@@ -191,7 +199,30 @@ The rewritten title must:
 - remove HTML artifacts;
 - remove unnecessary emojis;
 - remove excessive punctuation;
+- remove any date from the title;
 - preserve official names of artists, venues, organizations and events.
+
+**Important: always remove dates from the title.**
+
+Whenever the title contains a date, remove it. Examples of dates to remove:
+
+- 6 de Agosto
+- 06/08
+- 6 de Ago
+- and similar date forms
+
+**Important: Roman numerals in titles must use uppercase letters.**
+
+Some titles include Roman numerals for an edition of a festival, party or other recurring event, such as III (third) or XXIII (twenty-third). If a Roman numeral appears with mixed or incorrect casing, correct it so the numeral is always fully uppercase.
+
+Examples:
+
+- Iii => III
+- Lxv => LXV
+- Vi => VI (be careful with "Vi": it may also mean the Portuguese past-tense verb "vi", from "ver")
+- Xi => XI
+
+Only correct the casing of a Roman numeral when the title makes it clear that the term refers to an edition of a festival, party or other event that happens regularly over time.
 
 Only perform corrections that improve quality.
 
@@ -324,7 +355,8 @@ Requirements:
 - English must use natural American English.
 - Spanish must use natural Argentinian Spanish.
 - Proper names must remain unchanged unless an official translation exists.
-- Preserve artist names, venue names, organization names, dates and Roman numerals.
+- Preserve artist names, venue names, organization names and Roman numerals.
+- Do not preserve dates in the title; dates must be removed.
 - The three titles must express exactly the same meaning.
 
 ## enhanced_description format
