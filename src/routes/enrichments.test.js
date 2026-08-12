@@ -20,7 +20,7 @@ describe('Enrichments Routes', () => {
     dateService.buildTodayDateString = jest.fn(() => '2026-07-25');
     eventsResource.get = jest.fn(() => Promise.resolve({ data: eventsToEnrichMock }));
     googleAiResource.infer = jest.fn(() => Promise.resolve({ data: enrichedEventMock }));
-    eventsResource.bulkPatch = jest.fn(() => Promise.resolve({ data: { count: 5 } }));
+    eventsResource.bulkPatch = jest.fn(() => Promise.resolve({ data: { count: 6 } }));
   });
 
   it('should not allow enrichment execution by default', async () => {
@@ -33,13 +33,12 @@ describe('Enrichments Routes', () => {
     const prompt = eventEnrichmentPromptTemplate.replace('{{EVENTS_JSON}}', JSON.stringify(eventsToEnrichMock));
     expect(eventsResource.get).toHaveBeenCalledWith({
       minCreationDate: '2026-07-25',
-      hasDescription: 'true',
-      hasCategory: 'false'
+      hasDescription: 'true'
     });
     expect(googleAiResource.infer).toHaveBeenCalledWith({ prompt });
     expect(eventsResource.bulkPatch).toHaveBeenCalledWith(parseEnrichedEvents());
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({ count: 5 });
+    expect(response.body).toEqual({ count: 6 });
   });
 
   it('should skip inference when there are no events to enrich', async () => {

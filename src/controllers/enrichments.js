@@ -8,8 +8,7 @@ const _public = {};
 _public.start = (req, res) => {
   const params = {
     minCreationDate: dateService.buildTodayDateString(),
-    hasDescription: 'true',
-    hasCategory: 'false'
+    hasDescription: 'true'
   };
   return eventsResource.get(params).then(({ data: events }) => {
     if(!events.length) return res.status(200).send({ count: 0 });
@@ -24,7 +23,12 @@ _public.start = (req, res) => {
 };
 
 function buildPrompt(events){
-  const input = events.map(({ id, title, description }) => ({ id, title, description }));
+  const input = events.map(({ id, title, description, category }) => ({
+    id,
+    title,
+    description,
+    ...(category && { category })
+  }));
   return eventEnrichmentPromptTemplate.replace('{{EVENTS_JSON}}', JSON.stringify(input));
 }
 

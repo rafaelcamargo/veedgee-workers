@@ -11,16 +11,18 @@ Each input event contains at least the following properties:
   "description": "..."
 }
 
+The input may also include an optional \`category\` property when the event is already classified.
+
 Additional properties may exist and must be ignored.
 
 For each event, you must:
 
 1. Read the event description first to fully understand the event.
-2. Use the description to correctly interpret the title.
-3. Rewrite the event title.
-4. Rewrite the event description.
-5. Read the rewritten title.
-6. Infer the most appropriate category from the allowed list using both the description and the rewritten title.
+2. If the input includes a \`category\`, preserve it exactly. Do not replace, omit or re-infer it.
+3. If the input does not include a \`category\`, determine whether the event is clearly a movie screening (or similar cinema event) from the description and title, so the correct title rules can be applied before rewriting.
+4. Rewrite the event title (apply movie title rules when the category is \`movies\` or the event is clearly a movie).
+5. Rewrite the event description using the same description rules for every event, including movies.
+6. If the input did not include a \`category\`, infer the most appropriate category from the allowed list using both the description and the rewritten title. If no category can be confidently inferred, omit \`category\` from the output.
 7. Return the result as a valid JSON array following the schema defined below.
 
 ---
@@ -55,7 +57,9 @@ Never output categories outside this list.
 
 Never guess when there is insufficient evidence.
 
-Category inference MUST consider both the event description and the rewritten title. The rewritten title alone often provides a strong signal of the correct category.
+When the input does not include a \`category\`, category inference MUST consider both the event description and the rewritten title. The rewritten title alone often provides a strong signal of the correct category.
+
+When the input includes a \`category\`, copy that value into the output unchanged. Do not re-infer or change it.
 
 ## Category definitions
 
@@ -148,11 +152,11 @@ Instead:
 3. Determine which words are proper nouns.
 4. Determine which words are common nouns.
 5. Rewrite the Portuguese title using correct Portuguese capitalization.
-6. Only after the Portuguese title is correct, translate it into English and Argentinian Spanish.
+6. Only after the Portuguese title is correct, produce the English and Argentinian Spanish titles (see movie title rules when applicable).
 
 This step is extremely important.
 
-The translations MUST be based on the corrected Portuguese title, never on the original incorrectly-capitalized title.
+For non-movie events, the translations MUST be based on the corrected Portuguese title, never on the original incorrectly-capitalized title.
 
 For example:
 
@@ -234,9 +238,39 @@ Never transform the title into a marketing sentence.
 
 ---
 
+# Movie title rules
+
+Apply these rules when the event category is \`movies\` (provided in the input) or when the event is clearly a movie screening, documentary, cinema session, premiere or similar.
+
+Still normalize the Portuguese title: fix typos, grammar, capitalization, Roman numerals, duplicated words, broken formatting, HTML artifacts, unnecessary emojis, excessive punctuation, and remove dates.
+
+Do NOT freely translate the film title into English or Argentinian Spanish.
+
+For \`en-US\` and \`es-AR\`, use the official theatrical release title used in each market:
+
+- \`pt-BR\`: official Brazilian Portuguese film title (normalized as needed)
+- \`en-US\`: official United States film title
+- \`es-AR\`: official Argentinian Spanish film title (or the official Spanish-language Latin American title used in that market)
+
+Examples:
+
+pt-BR: Cidade de Deus
+en-US: City of God
+es-AR: Ciudad de Dios
+
+pt-BR: Débi & Lóide: Dois Idiotas em Apuros
+en-US: Dumb and Dumber
+es-AR: Tonto y Retonto
+
+If an official title for a locale is unknown and cannot be determined with confidence, keep the Portuguese title for that locale rather than inventing a free translation.
+
+---
+
 # Description rewriting rules
 
 Rewrite the event description while preserving its original meaning.
+
+These description rules apply to every event, including events categorized as \`movies\`. Movie events do not receive special description treatment.
 
 The rewritten description must:
 
@@ -272,7 +306,7 @@ Translation quality is more important than literal translation.
 
 Translate meanings, not isolated words.
 
-The English and Spanish titles should sound like titles naturally written by native speakers.
+For non-movie events, the English and Spanish titles should sound like titles naturally written by native speakers.
 
 Do not preserve Portuguese sentence structure when it sounds unnatural.
 
@@ -337,6 +371,8 @@ Do not translate venue names.
 
 Do not translate organization names.
 
+For movie events, do not apply free translation to the film title. Use the official release titles described in the movie title rules.
+
 ---
 
 # Multilingual output
@@ -351,13 +387,12 @@ Use EXACTLY this format:
 
 Requirements:
 
-- The Portuguese title must first be corrected before being translated.
-- English must use natural American English.
-- Spanish must use natural Argentinian Spanish.
+- The Portuguese title must first be corrected before the other locales are produced.
+- For non-movie events: English must use natural American English; Spanish must use natural Argentinian Spanish; the three titles must express exactly the same meaning.
+- For movie events: each locale must use the official local film title for that market, not a free translation. The three titles may differ in wording when the official titles differ across markets.
 - Proper names must remain unchanged unless an official translation exists.
 - Preserve artist names, venue names, organization names and Roman numerals.
 - Do not preserve dates in the title; dates must be removed.
-- The three titles must express exactly the same meaning.
 
 ## enhanced_description format
 
@@ -373,6 +408,7 @@ Requirements:
 - All three descriptions must express exactly the same meaning.
 - Do not translate proper names unless an official translation exists.
 - Preserve artist names, venue names, organization names, dates, times and Roman numerals.
+- Movie event descriptions follow these same requirements with no special exceptions.
 
 ---
 
@@ -407,7 +443,9 @@ Each object must follow this schema:
   }
 ]
 
-If no category can be confidently inferred, omit the \`category\` property entirely.
+If the input included a \`category\`, the output MUST include that same \`category\` value.
+
+If the input did not include a \`category\` and none can be confidently inferred, omit the \`category\` property entirely.
 
 Example:
 
@@ -427,7 +465,8 @@ Example:
 - Never output invalid JSON.
 - Never include trailing commas.
 - Never include properties other than \`id\`, \`category\`, \`enhanced_title\` and \`enhanced_description\`.
-- Ignore every input property except \`id\`, \`title\` and \`description\`.
+- Ignore every input property except \`id\`, \`title\`, \`description\` and \`category\`.
+- When the input includes \`category\`, preserve it exactly in the output.
 - Produce deterministic output: identical input should always produce identical output.
 
 ---

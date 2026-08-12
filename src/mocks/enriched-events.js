@@ -27,6 +27,12 @@ const data = [
     'id': '99d0b8d3-1a1d-420a-b80e-7b3a9776b859',
     'enhanced_title': '[pt-BR] Yoga Sunset com Alice Mendonça [en-US] Sunset Yoga with Alice Mendonça [es-AR] Yoga al Atardecer con Alice Mendonça',
     'enhanced_description': '[pt-BR] Prática gratuita de Yoga Sunset comandada por Alice Mendonça no sábado, dia 25, seguida de uma festa julina temática. É necessário realizar inscrição e levar tapete ou toalha. [en-US] Free Sunset Yoga class led by Alice Mendonça on Saturday the 25th, followed by a traditional July party. Registration is required, and participants should bring a mat or towel. [es-AR] Práctica gratuita de Yoga al atardecer guiada por Alice Mendonça el sábado 25, seguida de una fiesta julina temática. Se requiere inscripción previa y llevar mat o toalla.'
+  },
+  {
+    'id': 'c4e8f2a1-7b3d-4e9a-9c1f-6a2b8d5e0f47',
+    'category': 'movies',
+    'enhanced_title': '[pt-BR] Cidade de Deus [en-US] City of God [es-AR] Ciudad de Dios',
+    'enhanced_description': '[pt-BR] Sessão de cinema do filme Cidade de Deus, drama brasileiro dirigido por Fernando Meirelles. [en-US] Cinema screening of the film City of God, a Brazilian drama directed by Fernando Meirelles. [es-AR] Sesión de cine de la película Ciudad de Dios, drama brasileño dirigido por Fernando Meirelles.'
   }
 ];
 
