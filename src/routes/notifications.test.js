@@ -25,6 +25,7 @@ https://www.diskingressos.com.br/evento/6390/06-07-2024/pr/curitiba/rota-da-seda
 
 [nightlife] Sapanejo no Pátio da Brava
 2026-08-08 19:00
+Pátio da Brava
 Itajaí, SC
 https://www.sympla.com.br/evento/sapanejo-patio-da-brava-08-08-2026/3512050
 

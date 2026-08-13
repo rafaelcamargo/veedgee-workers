@@ -27,8 +27,8 @@ function buildMessage(events){
 
 function formatMessageEvents(events){
   return events.map(event => [
-    formatEventTitle(event), formatDateTime(event.date, event.time), `${event.city}, ${event.state}`, event.url
-  ].join('\n')).join('\n\n');
+    formatEventTitle(event), formatDateTime(event.date, event.time), event.venue, `${event.city}, ${event.state}`, event.url
+  ].filter(Boolean).join('\n')).join('\n\n');
 }
 
 function formatEventTitle({ title, category, enhanced_title }){
