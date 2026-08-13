@@ -115,7 +115,8 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6359/29-02-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-danilo-gentili-sessao-extra',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6359.webp'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6359.webp',
+        venue: 'DHOUSE CURITIBA'
       },
       {
         title: 'Dhouse Apresenta: Stand Up Comedy Com Criss Paiva',
@@ -125,7 +126,8 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6277/01-03-2024/pr/curitiba/dhouse-apresenta-stand-up-comedy-com-criss-paiva',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6277.webp'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6277.webp',
+        venue: 'DHOUSE CURITIBA'
       },
       {
         title: 'Tributo Secos E Molhados - Especial 50 Anos',
@@ -135,7 +137,8 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6371/01-03-2024/pr/curitiba/tributo-secos-e-molhados-especial-50-anos',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6371.webp'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6371.webp',
+        venue: 'Teatro Regina Vogue'
       },
       {
         title: 'The Beast Experience',
@@ -146,7 +149,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6155/01-03-2024/sc/joinville/the-beast-experience',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6155.webp',
-        description: 'The Beast Experience - Iron Maiden Cover\\r\\nFormada em Maio de 2023 com o propósito de elevar a experiência do público em um show de uma banda cover, a banda formada por Raphael Mendes, Eric Claros, Guilherme Spilack, Pedro Migliacci, Danilo Bellintani e Vinícius Barbosa juntou a experiência de músicos já conhecidos em seus antigos trabalhos tributo ao Iron Maiden para este objetivo.\\r\\nO projeto tem performances teatrais inspiradas na banda original, diferentes cenários e figurinos, e os integrantes apresentam instrumentos iguais aos de seus mestres, executando com ótima musicalidade um repertório bastante abrangente do Iron Maiden com 3 guitarristas!\\r\\nE com essa mistura de experiência, talento e notoriedade no meio digital e musical formou-se o projeto \'The Beast Experience - Ultimate Iron Maiden Tribute\'.'
+        description: 'The Beast Experience - Iron Maiden Cover\\r\\nFormada em Maio de 2023 com o propósito de elevar a experiência do público em um show de uma banda cover, a banda formada por Raphael Mendes, Eric Claros, Guilherme Spilack, Pedro Migliacci, Danilo Bellintani e Vinícius Barbosa juntou a experiência de músicos já conhecidos em seus antigos trabalhos tributo ao Iron Maiden para este objetivo.\\r\\nO projeto tem performances teatrais inspiradas na banda original, diferentes cenários e figurinos, e os integrantes apresentam instrumentos iguais aos de seus mestres, executando com ótima musicalidade um repertório bastante abrangente do Iron Maiden com 3 guitarristas!\\r\\nE com essa mistura de experiência, talento e notoriedade no meio digital e musical formou-se o projeto \'The Beast Experience - Ultimate Iron Maiden Tribute\'.',
+        venue: 'Teatro Juarez Machado'
       },
       {
         title: 'Dhouse Apresenta – \"Orgulho Do Papai\" Com Giovana Fagundes',
@@ -156,7 +160,8 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6380/06-03-2024/pr/curitiba/dhouse-apresenta-orgulho-do-papai-com-giovana-fagundes',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6380.webp'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6380.webp',
+        venue: 'DHOUSE CURITIBA'
       },
       {
         title: 'Chico César & Zeca Baleiro',
@@ -167,7 +172,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6212/09-03-2024/sc/florianopolis/chico-cesar-zeca-baleiro',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6212.webp',
-        description: '‘Ao Arrepio da Lei’,\nálbum de inéditas de Chico César e Zeca Baleiro\nUma nova safra de mais de 20 canções marcou a retomada da parceria inaugurada há mais de 30 anos por Chico César e Zeca Baleiro. Animados pelo resultado das novas parcerias musicais, anunciaram o lançamento de um álbum, antecipando duas canções, “Respira” e “Lovers”, em maio de 2021. Com tantos trabalhos em paralelo, Chico e Zeca só retomaram as gravações em 2022, quando lançaram novo single duplo com as inéditas “Verão” e “Beije-me Antes”, e finalizaram o álbum no final de 2023.\n“Ao Arrepio da Lei” é o nome do álbum que Chico César e Zeca Baleiro lançam em março de 2024, quando também iniciam uma turnê por algumas das principais cidades e capitais do país. No repertório do show, as novas parcerias, sucessos de ambos e canções que fazem parte da memória afetiva dos dois artistas.\nQuando os shows e gravações pararam por conta da pandemia, Chico César e Zeca Baleiro começaram a compor bastante juntos. Entre maio de 2020'
+        description: '‘Ao Arrepio da Lei’,\nálbum de inéditas de Chico César e Zeca Baleiro\nUma nova safra de mais de 20 canções marcou a retomada da parceria inaugurada há mais de 30 anos por Chico César e Zeca Baleiro. Animados pelo resultado das novas parcerias musicais, anunciaram o lançamento de um álbum, antecipando duas canções, “Respira” e “Lovers”, em maio de 2021. Com tantos trabalhos em paralelo, Chico e Zeca só retomaram as gravações em 2022, quando lançaram novo single duplo com as inéditas “Verão” e “Beije-me Antes”, e finalizaram o álbum no final de 2023.\n“Ao Arrepio da Lei” é o nome do álbum que Chico César e Zeca Baleiro lançam em março de 2024, quando também iniciam uma turnê por algumas das principais cidades e capitais do país. No repertório do show, as novas parcerias, sucessos de ambos e canções que fazem parte da memória afetiva dos dois artistas.\nQuando os shows e gravações pararam por conta da pandemia, Chico César e Zeca Baleiro começaram a compor bastante juntos. Entre maio de 2020',
+        venue: 'Centro de Eventos da UFSC'
       },
       {
         title: 'Dhouse Apresenta – 40 + Com Eduardo Jericó',
@@ -177,7 +183,8 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6410/09-03-2024/pr/curitiba/dhouse-apresenta-40-com-eduardo-jerico',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6410.webp'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6410.webp',
+        venue: 'DHOUSE CURITIBA'
       },
       {
         title: '1º Encontro Aaonça',
@@ -188,7 +195,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6468/11-03-2024/pr/curitiba/1-encontro-aaonca',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6468.webp',
-        description: 'Dia 11 de março, segunda feira a partir das 19h, no Bar do Alemão ocorrerá o evento \'Ação entre amigos da onça\'.O objetivo é arrecadar fundos para a Aaonça, Associação dos amigos da  onça com finalidade de ajudar a \'carne de onça\' se tornar indicação Geográfica de Curitiba.\\r\\nO ingresso da direito a um \' submarino \' sendo que a canequinha do Steinhaeger poderá ser levada para casa.\\r\\nServiço:\\r\\nPrimeiro Encontro Aaonça, ação entre amigos11 de março a partir das 19h.Bar do Alemão Rua Dr Claudino dos Santos, 63, São Francisco.'
+        description: 'Dia 11 de março, segunda feira a partir das 19h, no Bar do Alemão ocorrerá o evento \'Ação entre amigos da onça\'.O objetivo é arrecadar fundos para a Aaonça, Associação dos amigos da  onça com finalidade de ajudar a \'carne de onça\' se tornar indicação Geográfica de Curitiba.\\r\\nO ingresso da direito a um \' submarino \' sendo que a canequinha do Steinhaeger poderá ser levada para casa.\\r\\nServiço:\\r\\nPrimeiro Encontro Aaonça, ação entre amigos11 de março a partir das 19h.Bar do Alemão Rua Dr Claudino dos Santos, 63, São Francisco.',
+        venue: 'Bar do Alemão'
       },
       {
         title: 'Palestra Com Zico',
@@ -199,7 +207,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6211/09-04-2024/rs/porto-alegre/palestra-com-zico',
         image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6211.webp',
-        description: '\\r\\nPalestra: LIDERANÇA & FORMAÇÃO DE EQUIPE EM 2024.'
+        description: '\\r\\nPalestra: LIDERANÇA & FORMAÇÃO DE EQUIPE EM 2024.',
+        venue: 'Salão de Atos - PUCRS'
       },
       {
         title: 'Yamandu Costa',
@@ -209,7 +218,8 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.diskingressos.com.br/evento/6013/02-05-2024/pr/curitiba/yamandu-costa',
-        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6013.webp'
+        image: 'https://genesisapi.diskingressos.com.br/images/cache/events/6013.webp',
+        venue: 'Teatro Positivo'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -1047,7 +1057,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQKoU0bjYlV/',
         image: 'https://scontent.cdninstagram.com/v/t51.82787-15/570681184_18383968534181168_4843678019630848986_n.jpg?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=105&ig_cache_key=Mzc0OTk4Njk5MjI4NjE3MzUyNQ%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzNTB4MTY4OC5zZHIuQzMifQ%3D%3D&_nc_ohc=VBhucAO3A3UQ7kNvwFY16dE&_nc_oc=AdkeiZQfUnLsHzPEjkthVkkLncIIt_W4DIZupVnVrSgPYbqDTxauSFbEteLHGqjqDi8&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AffCmTrPlzFzo91nJUz-4vZ24Txal2RTGWb2PFTUxxgdlA&oe=69019D68',
-        description: '🚨 VENDAS LIBERADAS, JOINVILLE 🚨\n\nO Em Pé na Rede chega pra transformar a cidade em uma noite de risadas sem limites! 🔥\n\nCom quadros como “Fazendo Amizade” e “Comentando Histórias”, interação com a plateia e muito improviso, Victor, Osmar e Rominho prometem gargalhadas do começo ao fim! 😂🎤\n\n🎟️ O riso tá garantido… e o ingresso? Corre pra garantir o seu!\n\nSeguidor da Canesso Produções tem ingresso especial com 50% de desconto! ❤️\n\n🔗 Ingressos e maiores informações diretamente no site da Canesso Produções (link na bio)'
+        description: '🚨 VENDAS LIBERADAS, JOINVILLE 🚨\n\nO Em Pé na Rede chega pra transformar a cidade em uma noite de risadas sem limites! 🔥\n\nCom quadros como “Fazendo Amizade” e “Comentando Histórias”, interação com a plateia e muito improviso, Victor, Osmar e Rominho prometem gargalhadas do começo ao fim! 😂🎤\n\n🎟️ O riso tá garantido… e o ingresso? Corre pra garantir o seu!\n\nSeguidor da Canesso Produções tem ingresso especial com 50% de desconto! ❤️\n\n🔗 Ingressos e maiores informações diretamente no site da Canesso Produções (link na bio)',
+        venue: 'Porão da Liga'
       },
       {
         title: 'Porão Da Liga - Luna Session',
@@ -1059,7 +1070,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQKM1JVjcRv/',
         image: 'https://scontent.cdninstagram.com/v/t51.71878-15/568628682_1464491714638994_3360513472882390708_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&ig_cache_key=Mzc0OTg2NjA2ODQ1NTA0ODMwMw%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjY0MHgxMTM2LnNkci5DMyJ9&_nc_ohc=ruXvuDHYR0QQ7kNvwFQosww&_nc_oc=Adk9G77kjSy-iC9Hx0igPO8yUF2N1Sbb-AEW5pTMVPAdue-lzj0rLBjC1v91loB4JnU&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfesvSsvErfaCmbWWADH8HdQJWU0bL_zVZQz7j-KasS81A&oe=69018A8E',
-        description: 'Prepare sua fantasia para o melhor Halloween de Joinville.\n\n#halloween \n#festa \n#shows \n#poraodaliga \n#rocknroll \n#anos80'
+        description: 'Prepare sua fantasia para o melhor Halloween de Joinville.\n\n#halloween \n#festa \n#shows \n#poraodaliga \n#rocknroll \n#anos80',
+        venue: 'Porão da Liga'
       },
       {
         title: 'Porão Da Liga - Billbird',
@@ -1070,7 +1082,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQG-U0DDQLr/',
         image: 'https://scontent.cdninstagram.com/v/t51.82787-15/569919988_18291886258260658_3184029433435846307_n.heic?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=100&ig_cache_key=Mzc0ODk1Nzg0ODk5MTQ5ODk4Nw%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTkyMC5zZHIuQzMifQ%3D%3D&_nc_ohc=i0xtAFn0s0QQ7kNvwHlGy3y&_nc_oc=AdlJi_lAMHYESBJj4monv9VUD_Wxf8SnUfA0iNNJp6pVltJNTtX-_q6Qw04oWPBx53Y&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfesowsYX57RfR-pJfGJfNWZDpHLWMP1MIwvD8JNE5ImgA&oe=69018E96',
-        description: 'Fim de semana com 2 super bandas no Porão da Liga.'
+        description: 'Fim de semana com 2 super bandas no Porão da Liga.',
+        venue: 'Porão da Liga'
       },
       {
         title: 'Porão Da Liga - Vinyl Archive',
@@ -1082,7 +1095,8 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.instagram.com/poraodaliga/p/DQCZOAsDkdY/',
         image: 'https://scontent.cdninstagram.com/v/t51.82787-15/565350356_18533401627056688_671384966620171138_n.heic?stp=dst-jpg_e35_p720x720_tt6&_nc_cat=108&ig_cache_key=Mzc0NzY2ODc1MzkwMDI1OTE2MA%3D%3D.3-ccb1-7&ccb=1-7&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=xE_6x97baxYQ7kNvwFuEIRv&_nc_oc=AdkVOc8KX7JxY9BEnY3zomxJ4vqteD_90ugykvS3eoWgZAnBPBaXAMZREm7WYXCWHdk&_nc_ad=z-m&_nc_cid=3511&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=inn9xxl7WLI4bhSaUP6WYQ&oh=00_AfegBSKe5m4NfRKNfPZ801vnXJ3jSzRmi9O-n0YI3EdwFA&oe=69018826',
-        description: '@estebantavares em tour pelo sul do país\n\n23/10 JOINVILLE/SC @poraodaliga \n24/10 BLUMENAU/SC @ahoyblumenau \n25/10 CURITIBA/PR @arnicacultural \n26/10 PONTA GROSSA/PR @capivarasrockbar \n\nIngressos disponíveis online na Sympla, link na Bio.'
+        description: '@estebantavares em tour pelo sul do país\n\n23/10 JOINVILLE/SC @poraodaliga \n24/10 BLUMENAU/SC @ahoyblumenau \n25/10 CURITIBA/PR @arnicacultural \n26/10 PONTA GROSSA/PR @capivarasrockbar \n\nIngressos disponíveis online na Sympla, link na Bio.',
+        venue: 'Porão da Liga'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);

@@ -29,6 +29,7 @@ function formatEvent(event){
     city,
     state,
     description,
+    local,
     imagewebp: webpImgPath,
     image: defaultImgPath
   } = event._source;
@@ -40,7 +41,8 @@ function formatEvent(event){
     country: 'BR',
     url: buildEventURL(event._source),
     image: buildImageURL({ webpImgPath, defaultImgPath }),
-    description: description && eventService.parseDescription(description)
+    description: description && eventService.parseDescription(description),
+    venue: local
   };
 }
 

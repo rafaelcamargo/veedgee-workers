@@ -66,7 +66,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
       image: imageUrl,
-      description: ''
+      description: '',
+      venue: 'Porão da Liga'
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });
@@ -87,7 +88,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
       image: imageUrl,
-      description: ''
+      description: '',
+      venue: 'Porão da Liga'
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });
@@ -199,7 +201,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
       image: imageUrl,
-      description: ''
+      description: '',
+      venue: 'Porão da Liga'
     }]);
     expect(loggerService.track).toHaveBeenCalledWith(
       VLM_INFERENCE_PARSE_ERROR,
@@ -234,7 +237,8 @@ describe('Instagram Porao Da Liga Crawler', () => {
       country: 'BR',
       url: `https://www.instagram.com/poraodaliga/p/${postId}/`,
       image: imageUrl,
-      description: ''
+      description: '',
+      venue: 'Porão da Liga'
     }]);
     expect(loggerService.track).not.toHaveBeenCalled();
   });

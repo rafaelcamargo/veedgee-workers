@@ -63,7 +63,8 @@ function extractEventsFromSinglePost(post){
         country: 'BR',
         url: `https://www.instagram.com/poraodaliga/p/${post.id}/`,
         image: post.imageUrl,
-        description: eventService.parseDescription(post.caption)
+        description: eventService.parseDescription(post.caption),
+        venue: 'Porão da Liga'
       };
     });
   });
