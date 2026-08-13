@@ -25,16 +25,21 @@ function buildQueryParams(){
 function buildEvents(data){
   return data.map(item => {
     const [date, time] = buildDateTime(item.when.start.millis);
+    const { content } = item;
     return {
-      title: item.content.summary.text,
+      title: content.summary.text,
       date,
       time,
       city: 'Joinville',
       state: 'SC',
       country: 'BR',
-      image: buildImageURL(item.content),
+      image: buildImageURL(content),
       url: `https://tockify.com/eventosemjoinville/detail/${item.eid.uid}/${item.eid.tid}`,
-      description: eventService.parseDescription(item.content.description.text)
+      description: eventService.parseDescription(content.description.text),
+      venue: content.place,
+      address: content.address,
+      latitude: content.location?.latitude,
+      longitude: content.location?.longitude
     };
   });
 }

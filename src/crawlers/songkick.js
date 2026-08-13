@@ -46,6 +46,7 @@ function formatEvent($eventEl){
   const [data] = JSON.parse($eventEl.text().trim());
   const [date, time] = formatDateTime(data.startDate);
   const [city, state] = formatCityState(data);
+  const { location } = data;
   return {
     title: data.name,
     date,
@@ -54,7 +55,11 @@ function formatEvent($eventEl){
     state,
     country: 'BR',
     url: data.url.split('?')[0],
-    category: 'music'
+    category: 'music',
+    venue: location?.name,
+    address: location?.address?.streetAddress,
+    latitude: location?.geo?.latitude,
+    longitude: location?.geo?.longitude
   };
 }
 

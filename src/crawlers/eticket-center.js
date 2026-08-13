@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const { BASE_URL } = require('../constants/eticket-center');
 const eticketCenterResource = require('../resources/eticket-center');
 const eventService = require('../services/event');
+const objectService = require('../services/object');
 const reportService = require('../services/report');
 const requestService = require('../services/request');
 const { useCounter } = require('../hooks/useCounter');
@@ -39,7 +40,8 @@ function formatEvent($eventEl){
     state,
     country: 'BR',
     url: [BASE_URL, href].join(''),
-    image: extractImageUrl($eventEl)
+    image: extractImageUrl($eventEl),
+    venue: formatVenue($eventEl)
   };
 }
 
@@ -69,6 +71,11 @@ function formatCityState($eventEl){
   return cityState && cityState.replace(')', '').split('/');
 }
 
+function formatVenue($eventEl){
+  const [venue] = $eventEl.find('.ExtLocol').text().trim().split('(');
+  return venue && venue.trim();
+}
+
 async function enrichEventsWithDescriptions(events, reportId){
   const { check } = useCounter();
   const task = 'Crawling: eticket-center (descriptions)';
@@ -90,7 +97,8 @@ function enrichEventWithDescription(event){
   return eticketCenterResource.getEventDetailsPage(event.url).then(({ data }) => {
     return {
       ...event,
-      description: eventService.parseDescription(extractDescription(data))
+      description: eventService.parseDescription(extractDescription(data)),
+      ...extractLocation(data)
     };
   });
 }
@@ -98,6 +106,24 @@ function enrichEventWithDescription(event){
 function extractDescription(htmlString){
   const match = htmlString.match(/<meta name="Description" content="(.*)" \/>/i);
   return match?.[1];
+}
+
+function extractLocation(htmlString){
+  const $ = cheerio.load(htmlString);
+  const address = $('h2')
+    .filter((_, el) => $(el).text().includes('Informações sobre o Local'))
+    .parent()
+    .find('.font-s-18.bold.color-cinza2.mb20')
+    .first()
+    .text()
+    .trim();
+  const mapsHref = $('a[href*="google.com/maps"]').attr('href') || '';
+  const [, latitude, longitude] = mapsHref.match(/@(-?\d+\.?\d*),(-?\d+\.?\d*)/) || [];
+  return objectService.removeFalsyAttrs({
+    address,
+    latitude,
+    longitude
+  });
 }
 
 module.exports = _public;

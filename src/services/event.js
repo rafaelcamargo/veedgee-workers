@@ -55,7 +55,11 @@ function formatEvent(event){
     url,
     category,
     image,
-    description
+    description,
+    venue,
+    address,
+    latitude,
+    longitude
   } = event;
   return objectService.removeFalsyAttrs({
     title: capitalize(removeUnnecessarySpaces(fixInvalidSpaceChars(title))),
@@ -68,6 +72,10 @@ function formatEvent(event){
     category,
     image,
     description,
+    venue,
+    address,
+    latitude: latitude && String(latitude),
+    longitude: longitude && String(longitude),
     slug: buildEventSlug(event)
   });
 }

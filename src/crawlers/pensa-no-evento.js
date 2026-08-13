@@ -37,7 +37,7 @@ function crawlEventsByCityCode(code){
 
 function buildEvents(data){
   return data.map(item => {
-    const { evento, data, cidade, estado, url, capaURL } = item;
+    const { evento, data, cidade, estado, url, capaURL, local } = item;
     const [date, time] = parseDateTime(data);
     return {
       title: evento,
@@ -47,6 +47,7 @@ function buildEvents(data){
       state: estado,
       country: 'BR',
       url,
+      venue: local,
       ...(capaURL && { image: capaURL })
     };
   }).filter(builtEvent => !isBlackListed(builtEvent));
@@ -105,7 +106,8 @@ function enrichEventWithDescription(event){
   return pensaNoEventoResource.getEventDetailsPage(event.url).then(({ data }) => {
     return {
       ...event,
-      description: eventService.parseDescription(extractDescription(data))
+      description: eventService.parseDescription(extractDescription(data)),
+      address: extractAddress(data)
     };
   });
 }
@@ -113,6 +115,13 @@ function enrichEventWithDescription(event){
 function extractDescription(htmlString){
   const $ = cheerio.load(htmlString);
   return $('meta[name="description"]').attr('content');
+}
+
+function extractAddress(htmlString){
+  const $ = cheerio.load(htmlString);
+  const ldJson = $('script[type="application/ld+json"]').html();
+  const data = ldJson && JSON.parse(ldJson);
+  return data?.location?.address?.streetAddress;
 }
 
 module.exports = _public;

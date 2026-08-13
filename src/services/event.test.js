@@ -42,6 +42,37 @@ describe('Event Service', () => {
     }]);
   });
 
+  it('should persist venue, address and coordinates when present', async () => {
+    const event = {
+      title: 'Some Title',
+      date: '2026-06-08',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'http://some.url.com',
+      venue: 'Teatro da Liga',
+      address: 'Rua Otto Boehm, 444',
+      latitude: '-26.3047',
+      longitude: '-48.8483'
+    };
+    await eventService.multiSave([event]);
+    expect(eventsResource.bulkSave).toHaveBeenCalledWith([{
+      title: 'Some Title',
+      date: '2026-06-08',
+      time: '20:00',
+      city: 'Joinville',
+      state: 'SC',
+      country: 'BR',
+      url: 'http://some.url.com',
+      venue: 'Teatro da Liga',
+      address: 'Rua Otto Boehm, 444',
+      latitude: '-26.3047',
+      longitude: '-48.8483',
+      slug: 'some-title-joinville-sc-20260608'
+    }]);
+  });
+
   it('should not save events with invalid dates', async () => {
     const event = {
       title: 'Some Title',

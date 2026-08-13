@@ -37,18 +37,27 @@ function buildEvents(data){
     return eventService.isWantedCity(location.city, location.state);
   }).map(item => {
     const [date, time] = parseEventDateTime(item);
+    const { location } = item;
     return {
       title: item.name,
       date,
       time,
-      city: item.location.city,
-      state: item.location.state,
+      city: location.city,
+      state: location.state,
       country: 'BR',
       url: item.url,
       image: item.images?.original,
-      id: item.id
+      id: item.id,
+      venue: location.name,
+      address: buildAddress(location),
+      latitude: location.lat,
+      longitude: location.lon
     };
   });
+}
+
+function buildAddress({ address, address_num: addressNum }){
+  return [address, addressNum].filter(part => part && part !== '0').join(', ');
 }
 
 function parseEventDateTime(item){

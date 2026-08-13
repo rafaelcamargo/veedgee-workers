@@ -241,7 +241,11 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-joinville/29-02/21-00/',
         image: 'https://www.eticketcenter.com.br/Assets/Imagens/2023/09/06//512b809896-elvis-experience-com-dean-z-em-joinville_2.webp',
-        description: 'O espetaculo musical "Aventura Congelante, O Legado", traz ao públicotodo o legado construído pelas irmãs Elsa e Anna durante os anos. Com aajuda de dois contadores de história, conheceremos de perto tudo o queaconteceu com Anna e Elsa desde que elas eram pequenas. Em cerca de 1hora e 10 minutos temos toda a história de Frozen e Frozen II contada ecantada ao vivo! A história, que já envolveu toda uma geração, traz seusprincipais personagens vivenciando novamente toda uma aventura quecomeça em Arendelle, passa pela floresta encantada e promete mudar odestino de todos pra sempre.Além do experiente elenco que atua, dança e canta nesse lindo espetáculo100% cantado ao vivo, o espetáculo conta com direção geral do renomadodiretor Bruno Rizzo, direção executiva de Daniela Schiarreta e direçãoresidente de Ewerton Novaes.Kids, TicketCenter'
+        description: 'O espetaculo musical "Aventura Congelante, O Legado", traz ao públicotodo o legado construído pelas irmãs Elsa e Anna durante os anos. Com aajuda de dois contadores de história, conheceremos de perto tudo o queaconteceu com Anna e Elsa desde que elas eram pequenas. Em cerca de 1hora e 10 minutos temos toda a história de Frozen e Frozen II contada ecantada ao vivo! A história, que já envolveu toda uma geração, traz seusprincipais personagens vivenciando novamente toda uma aventura quecomeça em Arendelle, passa pela floresta encantada e promete mudar odestino de todos pra sempre.Além do experiente elenco que atua, dança e canta nesse lindo espetáculo100% cantado ao vivo, o espetáculo conta com direção geral do renomadodiretor Bruno Rizzo, direção executiva de Daniela Schiarreta e direçãoresidente de Ewerton Novaes.Kids, TicketCenter',
+        venue: 'Teatro da Liga',
+        address: 'Avenida José Vieira, 315 - América, Joinville/SC',
+        latitude: '-26.292656',
+        longitude: '-48.8469884'
       },
       {
         title: 'Elvis Experience Com Dean Z Em Blumenau',
@@ -252,7 +256,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/elvis-experience-com-dean-z-em-blumenau/02-03/21-00/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2023/09/13//fa311ad974-elvis-experience-com-dean-z-em-blumenau_2.webp'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2023/09/13//fa311ad974-elvis-experience-com-dean-z-em-blumenau_2.webp',
+        venue: 'Teatro Carlos Gomes'
       },
       {
         title: 'Gratiluz Com Dra. Rosângela',
@@ -263,7 +268,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/stand-up/gratiluz-com-dra-rosangela/15-03/20-30/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//3bb07b7d32-gratiluz-com-dra-rosangela_2.webp'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//3bb07b7d32-gratiluz-com-dra-rosangela_2.webp',
+        venue: 'Teatro da Liga'
       },
       {
         title: 'Rei Leão | O Musical',
@@ -274,7 +280,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/musical/rei-leao-o-musical/16-03/16-00/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//eb8eaacfc1-rei-leao-o-musical_2.webp'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//eb8eaacfc1-rei-leao-o-musical_2.webp',
+        venue: 'Teatro da Liga'
       },
       {
         title: 'Ultimate Queen & Orquestra',
@@ -285,7 +292,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/show/ultimate-queen-orquestra/15-06/21-00/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//fd5cc002c9-ultimate-queen-orquestra_2.webp'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/01/17//fd5cc002c9-ultimate-queen-orquestra_2.webp',
+        venue: 'Teatro Michelangelo'
       },
       {
         title: 'Bruna Louise - Joi',
@@ -296,7 +304,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/stand-up/bruna-louise-joi/22-06/19-00/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/02/19//d0693447a5-bruna-louise-joi_2.webp'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/02/19//d0693447a5-bruna-louise-joi_2.webp',
+        venue: 'Teatro da Liga'
       },
       {
         title: 'Se É Que Você Me Entende Com Raphael Ghanem - Joinville',
@@ -307,7 +316,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.eticketcenter.com.br/eventos/stand-up/se-e-que-voce-me-entende-com-raphael-ghanem-joinville/',
-        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/05/09//a6d458423a-se-e-que-voce-me-entende-com-raphael-ghanem-joinvi_2.webp'
+        image: 'https://www.eticketcenter.com.br/Assets/Imagens/2024/05/09//a6d458423a-se-e-que-voce-me-entende-com-raphael-ghanem-joinvi_2.webp',
+        venue: 'Teatro da Liga'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -346,7 +356,9 @@ describe('Crawlers Routes', () => {
       country: 'BR',
       url: 'https://www.blueticket.com.br/evento/33937/samba-jurere',
       image: 'https://d2hnilqqbw3vnf.cloudfront.net/images/imagens/full/vQHiYmhjLdXXQtFWFmTVfJ6dv2JLBMEdMILf64kF.jpeg',
-      description: 'ESPETÁCULO ELVIS & ABBAPrepare-se para um Espetáculo Histórico!Será uma fantástica viagem aos anos 50, 60 e 70. Um encontro épico, de dois grandes tributos da Argentina, considerados os melhores do gênero, que irão interpretar os sucessos do #Abba e #ElvisPresley. Quem abre a noite é o tributo ABBA da Argentina, que irá interpretar os clássicos marcantes da Agnetha Fältskog, Anni-Frid Lyngstad, Björn Ulvaeus e Benny Andersson. A performance inclui figurinos e coreografias, em perfeita harmonia vocal e instrumental, recriada do original ABBA. Em seguida, quem sobe ao palco é o sensacional cover/tributo ao ELVIS PRESLEY da Argentina, com figurinos marcantes e fiéis, backing vocalsAo vivo e harmonia instrumental, representando em grande estilo os maiores clássicos do ícone Elvis Presley. Um espetáculo de arrepiar e uma emocionante viagem no tempo, através da obra e da genialidade do grupo ABBA e do ícone ELVIS PRESLEY. Você vai cantar e se emocionar com 2 shows épicos, com a banda Los Kal'
+      description: 'ESPETÁCULO ELVIS & ABBAPrepare-se para um Espetáculo Histórico!Será uma fantástica viagem aos anos 50, 60 e 70. Um encontro épico, de dois grandes tributos da Argentina, considerados os melhores do gênero, que irão interpretar os sucessos do #Abba e #ElvisPresley. Quem abre a noite é o tributo ABBA da Argentina, que irá interpretar os clássicos marcantes da Agnetha Fältskog, Anni-Frid Lyngstad, Björn Ulvaeus e Benny Andersson. A performance inclui figurinos e coreografias, em perfeita harmonia vocal e instrumental, recriada do original ABBA. Em seguida, quem sobe ao palco é o sensacional cover/tributo ao ELVIS PRESLEY da Argentina, com figurinos marcantes e fiéis, backing vocalsAo vivo e harmonia instrumental, representando em grande estilo os maiores clássicos do ícone Elvis Presley. Um espetáculo de arrepiar e uma emocionante viagem no tempo, através da obra e da genialidade do grupo ABBA e do ícone ELVIS PRESLEY. Você vai cantar e se emocionar com 2 shows épicos, com a banda Los Kal',
+      venue: 'Stage Music Park',
+      address: 'Avenida Governador Irineu Bornhausen, 5600 - Agronômica - Florianópolis/SC'
     }]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
     expect(eventsResource.bulkSave).toHaveBeenCalledTimes(1);
@@ -385,7 +397,11 @@ describe('Crawlers Routes', () => {
         city: 'Balneário Camboriú',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/before-night/2360484'
+        url: 'https://www.sympla.com.br/evento/before-night/2360484',
+        venue: 'Casa de Praia - Cabana Bella Vista BC',
+        address: 'Avenida Interpraias',
+        latitude: '-27.0023854',
+        longitude: '-48.6015288'
       },
       {
         title: 'Balbúrdia Groove',
@@ -395,7 +411,11 @@ describe('Crawlers Routes', () => {
         city: 'Blumenau',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/balburdia-groove/2409984'
+        url: 'https://www.sympla.com.br/evento/balburdia-groove/2409984',
+        venue: 'Balbúrdia Cervejeira Blumenau',
+        address: 'Rua Antônio da Veiga, 464',
+        latitude: '-26.9077321',
+        longitude: '-49.0800252'
       },
       {
         title: 'Acústico Navaranda - Curitiba',
@@ -405,7 +425,11 @@ describe('Crawlers Routes', () => {
         city: 'Curitiba',
         state: 'PR',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/acustico-navaranda-curitiba/2368782'
+        url: 'https://www.sympla.com.br/evento/acustico-navaranda-curitiba/2368782',
+        venue: 'Teatro Fernanda Montenegro',
+        address: 'Rua Coronel Dulcídio, 517',
+        latitude: '-25.43824',
+        longitude: '-49.2838549'
       },
       {
         title: 'Porter Summit 2024',
@@ -415,7 +439,11 @@ describe('Crawlers Routes', () => {
         city: 'Florianópolis',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/porter-summit-2024/2222757'
+        url: 'https://www.sympla.com.br/evento/porter-summit-2024/2222757',
+        venue: 'Centro Sul',
+        address: 'Avenida Governador Gustavo Richard, 850',
+        latitude: '-27.6021245',
+        longitude: '-48.5520238'
       },
       {
         title: 'Antecipados Pg Abril I',
@@ -425,7 +453,11 @@ describe('Crawlers Routes', () => {
         city: 'Itajaí',
         state: 'SC',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/antecipados-pg-abril-i/2407133'
+        url: 'https://www.sympla.com.br/evento/antecipados-pg-abril-i/2407133',
+        venue: 'PG Surf Skate',
+        address: 'Rua José Pereira Liberato, 3395',
+        latitude: '-26.9215551',
+        longitude: '-48.6841148'
       },
       {
         title: 'Show Vera Loca',
@@ -437,7 +469,11 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.sympla.com.br/evento/show-vera-loca/2384437',
         image: 'https://images.sympla.com.br/6a399b55b2597.jpg',
-        description: 'Chegamos à terceira edição do evento “Lê Vallim Canta Elis + Mulheres”.Esta edição pretende emocionar e divertir a plateia pois está recheada de canções marcantes, participações especiais, novas músicas no set "mulheres" e muito carinho envolvido.\u00a0Contaremos com a musicalidade dos instrumentistas Gabriel Take, Lucas Fevereiro, Mateus Ramos e Kahlil Bello, além da interpretação vocal de Lê Vallim.\u00a0Não fique fora dessa e garanta seus ingressos pois são limitados!!Um beijo com muita música!'
+        description: 'Chegamos à terceira edição do evento “Lê Vallim Canta Elis + Mulheres”.Esta edição pretende emocionar e divertir a plateia pois está recheada de canções marcantes, participações especiais, novas músicas no set "mulheres" e muito carinho envolvido.\u00a0Contaremos com a musicalidade dos instrumentistas Gabriel Take, Lucas Fevereiro, Mateus Ramos e Kahlil Bello, além da interpretação vocal de Lê Vallim.\u00a0Não fique fora dessa e garanta seus ingressos pois são limitados!!Um beijo com muita música!',
+        venue: 'Casa Raul',
+        address: 'Rua Marajó, 12',
+        latitude: '-26.3131905',
+        longitude: '-48.8600616'
       },
       {
         title: 'Funduncinho Do Tabu',
@@ -447,7 +483,11 @@ describe('Crawlers Routes', () => {
         city: 'Porto Alegre',
         state: 'RS',
         country: 'BR',
-        url: 'https://www.sympla.com.br/evento/funduncinho-do-tabu/2410478'
+        url: 'https://www.sympla.com.br/evento/funduncinho-do-tabu/2410478',
+        venue: 'Tabu386',
+        address: 'Avenida Benjamin Constant, 321',
+        latitude: '-30.0070136',
+        longitude: '-51.1885693'
       },
       {
         title: 'Bourbon Sweethearts (data Extra)',
@@ -458,7 +498,11 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.sympla.com.br/evento/bourbon-sweethearts-data-extra/3504092',
-        image: 'https://images.sympla.com.br/6a57c6d09ec6a.png'
+        image: 'https://images.sympla.com.br/6a57c6d09ec6a.png',
+        venue: 'GREZZ',
+        address: 'Rua Almirante Barroso, 328',
+        latitude: '-30.0157944',
+        longitude: '-51.208904'
       },
       {
         title: 'Edu Falaschi “mi’raj & The Legacy Tour” Em Porto Alegre - 08/11/26',
@@ -470,7 +514,11 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://bileto.sympla.com.br/event/121706',
         image: 'https://assets.bileto.sympla.com.br/eventmanager/production/p1gi1vh1p6ia6oe662fj0q4c8c45od4potqshquc2gu9oa2q0124m4ogvh4fntroa54us4pb6htrbnjtguaf7ve610sr0qbpnkbp8o.webp',
-        description: 'MAIA ENTRETENIMENTO APRESENTAOCEAN ALLEY\nA banda australiana Ocean Alley retorna ao Brasil e faz uma apresentação em Porto Alegre no dia 7 de novembro de 2026, sábado, no Opinião.\nO show integra a turnê de Love Balloon, nome de seu álbum de estúdio mais recente, lançado em setembro de 2025, e marca a estreia da banda nos palcos gaúchos. A pré-venda de ingressos, exclusiva para super fãs, começa dia 6 de julho, às 10h, e a venda geral abre em 7 de julho, também às 10h, pela Sympla.\nFormado por Baden Donegal (vocais e guitarra), Angus Goodwin (guitarra), Lach Galbraith (teclados e vocais), Mitch Galbraith (guitarra), Nic Blom (baixo) e Tom O’Brien (bateria), o Ocean Alley soma mais de 1,5 bilhão de reproduções nas plataformas de streaming e se consolidou como um dos principais nomes da cena australiana contemporânea.\nO repertório do show reúne faixas de toda a carreira, incluindo sucessos como "Confidence", além das músicas de "Love Balloon", álbum que estreou em primeiro lugar na parada'
+        description: 'MAIA ENTRETENIMENTO APRESENTAOCEAN ALLEY\nA banda australiana Ocean Alley retorna ao Brasil e faz uma apresentação em Porto Alegre no dia 7 de novembro de 2026, sábado, no Opinião.\nO show integra a turnê de Love Balloon, nome de seu álbum de estúdio mais recente, lançado em setembro de 2025, e marca a estreia da banda nos palcos gaúchos. A pré-venda de ingressos, exclusiva para super fãs, começa dia 6 de julho, às 10h, e a venda geral abre em 7 de julho, também às 10h, pela Sympla.\nFormado por Baden Donegal (vocais e guitarra), Angus Goodwin (guitarra), Lach Galbraith (teclados e vocais), Mitch Galbraith (guitarra), Nic Blom (baixo) e Tom O’Brien (bateria), o Ocean Alley soma mais de 1,5 bilhão de reproduções nas plataformas de streaming e se consolidou como um dos principais nomes da cena australiana contemporânea.\nO repertório do show reúne faixas de toda a carreira, incluindo sucessos como "Confidence", além das músicas de "Love Balloon", álbum que estreou em primeiro lugar na parada',
+        venue: 'Opinião',
+        address: 'Rua José do Patrocínio, 834',
+        latitude: '-30.0417526',
+        longitude: '-51.2230977'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -519,7 +567,11 @@ describe('Crawlers Routes', () => {
         url: 'https://www.songkick.com/pt/concerts/41724580-di-ferrero-at-teatro-carlos-gomes',
         image: 'http://images.sk-static.com/images/media/img/col6/20190924-232916-534771.jpg',
         description: 'Compre ingressos para ver kamaitachi ao vivo em Florianópolis. Acompanhe seus artistas favoritos no Songkick e nunca perca outro show.',
-        category: 'music'
+        category: 'music',
+        venue: 'Teatro Carlos Gomes',
+        address: 'Rua XV de Novembro, 1181 - Centro',
+        latitude: '-26.91858',
+        longitude: '-49.06806'
       },
       {
         title: 'Dead Fish',
@@ -530,7 +582,11 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804717-dead-fish-at-ahoy-tavern-club',
-        category: 'music'
+        category: 'music',
+        venue: 'Ahoy! Tavern Club',
+        address: 'R. São Paulo, 2083 - Itoupava Seca',
+        latitude: '-26.89939',
+        longitude: '-49.07723'
       },
       {
         title: 'Tba Festival 2024',
@@ -540,7 +596,11 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/festivals/176531-tba/id/41792900-tba-festival-2024',
-        category: 'music'
+        category: 'music',
+        venue: 'Rivage',
+        address: 'SC',
+        latitude: '-26.91658',
+        longitude: '-49.07173'
       },
       {
         title: 'Espetáculo Teatral "Bita E Os Animais" Em Curitiba (pr) 2024',
@@ -550,7 +610,11 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.songkick.com/pt/festivals/3647009-espetaculo-teatral-bita-e-os-animais-em-curitiba-pr/id/41761308-espetculo-teatral-bita-e-os-animais-em-curitiba-pr-2024',
-        category: 'music'
+        category: 'music',
+        venue: 'Espaço Teatro Regina Vogue',
+        address: 'Avenida Sete de Setembro, 2775',
+        latitude: '-25.43731',
+        longitude: '-49.26568'
       },
       {
         title: 'Overdriver Duo',
@@ -561,7 +625,11 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41714611-overdriver-duo-at-teatro-fernanda-montenegro',
-        category: 'music'
+        category: 'music',
+        venue: 'Teatro Fernanda Montenegro',
+        address: 'Shopping Novo, R. Cel. Dulcídio, 517, Batel',
+        latitude: '-25.43824',
+        longitude: '-49.28383'
       },
       {
         title: 'Terraplana',
@@ -572,7 +640,11 @@ describe('Crawlers Routes', () => {
         state: 'PR',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41728574-terraplana-at-basement-cultural',
-        category: 'music'
+        category: 'music',
+        venue: 'Basement Cultural',
+        address: 'Benvindo Valente 260',
+        latitude: '-25.41922',
+        longitude: '-49.27601'
       },
       {
         title: 'Ana Cañas',
@@ -583,7 +655,11 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41696929-ana-canas-at-teatro-ademir-rosa',
-        category: 'music'
+        category: 'music',
+        venue: 'Teatro Ademir Rosa',
+        address: 'Governador Irineu Bornhausen , Agronômica',
+        latitude: '-27.57216',
+        longitude: '-48.53259'
       },
       {
         title: 'Mdc',
@@ -594,7 +670,11 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41794649-mdc-at-hangar-t6-listening-bar',
-        category: 'music'
+        category: 'music',
+        venue: 'Hangar T6 Listening Bar',
+        address: 'R. Vítor Konder, 125 - Loja 02 - Centro, Florianópolis - SC, 88015-400, Brasil',
+        latitude: '-27.58882',
+        longitude: '-48.54544'
       },
       {
         title: 'Dj Brinquinho Sc',
@@ -605,7 +685,11 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41792887-dj-brinquinho-sc-at-bierteca-bar',
-        category: 'music'
+        category: 'music',
+        venue: 'Bierteca Bar',
+        address: 'R. Dep. Antônio Edu Vieira, 1496 - Pantanal',
+        latitude: '-27.60386',
+        longitude: '-48.51688'
       },
       {
         title: 'Vintage Culture',
@@ -616,7 +700,11 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804579-vintage-culture-at-warung-beach-club',
-        category: 'music'
+        category: 'music',
+        venue: 'Warung Beach Club',
+        address: 'Av. José Medeiros Vieira, 350',
+        latitude: '-26.93593',
+        longitude: '-48.6278'
       },
       {
         title: 'Lagum',
@@ -627,7 +715,11 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41629431-lagum-at-belvedere-beach-club',
-        category: 'music'
+        category: 'music',
+        venue: 'Belvedere Beach Club',
+        address: 'Av. José Medeiros Viêira, 256',
+        latitude: '-26.93559',
+        longitude: '-48.62774'
       },
       {
         title: 'Di Ferrero',
@@ -638,7 +730,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41724578-di-ferrero-at-teatro-da-liga',
-        category: 'music'
+        category: 'music',
+        venue: 'Teatro da Liga'
       },
       {
         title: 'Mordor Truckers',
@@ -649,7 +742,11 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41804725-mordor-truckers-at-zeit-cervejaria',
-        category: 'music'
+        category: 'music',
+        venue: 'Zeit Cervejaria',
+        address: 'Av. Edgar Nelsom Meister,282',
+        latitude: '-26.25009',
+        longitude: '-48.85366'
       },
       {
         title: 'Rogério Skylab',
@@ -660,7 +757,11 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41683692-rogerio-skylab-at-bar-opiniao',
-        category: 'music'
+        category: 'music',
+        venue: 'Bar Opiniao',
+        address: 'R. José do Patrocínio, 834 -Cidade Baixa',
+        latitude: '-30.04189',
+        longitude: '-51.22111'
       },
       {
         title: 'Lucas Morato',
@@ -671,7 +772,8 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41817222-lucas-morato-at-samba-da-galera',
-        category: 'music'
+        category: 'music',
+        venue: 'Samba da Galera'
       },
       {
         title: 'Ivete Sangalo',
@@ -681,7 +783,11 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41806309-ivete-sangalo-at-estadio-beirario',
-        category: 'music'
+        category: 'music',
+        venue: 'Estádio Beira-Rio',
+        address: 'Av. Pe. Cacique, 891 (Av. Edvaldo Pereira Paiva)',
+        latitude: '-30.06549',
+        longitude: '-51.23585'
       },
       {
         title: 'Jinjer',
@@ -692,7 +798,11 @@ describe('Crawlers Routes', () => {
         state: 'RS',
         country: 'BR',
         url: 'https://www.songkick.com/pt/concerts/41801925-jinjer-at-opiniao',
-        category: 'music'
+        category: 'music',
+        venue: 'Opinião',
+        address: 'R. José do Patrocínio, 834',
+        latitude: '-30.04185',
+        longitude: '-51.22103'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -736,7 +846,11 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://tockify.com/eventosemjoinville/detail/4169/1783589400000',
         image: 'https://d3flpus5evl89n.cloudfront.net/635fddd3c287a829555e8da5/6a455588892b27f8db966a91/scaled_1024.jpg',
-        description: 'Venha prestigiar a Feira EcoSol Dona Francisca! Um espaço onde os visitantes encontram itens de variados segmentos, como artesanato, cultura, manualidades, moda'
+        description: 'Venha prestigiar a Feira EcoSol Dona Francisca! Um espaço onde os visitantes encontram itens de variados segmentos, como artesanato, cultura, manualidades, moda',
+        venue: 'Rua das Palmeiras',
+        address: 'Alameda Brüstlein - Centro, Joinville - SC, 89201-040, Brasil',
+        latitude: '-26.303508',
+        longitude: '-48.8437981'
       },
       {
         title: 'Artista Denise Schlickmann Faz Oficina Gratuita No Garten Shopping',
@@ -747,7 +861,11 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://tockify.com/eventosemjoinville/detail/4224/1783612800000',
         image: 'https://d3flpus5evl89n.cloudfront.net/635fddd3c287a829555e8da5/6a4fc91f892b27f8db313eb8/scaled_896.jpg',
-        description: 'Artista Denise Schlickmann faz oficina gratuita no Garten Shopping Atividade será realizada neste sábado, na Galeria Garten, com vagas limitadas e material incl'
+        description: 'Artista Denise Schlickmann faz oficina gratuita no Garten Shopping Atividade será realizada neste sábado, na Galeria Garten, com vagas limitadas e material incl',
+        venue: 'Garten Shoppinh',
+        address: 'Avenida Rolf Wiest - Zona Industrial Norte, Joinville - SC, 89223-005, Brasil',
+        latitude: '-26.2533106',
+        longitude: '-48.8521589'
       },
       {
         title: 'Espetáculo Infantil O Pequeno Príncipe',
@@ -758,7 +876,11 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://tockify.com/eventosemjoinville/detail/4301/1783711800000',
-        description: 'Apresentação teatral infantil gratuita inspirada na obra de Antoine de Saint-Exupéry, com duração de 50 minutos e entrada liberada mediante retirada de senhas.'
+        description: 'Apresentação teatral infantil gratuita inspirada na obra de Antoine de Saint-Exupéry, com duração de 50 minutos e entrada liberada mediante retirada de senhas.',
+        venue: 'Teatro Don Orione',
+        address: 'Rua Dona Francisca, 6055 - Iririú, Joinville - SC, 89227-100, Brasil',
+        latitude: '-26.241102',
+        longitude: '-48.912345'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);
@@ -792,7 +914,9 @@ describe('Crawlers Routes', () => {
         country: 'BR',
         url: 'https://www.pensanoevento.com.br/sitev2/eventos/96401/sextou-na-casinha',
         image: 'https://files.pensanoevento.com.br/images/eventos/69aed1ac1bb6c_capa.webp',
-        description: 'TOCA DA RAPOSA! No dia 12 de Julho (Domingo) As raposas se encontram aqui no Barzin Rj A partir das 14h, muito pagode, funk, gastronomia e drinks pra...'
+        description: 'TOCA DA RAPOSA! No dia 12 de Julho (Domingo) As raposas se encontram aqui no Barzin Rj A partir das 14h, muito pagode, funk, gastronomia e drinks pra...',
+        venue: 'Let´s Growl',
+        address: 'R. Visc. de Taunay, 856 - Atiradores, Joinville - SC'
       },
       {
         title: 'Dazaranha - Acústico',
@@ -803,7 +927,8 @@ describe('Crawlers Routes', () => {
         state: 'SC',
         country: 'BR',
         url: 'https://www.pensanoevento.com.br/sitev2/eventos/95881/dazaranha-acustico',
-        image: 'https://files.pensanoevento.com.br/images/eventos/697be1269dc98_capa.webp'
+        image: 'https://files.pensanoevento.com.br/images/eventos/697be1269dc98_capa.webp',
+        venue: 'Una Pub Joinville'
       }
     ]);
     expect(eventsResource.get).toHaveBeenCalledTimes(1);

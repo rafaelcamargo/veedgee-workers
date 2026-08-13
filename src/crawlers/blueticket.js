@@ -29,6 +29,7 @@ function buildEvents(data){
       country: 'BR',
       url: `https://www.blueticket.com.br/evento/${item.codigo}/${item.slug}`,
       eventCode: item.codigo,
+      venue: item.local,
       ...(item.url && { image: item.url })
     };
   });
@@ -65,9 +66,14 @@ function enrichEventWithDescription(event){
   return blueticketResource.getEventDetails(eventCode).then(({ data }) => {
     return {
       ...eventData,
-      description: eventService.parseDescription(data.release)
+      description: eventService.parseDescription(data.release),
+      address: formatAddress(data.local?.endereco)
     };
   });
+}
+
+function formatAddress(endereco){
+  return endereco && endereco.replace(/\s+/g, ' ').trim();
 }
 
 module.exports = _public;
