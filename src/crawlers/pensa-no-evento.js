@@ -81,7 +81,8 @@ function getBlackList(){
     'pippo ristorante',
     'trezze rooftop',
     'don\'t tell mama - praia brava',
-    'bibi pizza floripa'
+    'bibi pizza floripa',
+    'deep sushi'
   ];
 }
 
